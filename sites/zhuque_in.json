@@ -30,5 +30,5 @@
             "//div[@class='ant-form-item-control-input-content']/span[contains(text(),'正在做种: )]"
         ]
     },
-    "system_type": ""
+    "system_type": "tnode"
 }

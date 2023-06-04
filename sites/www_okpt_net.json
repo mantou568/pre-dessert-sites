@@ -190,5 +190,5 @@
             "//div[@id='peercount']/b[1]"
         ]
     },
-    "system_type": ""
+    "system_type": "nexus_php"
 }
