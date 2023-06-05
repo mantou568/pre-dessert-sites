@@ -1,6 +1,9 @@
 # pre-dessert-sites
 这是一个你懂我懂大家懂的配置文件。大家群策群力，欢迎pull requests，推动站点配置更新，人人为我，我为人人。
 
+sites 有效站点
+
+closed_sites 已关闭站点
 
 #使用说明
 
