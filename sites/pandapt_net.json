@@ -369,12 +369,20 @@
                     }
                 ]
             },
+            "tags": {
+                "selector": "div > a.torrents-tag"
+            },
+            "subject": {
+                "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
+                "contents": -1
+            },
             "description": {
-                "selector": "td:nth-child(2) > table > tr > td.embedded",
+                "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2)",
+                "remove": "span,a,img,font,b",
                 "contents": -1
             },
             "labels": {
-                "selector": "td:nth-child(2) > table > tr > td.embedded > span"
+				"selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span[title=\"\"]"
             }
         }
     },
