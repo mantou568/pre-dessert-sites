@@ -369,8 +369,9 @@
                     }
                 ]
             },
-            "description": {
-                "selector": "td:nth-child(2) > table > tr > td.embedded",
+               "description": {
+                "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1)",
+                "remove": "span,a,img,font,b",
                 "contents": -1
             },
             "labels": {
