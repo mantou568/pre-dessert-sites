@@ -1,0 +1,57 @@
+{
+    "id": "btbtt",
+    "name": "BT之家",
+    "domain": "https://www.btbtt12.com",
+    "encoding": "UTF-8",
+    "public": true,
+    "search": {
+        "paths": [{
+            "path": "search-index-keyword-{keyword}.htm",
+            "method": "get"
+        }],
+        "rules": [{
+            "selectors": [
+                "#threadlist"
+            ],
+            "allow": ["/thread-index-fid-\\d+-tid-\\d+.htm"],
+            "torrents": true
+
+        }]
+    },
+    "torrents": {
+        "list": {
+            "selector": "body"
+        },
+        "common":{
+           "rid":{
+                "selector": "#nav td.center span:nth-last-child(1) a",
+                "attribute": "href",
+                "filters": [{
+                     "name": "re_search",
+                     "args": [
+                         "\\d+",
+                         0
+                     ]
+                 }]
+           }
+        },
+        "fields": {
+            "id": {
+                "selector": "#nav a",
+                "attribute": "href"
+            },
+            "title_optional": {
+                "selector": "a"
+
+            },
+            "title": {
+                "selector": "a",
+                "fmt": "{{works_name}}.{{kind}}.{{director}}.{{year}}.{{title}}"
+            },
+            "download": {
+                "selector": "a",
+                "attribute": "href"
+            }
+        }
+    }
+}

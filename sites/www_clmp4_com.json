@@ -1,0 +1,24 @@
+{
+    "id": "clmp4",
+    "name": "clmp4",
+    "domain": "https://www.clmp4.com",
+    "encoding": "UTF-8",
+    "public": true,
+    "search": {
+        "paths": [{
+            "path": "vod-search-wd-{keyword}",
+            "method": "get"
+        }],
+        "rules": [{
+            "selectors": [
+                ".stui-vodlist.clearfix"
+            ],
+            "allow": ["/dianying/\\d+", "/dianshiju/\\d+"],
+            "torrents": true
+
+        }]
+    },
+    "torrents": {
+        "fields": null
+    }
+}
