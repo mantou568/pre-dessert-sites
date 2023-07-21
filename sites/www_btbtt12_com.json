@@ -5,52 +5,71 @@
     "encoding": "UTF-8",
     "public": true,
     "search": {
-        "paths": [{
-            "path": "search-index-keyword-{keyword}.htm",
-            "method": "get"
-        }],
-        "rules": [{
-            "selectors": [
-                "#threadlist"
-            ],
-            "allow": ["/thread-index-fid-\\d+-tid-\\d+.htm"],
-            "torrents": true
-
-        }]
+        "paths": [
+            {
+                "path": "search-index-keyword-{keyword}.htm",
+                "method": "get"
+            }
+        ],
+        "rules": [
+            {
+                "selectors": [
+                    "#threadlist"
+                ],
+                "allow": [
+                    "/thread-index-fid-\\d+-tid-\\d+.htm"
+                ],
+                "torrents": true
+            }
+        ]
     },
     "torrents": {
         "list": {
             "selector": "body"
         },
-        "common":{
-           "rid":{
-                "selector": "#nav td.center span:nth-last-child(1) a",
+        "common": {
+            "fid": {
+                "selector": ".attachlist a",
                 "attribute": "href",
-                "filters": [{
-                     "name": "re_search",
-                     "args": [
-                         "\\d+",
-                         0
-                     ]
-                 }]
-           }
+                "filters": [
+                    {
+                        "name": "findall",
+                        "args": [
+                            "fid-(\\d+)",
+                            0
+                        ]
+                    }
+                ]
+            },
+            "aid": {
+                "selector": ".attachlist a",
+                "attribute": "href",
+                "filters": [
+                    {
+                        "name": "findall",
+                        "args": [
+                            "aid-(\\d+)",
+                            0
+                        ]
+                    }
+                ]
+            }
         },
         "fields": {
             "id": {
-                "selector": "#nav a",
+                "selector": ".attachlist a",
                 "attribute": "href"
             },
             "title_optional": {
                 "selector": "a"
-
             },
             "title": {
-                "selector": "a",
-                "fmt": "{{works_name}}.{{kind}}.{{director}}.{{year}}.{{title}}"
+                "selector": "h2"
             },
-            "download": {
+            "enclosure": {
                 "selector": "a",
-                "attribute": "href"
+                "attribute": "href",
+                "fmt": "https://www.btbtt12.com/attach-download-fid-{{fid}}-aid-{{aid}}.htm"
             }
         }
     }
