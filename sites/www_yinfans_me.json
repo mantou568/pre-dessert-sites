@@ -1,0 +1,25 @@
+{
+    "id": "yinfans",
+    "name": "音范丝",
+    "domain": "https://www.yinfans.me",
+    "encoding": "UTF-8",
+    "public": true,
+    "search": {
+        "paths": [
+            {
+                "path": "?s={keyword}"
+            }
+        ],
+        "rules": [{
+            "selectors": [
+                "#post_container"
+            ],
+            "allow": ["/movie/\\d+"],
+            "torrents": true
+
+        }]
+    },
+    "torrents": {
+        "fields": null
+    }
+}
