@@ -85,6 +85,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_open_cd.j
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_oshen_win.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_piaohua_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_pthome_net.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_ptlsp_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_pttime_org.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_skyey2_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_torrentleech_org.json
