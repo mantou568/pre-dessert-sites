@@ -52,7 +52,7 @@
     },
     "torrents": {
         "list": {
-            "selector": "div.flex.flex-col.m-auto > div.w-full:has(\"div.torrent-title\")"
+            "selector": "div.torrent-table-sub-info"
         },
         "fields": {
             "id": {
@@ -69,7 +69,7 @@
                 ]
             },
             "category": {
-                "selector": "a[href*=\"?cat=\"]",
+                "selector": "a[href*=\"?cat[]=\"]",
                 "attribute": "href",
                 "filters": [
                     {
@@ -102,34 +102,34 @@
                 "attribute": "href"
             },
             "size": {
-                "selector": "div.items-center > div.torrent-info > div:nth-child(1)"
+                "selector": "div.torrent-info-text-size"
             },
             "grabs": {
-                "selector": "div.items-center > div.torrent-info > div:nth-child(3) > a"
+                "selector": "div.torrent-info-text-seeders > a[href*=\"#seeders\"]"
             },
             "seeders": {
-                "selector": "div.items-center > div.torrent-info > div:nth-child(3) > a"
+                "selector": "div.torrent-info-text-seeders > a[href*=\"#seeders\"]"
             },
             "leechers": {
-                "selector": "div.items-center > div.torrent-info > div:nth-child(4) > a"
+                "selector": "div.torrent-info-text-leechers > a[href*=\"#leechers\"]"
             },
             "date_elapsed": {
-                "selector": "div.items-center > div.torrent-info > div:nth-child(2) > span[title]",
+                "selector": "div.torrent-info-text-added > span",
                 "optional": true
             },
             "date_added": {
-                "selector": "div.items-center > div.torrent-info > div:nth-child(2):not(:has(span))",
+                "selector": "div.torrent-info-text-added > span",
                 "attribute": "title",
                 "optional": true
             },
             "date": {
-                "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
-                "filters": [
-                    {
-                        "name": "dateparse",
-                        "args": "%Y-%m-%d %H:%M:%S"
-                    }
-                ]
+                    "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
+                    "filters": [
+                        {
+                            "name": "dateparse",
+                            "args": "%Y-%m-%d %H:%M:%S"
+                        }
+                    ]
             },
             "downloadvolumefactor": {
                 "case": {
@@ -168,10 +168,10 @@
                 "selector": "div.torrent-title > div > div.items-center > div.text-ellipsis"
             },
             "description": {
-                "selector": "div.torrent-title > div > div.items-center > div.text-ellipsis.ellipsis"
+                "selector": "div.torrent-info-text-small_name"
             },
             "labels": {
-                "selector": "div.torrent-title > div > div.items-center > span.tag"
+                "selector": "div > span.tag"
             }
         }
     },
