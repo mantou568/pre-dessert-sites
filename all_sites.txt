@@ -14,6 +14,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/dmhy_org.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/et8_org.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/eztv_re.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/filelist_io.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/fsm_name.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/gainbound_net.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdarea_club.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdatmos_club.json
@@ -41,6 +42,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/nyaa_si.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ourbits_club.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pandapt_net.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/piggo_me.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptcafe_club.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptchdbits_co.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptchina_org.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pterclub_com.json
