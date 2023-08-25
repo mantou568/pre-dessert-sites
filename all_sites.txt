@@ -94,5 +94,6 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_torrentle
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_yinfans_me.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_yizidy_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/xingtan_one.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/xp_m-team_io.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/zhuque_in.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/zmpt_cc.json
