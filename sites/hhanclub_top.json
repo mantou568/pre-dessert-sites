@@ -189,5 +189,5 @@
             "//div[@id='seeder-count']"
         ]
     },
-    "system_type": "nexus_php"
+    "system_type": "nexus_hhclub"
 }
