@@ -72,5 +72,6 @@
                 }
             }
         }
-    }
+    },
+    "ext_domain": ["https://sukebei.nyaa.si"]
 }
