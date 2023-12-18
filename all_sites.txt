@@ -26,6 +26,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdmayi_com.js
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdpt_xyz.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdsky_me.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdtime_org.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdvbits_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdvideo_one.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hhanclub_top.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ihdbits_me.json
@@ -47,6 +48,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptchdbits_co.
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptchina_org.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pterclub_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptsbao_club.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptvicomo_net.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pt_0ff_cc.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pt_2xfree_org.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pt_btschool_club.json
@@ -59,16 +61,19 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pt_msg_vg.jso
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pt_sjtu_edu_cn.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pt_soulvoice_club.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/rousi_zip.json
-https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/shadowflow_org.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/sharkpt_net.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/springsunday_net.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/star-space_net.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/tjupt_org.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/torrentgalaxy_to.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/totheglory_im.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/u2_dmhy_org.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/u9a9_de.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ubits_club.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ultrahd_net.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/uploads_ltd.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/wintersakura_net.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_agsvpt_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_beitai_pt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_bing.com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_clmp4_com.json
@@ -76,6 +81,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_comicat_o
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_dragonhd_xyz.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_dygang_tv.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_hddolby_com.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_hdkyl_in.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_hd_ai.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_hitpt_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_htpt_cc.json
@@ -94,6 +100,5 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_torrentle
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_yinfans_me.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/www_yizidy_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/xingtan_one.json
-https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/xp_m-team_io.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/zhuque_in.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/zmpt_cc.json
