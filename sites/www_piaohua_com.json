@@ -1,24 +1,25 @@
 {
-    "id": "piaohua",
-    "name": "飘花",
-    "domain": "https://www.piaohua.com",
-    "encoding": "UTF-8",
-    "public": true,
-    "search": {
-        "paths": [{
-            "path": "/plus/search.php?kwtype=0&keyword={keyword}&searchtype=影视搜索",
-            "method": "get"
-        }],
-        "rules": [{
-            "selectors": [
-                "ul.ul-imgtxt2.row"
-            ],
-            "allow": ["/html/\\w+/\\d+/\\d+/\\d+.html"],
-            "torrents": true
-
-        }]
-    },
-    "torrents": {
-        "fields":null
-    }
+  "id": "piaohua",
+  "name": "飘花",
+  "domain": "https://www.piaohua.com",
+  "encoding": "UTF-8",
+  "public": true,
+  "search": {
+    "paths": [
+      {
+        "path": "/plus/search.php?kwtype=0&keyword={keyword}&searchtype=影视搜索",
+        "method": "get"
+      }
+    ],
+    "rules": [
+      {
+        "selectors": ["ul.ul-imgtxt2.row"],
+        "allow": ["/html/\\w+/\\d+/\\d+/\\d+.html"],
+        "torrents": true
+      }
+    ]
+  },
+  "torrents": {
+    "fields": null
+  }
 }
