@@ -206,8 +206,8 @@
                 ]
             },
             "description": {
-                "selector": "td:nth-child(2) > table > tr > td.embedded",
-                "remove": "img,a,b,span",
+                "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span:not(.optiontag)",
+                "remove": "img,a,b",
                 "filters": [
                     {
                         "name": "replace",
@@ -219,7 +219,7 @@
                 ]
             },
             "labels": {
-                "selector": "td:nth-child(2) > table > tr > td.embedded > span"
+                "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span.optiontag"
             }
         }
     },
