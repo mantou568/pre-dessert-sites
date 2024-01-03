@@ -1,31 +1,32 @@
 {
-    "id": "dygang",
-    "name": "电影港",
-    "domain": "https://www.dygang.tv/",
-    "encoding": "UTF-8",
-    "public": true,
-    "search": {
-        "paths": [{
-            "path": "e/search/index123.php",
-            "method": "post"
-        }],
-        "data": {
-            "tempid": 1,
-            "tbname": "article",
-            "keyboard": "{{keyword|encode('gb2312')}}",
-            "show": "title%2Csmalltext",
-            "Submit": "{{'搜索'|encode('gb2312')}}"
-        },
-        "rules": [{
-            "selectors": [
-                "body > table:nth-child(9) > tbody > tr > td > table > tbody > tr > td > table:nth-child(2)"
-            ],
-            "allow": ["/\\w+/\\d+/\\d+\\.htm"],
-            "torrents": true
-
-        }]
+  "id": "dygang",
+  "name": "电影港",
+  "domain": "https://www.dygang.tv/",
+  "encoding": "UTF-8",
+  "public": true,
+  "search": {
+    "paths": [
+      {
+        "path": "e/search/index123.php",
+        "method": "post"
+      }
+    ],
+    "data": {
+      "tempid": 1,
+      "tbname": "article",
+      "keyboard": "{{keyword|encode('gb2312')}}",
+      "show": "title%2Csmalltext",
+      "Submit": "{{'搜索'|encode('gb2312')}}"
     },
-    "torrents": {
-        "fields": null
-    }
+    "rules": [
+      {
+        "selectors": ["body > table:nth-child(9) > tbody > tr > td > table > tbody > tr > td > table:nth-child(2)"],
+        "allow": ["/\\w+/\\d+/\\d+\\.htm"],
+        "torrents": true
+      }
+    ]
+  },
+  "torrents": {
+    "fields": null
+  }
 }

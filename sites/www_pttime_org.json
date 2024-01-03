@@ -219,10 +219,7 @@
     }
   },
   "price": {
-    "FREE": [
-      "//h1[@id='top']/b/font[@class='free']",
-      "//h1[@id='top']/b/font[@class='zeroupzerodown']"
-    ],
+    "FREE": ["//h1[@id='top']/b/font[@class='free']", "//h1[@id='top']/b/font[@class='zeroupzerodown']"],
     "2XFREE": ["//h1[@id='top']/b/font[@class='twoupfree']"],
     "HR": [],
     "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
