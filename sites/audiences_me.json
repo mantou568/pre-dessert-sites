@@ -56,7 +56,10 @@
         "filters": [
           {
             "name": "re_search",
-            "args": ["\\d+", 0]
+            "args": [
+              "\\d+",
+              0
+            ]
           }
         ]
       },
@@ -77,7 +80,10 @@
         "filters": [
           {
             "name": "replace",
-            "args": ["?", ""]
+            "args": [
+              "?",
+              ""
+            ]
           },
           {
             "name": "querystring",
@@ -99,7 +105,10 @@
         "filters": [
           {
             "name": "re_search",
-            "args": ["tt\\d+", 0]
+            "args": [
+              "tt\\d+",
+              0
+            ]
           }
         ]
       },
@@ -159,7 +168,10 @@
         "filters": [
           {
             "name": "re_search",
-            "args": ["\\d+-\\d+-\\d+ \\d+:\\d+:\\d+", 0]
+            "args": [
+              "\\d+-\\d+-\\d+ \\d+:\\d+:\\d+",
+              0
+            ]
           },
           {
             "name": "dateparse",
@@ -172,14 +184,36 @@
       },
       "labels": {
         "selector": "td.embedded > span.tags"
+      },
+      "hr_days": {
+        "optional": true,
+        "selector": "img.hitandrun",
+        "attribute": "title",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": [
+              "\\d*",
+              0
+            ]
+          }
+        ]
       }
     }
   },
   "price": {
-    "FREE": ["//h1[@id='top']/b/font[@class='free']"],
-    "2XFREE": ["//h1[@id='top']/b/font[@class='twoupfree']"],
-    "HR": ["//h1[@id='top']/img[@class='hitandrun']"],
-    "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
+    "FREE": [
+      "//h1[@id='top']/b/font[@class='free']"
+    ],
+    "2XFREE": [
+      "//h1[@id='top']/b/font[@class='twoupfree']"
+    ],
+    "HR": [
+      "//h1[@id='top']/img[@class='hitandrun']"
+    ],
+    "PEER_COUNT": [
+      "//div[@id='peercount']/b[1]"
+    ]
   },
   "system_type": ""
 }
