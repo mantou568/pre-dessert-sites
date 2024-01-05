@@ -209,9 +209,8 @@
         ]
       },
       "description": {
-        "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > font",
-        "remove": "span,a,img,font,b",
-        "contents": -1
+        "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > font[title]:not([title=''])",
+        "attribute": "title"
       },
       "labels": {
         "selector": "td:nth-child(2) > table > tr > td.embedded > a > span.tags"
