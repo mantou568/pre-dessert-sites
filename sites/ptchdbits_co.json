@@ -155,7 +155,6 @@
         ]
       },
       "hr_days": {
-        "defualt_value": 0,
         "selector": "div.circle > div.circle-text",
         "filters": [
           {

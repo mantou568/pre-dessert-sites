@@ -127,7 +127,7 @@
         "optional": true
       },
       "date_added": {
-        "selector": "td:nth-child(4):not(:has(\"span\"))",
+        "selector": "td:nth-child(4) > span",
         "attribute": "title",
         "optional": true
       },
@@ -184,7 +184,7 @@
         "selector": "table.torrentname > tr > td.embedded > div > a > div.tag"
       },
       "hr_days": {
-        "optional": true,
+        "default_value": 2,
         "selector": "img.hitandrun",
         "attribute": "title",
         "filters": [

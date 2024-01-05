@@ -185,6 +185,9 @@
       },
       "minimumseedtime": {
         "text": 75600
+      },
+      "hr_days": {
+        "default_value": 1
       }
     }
   },
