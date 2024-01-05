@@ -124,12 +124,15 @@
         "selector": "td.rowfollow:nth-child(7)"
       },
       "date_elapsed": {
-        "selector": "td.rowfollow:nth-child(4) > span",
+        "selector": "td.rowfollow:nth-child(4)",
+        "remove": "br",
+        "diff_date": true,
         "optional": true
       },
       "date_added": {
-        "selector": "td.rowfollow:nth-child(4) > span",
-        "attribute": "title",
+        "selector": "td.rowfollow:nth-child(4)",
+        "remove": "br",
+        "diff_date": true,
         "optional": true
       },
       "date": {
@@ -170,6 +173,10 @@
             "args": "%Y-%m-%d %H:%M:%S"
           }
         ]
+      },
+      "hr_days": {
+        "defualt_value": 1,
+        "selector": "img.kaohe"
       },
       "tags": {
         "selector": "div > a.torrents-tag"
