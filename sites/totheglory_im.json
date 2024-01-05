@@ -251,6 +251,20 @@
           "img[title=\"Hit and Run\"]": 216000,
           "*": 0
         }
+      },
+      "hr_days": {
+        "optional": true,
+        "selector": "td:nth-child(2) > div.name_left > img:nth-child(6)",
+        "attribute": "title",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": [
+              "\\d*",
+              0
+            ]
+          }
+        ]
       }
     }
   },
