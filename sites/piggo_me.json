@@ -175,7 +175,7 @@
         ]
       },
       "hr_days": {
-        "defualt_value": 1,
+        "defualt_value": 3,
         "selector": "img.kaohe"
       },
       "tags": {
