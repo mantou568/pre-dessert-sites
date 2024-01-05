@@ -12,6 +12,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/dajiao_cyou.j
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/discfan_net.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/dmhy_org.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/et8_org.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/exoticaz_to.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/eztv_re.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/filelist_io.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/fsm_name.json
