@@ -192,7 +192,7 @@
         }
       },
       "hr_days": {
-        "optional": true,
+        "default_value": 1,
         "selector": "img.hitandrun",
         "attribute": "title",
         "filters": [

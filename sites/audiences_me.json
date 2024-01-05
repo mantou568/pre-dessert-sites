@@ -186,7 +186,7 @@
         "selector": "td.embedded > span.tags"
       },
       "hr_days": {
-        "optional": true,
+        "default_value": 2,
         "selector": "img.hitandrun",
         "attribute": "title",
         "filters": [

@@ -171,7 +171,7 @@
         "selector": "div.torrent-info-text-small_name"
       },
       "hr_days": {
-        "optional": true,
+        "default_value": 3,
         "selector": "div.text-\\[12px\\].text-\\[\\#FFFFFF\\].bg-\\[\\#000000\\].torrent-info-hr.rounded-md.px-\\[5px\\]",
         "filters": [
           {
