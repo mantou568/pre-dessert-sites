@@ -169,6 +169,19 @@
       },
       "description": {
         "selector": "div.torrent-info-text-small_name"
+      },
+      "hr_days": {
+        "optional": true,
+        "selector": "div.text-\\[12px\\].text-\\[\\#FFFFFF\\].bg-\\[\\#000000\\].torrent-info-hr.rounded-md.px-\\[5px\\]",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": [
+              "\\d*",
+              0
+            ]
+          }
+        ]
       }
     }
   },
