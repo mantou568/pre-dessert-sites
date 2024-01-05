@@ -190,6 +190,20 @@
       },
       "minimumseedtime": {
         "text": 90000
+      },
+      "hr_days": {
+        "optional": true,
+        "selector": "img.hitandrun",
+        "attribute": "title",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": [
+              "\\d*",
+              0
+            ]
+          }
+        ]
       }
     }
   },
