@@ -143,7 +143,6 @@
         "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span"
       },
       "hr_days": {
-        "optional": true,
         "selector": "img.hitandrun",
         "attribute": "title",
         "filters": [
