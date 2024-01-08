@@ -191,6 +191,20 @@
       },
       "labels": {
         "selector": "table.torrentname > tr > td:nth-child(2) > span"
+      },
+      "hr_days": {
+        "default_value": 3,
+        "selector": "img.hitandrun",
+        "attribute": "title",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": [
+              "\\d*",
+              0
+            ]
+          }
+        ]
       }
     }
   },
