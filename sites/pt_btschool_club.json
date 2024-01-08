@@ -197,5 +197,18 @@
     "HR": [],
     "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
   },
-  "system_type": ""
+  "system_type": "",
+  "my_hr": {
+    "url": "myhr.php?hrtype=C",
+    "method": "get",
+    "rows_selector": "table.main",
+    "rows_first": 1,
+    "fields": [
+      {
+        "name": "name",
+        "selector": "td:nth-of-type(2)"
+      }
+    ],
+    "rule": "len(name) > 0"
+  }
 }
