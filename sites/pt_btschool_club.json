@@ -202,7 +202,7 @@
     "url": "myhr.php?hrtype=C",
     "method": "get",
     "rows_selector": "table.main",
-    "rows_first": 1,
+    "rows_first": 2,
     "fields": [
       {
         "name": "name",

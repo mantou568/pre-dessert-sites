@@ -422,7 +422,7 @@
         "selector": "td:nth-child(8)"
       },
       {
-        "name": "remark",
+        "name": "note",
         "selector": "td:nth-child(9)"
       }
     ],

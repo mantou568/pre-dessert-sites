@@ -217,14 +217,15 @@
   },
   "system_type": "",
   "my_hr": {
-    "url": "myhr.php?hrtype=2",
+    "url": "myhr.php?hrtype=1",
     "method": "get",
-    "rows_selector": "table.main",
-    "rows_first": 1,
+    "rows_selector": "table > tbody > tr > td > table > tbody > tr:nth-child(2)",
+    "rows_first": 2,
     "fields": [
       {
         "name": "name",
-        "selector": "td:nth-of-type(2)"
+        "selector": "td:nth-of-type(2)",
+        "value": "种子名称"
       }
     ],
     "rule": "len(name) > 0"

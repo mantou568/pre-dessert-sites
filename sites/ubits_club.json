@@ -246,7 +246,7 @@
         "selector": "td:nth-of-type(8)"
       },
       {
-        "name": "remark",
+        "name": "note",
         "selector": "td:nth-of-type(9)"
       }
     ],
