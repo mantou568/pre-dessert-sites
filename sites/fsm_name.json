@@ -1,148 +1,29 @@
 {
-  "id": "fsm_name",
-  "name": "\u98de\u5929\u62c9\u9762",
-  "builtin": true,
+  "id": "fsm_me",
+  "name": "飞天拉面",
   "domain": "https://fsm.name/",
+  "api_domain": "https://api.fsm.name/",
+  "encoding": "UTF-8",
+  "parser": "FSMSpider",
+  "public": false,
   "search": {
     "paths": [
       {
-        "path": "Torrents",
-        "method": "get"
-      }
-    ],
-    "params": {
-      "keyword": "{keyword}"
-    },
-    "batch": {
-      "delimiter": " ",
-      "space_replace": "_"
-    }
-  },
-  "batch": {
-    "delimiter": " ",
-    "space_replace": "_"
-  },
-  "parser": null,
-  "render": null,
-  "browse": {},
-  "torrents": {
-    "list": {
-      "selector": "div.table-responsive > table.table-bordered > tbody > tr"
-    },
-    "fields": {
-      "id": {
-        "selector": "a[href*=\"details?tid=\"]",
-        "attribute": "href",
-        "filters": [
-          {
-            "name": "re_search",
-            "args": ["\\d+", 0]
-          }
-        ]
-      },
-      "category": {
-        "selector": "a[href*=\"?cat=\"]",
-        "attribute": "href",
-        "filters": [
-          {
-            "name": "querystring",
-            "args": "cat"
-          }
-        ]
-      },
-      "title_default": {
-        "selector": "td:nth-child(3) > div> a"
-      },
-      "title_optional": {
-        "optional": true,
-        "selector": "td:nth-child(3) > div> a",
-        "attribute": "title"
-      },
-      "title": {
-        "text": "{% if fields['title_optional'] %}{{ fields['title_optional'][0:80] }}{% else %}{{ fields['title_default'][0:80] }}{% endif %}"
-      },
-      "details": {
-        "selector": "a[href*=\"details?tid=\"]",
-        "attribute": "href"
-      },
-      "download": {
-        "selector": "a[href*=\"download\"]",
-        "attribute": "href"
-      },
-      "size": {
-        "selector": "td:nth-child(6)"
-      },
-      "grabs": {
-        "selector": "td:nth-child(9)"
-      },
-      "seeders": {
-        "selector": "td:nth-child(7)"
-      },
-      "leechers": {
-        "selector": "td:nth-child(8)"
-      },
-      "date_added": {
-        "selector": "td:nth-child(5)"
-      },
-      "date": {
-        "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
-        "filters": [
-          {
-            "name": "dateparse",
-            "args": "%Y-%m-%d %H:%M:%S"
-          }
-        ]
-      },
-      "downloadvolumefactor": {
-        "case": {
-          "img.pro_free": 0,
-          "img.pro_free2up": 0,
-          "img.pro_50pctdown": 0.5,
-          "img.pro_50pctdown2up": 0.5,
-          "img.pro_30pctdown": 0.3,
-          "*": 1
+        "path": "Torrents/listTorrents",
+        "method": "chrome",
+        "params": {
+          "keyword": "//input[@id=\"form_item_keyword\"]",
+          "submit": "//form//button[@type=\"submit\"]"
         }
-      },
-      "uploadvolumefactor": {
-        "case": {
-          "img.pro_50pctdown2up": 2,
-          "img.pro_free2up": 2,
-          "img.pro_2up": 2,
-          "*": 1
-        }
-      },
-      "free_deadline": {
-        "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
-        "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
-        "selector": "td[class=\"embedded\"] > b > span[title]",
-        "attribute": "title",
-        "filters": [
-          {
-            "name": "dateparse",
-            "args": "%Y-%m-%d %H:%M:%S"
-          }
-        ]
-      },
-      "description": {
-        "selector": "div> a",
-        "index": -1
-      },
-      "labels": {
-        "selector": "div > div.tags > a"
-      },
-      "minimumratio": {
-        "text": 1
-      },
-      "minimumseedtime": {
-        "text": 90000
       }
-    }
+    ]
   },
   "price": {
-    "FREE": ["//span[@class='badge bg-primary']"],
-    "2XFREE": [],
+    "RENDER": true,
+    "FREE": ["//span[@class='text-download'][contains(text(),'0x')]"],
+    "2XFREE": [""],
     "HR": [],
-    "PEER_COUNT": []
+    "PEER_COUNT": ["//div[@class='ant-form-item-control-input-content']/span[contains(text(),'正在做种: )]"]
   },
-  "system_type": ""
+  "system_type": "fsm"
 }
