@@ -217,10 +217,10 @@
   },
   "system_type": "",
   "my_hr": {
-    "url": "myhr.php?hrtype=C",
+    "url": "myhr.php?hrtype=A",
     "method": "get",
     "rows_selector": "#outer table.main td.embedded table tr:has(td.rowfollow)",
-    "rows_first": 1,
+    "rows_first": 0,
     "fields": [
       {
         "name": "id",
