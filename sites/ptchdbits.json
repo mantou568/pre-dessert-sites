@@ -204,7 +204,7 @@
     "https://hn.chddiy.xyz"
   ],
   "my_hr": {
-    "url": "hnr.php?id=",
+    "url": "hnr.php?id={user_id}",
     "method": "get",
     "rows_selector": "#outer table tr:has(td.rowfollow)",
     "rows_first": 0,
@@ -239,6 +239,6 @@
         "selector": "td:nth-child(4)"
       }
     ],
-    "rule": "len(name) > 0"
+    "rule": "uploaded and len(uploaded) > 0"
   }
 }
