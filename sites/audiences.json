@@ -220,7 +220,7 @@
     "url": "myhr.php?hrtype=1",
     "method": "get",
     "rows_selector": "#outer table.main td.embedded table tr:has(td.rowfollow)",
-    "rows_first": 1,
+    "rows_first": 0,
     "fields": [
       {
         "name": "id",
