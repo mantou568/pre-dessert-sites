@@ -186,8 +186,8 @@
     }
   },
   "price": {
-    "FREE": ["//div[@class='whitespace-nowrap']/span[@class='promotion-tag-free']"],
-    "2XFREE": ["//div[@class='whitespace-nowrap']/span[@class='promotion-tag-2xfree']"],
+    "FREE": ["//span[contains(@class, 'promotion-tag-free')]"],
+    "2XFREE": ["//span[contains(@class, 'promotion-tag-2xfree')]"],
     "HR": ["//span[contains(text(), 'H&R')]"],
     "PEER_COUNT": ["//div[@id='seeder-count']"]
   },
