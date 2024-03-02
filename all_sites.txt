@@ -50,6 +50,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hitpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/htpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/icc2022.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ihdbits.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ilolicon.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/iptorrents.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/joyhd.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/jptv.json
