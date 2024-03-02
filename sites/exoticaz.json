@@ -113,11 +113,22 @@
                 "selector": "a[href^=\"https://exoticaz.to/download/torrent/\"]",
                 "attribute": "href"
             },
+            "date_elapsed": {
+                "selector": "td:nth-child(4)",
+                "diff_date": true,
+                "optional": true
+            },
+            "date_added": {
+                "selector": "td:nth-child(4)",
+                "diff_date": true,
+                "optional": true
+            },
             "date": {
-                "text": "td:nth-child(4)",
+                "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
                 "filters": [
                     {
-                        "name": "date_en_elapsed_parse"
+                        "name": "dateparse",
+                        "args": "%Y-%m-%d %H:%M:%S"
                     }
                 ]
             },
@@ -132,6 +143,9 @@
             },
             "grabs": {
                 "selector": "td:nth-child(8)"
+            },
+            "labels": {
+                "selector": "td:nth-child(2) > div.tags > .tag"
             },
             "downloadvolumefactor": {
                 "case": {

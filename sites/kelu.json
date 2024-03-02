@@ -1,7 +1,7 @@
 {
-  "id": "pthome",
-  "name": "铂金家",
-  "domain": "https://www.pthome.net/",
+  "id": "kelu",
+  "name": "可鲁",
+  "domain": "https://our.kelu.one/",
   "encoding": "UTF-8",
   "public": false,
   "search": {
@@ -23,30 +23,30 @@
     "movie": [
       {
         "id": 401,
-        "cat": "Movies",
-        "desc": "Movies/电影"
+        "cat": "写真",
+        "desc": "写真"
       }
     ],
     "tv": [
       {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
-      },
-      {
         "id": 402,
-        "cat": "TV",
-        "desc": "TV Series/连续剧"
+        "cat": "日韩",
+        "desc": "日韩"
       },
       {
         "id": 403,
-        "cat": "TV",
-        "desc": "TV Shows/综艺"
+        "cat": "SM",
+        "desc": "SM"
+      },
+      {
+        "id": 404,
+        "cat": "国产",
+        "desc": "国产"
+      },
+      {
+        "id": 405,
+        "cat": "欧美",
+        "desc": "欧美"
       }
     ]
   },
@@ -166,19 +166,33 @@
         "contents": -1
       },
       "description": {
-        "selector": "table.torrentname > tr > td.embedded > span[style]",
-        "contents": -1
+        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2)"
       },
       "labels": {
-        "selector": "table.torrentname > tr > td.embedded > span.tags"
+        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span",
+        "remove": "span,a,img,font,b",
+        "contents": -1
+      },
+      "hr_days": {
+        "selector": "img.hitandrun",
+        "attribute": "title",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": [
+              "\\d*",
+              0
+            ]
+          }
+        ]
       }
     }
   },
   "price": {
     "FREE": ["//h1[@id='top']/b/font[@class='free']"],
-    "2XFREE": ["//h1[@id='top']/b/font[@class='twoupfree']"],
+    "2XFREE": [],
     "HR": ["//h1[@id='top']/img[@class='hitandrun']"],
     "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
   },
-  "system_type": "nexus_php"
+  "system_type": ""
 }
