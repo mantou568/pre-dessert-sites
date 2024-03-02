@@ -86,5 +86,6 @@
     "HR": [],
     "PEER_COUNT": []
   },
-  "system_type": ""
+  "system_type": "",
+  "ext_domain": ["https://skyeysnow.com/"]
 }
