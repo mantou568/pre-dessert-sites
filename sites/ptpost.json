@@ -1,0 +1,91 @@
+{
+  "id": "hdpost",
+  "name": "HDPOST",
+  "domain": "https://pt.hdpost.top/",
+  "encoding": "UTF-8",
+  "public": false,
+  "proxy": false,
+  "search": {
+    "paths": [
+      {
+        "path": "torrents?perPage=100&name={keyword}&categories[0]=6&categories[1]=7&categories[2]=5&categories[3]=1&categories[4]=8&categories[5]=2",
+        "method": "get"
+      }
+    ]
+  },
+  "browse": {
+    "path": "torrents?perPage=100&page={page}",
+    "start": 1
+  },
+  "torrents": {
+    "list": {
+      "selector": "table.data-table > tbody > tr"
+    },
+    "fields": {
+      "id": {
+        "selector": "a.torrent-search--list__name",
+        "attribute": "href",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": ["\\d+", 0]
+          }
+        ]
+      },
+      "title": {
+        "selector": "a.torrent-search--list__name"
+      },
+      "details": {
+        "selector": "a.torrent-search--list__name",
+        "attribute": "href"
+      },
+      "download": {
+        "selector": "a[href*=\"/torrents/download/\"]",
+        "attribute": "href"
+      },
+      "date_elapsed": {
+        "selector": "td.torrent-search--list__age > time",
+        "diff_date": true
+      },
+      "date": {
+        "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
+        "filters": [
+          {
+            "name": "dateparse",
+            "args": "%Y-%m-%d %H:%M:%S"
+          }
+        ]
+      },
+      "size": {
+        "selector": "td.torrent-search--list__size > span"
+      },
+      "seeders": {
+        "selector": "td.torrent-search--list__seeders > a > span"
+      },
+      "leechers": {
+        "selector": "td.torrent-search--list__leechers > a > span"
+      },
+      "grabs": {
+        "selector": "td.torrent-search--list__completed > a > span"
+      },
+      "downloadvolumefactor": {
+        "case": {
+          "span.torrent-listings-freeleech": 0,
+          "*": 1
+        }
+      },
+      "uploadvolumefactor": {
+        "case": {
+          "*": 1
+        }
+      }
+    }
+  },
+  "price": {
+    "FREE": ["//span[@class='badge-extra'][contains(@data-original-title,'Free')]"],
+    "2XFREE": [],
+    "HR": [],
+    "PEER_COUNT": ["//a[@class='badge-extra text-green'][contains(@data-original-title,'做种')]"]
+  },
+  "system_type": ""
+}
