@@ -5,7 +5,6 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/oshenpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/exoticaz.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/nicept.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptpost.json
-https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/xbh.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptgtk.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/OpenCD.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/u9a9.json
@@ -65,6 +64,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hd.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptsbao.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/HDTime.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/U2.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/xhb.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/gainbound.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdbd.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/tjupt.json
