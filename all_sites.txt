@@ -4,7 +4,6 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/52pt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/oshenpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/exoticaz.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/nicept.json
-https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptpost.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptgtk.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/OpenCD.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/u9a9.json
@@ -109,6 +108,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/1ptba.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/star_space.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/zhuque.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdsky.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdpost.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/qingwa.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/piaohua.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/yizidy.json
