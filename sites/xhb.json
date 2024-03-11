@@ -1,7 +1,7 @@
 {
   "id": "xhb",
   "name": "蟹黄堡",
-  "domain": "https://pt.837576.xyz/",
+  "domain": "https://crabpt.vip/",
   "encoding": "UTF-8",
   "public": false,
   "search": {
@@ -181,5 +181,6 @@
     "HR": ["//h1[@id='top']/img[@class='hitandrun']"],
     "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
   },
+  "ext_domain": ["https://pt.837576.xyz"],
   "system_type": ""
 }
