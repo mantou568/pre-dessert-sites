@@ -48,6 +48,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pttime.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdatmos.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptchdbits.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/acgrip.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/haidan.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/piggo.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/fsm_me.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ecustpt.json
