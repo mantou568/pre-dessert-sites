@@ -95,6 +95,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/htpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/beitai.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/eastgame.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/HDHome.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/butterfly.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/eztv.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/HDU.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/dmhy.json
