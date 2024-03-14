@@ -1,7 +1,7 @@
 {
-  "id": "nyaa",
-  "name": "Nyaa",
-  "domain": "https://nyaa.si/",
+  "id": "sukebei_nyaa",
+  "name": "Sukebei Nyaa",
+  "domain": "https://sukebei.nyaa.si",
   "encoding": "UTF-8",
   "public": true,
   "proxy": true,
