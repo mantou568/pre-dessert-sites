@@ -176,7 +176,7 @@
         "contents": -1
       },
       "labels": {
-        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span[title=\"\"]"
+        "selector": "td.embedded:nth-child(2) > .torrent_title_desc > span[title=\"\"]"
       }
     }
   },
