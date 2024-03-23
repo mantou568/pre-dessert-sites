@@ -173,5 +173,6 @@
       }
     ]
   },
+  "ext_domain": ["https://zeus.hamsters.space/"],
   "system_type": "nexus_php"
 }
