@@ -3,232 +3,51 @@
   "name": "馒头",
   "domain": "https://kp.m-team.cc/",
   "encoding": "UTF-8",
+  "parser": "MTorrentSpider",
   "public": false,
   "search": {
     "paths": [
       {
-        "path": "torrents.php",
-        "method": "get"
-      }
-    ],
-    "params": {
-      "search": "{keyword}"
-    }
-  },
-  "category": {
-    "movie": [
-      {
-        "id": 401,
-        "cat": "Movies/SD",
-        "desc": "Movie(電影)/SD",
-        "default": true
-      },
-      {
-        "id": 419,
-        "cat": "Movies/HD",
-        "desc": "Movie(電影)/HD",
-        "default": true
-      },
-      {
-        "id": 420,
-        "cat": "Movies/DVD",
-        "desc": "Movie(電影)/DVDiSo",
-        "default": true
-      },
-      {
-        "id": 421,
-        "cat": "Movies/BluRay",
-        "desc": "Movie(電影)/Blu-Ray",
-        "default": true
-      },
-      {
-        "id": 439,
-        "cat": "Movies/Other",
-        "desc": "Movie(電影)/Remux",
-        "default": true
-      }
-    ],
-    "tv": [
-      {
-        "id": 403,
-        "cat": "TV/SD",
-        "desc": "TV Series(影劇/綜藝)/SD",
-        "default": true
-      },
-      {
-        "id": 402,
-        "cat": "TV/HD",
-        "desc": "TV Series(影劇/綜藝)/HD",
-        "default": true
-      },
-      {
-        "id": 435,
-        "cat": "TV/SD",
-        "desc": "TV Series(影劇/綜藝)/DVDiSo",
-        "default": true
-      },
-      {
-        "id": 438,
-        "cat": "TV/HD",
-        "desc": "TV Series(影劇/綜藝)/BD",
-        "default": true
-      },
-      {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "紀錄教育",
-        "default": true
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Anime(動畫)",
-        "default": true
+        "path": "torrent/search",
+        "method": "chrome",
+        "params": {
+          "keyword": "//input[@id=\"form_item_keyword\"]",
+          "submit": "//form//button[@type=\"submit\"]"
+        }
       }
     ]
   },
   "torrents": {
-    "list": {
-      "selector": "table.torrents > tr:has(\"table.torrentname\")"
-    },
     "fields": {
-      "id": {
-        "selector": "a[href*=\"details.php?id=\"]",
-        "attribute": "href",
-        "filters": [
-          {
-            "name": "re_search",
-            "args": ["\\d+", 0]
-          }
-        ]
-      },
-      "title_default": {
-        "selector": "a[href*=\"details.php?id=\"] > b"
-      },
-      "title_optional": {
-        "optional": true,
-        "selector": "a[title][href*=\"details.php?id=\"]",
-        "attribute": "title"
-      },
-      "title": {
-        "text": "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
-      },
-      "category": {
-        "selector": "a[href*=\"?cat=\"]",
-        "attribute": "href",
-        "filters": [
-          {
-            "name": "querystring",
-            "args": "cat"
-          }
-        ]
-      },
-      "details": {
-        "selector": "a[href*=\"details.php?id=\"]",
-        "attribute": "href"
-      },
-      "download": {
-        "selector": "a[href*=\"download.php?id=\"]",
-        "attribute": "href"
-      },
-      "poster": {
-        "selector": "img[alt=\"torrent thumbnail\"]",
-        "attribute": "src",
-        "filters": [
-          {
-            "name": "replace",
-            "args": ["pic/nopic.jpg", ""]
-          }
-        ]
-      },
-      "imdbid": {
-        "selector": "a[href*=\"imdb.com/title/tt\"]",
-        "attribute": "href",
-        "filters": [
-          {
-            "name": "re_search",
-            "args": ["tt\\d+", 0]
-          }
-        ]
-      },
-      "size": {
-        "selector": "td.rowfollow:nth-last-child(6)"
-      },
-      "grabs": {
-        "selector": "td.rowfollow:nth-last-child(3)"
-      },
-      "seeders": {
-        "selector": "td.rowfollow:nth-last-child(5)"
-      },
-      "leechers": {
-        "selector": "td.rowfollow:nth-last-child(4)"
-      },
-      "date_added": {
-        "selector": "td.rowfollow:nth-last-child(7) > span",
-        "attribute": "title",
-        "optional": true
-      },
-      "date_elapsed": {
-        "selector": "tr > td > span",
-        "optional": true
-      },
-      "date": {
-        "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
-        "filters": [
-          {
-            "name": "dateparse",
-            "args": "%Y-%m-%d %H:%M:%S"
-          }
-        ]
-      },
       "downloadvolumefactor": {
         "case": {
-          "img.pro_free": 0,
-          "img.pro_free2up": 0,
-          "img.pro_50pctdown": 0.5,
-          "img.pro_50pctdown2up": 0.5,
-          "img.pro_30pctdown": 0.3,
-          "*": 1
+          "NORMAL": 1,
+          "FREE": 0,
+          "_2X_FREE": 0,
+          "PERCENT_50": 0.5,
+          "_2X_PERCENT_50": 0.5,
+          "PERCENT_70": 0.3,
+          "_2X": 1
         }
       },
       "uploadvolumefactor": {
         "case": {
-          "img.pro_50pctdown2up": 2,
-          "img.pro_free2up": 2,
-          "img.pro_2up": 2,
-          "*": 1
+          "NORMAL": 1,
+          "FREE": 1,
+          "_2X_PERCENT_50": 2,
+          "_2X": 2,
+          "_2X_FREE": 2
         }
-      },
-      "free_deadline": {
-        "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
-        "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
-        "selector": "span[style=\"font-weight:normal\"]",
-        "filters": [
-          {
-            "name": "re_search",
-            "args": ["(?:限時：\\s*)((?:\\d+日)?(?:\\d+時)?(?:\\d+分)?)", 1]
-          },
-          {
-            "name": "date_elapsed_parse"
-          }
-        ]
-      },
-      "description": {
-        "selector": "table.torrentname > tr > td.embedded",
-        "contents": -1
-      },
-      "labels": {
-        "selector": "table.torrentname > tr > td.embedded > img[class*=\"label_\"]",
-        "attribute": "alt"
       }
     }
   },
   "price": {
-    "FREE": ["//h1[@id='top']/b/font[@class='free']"],
-    "2XFREE": [],
+    "RENDER": true,
+    "FREE": ["//span[@class='text-download'][contains(text(),'0x')]"],
+    "2XFREE": [""],
     "HR": [],
-    "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
+    "PEER_COUNT": ["//div[@class='ant-form-item-control-input-content']/span[contains(text(),'正在做种: )]"]
   },
-  "system_type": "nexus_php",
-  "ext_domain": ["https://xp.m-team.io", "https://xp.m-team.cc", "https://ap.m-team.cc"]
+  "system_type": "mTorrent",
+  "ext_domain": ["https://xp.m-team.io/", "https://xp.m-team.cc/", "https://ap.m-team.cc/", "https://test2.m-team.cc/"]
 }
