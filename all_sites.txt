@@ -81,6 +81,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/sharkpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/srvfi.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/joyhd.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ggpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/uploads.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/carpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptvicomo.json
