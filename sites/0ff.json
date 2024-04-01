@@ -164,5 +164,52 @@
     "HR": ["//h1[@id='top']/img[@class='hitandrun']"],
     "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
   },
+  "my_hr": {
+    "url": "myhr.php?status=1",
+    "method": "get",
+    "rows_selector": "#hr-table tr",
+    "rows_first": 1,
+    "fields": [
+      {
+        "name": "id",
+        "selector": "td:nth-child(1)",
+        "type": "int"
+      },
+      {
+        "name": "name",
+        "selector": "td:nth-child(2)"
+      },
+      {
+        "name": "uploaded",
+        "selector": "td:nth-child(3)"
+      },
+      {
+        "name": "downloaded",
+        "selector": "td:nth-child(4)"
+      },
+      {
+        "name": "share_ratio",
+        "selector": "td:nth-child(5)",
+        "type": "float"
+      },
+      {
+        "name": "need_seed_time",
+        "selector": "td:nth-child(6)"
+      },
+      {
+        "name": "downloaded_time",
+        "selector": "td:nth-child(7)"
+      },
+      {
+        "name": "remaining_inspection_time",
+        "selector": "td:nth-child(8)"
+      },
+      {
+        "name": "note",
+        "selector": "td:nth-child(9)"
+      }
+    ],
+    "rule": "len(name) > 0"
+  },
   "system_type": ""
 }
