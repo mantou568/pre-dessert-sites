@@ -2,11 +2,11 @@
 
 这是一个你懂我懂大家懂的配置文件。大家群策群力，欢迎 pull requests，推动站点配置更新，人人为我，我为人人。
 
-sites 有效站点
-
-closed_sites 已关闭站点
-
-all_sites.txt 用于项目站点配置文件的自动化订阅更新！
+- sites: 有效站点
+- closed_sites: 已关闭站点
+- all_sites: 用于项目站点配置文件的自动化订阅更新
+  - all_sites.txt: CDN 源，无需科学上网，由于缓存机制，更新滞后于 GitHub 源
+  - all_sites_github.txt: GitHub 源，需要科学上网
 
 ## 使用说明
 
@@ -20,11 +20,11 @@ all_sites.txt 用于项目站点配置文件的自动化订阅更新！
 
 目前坑位有限，有一技之长的技术大佬优先加入！只要技术栈是 vue、python、flutter、swift、GO、会写 NT 规则、会基本的 Html+CSS、会站点适配的其中一种的大佬，均可优先加入。
 
-满足条件的大佬发送邮件到mantou568@gmail.com，备注微信号和专长，接收邀请。
+满足条件的大佬发送邮件到 mantou568@gmail.com，备注微信号和专长，接收邀请。
 
 ## ⚡ 反馈与交流
 
-在使用过程中有任何问题和想法，请给我提 [Issue](https://github.com/mantou568/pre-dessert-sites/issues)。
+在使用过程中有任何问题和想法，请给我提 [issue](https://github.com/mantou568/pre-dessert-sites/issues)。
 你也可以在 Issue 查看别人提的问题和给出解决方案。
 
 ## 免责声明
