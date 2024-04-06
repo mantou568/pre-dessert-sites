@@ -160,7 +160,7 @@
         "contents": -1
       },
       "labels": {
-        "selector": "table.torrentname > tr > td:nth-child(1) > span"
+        "selector": "table.torrentname > tr > td:nth-child(1) > span[title=\"\"]"
       }
     }
   },
