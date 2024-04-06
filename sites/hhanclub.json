@@ -76,12 +76,14 @@
         ]
       },
       "title_default": {
-        "selector": "a[href*=\"details.php?id=\"]"
+        "selector": "a[href*=\"details.php?id=\"]",
+        "remove": "span"
       },
       "title_optional": {
         "optional": true,
         "selector": "a[title][href*=\"details.php?id=\"]",
-        "attribute": "title"
+        "attribute": "title",
+        "remove": "span"
       },
       "title": {
         "text": "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
