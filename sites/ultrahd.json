@@ -157,5 +157,11 @@
         }
       }
     }
+  },
+  "price": {
+    "FREE": ["//h1[@id='top']/b/font[@class='free']"],
+    "2XFREE": ["//h1[@id='top']/b/font[@class='twoupfree']"],
+    "HR": ["//h1[@id='top']/img[@class='hitandrun']"],
+    "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
   }
 }
