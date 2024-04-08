@@ -176,13 +176,13 @@
         "contents": -1
       },
       "labels": {
-        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span"
+        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span[title=\"\"]"
       }
     }
   },
   "price": {
     "FREE": ["//h1[@id='top']/b/font[@class='free']"],
-    "2XFREE": [],
+    "2XFREE": ["//h1[@id='top']/b/font[@class='twoupfree']"],
     "HR": [],
     "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
   },

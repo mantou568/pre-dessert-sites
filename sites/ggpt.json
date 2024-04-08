@@ -172,13 +172,11 @@
       },
       "description": {
         "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2)",
-        "remove": "img,img,a,b",
+        "remove": "img,a,b,span",
         "contents": -1
       },
       "labels": {
-        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span",
-        "remove": "span,a,img,font,b",
-        "contents": -1
+        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span"
       },
       "hr_days": {
         "default_value": 2,
@@ -198,7 +196,7 @@
   },
   "price": {
     "FREE": ["//h1[@id='top']/b/font[@class='free']"],
-    "2XFREE": [],
+    "2XFREE": ["//h1[@id='top']/b/font[@class='twoupfree']"],
     "HR": ["//h1[@id='top']/img[@class='hitandrun']"],
     "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
   },

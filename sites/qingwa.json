@@ -174,9 +174,7 @@
         "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2)"
       },
       "labels": {
-        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span",
-        "remove": "span,a,img,font,b",
-        "contents": -1
+        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span[style][title=\"\"]"
       },
       "hr_days": {
         "selector": "img.hitandrun",
