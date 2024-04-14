@@ -163,15 +163,10 @@
           }
         ]
       },
-      "tags": {
-        "selector": "div > a.torrents-tag"
-      },
-      "subject": {
-        "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
-        "contents": -1
-      },
       "description": {
-        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2)"
+        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2)",
+        "remove": "a,img,span,b,br",
+        "contents": -1
       },
       "labels": {
         "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span[style][title=\"\"]"
