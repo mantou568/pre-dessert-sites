@@ -165,7 +165,7 @@
         ]
       },
       "description": {
-        "selector": "table.torrentname > tr > td > div.torrent-smalldescr",
+        "selector": "table.torrentname > tr > td > div.torrent-smalldescr > span",
         "remove": "a, b, img, span",
         "contents": 0
       },
