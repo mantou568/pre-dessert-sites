@@ -239,5 +239,6 @@
     ],
     "rule": "len(name) > 0"
   },
-  "system_type": ""
+  "system_type": "nexus_php",
+  "ext_domain": ["https://www.qingwapt.com", "https://new.qingwa.pro"]
 }
