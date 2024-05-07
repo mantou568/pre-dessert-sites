@@ -104,6 +104,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/TCCF.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/tjupt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/torrentgalaxy.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/torrentleech.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/tosky.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ttg.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/U2.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/u9a9.json

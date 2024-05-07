@@ -104,6 +104,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/TCCF.js
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/tjupt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/torrentgalaxy.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/torrentleech.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/tosky.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ttg.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/U2.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/u9a9.json
