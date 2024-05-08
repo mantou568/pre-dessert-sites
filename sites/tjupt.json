@@ -102,13 +102,11 @@
       "date_elapsed": {
         "selector": "td.rowfollow:nth-child(4)",
         "remove": "br",
-        "diff_date": true,
         "optional": true
       },
       "date_added": {
         "selector": "td.rowfollow:nth-child(4)",
         "remove": "br",
-        "diff_date": true,
         "optional": true
       },
       "date": {
