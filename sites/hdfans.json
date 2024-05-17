@@ -195,8 +195,7 @@
       },
       {
         "name": "share_ratio",
-        "selector": "td:nth-child(5)",
-        "type": "float"
+        "selector": "td:nth-child(5)"
       },
       {
         "name": "need_seed_time",
