@@ -11,6 +11,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/beitai.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/bing_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/btschool.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/butterfly.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/byr.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/carpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/cinemageddon.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/clmp4.json
