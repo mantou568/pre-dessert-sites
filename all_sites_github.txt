@@ -11,6 +11,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/beitai.
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/bing_com.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/btschool.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/butterfly.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/byr.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/carpt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/cinemageddon.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/clmp4.json

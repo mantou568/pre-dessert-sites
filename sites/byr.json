@@ -1,7 +1,7 @@
 {
-  "id": "tosky",
-  "name": "tosky",
-  "domain": "https://t.tosky.club/",
+  "id": "byr",
+  "name": "北邮人",
+  "domain": "https://byr.pt/",
   "encoding": "UTF-8",
   "public": false,
   "search": {
@@ -24,35 +24,35 @@
       {
         "id": 401,
         "cat": "Movies",
-        "desc": "电影/Movies"
+        "desc": "Movies(电影)"
       }
     ],
     "tv": [
       {
         "id": 402,
         "cat": "TV",
-        "desc": "连续剧/TV-Series"
+        "desc": "TV Series(电视剧)"
       },
       {
         "id": 403,
-        "cat": "TV",
-        "desc": "综艺/TV-Show"
-      },
-      {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "纪录片/Documentary"
+        "cat": "TV/Other",
+        "desc": "TV Shows(电视节目)"
       },
       {
         "id": 405,
         "cat": "TV/Anime",
-        "desc": "动漫/Animation"
+        "desc": "Animations(动漫)"
+      },
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries(记录片)"
       }
     ]
   },
   "torrents": {
     "list": {
-      "selector": "table.torrents > tr:has(\"table.torrentname\")"
+      "selector": "table.torrents tr:has(\"table.torrentname\")"
     },
     "fields": {
       "id": {
@@ -66,7 +66,7 @@
         ]
       },
       "category": {
-        "selector": "a[href*=\"?cat=\"]",
+        "selector": "a[href*=\"torrents.php?cat=\"]",
         "attribute": "href",
         "filters": [
           {
@@ -95,23 +95,24 @@
         "attribute": "href"
       },
       "size": {
-        "selector": "td:nth-child(5)"
-      },
-      "grabs": {
-        "selector": "td:nth-child(8)"
-      },
-      "seeders": {
         "selector": "td:nth-child(6)"
       },
-      "leechers": {
+      "grabs": {
+        "selector": "td:nth-child(9)"
+      },
+      "seeders": {
         "selector": "td:nth-child(7)"
       },
+      "leechers": {
+        "selector": "td:nth-child(8)"
+      },
       "date_elapsed": {
-        "selector": "td:nth-child(4) > span",
+        "selector": "td:nth-child(5)",
+        "remove": "br",
         "optional": true
       },
       "date_added": {
-        "selector": "td:nth-child(4) > span",
+        "selector": "td:nth-child(5)",
         "attribute": "title",
         "optional": true
       },
@@ -145,7 +146,7 @@
       "free_deadline": {
         "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
         "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
-        "selector": "td[class=\"embedded\"] > b > span[title]",
+        "selector": "td[class=\"embedded\"] > font > span[title]",
         "attribute": "title",
         "filters": [
           {
@@ -155,11 +156,12 @@
         ]
       },
       "description": {
-        "selector": "table.torrentname > tr > td.embedded",
+        "selector": "table.torrentname > tr > td:nth-child(2)",
+        "remove": "a,img,span,br",
         "contents": -1
       },
       "labels": {
-        "selector": "table.torrentname > tr > td.embedded > span[title=\"\"]"
+        "selector": "table.torrentname > td > span"
       }
     }
   },
