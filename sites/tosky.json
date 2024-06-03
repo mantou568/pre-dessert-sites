@@ -156,11 +156,10 @@
       },
       "description": {
         "selector": "table.torrentname > tr > td.embedded",
-        "remove": "a,img,br",
         "contents": -1
       },
       "labels": {
-        "selector": "table.torrentname > tr > td.embedded > span"
+        "selector": "table.torrentname > tr > td.embedded > span[title=\"\"]"
       }
     }
   },

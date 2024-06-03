@@ -43,10 +43,10 @@
   },
   "price": {
     "RENDER": true,
-    "FREE": ["//span[@class='text-download'][contains(text(),'0x')]"],
-    "2XFREE": [""],
+    "FREE": ["true"],
+    "2XFREE": ["true"],
     "HR": [],
-    "PEER_COUNT": ["//div[@class='ant-form-item-control-input-content']/span[contains(text(),'正在做种: )]"]
+    "PEER_COUNT": ["true"]
   },
   "system_type": "mTorrent",
   "ext_domain": ["https://kp.m-team.cc/","https://xp.m-team.io/", "https://xp.m-team.cc/", "https://ap.m-team.cc/", "https://test2.m-team.cc/"]
