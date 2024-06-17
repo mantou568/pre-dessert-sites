@@ -11,9 +11,9 @@ def generate_remote_urls():
     output_file_github = os.path.join(script_dir, "./all_sites_github.txt")
 
     # 清空 all_sites 文件
-    with open(output_file_cdn, "w") as f:
+    with open(output_file_cdn, "w", newline='\n') as f:
         print("清空 CDN 源站点配置文件")
-    with open(output_file_github, "w") as f:
+    with open(output_file_github, "w", newline='\n') as f:
         print("清空 GitHub 源站点配置文件")
 
     # 遍历 sites 目录下的所有 json 文件
@@ -28,9 +28,9 @@ def generate_remote_urls():
             remote_url_github = "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/" + filename
             # 将远程路径写入 all_sites 文件
             try:
-                with open(output_file_cdn, "a") as f:
+                with open(output_file_cdn, "a", newline='\n') as f:
                     f.write(remote_url_cdn + "\n")
-                with open(output_file_github, "a") as f:
+                with open(output_file_github, "a", newline='\n') as f:
                     f.write(remote_url_github + "\n")
                 gen_success_num += 1
                 print(f"({index + 1}/{len(file_list)}) 站点 {filename} 添加成功")
