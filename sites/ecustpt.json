@@ -171,7 +171,9 @@
         "contents": -1
       },
       "description": {
-        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2)"
+        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2)",
+        "remove": "img,a,span,font,br",
+        "contents": -1
       },
       "labels": {
         "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span",
