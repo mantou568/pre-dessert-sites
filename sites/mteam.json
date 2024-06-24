@@ -49,5 +49,5 @@
     "PEER_COUNT": ["true"]
   },
   "system_type": "mTorrent",
-  "ext_domain": ["https://kp.m-team.cc/","https://xp.m-team.io/", "https://xp.m-team.cc/", "https://ap.m-team.cc/", "https://test2.m-team.cc/"]
+  "ext_domain": ["https://api.m-team.cc/","https://mtapi.m-team.cc/"]
 }
