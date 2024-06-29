@@ -1,7 +1,7 @@
 {
-  "id": "ecustpt",
-  "name": "ecustpt",
-  "domain": "https://pt.ecust.pp.ua/",
+  "id": "cdfile",
+  "name": "CDFile",
+  "domain": "https://pt.cdfile.org/",
   "encoding": "UTF-8",
   "public": false,
   "search": {
@@ -24,34 +24,29 @@
       {
         "id": 401,
         "cat": "Movies",
-        "desc": "电影"
+        "desc": "Movies/电影"
       }
     ],
     "tv": [
       {
         "id": 402,
-        "cat": "TV/Series",
-        "desc": "TV Series (剧集)"
+        "cat": "TV",
+        "desc": "TV Series/电视剧"
       },
       {
         "id": 403,
-        "cat": "TV/Shows",
-        "desc": "TV Shows (电视节目)"
+        "cat": "TV",
+        "desc": "TV Shows/综艺"
       },
       {
         "id": 404,
-        "cat": "TV/Documentaries",
-        "desc": "Documentaries (纪实)"
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
       },
       {
         "id": 405,
-        "cat": "TV/Animations",
-        "desc": "Animations (动画)"
-      },
-      {
-        "id": 409,
-        "cat": "Misc",
-        "desc": "Misc (其他)"
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
       }
     ]
   },
@@ -95,32 +90,28 @@
         "selector": "a[href*=\"details.php?id=\"]",
         "attribute": "href"
       },
-      "poster": {
-        "selector": "img[data-orig]",
-        "attribute": "data-orig"
-      },
       "download": {
         "selector": "a[href*=\"download.php?id=\"]",
         "attribute": "href"
       },
       "size": {
-        "selector": "td.rowfollow:nth-child(5)"
+        "selector": "td:nth-child(5)"
       },
       "grabs": {
-        "selector": "td.rowfollow:nth-child(8)"
+        "selector": "td:nth-child(8)"
       },
       "seeders": {
-        "selector": "td.rowfollow:nth-child(6)"
+        "selector": "td:nth-child(6)"
       },
       "leechers": {
-        "selector": "td.rowfollow:nth-child(7)"
+        "selector": "td:nth-child(7)"
       },
       "date_elapsed": {
-        "selector": "td.rowfollow:nth-child(4) > span",
+        "selector": "td:nth-child(4) > span",
         "optional": true
       },
       "date_added": {
-        "selector": "td.rowfollow:nth-child(4) > span",
+        "selector": "td:nth-child(4) > span",
         "attribute": "title",
         "optional": true
       },
@@ -154,7 +145,7 @@
       "free_deadline": {
         "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
         "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
-        "selector": "div > b > span[title]",
+        "selector": "td[class=\"embedded\"] > font > span[title]",
         "attribute": "title",
         "filters": [
           {
@@ -163,44 +154,21 @@
           }
         ]
       },
-      "tags": {
-        "selector": "div > a.torrents-tag"
-      },
-      "subject": {
-        "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
-        "contents": -1
-      },
       "description": {
-        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2)",
-        "remove": "img,a,span,font,br",
+        "selector": "table.torrentname > tr > td:nth-child(2)",
+        "remove": "a,img,span,b,br",
         "contents": -1
       },
       "labels": {
-        "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(2) > span",
-        "remove": "span,a,img,font,b",
-        "contents": -1
-      },
-      "hr_days": {
-        "selector": "img.hitandrun",
-        "attribute": "title",
-        "filters": [
-          {
-            "name": "re_search",
-            "args": [
-              "\\d*",
-              0
-            ]
-          }
-        ]
+        "selector": "table.torrentname > tr > td:nth-child(2) > span[title=\"\"]"
       }
     }
   },
   "price": {
     "FREE": ["//h1[@id='top']/b/font[@class='free']"],
-    "2XFREE": [],
-    "HR": ["//h1[@id='top']/img[@class='hitandrun']"],
+    "2XFREE": ["//h1[@id='top']/b/font[@class='twoupfree']"],
+    "HR": [],
     "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
   },
-  "ext_domain": ["https://public.ecustpt.eu.org/"],
   "system_type": ""
 }

@@ -166,12 +166,12 @@
                 "contents": -1
             },
             "description": {
-                "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > div",
-                "remove": "span,br",
+                "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1)",
+                "remove": "img,a,span,br",
                 "contents": -1
             },
             "labels": {
-                "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > div > span[title=\"\"]"
+                "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > span[title=\"\"]"
             }
         }
     },
