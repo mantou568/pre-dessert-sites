@@ -1,8 +1,8 @@
 {
-  "id": "cyanbug",
-  "name": "大青虫",
+  "id": "audiences",
+  "name": "观众",
   "domains": [
-    "https://cyanbug.net/"
+    "https://audiences.me/"
   ],
   "encoding": "UTF-8",
   "public": false,
@@ -14,7 +14,7 @@
       "search": {
         "response_type": "html",
         "method": "GET",
-        "url": "https://cyanbug.net/torrents.php",
+        "url": "https://audiences.me/torrents.php",
         "fields": {
           "list": {
             "type": "array",
@@ -33,16 +33,6 @@
                   }
                 ]
               },
-              "category": {
-                "selector": "a[href*=\"?cat=\"]",
-                "attribute": "href",
-                "filters": [
-                  {
-                    "name": "querystring",
-                    "args": "cat"
-                  }
-                ]
-              },
               "title_default": {
                 "selector": "a[href*=\"details.php?id=\"]"
               },
@@ -51,38 +41,64 @@
                 "selector": "a[title][href*=\"details.php?id=\"]",
                 "attribute": "title"
               },
+              "category": {
+                "selector": "a[href*=\"?cat=\"]",
+                "attribute": "href",
+                "filters": [
+                  {
+                    "name": "replace",
+                    "args": [
+                      "?",
+                      ""
+                    ]
+                  },
+                  {
+                    "name": "querystring",
+                    "args": "cat"
+                  }
+                ]
+              },
               "details": {
                 "selector": "a[href*=\"details.php?id=\"]",
                 "attribute": "href"
-              },
-              "poster": {
-                "selector": "img[data-orig]",
-                "attribute": "data-orig"
               },
               "download": {
                 "selector": "a[href*=\"download.php?id=\"]",
                 "attribute": "href"
               },
-              "size": {
-                "selector": "td.rowfollow:nth-child(5)"
-              },
-              "grabs": {
-                "selector": "td.rowfollow:nth-child(8)"
-              },
-              "seeders": {
-                "selector": "td.rowfollow:nth-child(6)"
-              },
-              "leechers": {
-                "selector": "td.rowfollow:nth-child(7)"
+              "imdbid": {
+                "selector": "div.imdb_100 > a",
+                "attribute": "href",
+                "filters": [
+                  {
+                    "name": "re_search",
+                    "args": [
+                      "tt\\d+",
+                      0
+                    ]
+                  }
+                ]
               },
               "date_elapsed": {
-                "selector": "td.rowfollow:nth-child(4) > span",
+                "selector": "td:nth-child(4) > span",
                 "optional": true
               },
               "date_added": {
-                "selector": "td.rowfollow:nth-child(4) > span",
+                "selector": "td:nth-child(4) > span",
                 "attribute": "title",
                 "optional": true
+              },
+              "size": {
+                "selector": "td:nth-child(5)"
+              },
+              "seeders": {
+                "selector": "td:nth-child(6)"
+              },
+              "leechers": {
+                "selector": "td:nth-child(7)"
+              },
+              "grabs": {
+                "selector": "td:nth-child(8)"
               },
               "downloadvolumefactor": {
                 "case": {
@@ -102,20 +118,25 @@
                   "*": 1
                 }
               },
-              "tags": {
-                "selector": "div > a.torrents-tag"
-              },
-              "subject": {
-                "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
-                "contents": -1
-              },
               "description": {
-                "selector": "td:nth-child(2) > table > tbody > tr > td:nth-child(2)",
-                "remove": "span,a,img,font,b",
-                "contents": -1
+                "selector": "td.embedded > span[style]"
               },
               "labels": {
-                "selector": "td:nth-child(2) > span[title=\"\"]"
+                "selector": "td.embedded > span.tags"
+              },
+              "hr_days": {
+                "default_value": "2",
+                "selector": "img.hitandrun",
+                "attribute": "title",
+                "filters": [
+                  {
+                    "name": "re_search",
+                    "args": [
+                      "\\d*",
+                      0
+                    ]
+                  }
+                ]
               }
             }
           }
