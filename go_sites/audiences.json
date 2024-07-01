@@ -9,7 +9,16 @@
   "schema": "NexusAudiences",
   "requests": {
     "basics": {
-      "fields": {}
+      "fields": {},
+      "search": {
+        "params": {
+          "search": "{keyword}"
+        },
+        "batch": {
+          "delimiter": " ",
+          "space_replace": "_"
+        }
+      }
     },
     "definitions": {
       "search": {
