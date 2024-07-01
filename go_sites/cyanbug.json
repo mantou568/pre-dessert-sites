@@ -23,7 +23,7 @@
       "search": {
         "response_type": "html",
         "method": "GET",
-        "url": "torrents.php",
+        "path": "torrents.php",
         "fields": {
           "list": {
             "type": "table",
