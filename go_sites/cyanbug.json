@@ -126,6 +126,29 @@
           }
         }
       }
+    },
+    "seeding": {
+      "analysis": "CssSelector",
+      "method": "GET",
+      "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "fields": {
+        "size": {
+          "css_selector": "div > div:nth-child(1)",
+          "remove": "b",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "总大小：(.*)",
+                1
+              ]
+            }
+          ]
+        },
+        "count": {
+          "css_selector": "div > div:nth-child(1) > b"
+        }
+      }
     }
   },
   "category": {

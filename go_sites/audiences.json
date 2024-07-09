@@ -154,7 +154,7 @@
       "method": "GET",
       "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
       "headers": {
-        "Referer": "https://audiences.me/userdetails.php?id={userId}"
+        "Referer": "{domain}userdetails.php?id={userId}"
       },
       "fields": {
         "count": {
