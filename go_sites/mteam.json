@@ -1,0 +1,91 @@
+{
+  "id": "mteam",
+  "name": "馒头",
+  "domain": "https://kp.m-team.cc/",
+  "api": "https://api.m-team.cc/",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "MTorrent",
+  "request_basics": {
+    "fields": {}
+  },
+  "request_definitions": {
+    "search": {
+      "analysis": "JsonPath",
+      "method": "POST",
+      "path": "api/torrent/search",
+      "use_api": true,
+      "fields": {
+        "list": {
+          "type": "table",
+          "json_path": "data.data",
+          "columns": {
+            "id": {
+              "json_path": "id"
+            },
+            "title": {
+              "json_path": "name"
+            },
+            "details": {
+              "json_path": "smallDescr"
+            },
+            "poster": {
+              "json_path": "imageList.0"
+            },
+            "size": {
+              "json_path": "size"
+            },
+            "seeders": {
+              "json_path": "status.seeders"
+            },
+            "leechers": {
+              "json_path": "status.leechers"
+            },
+            "date_added": {
+              "json_path": "createdDate"
+            },
+            "downloadvolumefactor": {
+              "json_path": "status.discount",
+              "case": {
+                "FREE": 0,
+                "PERCENT_50": 0.5,
+                "PERCENT_70": 0.3,
+                "NORMAL": 1
+              }
+            },
+            "uploadvolumefactor": {
+              "case": {
+                "": 1
+              }
+            },
+            "grabs": {
+              "json_path": "status.timesCompleted"
+            }
+          }
+        }
+      }
+    },
+    "seeding": {
+      "analysis": "JsonPath",
+      "method": "POST",
+      "path": "api/member/profile",
+      "use_api": true,
+      "fields": {
+        "size": {
+          "json_path": "data.memberCount.uploaded"
+        }
+      }
+    },
+    "myPeerStatus": {
+      "analysis": "JsonPath",
+      "method": "POST",
+      "path": "api/tracker/myPeerStatus",
+      "use_api": true,
+      "fields": {
+        "count": {
+          "json_path": "data.seeder"
+        }
+      }
+    }
+  }
+}

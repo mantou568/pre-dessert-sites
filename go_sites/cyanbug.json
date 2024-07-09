@@ -1,131 +1,127 @@
 {
   "id": "cyanbug",
   "name": "大青虫",
-  "domains": [
-    "https://cyanbug.net/"
-  ],
+  "domain": "https://cyanbug.net/",
   "encoding": "UTF-8",
   "public": false,
-  "requests": {
-    "basics": {
-      "fields": {},
-      "search": {
-        "params": {
-          "search": "{keyword}"
-        },
-        "batch": {
-          "delimiter": " ",
-          "space_replace": "_"
-        }
+  "request_basics": {
+    "fields": {},
+    "search": {
+      "params": {
+        "search": "{keyword}"
+      },
+      "batch": {
+        "delimiter": " ",
+        "space_replace": "_"
       }
-    },
-    "definitions": {
-      "search": {
-        "response_type": "html",
-        "method": "GET",
-        "path": "torrents.php",
-        "fields": {
-          "list": {
-            "type": "table",
-            "selector": "table.torrents > tbody > tr:has(table.torrentname)",
-            "columns": {
-              "id": {
-                "selector": "a[href*=\"details.php?id=\"]",
-                "attribute": "href",
-                "filters": [
-                  {
-                    "name": "re_search",
-                    "args": [
-                      "\\d+",
-                      0
-                    ]
-                  }
-                ]
-              },
-              "category": {
-                "selector": "a[href*=\"?cat=\"]",
-                "attribute": "href",
-                "filters": [
-                  {
-                    "name": "querystring",
-                    "args": "cat"
-                  }
-                ]
-              },
-              "title_default": {
-                "selector": "a[href*=\"details.php?id=\"]"
-              },
-              "title_optional": {
-                "optional": true,
-                "selector": "a[title][href*=\"details.php?id=\"]",
-                "attribute": "title"
-              },
-              "details": {
-                "selector": "a[href*=\"details.php?id=\"]",
-                "attribute": "href"
-              },
-              "poster": {
-                "selector": "img[data-orig]",
-                "attribute": "data-orig"
-              },
-              "download": {
-                "selector": "a[href*=\"download.php?id=\"]",
-                "attribute": "href"
-              },
-              "size": {
-                "selector": "td.rowfollow:nth-child(5)"
-              },
-              "grabs": {
-                "selector": "td.rowfollow:nth-child(8)"
-              },
-              "seeders": {
-                "selector": "td.rowfollow:nth-child(6)"
-              },
-              "leechers": {
-                "selector": "td.rowfollow:nth-child(7)"
-              },
-              "date_elapsed": {
-                "selector": "td.rowfollow:nth-child(4) > span",
-                "optional": true
-              },
-              "date_added": {
-                "selector": "td.rowfollow:nth-child(4) > span",
-                "attribute": "title",
-                "optional": true
-              },
-              "downloadvolumefactor": {
-                "case": {
-                  "img.pro_free": 0,
-                  "img.pro_free2up": 0,
-                  "img.pro_50pctdown": 0.5,
-                  "img.pro_50pctdown2up": 0.5,
-                  "img.pro_30pctdown": 0.3,
-                  "*": 1
+    }
+  },
+  "request_definitions": {
+    "search": {
+      "analysis": "CssSelector",
+      "method": "GET",
+      "path": "torrents.php",
+      "fields": {
+        "list": {
+          "type": "table",
+          "css_selector": "table.torrents > tbody > tr:has(table.torrentname)",
+          "columns": {
+            "id": {
+              "css_selector": "a[href*=\"details.php?id=\"]",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "\\d+",
+                    0
+                  ]
                 }
-              },
-              "uploadvolumefactor": {
-                "case": {
-                  "img.pro_50pctdown2up": 2,
-                  "img.pro_free2up": 2,
-                  "img.pro_2up": 2,
-                  "*": 1
+              ]
+            },
+            "category": {
+              "css_selector": "a[href*=\"?cat=\"]",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "querystring",
+                  "args": "cat"
                 }
-              },
-              "tags": {
-                "selector": "div > a.torrents-tag"
-              },
-              "subject": {
-                "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
-                "contents": -1
-              },
-              "description": {
-                "selector": "td:nth-child(2) > table > tbody > tr > td:nth-child(2)",
-                "remove": "span,a,img,font,b",
-                "contents": -1
-              },
-              "labels": {
-                "selector": "td:nth-child(2) > span[title=\"\"]"
+              ]
+            },
+            "title_default": {
+              "css_selector": "a[href*=\"details.php?id=\"]"
+            },
+            "title_optional": {
+              "optional": true,
+              "css_selector": "a[title][href*=\"details.php?id=\"]",
+              "attribute": "title"
+            },
+            "details": {
+              "css_selector": "a[href*=\"details.php?id=\"]",
+              "attribute": "href"
+            },
+            "poster": {
+              "css_selector": "img[data-orig]",
+              "attribute": "data-orig"
+            },
+            "download": {
+              "css_selector": "a[href*=\"download.php?id=\"]",
+              "attribute": "href"
+            },
+            "size": {
+              "css_selector": "td.rowfollow:nth-child(5)"
+            },
+            "grabs": {
+              "css_selector": "td.rowfollow:nth-child(8)"
+            },
+            "seeders": {
+              "css_selector": "td.rowfollow:nth-child(6)"
+            },
+            "leechers": {
+              "css_selector": "td.rowfollow:nth-child(7)"
+            },
+            "date_elapsed": {
+              "css_selector": "td.rowfollow:nth-child(4) > span",
+              "optional": true
+            },
+            "date_added": {
+              "css_selector": "td.rowfollow:nth-child(4) > span",
+              "attribute": "title",
+              "optional": true
+            },
+            "downloadvolumefactor": {
+              "case": {
+                "img.pro_free": 0,
+                "img.pro_free2up": 0,
+                "img.pro_50pctdown": 0.5,
+                "img.pro_50pctdown2up": 0.5,
+                "img.pro_30pctdown": 0.3,
+                "*": 1
               }
+            },
+            "uploadvolumefactor": {
+              "case": {
+                "img.pro_50pctdown2up": 2,
+                "img.pro_free2up": 2,
+                "img.pro_2up": 2,
+                "*": 1
+              }
+            },
+            "tags": {
+              "css_selector": "div > a.torrents-tag"
+            },
+            "subject": {
+              "css_selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
+              "contents": -1
+            },
+            "description": {
+              "css_selector": "td:nth-child(2) > table > tbody > tr > td:nth-child(2)",
+              "remove": "span,a,img,font,b",
+              "contents": -1
+            },
+            "labels": {
+              "css_selector": "td:nth-child(2) > span[title=\"\"]"
             }
           }
         }
