@@ -18,7 +18,7 @@
       "method": "GET",
       "path": "torrents.php",
       "list": {
-        "selector": "table.torrents > tbody > tr:has(table.torrentname)"
+        "selector": "table.torrents tr:has(table.torrentname)"
       },
       "fields": {
         "id": {
