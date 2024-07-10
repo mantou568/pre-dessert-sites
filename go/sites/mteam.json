@@ -1,0 +1,88 @@
+{
+  "id": "mteam",
+  "name": "馒头",
+  "domain": "https://kp.m-team.cc/",
+  "api": "https://api.m-team.cc/",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "MTorrent",
+  "request_basics": {
+    "fields": {}
+  },
+  "requests": {
+    "search": {
+      "analysis": "JsonPath",
+      "method": "POST",
+      "path": "api/torrent/search",
+      "use_api": true,
+      "list": {
+        "selector": "data.data"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "title": {
+          "selector": "name"
+        },
+        "details": {
+          "selector": "smallDescr"
+        },
+        "poster": {
+          "selector": "imageList.0"
+        },
+        "size": {
+          "selector": "size"
+        },
+        "seeders": {
+          "selector": "status.seeders"
+        },
+        "leechers": {
+          "selector": "status.leechers"
+        },
+        "date_added": {
+          "selector": "createdDate"
+        },
+        "downloadvolumefactor": {
+          "selector": "status.discount",
+          "case": {
+            "FREE": 0,
+            "PERCENT_50": 0.5,
+            "PERCENT_70": 0.3,
+            "NORMAL": 1
+          }
+        },
+        "uploadvolumefactor": {
+          "case": {
+            "": 1
+          }
+        },
+        "grabs": {
+          "selector": "status.timesCompleted"
+        }
+      }
+    },
+    "seeding": {
+      "analysis": "JsonPath",
+      "method": "POST",
+      "path": "api/member/profile",
+      "use_api": true,
+      "fields": {
+        "size": {
+          "selector": "data.memberCount.uploaded"
+        }
+      }
+    },
+    "my_peer_status": {
+      "analysis": "JsonPath",
+      "method": "POST",
+      "path": "api/tracker/myPeerStatus",
+      "use_api": true,
+      "fields": {
+        "count": {
+          "selector": "data.seeder"
+        }
+      }
+    }
+  }
+}

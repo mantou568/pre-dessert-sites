@@ -1,0 +1,40 @@
+{
+  "favicon": {
+    "analysis": "None",
+    "method": "GET",
+    "path": "favicon.ico"
+  },
+  "user_detail": {
+    "analysis": "CssSelector",
+    "method": "GET",
+    "path": "",
+    "fields": {
+      "id": {
+        "selector": "span.nowrap > a",
+        "attribute": "href",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": [
+              "userdetails.php\\?id=(\\d+)",
+              1
+            ]
+          }
+        ]
+      },
+      "unread_message_count": {
+        "selector": "span.medium",
+        "remove": "a",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": [
+              "\\((\\d+) 新\\)",
+              1
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
