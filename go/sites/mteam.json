@@ -11,7 +11,7 @@
   },
   "requests": {
     "search": {
-      "analysis": "JsonPath",
+      "parser": "JsonPath",
       "method": "POST",
       "path": "api/torrent/search",
       "use_api": true,
@@ -63,7 +63,7 @@
       }
     },
     "seeding": {
-      "analysis": "JsonPath",
+      "parser": "JsonPath",
       "method": "POST",
       "path": "api/member/profile",
       "use_api": true,
@@ -74,7 +74,7 @@
       }
     },
     "my_peer_status": {
-      "analysis": "JsonPath",
+      "parser": "JsonPath",
       "method": "POST",
       "path": "api/tracker/myPeerStatus",
       "use_api": true,
@@ -84,5 +84,18 @@
         }
       }
     }
+  },
+  "price": {
+    "RENDER": true,
+    "FREE": [
+      "true"
+    ],
+    "2XFREE": [
+      "true"
+    ],
+    "HR": [],
+    "PEER_COUNT": [
+      "true"
+    ]
   }
 }

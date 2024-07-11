@@ -14,7 +14,7 @@
   },
   "requests": {
     "search": {
-      "analysis": "CssSelector",
+      "parser": "CssSelector",
       "method": "GET",
       "path": "torrents.php",
       "list": {
@@ -139,12 +139,13 @@
       }
     },
     "seeding": {
-      "analysis": "CssSelector",
+      "parser": "CssSelector",
       "method": "GET",
       "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
       "fields": {
         "size": {
           "selector": "*",
+          "selection": "html",
           "filters": [
             {
               "name": "re_search",
@@ -185,6 +186,20 @@
         "cat": "TV/Anime",
         "desc": "Animations动漫"
       }
+    ]
+  },
+  "price": {
+    "FREE": [
+      "//h1[@id='top']/b/font[@class='free']"
+    ],
+    "2XFREE": [
+      "//font[@class='twoup'][text()='2X']"
+    ],
+    "HR": [
+      "//font[@color='red'][text()='Hit&Run']"
+    ],
+    "PEER_COUNT": [
+      "//div[@id='peercount']/b[1]"
     ]
   }
 }
