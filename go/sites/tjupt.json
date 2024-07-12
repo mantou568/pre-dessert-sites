@@ -5,7 +5,6 @@
   "encoding": "UTF-8",
   "public": false,
   "request_basics": {
-    "fields": {},
     "search": {
       "params": {
         "search": "{keyword}"
@@ -150,7 +149,7 @@
             {
               "name": "re_search",
               "args": [
-                "总大小(.*)\n",
+                "总大小(.*)<br/>",
                 1
               ]
             }
@@ -158,6 +157,103 @@
         },
         "count": {
           "selector": "b"
+        }
+      }
+    },
+    "my_hr": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "hnr_details.php?show=ongoing",
+      "list": {
+        "selector": "table.coltable tr:has(td.rowfollow)"
+      },
+      "fields": {
+        "id": {
+          "selector": "td:nth-child(1)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "考核ID：(.*)",
+                1
+              ]
+            }
+          ]
+        },
+        "name": {
+          "selector": "td:nth-child(2) b"
+        },
+        "uploaded": {
+          "selector": "td:nth-child(3)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(.*)\\(.*\\)",
+                1
+              ]
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "td:nth-child(4)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(.*)\\(.*\\)",
+                1
+              ]
+            }
+          ]
+        },
+        "share_ratio": {
+          "selector": "td:nth-child(3)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\(分享率：(.*)\\)",
+                1
+              ]
+            }
+          ]
+        },
+        "need_seed_time": {
+          "selector": "td:nth-child(7)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "剩余：(.*)",
+                1
+              ]
+            }
+          ]
+        },
+        "download_time": {
+          "selector": "td:nth-child(1)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})",
+                1
+              ]
+            }
+          ]
+        },
+        "remaining_time": {
+          "selector": "td:nth-child(8)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "考核期限：(.*)",
+                1
+              ]
+            }
+          ]
         }
       }
     }
