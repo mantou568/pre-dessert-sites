@@ -218,10 +218,21 @@
     }
   },
   "seeding": {
+    "parser": "None",
     "method": "GET",
     "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
     "headers": {
       "Referer": "{domain}userdetails.php?id={userId}"
     }
+  },
+  "user_unread_messages": {
+    "parser": "None",
+    "method": "GET",
+    "path": "messages.php"
+  },
+  "sys_unread_messages": {
+    "parser": "None",
+    "method": "GET",
+    "path": "messages.php?action=viewmailbox&box=-2&unread=yes"
   }
 }
