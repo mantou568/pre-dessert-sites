@@ -4,7 +4,6 @@
   "domain": "https://audiences.me/",
   "encoding": "UTF-8",
   "public": false,
-  "schema": "NexusAudiences",
   "request_basics": {
     "search": {
       "params": {

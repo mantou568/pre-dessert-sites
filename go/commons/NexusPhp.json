@@ -1,0 +1,301 @@
+{
+  "id": "NexusPhp",
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "favicon.ico"
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "is_login": {
+          "any": [
+            {
+              "selector": "//a[contains(@href, 'logout') or contains(@data-url, 'logout') or contains(@href, 'mybonus') or contains(@onclick, 'logout') or contains(@href, 'usercp')]"
+            },
+            {
+              "selector": "//form[contains(@action, 'logout')]"
+            },
+            {
+              "selector": "//div[@class='user-info-side']"
+            }
+          ]
+        },
+        "id": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "userdetails.php\\?id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "name": {
+          "any": [
+            {
+              "selector": "//a[contains(@href, 'userdetails')]//b//text()"
+            },
+            {
+              "selector": "//a[contains(@href, 'userdetails')]//text()"
+            },
+            {
+              "selector": "//a[contains(@href, 'userdetails')]//strong//text()"
+            }
+          ]
+        },
+        "unread_message_count": {
+          "selector": "//a[@href='messages.php']/.. | //a[contains(@href, 'messages.php')]/..",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "[^Date](信息箱\\s*|\\(|你有\\xa0)(\\d+)",
+                2
+              ]
+            }
+          ]
+        },
+        "uploaded": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "[^总]上[传傳]量?[:：_<>/a-zA-Z-=\"'\\s#;]+([\\d,.\\s]+[KMGTPI]*B)",
+                1
+              ]
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "[^总子影力]下[载載]量?[:：_<>/a-zA-Z-=\"'\\s#;]+([\\d,.\\s]+[KMGTPI]*B)",
+                1
+              ]
+            }
+          ]
+        },
+        "ratio": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "分享率[:：_<>/a-zA-Z-=\"'\\s#;]+([\\d,.\\s]+)",
+                1
+              ]
+            }
+          ]
+        },
+        "leeching": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(Torrents leeching|下载中)[^\\x00-\\x7F\\D\\s]+(\\d+)[\\s\\S]*?<",
+                1
+              ]
+            }
+          ]
+        },
+        "gold": {
+          "selector": "//span[@class = \"ucoin-symbol ucoin-gold\"]//text()"
+        },
+        "silver": {
+          "selector": "//span[@class = \"ucoin-symbol ucoin-silver\"]//text()"
+        },
+        "copper": {
+          "selector": "//span[@class = \"ucoin-symbol ucoin-copper\"]//text()"
+        },
+        "bonus": {
+          "any": [
+            {
+              "selector": "//a[contains(@href,\"mybonus\")]/text()",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "([\\d,.]+)`",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "mybonus.[\\[\\]:：<>/a-zA-Z_\\-=\"'\\s#;.(使用魔力值豆]+\\s*([\\d,.]+)[<()&\\s\\[]",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "[魔力值|\\]][\\[\\]:：<>/a-zA-Z_\\-=\"'\\s#;]+\\s*([\\d,.]+|\\\"[\\d,.]+\")[<>()&\\s\\[]",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "userdetails.php?id={userId}",
+      "fields": {
+        "join_at": {
+          "any": [
+            {
+              "selector": "//tr/td[contains(text(), '加入日期') or contains(text(), '注册日期')]/following-sibling::td[1]//text()"
+            },
+            {
+              "selector": "//div/b[contains(text(), '加入日期')]/../text()"
+            }
+          ]
+        },
+        "last_accessed": {
+          "any": [
+            {
+              "selector": "//tr/td[contains(text(), '最近动向') or contains(text(), '最近动向')]/following-sibling::td[1]//text()"
+            },
+            {
+              "selector": "//div/b[contains(text(), '最近动向')]/../text()"
+            }
+          ]
+        },
+        "level": {
+          "any": [
+            {
+              "selector": "//tr/td[text()=\"等級\" or text()=\"等级\" or *[text()=\"等级\"]]/following-sibling::td[1]/img[1]/@title"
+            },
+            {
+              "selector": "//tr/td[text()=\"等級\" or text()=\"等级\"]/following-sibling::td[1 and not(img)]|//tr/td[text()=\"等級\" or text()=\"等级\"]/following-sibling::td[1 and img[not(@title)]]"
+            },
+            {
+              "selector": "//tr/td[text()=\"等級\" or text()=\"等级\"]/following-sibling::td[1]"
+            },
+            {
+              "selector": "//a[contains(@href, \"userdetails\")]/text()",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "\\[(.*)]",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "seeding": {
+      "parser": "None",
+      "method": "GET",
+      "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}userdetails.php?id={userId}"
+      }
+    },
+    "user_unread_messages": {
+      "parser": "None",
+      "method": "GET",
+      "path": "messages.php?action=viewmailbox&box=1&unread=yes",
+      "fields": {
+        "links": {
+          "selector": "//tr[not(./td/img[@alt='Read'])]/td/a[contains(@href, 'viewmessage')]/@href"
+        },
+        "next_page": {
+          "selector": "//a[contains(.//text(), '下一页') or contains(.//text(), '下一頁')]/@href"
+        },
+        "head": {
+          "selector": "//h1/text()|//div[@class='layui-card-header']/span[1]/text()"
+        },
+        "date": {
+          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[2]/td[2]|//div[@class='layui-card-header']/span[2]/span[2]"
+        },
+        "content": {
+          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[3]/td|//div[contains(@class,'layui-card-body')]"
+        }
+      }
+    },
+    "sys_unread_messages": {
+      "parser": "None",
+      "method": "GET",
+      "path": "messages.php?action=viewmailbox&box=-2&unread=yes",
+      "fields": {
+        "links": {
+          "selector": "//tr[not(./td/img[@alt='Read'])]/td/a[contains(@href, 'viewmessage')]/@href"
+        },
+        "next_page": {
+          "selector": "//a[contains(.//text(), '下一页') or contains(.//text(), '下一頁')]/@href"
+        },
+        "head": {
+          "selector": "//h1/text()|//div[@class='layui-card-header']/span[1]/text()"
+        },
+        "date": {
+          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[2]/td[2]|//div[@class='layui-card-header']/span[2]/span[2]"
+        },
+        "content": {
+          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[3]/td|//div[contains(@class,'layui-card-body')]"
+        }
+      }
+    },
+    "latest_notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "title": {
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div/a[1]/*[self::b or self::strong]"
+        },
+        "date": {
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div/a[1]/text()",
+          "remove": "b",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}\\.\\d{2}\\.\\d{2})",
+                1
+              ]
+            }
+          ]
+        },
+        "content": {
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div/div[1]"
+        }
+      }
+    }
+  }
+}

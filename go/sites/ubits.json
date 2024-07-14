@@ -40,6 +40,18 @@
       }
     ]
   },
+  "price": {
+    "FREE": [
+      "//h1[@id='top']/b/font[@class='free']"
+    ],
+    "2XFREE": [
+      "//h1[@id='top']/b/font[@class='twoupfree']"
+    ],
+    "HR": [],
+    "PEER_COUNT": [
+      "//div[@id='peercount']/b[1]"
+    ]
+  },
   "requests": {
     "search": {
       "parser": "CssSelector",
@@ -186,17 +198,5 @@
         }
       }
     }
-  },
-  "price": {
-    "FREE": [
-      "//h1[@id='top']/b/font[@class='free']"
-    ],
-    "2XFREE": [
-      "//h1[@id='top']/b/font[@class='twoupfree']"
-    ],
-    "HR": [],
-    "PEER_COUNT": [
-      "//div[@id='peercount']/b[1]"
-    ]
   }
 }
