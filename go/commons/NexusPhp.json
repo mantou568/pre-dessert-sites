@@ -1,5 +1,9 @@
 {
   "id": "NexusPhp",
+  "request_basics": {
+    "fields": {
+    }
+  },
   "requests": {
     "favicon": {
       "parser": "None",
@@ -21,6 +25,12 @@
             },
             {
               "selector": "//div[@class='user-info-side']"
+            }
+          ],
+          "filters": [
+            {
+              "name": "regex",
+              "args": "^[^\\\\s]+$"
             }
           ]
         },
@@ -72,6 +82,9 @@
                 "[^总]上[传傳]量?[:：_<>/a-zA-Z-=\"'\\s#;]+([\\d,.\\s]+[KMGTPI]*B)",
                 1
               ]
+            },
+            {
+              "name": "byte_size"
             }
           ]
         },
@@ -85,6 +98,9 @@
                 "[^总子影力]下[载載]量?[:：_<>/a-zA-Z-=\"'\\s#;]+([\\d,.\\s]+[KMGTPI]*B)",
                 1
               ]
+            },
+            {
+              "name": "byte_size"
             }
           ]
         },
@@ -115,13 +131,40 @@
           ]
         },
         "gold": {
-          "selector": "//span[@class = \"ucoin-symbol ucoin-gold\"]//text()"
+          "selector": "//span[@class = \"ucoin-symbol ucoin-gold\"]//text()",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            }
+          ]
         },
         "silver": {
-          "selector": "//span[@class = \"ucoin-symbol ucoin-silver\"]//text()"
+          "selector": "//span[@class = \"ucoin-symbol ucoin-silver\"]//text()",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            }
+          ]
         },
         "copper": {
-          "selector": "//span[@class = \"ucoin-symbol ucoin-copper\"]//text()"
+          "selector": "//span[@class = \"ucoin-symbol ucoin-copper\"]//text()",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            }
+          ]
         },
         "bonus": {
           "any": [
@@ -161,6 +204,15 @@
                     1
                   ]
                 }
+              ]
+            }
+          ],
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
               ]
             }
           ]
@@ -220,32 +272,42 @@
       }
     },
     "seeding": {
-      "parser": "None",
+      "parser": "XPath",
       "method": "GET",
       "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
       "headers": {
         "Referer": "{domain}userdetails.php?id={userId}"
+      },
+      "list": {
+        "selector": "//tr[position()>1]",
+        "next_page": {
+          "selector": "//a[contains(.//text(), '下一页') or contains(.//text(), '下一頁')]/@href"
+        }
+      },
+      "fields": {
+        "size": {
+          "selector": "/td[4]",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
       }
     },
     "user_unread_messages": {
-      "parser": "None",
+      "parser": "XPath",
       "method": "GET",
       "path": "messages.php?action=viewmailbox&box=1&unread=yes",
-      "fields": {
-        "links": {
-          "selector": "//tr[not(./td/img[@alt='Read'])]/td/a[contains(@href, 'viewmessage')]/@href"
-        },
+      "list": {
+        "selector": "//tr[not(./td/img[@alt='Read'])]/td/a[contains(@href, 'viewmessage')]",
         "next_page": {
           "selector": "//a[contains(.//text(), '下一页') or contains(.//text(), '下一頁')]/@href"
-        },
-        "head": {
-          "selector": "//h1/text()|//div[@class='layui-card-header']/span[1]/text()"
-        },
-        "date": {
-          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[2]/td[2]|//div[@class='layui-card-header']/span[2]/span[2]"
-        },
-        "content": {
-          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[3]/td|//div[contains(@class,'layui-card-body')]"
+        }
+      },
+      "fields": {
+        "link": {
+          "selector": "@href"
         }
       }
     },
@@ -253,13 +315,13 @@
       "parser": "None",
       "method": "GET",
       "path": "messages.php?action=viewmailbox&box=-2&unread=yes",
+      "fields_ref": "user_unread_messages"
+    },
+    "unread_message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
       "fields": {
-        "links": {
-          "selector": "//tr[not(./td/img[@alt='Read'])]/td/a[contains(@href, 'viewmessage')]/@href"
-        },
-        "next_page": {
-          "selector": "//a[contains(.//text(), '下一页') or contains(.//text(), '下一頁')]/@href"
-        },
         "head": {
           "selector": "//h1/text()|//div[@class='layui-card-header']/span[1]/text()"
         },

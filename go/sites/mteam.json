@@ -6,8 +6,20 @@
   "encoding": "UTF-8",
   "public": false,
   "schema": "MTorrent",
+  "price": {
+    "RENDER": true,
+    "FREE": [
+      "true"
+    ],
+    "2XFREE": [
+      "true"
+    ],
+    "HR": [],
+    "PEER_COUNT": [
+      "true"
+    ]
+  },
   "request_basics": {
-    "fields": {}
   },
   "requests": {
     "search": {
@@ -84,18 +96,5 @@
         }
       }
     }
-  },
-  "price": {
-    "RENDER": true,
-    "FREE": [
-      "true"
-    ],
-    "2XFREE": [
-      "true"
-    ],
-    "HR": [],
-    "PEER_COUNT": [
-      "true"
-    ]
   }
 }
