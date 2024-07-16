@@ -4,14 +4,6 @@
   "domain": "https://cyanbug.net/",
   "encoding": "UTF-8",
   "public": false,
-  "request_basics": {
-    "fields": {},
-    "search": {
-      "params": {
-        "search": "{keyword}"
-      }
-    }
-  },
   "category": {
     "movie": [
       {
@@ -68,6 +60,11 @@
       "list": {
         "selector": "table.torrents tr:has(table.torrentname)"
       },
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
+      },
       "fields": {
         "id": {
           "selector": "a[href*=\"details.php?id=\"]",
@@ -92,13 +89,16 @@
             }
           ]
         },
-        "title_default": {
-          "selector": "a[href*=\"details.php?id=\"]"
-        },
-        "title_optional": {
-          "optional": true,
-          "selector": "a[title][href*=\"details.php?id=\"]",
-          "attribute": "title"
+        "title": {
+          "any": [
+            {
+              "selector": "a[href*=\"details.php?id=\"]"
+            },
+            {
+              "selector": "a[title][href*=\"details.php?id=\"]",
+              "attribute": "title"
+            }
+          ]
         },
         "details": {
           "selector": "a[href*=\"details.php?id=\"]",
@@ -156,12 +156,28 @@
         },
         "subject": {
           "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
-          "contents": -1
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
         },
         "description": {
           "selector": "td:nth-child(2) > table > tbody > tr > td:nth-child(2)",
           "remove": "span,a,img,font,b",
-          "contents": -1
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
         },
         "labels": {
           "selector": "td:nth-child(2) > span[title=\"\"]"

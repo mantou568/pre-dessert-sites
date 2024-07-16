@@ -44,13 +44,6 @@
       "//div[@id='peercount']/b[1]"
     ]
   },
-  "request_basics": {
-    "search": {
-      "params": {
-        "search": "{keyword}"
-      }
-    }
-  },
   "requests": {
     "search": {
       "parser": "CssSelector",
@@ -58,6 +51,11 @@
       "path": "torrents.php",
       "list": {
         "selector": "table.torrents tr:has(table.torrentname)"
+      },
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
       },
       "fields": {
         "id": {
@@ -83,16 +81,16 @@
             }
           ]
         },
-        "title_default": {
-          "selector": "a[href*=\"details.php?id=\"]"
-        },
-        "title_optional": {
-          "optional": true,
-          "selector": "a[title][href*=\"details.php?id=\"]",
-          "attribute": "title"
-        },
         "title": {
-          "text": "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
+          "any": [
+            {
+              "selector": "a[href*=\"details.php?id=\"]"
+            },
+            {
+              "selector": "a[title][href*=\"details.php?id=\"]",
+              "attribute": "title"
+            }
+          ]
         },
         "details": {
           "selector": "a[href*=\"details.php?id=\"]",
@@ -124,15 +122,6 @@
           "selector": "td.rowfollow:nth-child(4)",
           "remove": "br",
           "optional": true
-        },
-        "date": {
-          "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
-          "filters": [
-            {
-              "name": "dateparse",
-              "args": "%Y-%m-%d %H:%M:%S"
-            }
-          ]
         },
         "size": {
           "selector": "td:nth-child(5)"
@@ -167,7 +156,15 @@
         "description": {
           "selector": "table.torrentname > tr:nth-child(1) > td:nth-child(2)",
           "remove": "a, img, div",
-          "contents": -1
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
         },
         "labels": {
           "selector": "table.torrentname > tr:nth-child(2) > td:nth-child(2) > div#tag > span > font.tag"

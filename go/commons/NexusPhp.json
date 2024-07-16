@@ -1,9 +1,5 @@
 {
   "id": "NexusPhp",
-  "request_basics": {
-    "fields": {
-    }
-  },
   "requests": {
     "favicon": {
       "parser": "None",

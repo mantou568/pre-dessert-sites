@@ -19,8 +19,6 @@
       "true"
     ]
   },
-  "request_basics": {
-  },
   "requests": {
     "search": {
       "parser": "JsonPath",

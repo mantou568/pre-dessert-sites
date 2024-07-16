@@ -72,13 +72,6 @@
       }
     ]
   },
-  "request_basics": {
-    "search": {
-      "params": {
-        "search": "{keyword}"
-      }
-    }
-  },
   "requests": {
     "search": {
       "parser": "CssSelector",
@@ -86,6 +79,11 @@
       "path": "torrents.php",
       "list": {
         "selector": "table.torrents tr:has(table.torrentname)"
+      },
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
       },
       "fields": {
         "id": {

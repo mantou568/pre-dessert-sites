@@ -4,11 +4,6 @@
   "domain": "https://ubits.club/",
   "encoding": "UTF-8",
   "public": false,
-  "request_basics": {
-    "params": {
-      "search": "{keyword}"
-    }
-  },
   "category": {
     "movie": [
       {
@@ -60,6 +55,11 @@
       "list": {
         "selector": "table.torrents tr:has(table.torrentname)"
       },
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
+      },
       "fields": {
         "id": {
           "selector": "a[href*=\"details.php?id=\"]",
@@ -84,16 +84,16 @@
             }
           ]
         },
-        "title_default": {
-          "selector": "a[href*=\"details.php?id=\"]"
-        },
-        "title_optional": {
-          "optional": true,
-          "selector": "a[title][href*=\"details.php?id=\"]",
-          "attribute": "title"
-        },
         "title": {
-          "text": "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
+          "any": [
+            {
+              "selector": "a[href*=\"details.php?id=\"]"
+            },
+            {
+              "selector": "a[title][href*=\"details.php?id=\"]",
+              "attribute": "title"
+            }
+          ]
         },
         "details": {
           "selector": "a[href*=\"details.php?id=\"]",
@@ -128,15 +128,6 @@
           "attribute": "title",
           "optional": true
         },
-        "date": {
-          "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
-          "filters": [
-            {
-              "name": "dateparse",
-              "args": "%Y-%m-%d %H:%M:%S"
-            }
-          ]
-        },
         "downloadvolumefactor": {
           "case": {
             "img.pro_free": 0,
@@ -155,29 +146,33 @@
             "*": 1
           }
         },
-        "free_deadline": {
-          "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
-          "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
-          "selector": "div > b > span[title]",
-          "attribute": "title",
-          "filters": [
-            {
-              "name": "dateparse",
-              "args": "%Y-%m-%d %H:%M:%S"
-            }
-          ]
-        },
         "tags": {
           "selector": "div > a.torrents-tag"
         },
         "subject": {
           "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
-          "contents": -1
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
         },
         "description": {
           "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1)",
           "remove": "span,a,img,font,b",
-          "contents": -1
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
         },
         "labels": {
           "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > span[title=\"\"]"

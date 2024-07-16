@@ -44,13 +44,6 @@
       "//div[@id='peercount']/b[1]"
     ]
   },
-  "request_basics": {
-    "search": {
-      "params": {
-        "search": "{keyword}"
-      }
-    }
-  },
   "requests": {
     "search": {
       "parser": "CssSelector",
@@ -58,6 +51,11 @@
       "path": "torrents.php",
       "list": {
         "selector": "table.torrents tr:has(table.torrentname)"
+      },
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
       },
       "fields": {
         "id": {
@@ -73,13 +71,16 @@
             }
           ]
         },
-        "title_default": {
-          "selector": "a[href*=\"details.php?id=\"]"
-        },
-        "title_optional": {
-          "optional": true,
-          "selector": "a[title][href*=\"details.php?id=\"]",
-          "attribute": "title"
+        "title": {
+          "any": [
+            {
+              "selector": "a[href*=\"details.php?id=\"]"
+            },
+            {
+              "selector": "a[title][href*=\"details.php?id=\"]",
+              "attribute": "title"
+            }
+          ]
         },
         "category": {
           "selector": "a[href*=\"?cat=\"]",
