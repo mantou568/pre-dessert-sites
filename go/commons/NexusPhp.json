@@ -232,6 +232,18 @@
             {
               "selector": "//div/b[contains(text(), '加入日期')]/../text()"
             }
+          ],
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                " (",
+                ""
+              ]
+            },
+            {
+              "name": "timestamp"
+            }
           ]
         },
         "last_accessed": {
@@ -241,6 +253,18 @@
             },
             {
               "selector": "//div/b[contains(text(), '最近动向')]/../text()"
+            }
+          ],
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                " (",
+                ""
+              ]
+            },
+            {
+              "name": "timestamp"
             }
           ]
         },
@@ -326,7 +350,12 @@
           "selector": "//h1/text()|//div[@class='layui-card-header']/span[1]/text()"
         },
         "date": {
-          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[2]/td[2]|//div[@class='layui-card-header']/span[2]/span[2]"
+          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[2]/td[2]|//div[@class='layui-card-header']/span[2]/span[2]",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         },
         "content": {
           "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[3]/td|//div[contains(@class,'layui-card-body')]"
@@ -351,6 +380,9 @@
                 "(\\d{4}\\.\\d{2}\\.\\d{2})",
                 1
               ]
+            },
+            {
+              "name": "timestamp"
             }
           ]
         },
