@@ -386,6 +386,11 @@
           "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div/div[1]"
         }
       }
+    },
+    "sign_in": {
+      "parser": "None",
+      "method": "GET",
+      "path": "attendance.php"
     }
   }
 }

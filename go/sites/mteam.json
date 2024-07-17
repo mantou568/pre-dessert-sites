@@ -192,10 +192,10 @@
       "use_api": true,
       "fields": {
         "title": {
-          "selector": "data.0.head"
+          "selector": "data.0.subject"
         },
         "date": {
-          "selector": "data.0.create_date",
+          "selector": "data.0.createdDate",
           "filters": [
             {
               "name": "timestamp"
