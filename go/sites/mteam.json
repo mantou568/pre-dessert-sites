@@ -5,7 +5,8 @@
   "api": "https://api.m-team.cc/",
   "encoding": "UTF-8",
   "public": false,
-  "schema": "MTorrent",
+  "schema": "mTorrent",
+  "reuse_schema": "NexusPHP",
   "price": {
     "RENDER": true,
     "FREE": [
@@ -72,25 +73,182 @@
         }
       }
     },
-    "seeding": {
-      "parser": "JsonPath",
-      "method": "POST",
-      "path": "api/member/profile",
-      "use_api": true,
-      "fields": {
-        "size": {
-          "selector": "data.memberCount.uploaded"
-        }
-      }
-    },
     "my_peer_status": {
       "parser": "JsonPath",
       "method": "POST",
       "path": "api/tracker/myPeerStatus",
       "use_api": true,
       "fields": {
-        "count": {
+        "leecher": {
+          "selector": "data.leecher"
+        },
+        "seeder": {
           "selector": "data.seeder"
+        }
+      }
+    },
+    "msg_notify_statistic": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "api/msg/notify/statistic",
+      "use_api": true,
+      "fields": {
+        "count": {
+          "selector": "data.count"
+        },
+        "un_make": {
+          "selector": "data.unMake"
+        }
+      }
+    },
+    "profile": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "api/member/profile",
+      "use_api": true,
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "form_data": {
+        "uid": [
+          "{userId}"
+        ]
+      },
+      "fields": {
+        "created_date": {
+          "selector": "data.createdDate",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "last_modified_date": {
+          "selector": "data.lastModifiedDate",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "username": {
+          "selector": "data.username"
+        },
+        "uploaded": {
+          "selector": "data.memberCount.uploaded"
+        },
+        "downloaded": {
+          "selector": "data.memberCount.downloaded"
+        },
+        "share_rate": {
+          "selector": "data.memberCount.shareRate"
+        },
+        "bonus": {
+          "selector": "data.memberCount.bonus"
+        },
+        "role": {
+          "selector": "data.role"
+        }
+      }
+    },
+    "user_torrent_list": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "api/member/getUserTorrentList",
+      "use_api": true,
+      "list": {
+        "selector": "data.data"
+      },
+      "fields": {
+        "size": {
+          "selector": "torrent.size"
+        }
+      }
+    },
+    "sys_role_list": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "api/member/sysRoleList",
+      "use_api": true,
+      "list": {
+        "selector": "data"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "name_chs": {
+          "selector": "nameChs"
+        },
+        "name_eng": {
+          "selector": "nameEng"
+        }
+      }
+    },
+    "latest_notice": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "api/news/list",
+      "use_api": true,
+      "fields": {
+        "title": {
+          "selector": "data.0.head"
+        },
+        "date": {
+          "selector": "data.0.create_date",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "content": {
+          "selector": "data.0.context"
+        }
+      }
+    },
+    "unread_messages": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "api/msg/search",
+      "use_api": true,
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "form_data": {
+        "keyword": [
+          ""
+        ],
+        "box": [
+          "-2"
+        ],
+        "pageNumber": [
+          "{pageNumber}"
+        ],
+        "pageSize": [
+          "100"
+        ],
+        "unread": [
+          "true"
+        ]
+      },
+      "list": {
+        "selector": "data.data"
+      },
+      "fields": {
+        "head": {
+          "selector": "title"
+        },
+        "date": {
+          "selector": "createdDate",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "content": {
+          "selector": "context"
         }
       }
     }

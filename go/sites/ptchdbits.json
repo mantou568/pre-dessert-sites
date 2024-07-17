@@ -4,6 +4,7 @@
   "domain": "https://ptchdbits.co/",
   "encoding": "UTF-8",
   "public": false,
+  "schema": "NexusPHP",
   "price": {
     "FREE": [
       "//h1[@id='top']/img[@class='pro_free']"

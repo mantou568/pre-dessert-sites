@@ -4,6 +4,7 @@
   "domain": "https://pt.keepfrds.com/",
   "encoding": "UTF-8",
   "public": false,
+  "schema": "NexusPHP",
   "price": {
     "FREE": [
       "//h1[@id='top']/b/font[@class='free']"

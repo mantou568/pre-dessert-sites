@@ -4,6 +4,7 @@
   "domain": "https://audiences.me/",
   "encoding": "UTF-8",
   "public": false,
+  "schema": "NexusPHP",
   "category": {
     "movie": [
       {

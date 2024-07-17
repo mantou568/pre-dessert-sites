@@ -4,6 +4,7 @@
   "domain": "https://cyanbug.net/",
   "encoding": "UTF-8",
   "public": false,
+  "schema": "NexusPHP",
   "category": {
     "movie": [
       {
