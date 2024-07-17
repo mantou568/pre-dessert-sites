@@ -291,7 +291,7 @@
         }
       }
     },
-    "seeding": {
+    "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
       "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",

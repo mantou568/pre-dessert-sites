@@ -182,7 +182,7 @@
         }
       }
     },
-    "seeding": {
+    "seeding_statistics": {
       "parser": "CssSelector",
       "method": "GET",
       "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
