@@ -5,6 +5,7 @@
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
+  "sign_in_required": true,
   "price": {
     "FREE": [
       "//h1[@id='top']/img[@class='pro_free']"

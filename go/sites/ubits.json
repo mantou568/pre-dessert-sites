@@ -5,6 +5,7 @@
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
+  "sign_in_required": false,
   "category": {
     "movie": [
       {
@@ -179,7 +180,6 @@
           "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > span[title=\"\"]"
         },
         "hr_days": {
-          "default_value": "3",
           "selector": "img.hitandrun",
           "attribute": "title",
           "filters": [
@@ -189,6 +189,10 @@
                 "\\d*",
                 0
               ]
+            },
+            {
+              "name": "default_value",
+              "args": "3"
             }
           ]
         }

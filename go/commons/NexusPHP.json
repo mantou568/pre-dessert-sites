@@ -387,10 +387,40 @@
         }
       }
     },
-    "sign_in": {
-      "parser": "None",
+    "verify_signed_in": {
+      "parser": "CssSelector",
       "method": "GET",
-      "path": "attendance.php"
+      "path": "",
+      "fields": {
+        "signed_in": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(已签|签到已得|签到排名)"
+            }
+          ]
+        }
+      }
+    },
+    "sign_in": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "attendance.php",
+      "success_status_codes": "200,403,500",
+      "fields": {
+        "signed_in": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(已签|签到已得)"
+            }
+          ]
+        }
+      }
     }
   }
 }

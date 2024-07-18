@@ -7,6 +7,7 @@
   "public": false,
   "schema": "mTorrent",
   "reuse_schema": "NexusPHP",
+  "sign_in_required": false,
   "price": {
     "RENDER": true,
     "FREE": [
@@ -249,6 +250,25 @@
         },
         "content": {
           "selector": "context"
+        }
+      }
+    },
+    "gen_dl_token": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "api/msg/search",
+      "use_api": true,
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "form_data": {
+        "id": [
+          "{id}"
+        ]
+      },
+      "fields": {
+        "url": {
+          "selector": "data"
         }
       }
     }

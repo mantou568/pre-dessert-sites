@@ -5,6 +5,7 @@
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
+  "sign_in_required": false,
   "category": {
     "movie": [
       {
@@ -167,7 +168,6 @@
           "selector": "td.embedded > span.tags"
         },
         "hr_days": {
-          "default_value": "2",
           "selector": "img.hitandrun",
           "attribute": "title",
           "filters": [
@@ -177,6 +177,10 @@
                 "\\d*",
                 0
               ]
+            },
+            {
+              "name": "default_value",
+              "args": "2"
             }
           ]
         }
