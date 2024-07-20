@@ -6,6 +6,11 @@
   "public": false,
   "schema": "NexusPHP",
   "sign_in_required": false,
+  "price": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false
+  },
   "category": {
     "movie": [
       {
@@ -30,20 +35,6 @@
         "cat": "TV/Documentary",
         "desc": "纪录片/Documentary"
       }
-    ]
-  },
-  "price": {
-    "FREE": [
-      "//h1[@id='top']/b/font[@class='free']"
-    ],
-    "2XFREE": [
-      "//h1[@id='top']/b/font[@class='twoupfree']"
-    ],
-    "HR": [
-      "//h1[@id='top']/img[@class='hitandrun']"
-    ],
-    "PEER_COUNT": [
-      "//div[@id='peercount']/b[1]"
     ]
   },
   "requests": {

@@ -9,17 +9,9 @@
   "reuse_schema": "NexusPHP",
   "sign_in_required": false,
   "price": {
-    "RENDER": true,
-    "FREE": [
-      "true"
-    ],
-    "2XFREE": [
-      "true"
-    ],
-    "HR": [],
-    "PEER_COUNT": [
-      "true"
-    ]
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false
   },
   "requests": {
     "search": {
@@ -27,6 +19,9 @@
       "method": "POST",
       "path": "api/torrent/search",
       "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
       "list": {
         "selector": "data.data"
       },
@@ -79,6 +74,9 @@
       "method": "POST",
       "path": "api/tracker/myPeerStatus",
       "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
       "fields": {
         "leecher": {
           "selector": "data.leecher"
@@ -93,6 +91,9 @@
       "method": "POST",
       "path": "api/msg/notify/statistic",
       "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
       "fields": {
         "count": {
           "selector": "data.count"
@@ -107,6 +108,9 @@
       "method": "POST",
       "path": "api/member/profile",
       "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -157,6 +161,9 @@
       "method": "POST",
       "path": "api/member/getUserTorrentList",
       "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
       "list": {
         "selector": "data.data"
       },
@@ -171,6 +178,9 @@
       "method": "POST",
       "path": "api/member/sysRoleList",
       "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
       "list": {
         "selector": "data"
       },
@@ -191,6 +201,9 @@
       "method": "POST",
       "path": "api/news/list",
       "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
       "fields": {
         "title": {
           "selector": "data.0.subject"
@@ -213,6 +226,9 @@
       "method": "POST",
       "path": "api/msg/search",
       "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -228,15 +244,15 @@
         ],
         "pageSize": [
           "100"
-        ],
-        "unread": [
-          "true"
         ]
       },
       "list": {
-        "selector": "data.data"
+        "selector": "data.data.#(unread=true)#"
       },
       "fields": {
+        "id": {
+          "selector": "id"
+        },
         "head": {
           "selector": "title"
         },
@@ -253,11 +269,45 @@
         }
       }
     },
+    "mark_as_read": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "api/msg/markRead",
+      "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "form_data": {
+        "msgIds": [
+          "{ids}"
+        ]
+      },
+      "fields": {
+        "success": {
+          "selector": "code",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
+        "message": {
+          "selector": "message"
+        }
+      }
+    },
     "gen_dl_token": {
       "parser": "JsonPath",
       "method": "POST",
       "path": "api/msg/search",
       "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -269,6 +319,46 @@
       "fields": {
         "url": {
           "selector": "data"
+        }
+      }
+    },
+    "details": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "api/torrent/detail",
+      "use_api": true,
+      "required_headers": [
+        "x-api-key"
+      ],
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "form_data": {
+        "id": [
+          "{id}"
+        ]
+      },
+      "fields": {
+        "absent": {
+          "selector": "message",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "種子未找到"
+            }
+          ]
+        },
+        "free": {
+          "selector": "status.discount",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "FREE"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "status.seeders"
         }
       }
     }

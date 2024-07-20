@@ -7,16 +7,9 @@
   "schema": "NexusPHP",
   "sign_in_required": true,
   "price": {
-    "FREE": [
-      "//h1[@id='top']/img[@class='pro_free']"
-    ],
-    "2XFREE": [],
-    "HR": [
-      "//b[contains(text(),'H&R:')]"
-    ],
-    "PEER_COUNT": [
-      "//div[@id='peercount']/b[1]"
-    ]
+    "has_free": true,
+    "has_2x_free": false,
+    "has_hr": true
   },
   "category": {
     "movie": [
@@ -209,6 +202,60 @@
         },
         "remaining_inspection_time": {
           "selector": "td:nth-child(4)"
+        }
+      }
+    },
+    "details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "details.php",
+      "params": {
+        "id": [
+          "{id}"
+        ],
+        "hit": [
+          "1"
+        ]
+      },
+      "fields": {
+        "absent": {
+          "selector": "//td[text()='没有该ID的种子']",
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
+        },
+        "free": {
+          "selector": "//h1[@id='top']/img[@class='pro_free']",
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
+        },
+        "hr": {
+          "selector": "//b[contains(text(),'H&R:')]",
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "//div[@id='peercount']/b[1]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
         }
       }
     }

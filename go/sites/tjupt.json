@@ -6,6 +6,11 @@
   "public": false,
   "schema": "NexusPHP",
   "sign_in_required": true,
+  "price": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": true
+  },
   "category": {
     "movie": [
       {
@@ -30,20 +35,6 @@
         "cat": "TV/Anime",
         "desc": "Animations动漫"
       }
-    ]
-  },
-  "price": {
-    "FREE": [
-      "//h1[@id='top']/b/font[@class='free']"
-    ],
-    "2XFREE": [
-      "//font[@class='twoup'][text()='2X']"
-    ],
-    "HR": [
-      "//font[@color='red'][text()='Hit&Run']"
-    ],
-    "PEER_COUNT": [
-      "//div[@id='peercount']/b[1]"
     ]
   },
   "requests": {
@@ -290,6 +281,76 @@
               "args": [
                 "考核期限：(.*)",
                 1
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "details.php",
+      "params": {
+        "id": [
+          "{id}"
+        ],
+        "hit": [
+          "1"
+        ]
+      },
+      "fields": {
+        "absent": {
+          "selector": "//td[text()='没有该ID的种子']",
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
+        },
+        "free": {
+          "any": [
+            {
+              "selector": "//h1[@id='top']/b/font[@class='free']"
+            },
+            {
+              "selector": "//font[@class='twoup'][text()='2X']"
+            }
+          ],
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
+        },
+        "2x_free": {
+          "selector": "//font[@class='twoup'][text()='2X']",
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
+        },
+        "hr": {
+          "selector": "//font[@color='red'][text()='Hit&Run']",
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "//div[@id='peercount']/b[1]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
               ]
             }
           ]
