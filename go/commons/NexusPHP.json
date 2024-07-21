@@ -113,19 +113,6 @@
             }
           ]
         },
-        "leeching": {
-          "selector": "*",
-          "selection": "html",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "(Torrents leeching|下载中)[^\\x00-\\x7F\\D\\s]+(\\d+)[\\s\\S]*?<",
-                1
-              ]
-            }
-          ]
-        },
         "gold": {
           "selector": "//span[@class = \"ucoin-symbol ucoin-gold\"]//text()",
           "filters": [
@@ -436,11 +423,12 @@
       },
       "fields": {
         "absent": {
-          "selector": "//td[text()='没有该ID的种子']",
+          "selector": "*",
+          "selection": "html",
           "filters": [
             {
               "name": "regex",
-              "args": ".+"
+              "args": "没有该ID的种子"
             }
           ]
         },

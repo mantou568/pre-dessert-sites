@@ -1,10 +1,11 @@
 {
-  "id": "audiences",
-  "name": "观众",
-  "domain": "https://audiences.me/",
+  "id": "hdsky",
+  "name": "天空",
+  "domain": "https://hdsky.me/",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
+  "sign_in_required": true,
   "price": {
     "has_free": true,
     "has_2x_free": true
@@ -14,24 +15,59 @@
       {
         "id": 401,
         "cat": "Movies",
-        "desc": "电影/Movies"
+        "desc": "Movies/电影"
+      },
+      {
+        "id": 410,
+        "cat": "Movies",
+        "desc": "iPad/iPad影视"
       }
     ],
     "tv": [
       {
         "id": 402,
         "cat": "TV",
-        "desc": "剧集/TV-Series"
+        "desc": "TV Series/剧集(分集)"
       },
       {
         "id": 403,
         "cat": "TV",
-        "desc": "综艺/TV-Show"
+        "desc": "TV Shows/综艺"
       },
       {
-        "id": 406,
+        "id": 404,
         "cat": "TV/Documentary",
-        "desc": "纪录片/Documentary"
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
+      {
+        "id": 411,
+        "cat": "TV",
+        "desc": "TV Series/剧集(合集)"
+      },
+      {
+        "id": 412,
+        "cat": "TV",
+        "desc": "TV Series/海外剧集(分集)"
+      },
+      {
+        "id": 413,
+        "cat": "TV",
+        "desc": "TV Series/海外剧集(合集)"
+      },
+      {
+        "id": 414,
+        "cat": "TV",
+        "desc": "TV Shows/海外综艺(分集)"
+      },
+      {
+        "id": 415,
+        "cat": "TV",
+        "desc": "TV Shows/海外综艺(合集)"
       }
     ]
   },
@@ -95,21 +131,12 @@
           "attribute": "href"
         },
         "download": {
-          "selector": "a[href*=\"download.php?id=\"]",
-          "attribute": "href"
+          "selector": "form[action*=\"/download.php?id=\"]",
+          "attribute": "action"
         },
         "imdbid": {
           "selector": "div.imdb_100 > a",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "tt\\d+",
-                1
-              ]
-            }
-          ]
+          "attribute": "href"
         },
         "date_elapsed": {
           "selector": "td:nth-child(4) > span",
@@ -121,7 +148,7 @@
           "optional": true
         },
         "size": {
-          "selector": "td:nth-child(5)"
+          "selector": "td.rowfollow:nth-child(5)"
         },
         "seeders": {
           "selector": "td:nth-child(6)"
@@ -151,43 +178,20 @@
           }
         },
         "description": {
-          "selector": "td.embedded > span[style]"
-        },
-        "labels": {
-          "selector": "td.embedded > span.tags"
-        },
-        "hr_days": {
-          "selector": "img.hitandrun",
-          "attribute": "title",
+          "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span:not(.optiontag)",
+          "remove": "img,a,b",
           "filters": [
             {
-              "name": "re_search",
+              "name": "replace",
               "args": [
-                "\\d*",
-                0
+                "[优惠剩余时间：]",
+                ""
               ]
-            },
-            {
-              "name": "default_value",
-              "args": "2"
             }
           ]
-        }
-      }
-    },
-    "seeding_statistics": {
-      "parser": "CssSelector",
-      "method": "GET",
-      "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
-      "headers": {
-        "Referer": "{domain}userdetails.php?id={userId}"
-      },
-      "fields": {
-        "count": {
-          "selector": "table.table.table-bordered tr:has(td:contains(Total)) td:nth-child(2)"
         },
-        "size": {
-          "selector": "table.table.table-bordered tr:has(td:contains(Total)) td:nth-child(3)"
+        "labels": {
+          "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span.optiontag"
         }
       }
     }

@@ -42,13 +42,13 @@
       "parser": "CssSelector",
       "method": "GET",
       "path": "torrents.php",
-      "list": {
-        "selector": "table.torrents tr:has(table.torrentname)"
-      },
       "params": {
         "search": [
           "{keyword}"
         ]
+      },
+      "list": {
+        "selector": "table.torrents tr:has(table.torrentname)"
       },
       "fields": {
         "id": {
@@ -182,6 +182,9 @@
                 "总大小(.*)<br/>",
                 1
               ]
+            },
+            {
+              "name": "byte_size"
             }
           ]
         },

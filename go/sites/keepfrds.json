@@ -5,11 +5,9 @@
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
-  "sign_in_required": false,
   "price": {
     "has_free": true,
-    "has_2x_free": true,
-    "has_hr": false
+    "has_2x_free": true
   },
   "category": {
     "movie": [
@@ -72,13 +70,13 @@
       "parser": "CssSelector",
       "method": "GET",
       "path": "torrents.php",
-      "list": {
-        "selector": "table.torrents tr:has(table.torrentname)"
-      },
       "params": {
         "search": [
           "{keyword}"
         ]
+      },
+      "list": {
+        "selector": "table.torrents tr:has(table.torrentname)"
       },
       "fields": {
         "id": {
@@ -159,8 +157,26 @@
           "selector": "a[title][href*=\"details.php?id=\"] > span"
         },
         "title": {
-          "selector": "table.torrentname > tr > td",
+          "selector": "table.torrentname tr td",
           "remove": "a,b"
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "userdetails.php?id={userId}",
+      "fields": {
+        "size": {
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr[18]/td[2]/text()",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "count": {
+          "selector": "//*[@id='info_block']/tbody/tr/td/table/tbody/tr/td[1]/a[6]/text()"
         }
       }
     }

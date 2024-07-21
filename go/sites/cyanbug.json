@@ -8,8 +8,7 @@
   "sign_in_required": true,
   "price": {
     "has_free": true,
-    "has_2x_free": true,
-    "has_hr": false
+    "has_2x_free": true
   },
   "category": {
     "movie": [
@@ -52,13 +51,13 @@
       "parser": "CssSelector",
       "method": "GET",
       "path": "torrents.php",
-      "list": {
-        "selector": "table.torrents tr:has(table.torrentname)"
-      },
       "params": {
         "search": [
           "{keyword}"
         ]
+      },
+      "list": {
+        "selector": "table.torrents tr:has(table.torrentname)"
       },
       "fields": {
         "id": {

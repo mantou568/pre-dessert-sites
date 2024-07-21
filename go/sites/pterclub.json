@@ -1,10 +1,11 @@
 {
-  "id": "ubits",
-  "name": "UBits",
-  "domain": "https://ubits.club/",
+  "id": "pterclub",
+  "name": "猫站",
+  "domain": "https://pterclub.com/",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
+  "sign_in_required": true,
   "price": {
     "has_free": true,
     "has_2x_free": true
@@ -14,29 +15,29 @@
       {
         "id": 401,
         "cat": "Movies",
-        "desc": "Movies/电影"
+        "desc": "电影 (Movie)"
       }
     ],
     "tv": [
       {
         "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
-      },
-      {
-        "id": 402,
         "cat": "TV",
-        "desc": "TV Series/连续剧"
+        "desc": "电视剧 (TV Play)"
       },
       {
         "id": 403,
+        "cat": "TV/Anime",
+        "desc": "动漫 (Anime)"
+      },
+      {
+        "id": 405,
         "cat": "TV",
-        "desc": "TV Shows/综艺"
+        "desc": "综艺 (TV Show)"
+      },
+      {
+        "id": 402,
+        "cat": "TV/Documentary",
+        "desc": "纪录片 (Documentary)"
       }
     ]
   },
@@ -78,15 +79,7 @@
           ]
         },
         "title": {
-          "any": [
-            {
-              "selector": "a[href*=\"details.php?id=\"]"
-            },
-            {
-              "selector": "a[title][href*=\"details.php?id=\"]",
-              "attribute": "title"
-            }
-          ]
+          "selector": "td:nth-child(2) > div > div:nth-child(1) > a > b"
         },
         "details": {
           "selector": "a[href*=\"details.php?id=\"]",
@@ -121,6 +114,15 @@
           "attribute": "title",
           "optional": true
         },
+        "date": {
+          "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
+          "filters": [
+            {
+              "name": "dateparse",
+              "args": "%Y-%m-%d %H:%M:%S"
+            }
+          ]
+        },
         "downloadvolumefactor": {
           "case": {
             "img.pro_free": 0,
@@ -139,51 +141,91 @@
             "*": 1
           }
         },
-        "tags": {
-          "selector": "div > a.torrents-tag"
-        },
-        "subject": {
-          "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
+        "free_deadline": {
+          "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
+          "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
+          "selector": "div > b > span[title]",
+          "attribute": "title",
           "filters": [
             {
-              "name": "split",
-              "args": [
-                "\n",
-                -1
-              ]
+              "name": "dateparse",
+              "args": "%Y-%m-%d %H:%M:%S"
             }
           ]
         },
         "description": {
-          "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1)",
-          "remove": "span,a,img,font,b",
+          "selector": "td:nth-child(2) > div > div:nth-child(2) > span"
+        },
+        "labels": {
+          "selector": "td:nth-child(2) > div > div:nth-child(2) > a.torrents-tag"
+        }
+      }
+    },
+    "details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "details.php",
+      "params": {
+        "id": [
+          "{id}"
+        ],
+        "hit": [
+          "1"
+        ]
+      },
+      "fields": {
+        "absent": {
+          "selector": "//td[text()='没有该ID的种子']",
           "filters": [
             {
-              "name": "split",
-              "args": [
-                "\n",
-                -1
-              ]
+              "name": "regex",
+              "args": ".+"
             }
           ]
         },
-        "labels": {
-          "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > span[title=\"\"]"
+        "free": {
+          "any": [
+            {
+              "selector": "//h1[@id='top']/b/font[@class='free']"
+            },
+            {
+              "selector": "//h1[@id='top']/b/font[@class='twoupfree']"
+            }
+          ],
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
         },
-        "hr_days": {
-          "selector": "img.hitandrun",
-          "attribute": "title",
+        "2x_free": {
+          "selector": "//h1[@id='top']/b/font[@class='twoupfree']",
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
+        },
+        "hr": {
+          "selector": "//h1[@id='top']/img[@class='hitandrun']",
+          "filters": [
+            {
+              "name": "regex",
+              "args": ".+"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "(//td[@align='left' and @class='rowfollow' and @valign='top']/b[1])[3]",
           "filters": [
             {
               "name": "re_search",
               "args": [
-                "\\d*",
+                "\\d+",
                 0
               ]
-            },
-            {
-              "name": "default_value",
-              "args": "3"
             }
           ]
         }

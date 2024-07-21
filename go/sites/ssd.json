@@ -1,0 +1,207 @@
+{
+  "id": "ssd",
+  "name": "春天",
+  "domain": "https://springsunday.net/",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "sign_in_required": true,
+  "price": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 501,
+        "cat": "Movies",
+        "desc": "Movies(电影)"
+      }
+    ],
+    "tv": [
+      {
+        "id": 502,
+        "cat": "TV",
+        "desc": "TV Series(剧集)"
+      },
+      {
+        "id": 503,
+        "cat": "TV/Documentary",
+        "desc": "Docs(纪录)"
+      },
+      {
+        "id": 504,
+        "cat": "TV/Anime",
+        "desc": "Animations(动画)"
+      },
+      {
+        "id": 505,
+        "cat": "TV",
+        "desc": "TV Shows(综艺)"
+      }
+    ]
+  },
+  "requests": {
+    "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "torrents.php",
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
+      },
+      "list": {
+        "selector": "table.torrents tr:has(table.torrentname)"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href*=\"details.php?id=\"]",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        },
+        "category": {
+          "selector": "a[href*=\"?cat=\"]",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "querystring",
+              "args": "cat"
+            }
+          ]
+        },
+        "title_default": {
+          "selector": "a[href*=\"details.php?id=\"]"
+        },
+        "title_optional": {
+          "optional": true,
+          "selector": "a[title][href*=\"details.php?id=\"]",
+          "attribute": "title"
+        },
+        "title": {
+          "text": "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
+        },
+        "details": {
+          "selector": "a[href*=\"details.php?id=\"]",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*=\"download.php?id=\"]",
+          "attribute": "href"
+        },
+        "imdbid": {
+          "selector": "a[href*=\"imdb.com/title/tt\"]",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "tt\\d+",
+                0
+              ]
+            }
+          ]
+        },
+        "date_elapsed": {
+          "selector": "td.rowfollow:nth-last-child(6) > span",
+          "optional": true
+        },
+        "date_added": {
+          "selector": "td.rowfollow:nth-last-child(6) > span",
+          "attribute": "title",
+          "optional": true
+        },
+        "date": {
+          "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
+          "filters": [
+            {
+              "name": "dateparse",
+              "args": "%Y-%m-%d %H:%M:%S"
+            }
+          ]
+        },
+        "size": {
+          "selector": "td.rowfollow:nth-last-child(5)"
+        },
+        "seeders": {
+          "selector": "td.rowfollow:nth-last-child(4)"
+        },
+        "leechers": {
+          "selector": "td.rowfollow:nth-last-child(3)"
+        },
+        "grabs": {
+          "selector": "td.rowfollow:nth-last-child(2)"
+        },
+        "downloadvolumefactor": {
+          "case": {
+            "span.torrent-pro-icon.torrent-pro-free": 0,
+            "span.torrent-pro-icon.torrent-pro-twoupfree": 0,
+            "span.torrent-pro-icon.torrent-pro-halfdown": 0.5,
+            "span.torrent-pro-icon.torrent-pro-twouphalfdown": 0.5,
+            "span.torrent-pro-icon.torrent-pro-thirtypercent": 0.3,
+            "*": 1
+          }
+        },
+        "uploadvolumefactor": {
+          "case": {
+            "span.torrent-pro-icon.torrent-pro-twouphalfdown": 2,
+            "span.torrent-pro-icon.torrent-pro-twoupfree": 2,
+            "span.torrent-pro-icon.torrent-pro-twoup": 2,
+            "*": 1
+          }
+        },
+        "free_deadline": {
+          "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
+          "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
+          "selector": "img.pro_free,img.pro_free2up",
+          "attribute": "onmouseover",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+-\\d+-\\d+ \\d+:\\d+:\\d+",
+                0
+              ]
+            },
+            {
+              "name": "dateparse",
+              "args": "%Y-%m-%d %H:%M:%S"
+            }
+          ]
+        },
+        "description": {
+          "selector": "table.torrentname > tr > td > div.torrent-smalldescr > span",
+          "remove": "a, b, img, span",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+-\\d+-\\d+ \\d+:\\d+:\\d+",
+                0
+              ]
+            },
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                0
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "selector": "table.torrentname > tr > td > div.torrent-smalldescr > a > span"
+        }
+      }
+    }
+  }
+}
