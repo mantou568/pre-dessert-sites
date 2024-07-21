@@ -319,7 +319,7 @@
       }
     },
     "sys_unread_messages": {
-      "parser": "None",
+      "parser": "XPath",
       "method": "GET",
       "path": "messages.php?action=viewmailbox&box=-2&unread=yes",
       "fields_ref": "user_unread_messages"

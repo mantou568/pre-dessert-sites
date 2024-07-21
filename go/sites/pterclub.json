@@ -178,11 +178,12 @@
       },
       "fields": {
         "absent": {
-          "selector": "//td[text()='没有该ID的种子']",
+          "selector": "*",
+          "selection": "html",
           "filters": [
             {
               "name": "regex",
-              "args": ".+"
+              "args": "没有该ID的种子"
             }
           ]
         },
