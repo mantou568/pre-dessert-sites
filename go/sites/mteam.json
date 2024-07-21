@@ -227,7 +227,8 @@
       "path": "api/msg/search",
       "use_api": true,
       "required_headers": [
-        "x-api-key"
+        "x-api-key",
+        "authorization"
       ],
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -275,7 +276,8 @@
       "path": "api/msg/markRead",
       "use_api": true,
       "required_headers": [
-        "x-api-key"
+        "x-api-key",
+        "authorization"
       ],
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -328,7 +330,8 @@
       "path": "api/torrent/detail",
       "use_api": true,
       "required_headers": [
-        "x-api-key"
+        "x-api-key",
+        "authorization"
       ],
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded"
