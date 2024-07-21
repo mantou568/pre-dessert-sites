@@ -5,6 +5,9 @@
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
+  "required": {
+    "cookie": true
+  },
   "price": {
     "has_free": true,
     "has_2x_free": true

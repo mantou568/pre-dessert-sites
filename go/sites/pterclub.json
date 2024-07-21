@@ -5,7 +5,10 @@
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
-  "sign_in_required": true,
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
   "price": {
     "has_free": true,
     "has_2x_free": true

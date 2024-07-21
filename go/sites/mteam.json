@@ -7,7 +7,9 @@
   "public": false,
   "schema": "mTorrent",
   "reuse_schema": "NexusPHP",
-  "user_id_required": true,
+  "required": {
+    "user_id": true
+  },
   "price": {
     "has_free": true,
     "has_2x_free": true

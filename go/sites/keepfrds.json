@@ -5,6 +5,9 @@
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
+  "required": {
+    "cookie": true
+  },
   "price": {
     "has_free": true,
     "has_2x_free": true
@@ -177,6 +180,35 @@
         },
         "count": {
           "selector": "//*[@id='info_block']/tbody/tr/td/table/tbody/tr/td[1]/a[6]/text()"
+        }
+      }
+    },
+    "latest_notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "title": {
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table[2]/tbody/tr/td/div/a[1]/*[self::b or self::strong]"
+        },
+        "date": {
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table[2]/tbody/tr/td/div/a[1]/text()",
+          "remove": "b",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}\\.\\d{2}\\.\\d{2})",
+                1
+              ]
+            },
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "content": {
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table[2]/tbody/tr/td/div/div[1]"
         }
       }
     }
