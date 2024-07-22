@@ -198,8 +198,7 @@
           ],
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },
@@ -207,8 +206,7 @@
           "selector": "//h1[@id='top']/b/font[@class='twoupfree']",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },
@@ -216,8 +214,7 @@
           "selector": "//h1[@id='top']/img[@class='hitandrun']",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },

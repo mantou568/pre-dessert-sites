@@ -310,8 +310,7 @@
           "selector": "//td[text()='没有该ID的种子']",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },
@@ -326,8 +325,7 @@
           ],
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },
@@ -335,8 +333,7 @@
           "selector": "//font[@class='twoup'][text()='2X']",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },
@@ -344,8 +341,7 @@
           "selector": "//font[@color='red'][text()='Hit&Run']",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },

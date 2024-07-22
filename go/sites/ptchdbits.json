@@ -225,8 +225,7 @@
           "selector": "//td[text()='没有该ID的种子']",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },
@@ -234,8 +233,7 @@
           "selector": "//h1[@id='top']/img[@class='pro_free']",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },
@@ -243,8 +241,7 @@
           "selector": "//b[contains(text(),'H&R:')]",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },

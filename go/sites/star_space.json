@@ -260,6 +260,87 @@
           "selector": "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td/table/tbody/tr[3]/td[2]"
         }
       }
+    },
+    "latest_notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "title": {
+          "selector": "//*[@id='tr_list' and position()=1]/td/a/text()",
+          "remove": "img",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "【(.*)】(.*)",
+                2
+              ]
+            }
+          ]
+        },
+        "date": {
+          "selector": "//*[@id='tr_list' and position()=1]/td/a/text()",
+          "remove": "img",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "【(.*)】(.*)",
+                1
+              ]
+            },
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "content": {
+          "selector": "//*[@class='row_list' and position()=1]/td[2]"
+        }
+      }
+    },
+    "details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "p_torrent/video_detail.php",
+      "params": {
+        "tid": [
+          "{id}"
+        ]
+      },
+      "fields": {
+        "absent": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "种子不存在"
+            }
+          ]
+        },
+        "free": {
+          "selector": "//span[@id='free']",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "//span[@id='user_info']/img/following-sibling::text()[1]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        }
+      }
     }
   }
 }

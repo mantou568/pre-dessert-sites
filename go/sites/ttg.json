@@ -318,8 +318,7 @@
           "selector": "//img[@class='topic'][contains(@src,'ico_free.gif')]",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },
@@ -327,8 +326,7 @@
           "selector": "//img[@src='/pic/hit_run.gif']",
           "filters": [
             {
-              "name": "regex",
-              "args": ".+"
+              "name": "not_blank"
             }
           ]
         },
