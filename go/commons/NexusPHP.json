@@ -302,27 +302,24 @@
         }
       }
     },
-    "user_unread_messages": {
+    "unread_messages": {
       "parser": "XPath",
       "method": "GET",
-      "path": "messages.php?action=viewmailbox&box=1&unread=yes",
+      "path": "messages.php?unread=yes",
       "list": {
-        "selector": "//tr[not(./td/img[@alt='Read'])]/td/a[contains(@href, 'viewmessage')]",
-        "next_page": {
-          "selector": "//a[contains(.//text(), '下一页') or contains(.//text(), '下一頁')]/@href"
-        }
+        "selector": "//form[@action='messages.php']//tr[position() > 1][.//td[a[contains(@href, 'messages.php')]]]"
       },
       "fields": {
+        "head": {
+          "selector": "td[2]/a/text()"
+        },
+        "date": {
+          "selector": "td[4]/span/text()"
+        },
         "link": {
-          "selector": "@href"
+          "selector": "td[2]/a/@href"
         }
       }
-    },
-    "sys_unread_messages": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "messages.php?action=viewmailbox&box=-2&unread=yes",
-      "fields_ref": "user_unread_messages"
     },
     "unread_message_detail": {
       "parser": "XPath",
@@ -333,12 +330,7 @@
           "selector": "//h1/text()|//div[@class='layui-card-header']/span[1]/text()"
         },
         "date": {
-          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[2]/td[2]|//div[@class='layui-card-header']/span[2]/span[2]",
-          "filters": [
-            {
-              "name": "timestamp"
-            }
-          ]
+          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[2]/td[2]|//div[@class='layui-card-header']/span[2]/span[2]"
         },
         "content": {
           "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[3]/td|//div[contains(@class,'layui-card-body')]"

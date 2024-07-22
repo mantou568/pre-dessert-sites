@@ -1,0 +1,265 @@
+{
+  "id": "star_space",
+  "name": "影",
+  "domain": "https://star-space.net/",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "StarSpace",
+  "reuse_schema": "NexusPHP",
+  "required": {
+    "cookie": true
+  },
+  "price": {
+    "has_free": true
+  },
+  "requests": {
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "is_login": {
+          "any": [
+            {
+              "selector": "//a[contains(@href, 'logout') or contains(@data-url, 'logout') or contains(@href, 'mybonus') or contains(@onclick, 'logout') or contains(@href, 'usercp')]"
+            },
+            {
+              "selector": "//form[contains(@action, 'logout')]"
+            },
+            {
+              "selector": "//div[@class='user-info-side']"
+            }
+          ],
+          "filters": [
+            {
+              "name": "regex",
+              "args": "^[^\\\\s]+$"
+            }
+          ]
+        },
+        "id": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "/p_user/user_detail.php\\?uid=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "name": {
+          "selector": "//*[@id='user_info']/a/span"
+        },
+        "uploaded": {
+          "selector": "/html/body/table[2]/tbody/tr/td/table[1]/tbody/tr[2]/td/span[6]/a",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "上传：(.*)",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "/html/body/table[2]/tbody/tr/td/table[1]/tbody/tr[2]/td/span[7]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "下载：(.*)",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "bonus": {
+          "selector": "/html/body/table[2]/tbody/tr/td/table[1]/tbody/tr[2]/td/span[4]/a",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "([\\d,.]+)`",
+                1
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "p_torrent/video_list_t.php",
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
+      },
+      "list": {
+        "selector": "table#tb_content table#table_tm tr#tr_list"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href*=\"video_detail.php?tid=\"]",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        },
+        "category": {
+          "selector": "td#tm_td_cat:nth-child(1) tr#table_cat_tr2 td",
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "电影": "mo",
+                "电视": "tv",
+                "动画": "an",
+                "纪录片": "do",
+                "MV": "do",
+                "体育": "sp",
+                "综艺": "ot"
+              }
+            }
+          ]
+        },
+        "title": {
+          "selector": "td#tm_td_info div#tm_div_name a"
+        },
+        "details": {
+          "selector": "a[href*=\"video_detail.php?tid=\"]",
+          "attribute": "href"
+        },
+        "poster": {
+          "selector": "img[data-orig]",
+          "attribute": "data-orig"
+        },
+        "download": {
+          "selector": "a[href*=\"download.php?tid=\"]",
+          "attribute": "href"
+        },
+        "size": {
+          "selector": "td#tm_td_size"
+        },
+        "grabs": {
+          "selector": "td#tm_td_complete a"
+        },
+        "seeders": {
+          "selector": "td#tm_td_seed a"
+        },
+        "leechers": {
+          "selector": "td#tm_td_dl a"
+        },
+        "date_elapsed": {
+          "selector": "td.rowfollow:nth-child(4) > span",
+          "optional": true
+        },
+        "date_added": {
+          "selector": "td#tm_td_uploader",
+          "remove": "span"
+        },
+        "date": {
+          "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
+          "filters": [
+            {
+              "name": "dateparse",
+              "args": "%Y-%m-%d %H:%M:%S"
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "case": {
+            "img.pro_free": 0,
+            "img.pro_free2up": 0,
+            "img.pro_50pctdown": 0.5,
+            "img.pro_50pctdown2up": 0.5,
+            "img.pro_30pctdown": 0.3,
+            "*": 1
+          }
+        },
+        "uploadvolumefactor": {
+          "case": {
+            "img.pro_50pctdown2up": 2,
+            "img.pro_free2up": 2,
+            "img.pro_2up": 2,
+            "*": 1
+          }
+        },
+        "free_deadline": {
+          "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
+          "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
+          "selector": "div > b > span[title]",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "dateparse",
+              "args": "%Y-%m-%d %H:%M:%S"
+            }
+          ]
+        },
+        "tags": {
+          "selector": "div > a.torrents-tag"
+        },
+        "subject": {
+          "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
+          "contents": -1
+        },
+        "description": {
+          "selector": "td#tm_td_info div#tm_div_desc"
+        },
+        "labels": {
+          "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > span[title=\"\"]"
+        }
+      }
+    },
+    "unread_messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "p_sms/msg_in.php",
+      "list": {
+        "selector": "//tr[@id='tr_list'][td/i[not(contains(@class, 'fa-envelope-close'))]]"
+      },
+      "fields": {
+        "id": {
+          "selector": "td[1]/input/@value"
+        },
+        "head": {
+          "selector": "td[3]/a"
+        },
+        "date": {
+          "selector": "td[5]"
+        },
+        "link": {
+          "selector": "td[3]/a/@href"
+        }
+      }
+    },
+    "unread_message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "content": {
+          "selector": "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td/table/tbody/tr[3]/td[2]"
+        }
+      }
+    }
+  }
+}
