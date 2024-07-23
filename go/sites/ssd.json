@@ -122,15 +122,6 @@
           "attribute": "title",
           "optional": true
         },
-        "date": {
-          "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
-          "filters": [
-            {
-              "name": "dateparse",
-              "args": "%Y-%m-%d %H:%M:%S"
-            }
-          ]
-        },
         "size": {
           "selector": "td.rowfollow:nth-last-child(5)"
         },
@@ -160,25 +151,6 @@
             "span.torrent-pro-icon.torrent-pro-twoup": 2,
             "*": 1
           }
-        },
-        "free_deadline": {
-          "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
-          "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
-          "selector": "img.pro_free,img.pro_free2up",
-          "attribute": "onmouseover",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+-\\d+-\\d+ \\d+:\\d+:\\d+",
-                0
-              ]
-            },
-            {
-              "name": "dateparse",
-              "args": "%Y-%m-%d %H:%M:%S"
-            }
-          ]
         },
         "description": {
           "selector": "table.torrentname > tr > td > div.torrent-smalldescr > span",

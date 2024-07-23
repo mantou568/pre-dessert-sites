@@ -178,15 +178,11 @@
           "attribute": "title",
           "filters": [
             {
-              "name": "re_search",
+              "name": "not_blank",
               "args": [
-                "\\d*",
-                0
+                "3",
+                "0"
               ]
-            },
-            {
-              "name": "default_value",
-              "args": "3"
             }
           ]
         }

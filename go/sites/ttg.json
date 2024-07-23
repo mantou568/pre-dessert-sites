@@ -216,15 +216,6 @@
           "selector": "td:nth-child(5) > nobr",
           "optional": true
         },
-        "date": {
-          "selector": "td:nth-child(5)",
-          "filters": [
-            {
-              "name": "dateparse",
-              "args": "%Y-%m-%d%H:%M:%S"
-            }
-          ]
-        },
         "imdbid": {
           "selector": "span.imdb_rate > a",
           "attribute": "href",
@@ -251,25 +242,6 @@
             "img[alt=\"200%\"]": 2,
             "*": 1
           }
-        },
-        "free_deadline": {
-          "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
-          "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
-          "selector": "span[onclick]",
-          "attribute": "onclick",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+年\\d+月\\d+日\\d+点\\d+分",
-                0
-              ]
-            },
-            {
-              "name": "dateparse",
-              "args": "%Y年%m月%d日%H点%M分"
-            }
-          ]
         },
         "minimumratio": {
           "case": {

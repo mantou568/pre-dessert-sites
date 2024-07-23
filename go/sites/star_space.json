@@ -175,15 +175,6 @@
           "selector": "td#tm_td_uploader",
           "remove": "span"
         },
-        "date": {
-          "text": "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}",
-          "filters": [
-            {
-              "name": "dateparse",
-              "args": "%Y-%m-%d %H:%M:%S"
-            }
-          ]
-        },
         "downloadvolumefactor": {
           "case": {
             "img.pro_free": 0,
@@ -201,18 +192,6 @@
             "img.pro_2up": 2,
             "*": 1
           }
-        },
-        "free_deadline": {
-          "default_value": "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}",
-          "default_value_format": "%Y-%m-%d %H:%M:%S.%f",
-          "selector": "div > b > span[title]",
-          "attribute": "title",
-          "filters": [
-            {
-              "name": "dateparse",
-              "args": "%Y-%m-%d %H:%M:%S"
-            }
-          ]
         },
         "tags": {
           "selector": "div > a.torrents-tag"
@@ -337,6 +316,24 @@
                 "\\d+",
                 0
               ]
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "p_torrent/torrent_user.php?pop=8",
+      "list": {
+        "selector": "//table[@id='table_tm']/tbody/tr[@id='tr_list']"
+      },
+      "fields": {
+        "size": {
+          "selector": "td[4]",
+          "filters": [
+            {
+              "name": "byte_size"
             }
           ]
         }
