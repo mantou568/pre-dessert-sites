@@ -42,31 +42,7 @@
   },
   "requests": {
     "search": {
-      "parser": "CssSelector",
-      "method": "GET",
-      "path": "torrents.php",
-      "params": {
-        "search": [
-          "{keyword}"
-        ]
-      },
-      "list": {
-        "selector": "table.torrents tr:has(table.torrentname)"
-      },
       "fields": {
-        "id": {
-          "selector": "a[href*=\"details.php?id=\"]",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
-            }
-          ]
-        },
         "category": {
           "selector": "a[href*=\"cat=\"]",
           "attribute": "href",
@@ -76,25 +52,6 @@
               "args": "cat"
             }
           ]
-        },
-        "title": {
-          "any": [
-            {
-              "selector": "a[href*=\"details.php?id=\"]"
-            },
-            {
-              "selector": "a[title][href*=\"details.php?id=\"]",
-              "attribute": "title"
-            }
-          ]
-        },
-        "details": {
-          "selector": "a[href*=\"details.php?id=\"]",
-          "attribute": "href"
-        },
-        "download": {
-          "selector": "a[href*=\"download.php?id=\"]",
-          "attribute": "href"
         },
         "imdbid": {
           "selector": "a[href*=\"imdb.com/title/tt\"]",
@@ -110,26 +67,14 @@
           ]
         },
         "date_elapsed": {
-          "selector": "td.rowfollow:nth-child(4)",
+          "selector": "td:nth-child(4)",
           "remove": "br",
           "optional": true
         },
         "date_added": {
-          "selector": "td.rowfollow:nth-child(4)",
+          "selector": "td:nth-child(4)",
           "remove": "br",
           "optional": true
-        },
-        "size": {
-          "selector": "td:nth-child(5)"
-        },
-        "seeders": {
-          "selector": "td:nth-child(6)"
-        },
-        "leechers": {
-          "selector": "td:nth-child(7)"
-        },
-        "grabs": {
-          "selector": "td:nth-child(8)"
         },
         "downloadvolumefactor": {
           "case": {
@@ -164,16 +109,15 @@
         },
         "labels": {
           "selector": "table.torrentname > tr:nth-child(2) > td:nth-child(2) > div#tag > span > font.tag"
-        },
-        "minimumratio": {
-          "text": 0.8
         }
       }
     },
     "seeding_statistics": {
       "parser": "CssSelector",
-      "method": "GET",
-      "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
       "fields": {
         "size": {
           "selector": "*",
@@ -255,7 +199,7 @@
             }
           ]
         },
-        "need_seed_time": {
+        "remaining_inspection_time": {
           "selector": "td:nth-child(7)",
           "filters": [
             {
@@ -294,26 +238,7 @@
       }
     },
     "details": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "details.php",
-      "params": {
-        "id": [
-          "{id}"
-        ],
-        "hit": [
-          "1"
-        ]
-      },
       "fields": {
-        "absent": {
-          "selector": "//td[text()='没有该ID的种子']",
-          "filters": [
-            {
-              "name": "not_blank"
-            }
-          ]
-        },
         "free": {
           "any": [
             {
@@ -342,18 +267,6 @@
           "filters": [
             {
               "name": "not_blank"
-            }
-          ]
-        },
-        "peer_count": {
-          "selector": "//div[@id='peercount']/b[1]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
             }
           ]
         }

@@ -70,88 +70,7 @@
   },
   "requests": {
     "search": {
-      "parser": "CssSelector",
-      "method": "GET",
-      "path": "torrents.php",
-      "params": {
-        "search": [
-          "{keyword}"
-        ]
-      },
-      "list": {
-        "selector": "table.torrents tr:has(table.torrentname)"
-      },
       "fields": {
-        "id": {
-          "selector": "a[href*=\"details.php?id=\"]",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
-            }
-          ]
-        },
-        "category": {
-          "selector": "a[href*=\"?cat=\"]",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "querystring",
-              "args": "cat"
-            }
-          ]
-        },
-        "details": {
-          "selector": "a[href*=\"details.php?id=\"]",
-          "attribute": "href"
-        },
-        "download": {
-          "selector": "a[href*=\"download.php?id=\"]",
-          "attribute": "href"
-        },
-        "size": {
-          "selector": "td:nth-child(5)"
-        },
-        "grabs": {
-          "selector": "td:nth-child(8)"
-        },
-        "seeders": {
-          "selector": "td:nth-child(6)"
-        },
-        "leechers": {
-          "selector": "td:nth-child(7)"
-        },
-        "date_elapsed": {
-          "selector": "td:nth-child(4) > span",
-          "optional": true
-        },
-        "date_added": {
-          "selector": "td:nth-child(4) > span",
-          "attribute": "title",
-          "optional": true
-        },
-        "downloadvolumefactor": {
-          "case": {
-            "img.pro_free": 0,
-            "img.pro_free2up": 0,
-            "img.pro_50pctdown": 0.5,
-            "img.pro_50pctdown2up": 0.5,
-            "img.pro_30pctdown": 0.3,
-            "*": 1
-          }
-        },
-        "uploadvolumefactor": {
-          "case": {
-            "img.pro_50pctdown2up": 2,
-            "img.pro_free2up": 2,
-            "img.pro_2up": 2,
-            "*": 1
-          }
-        },
         "description": {
           "selector": "a[title][href*=\"details.php?id=\"]",
           "attribute": "title"
@@ -166,9 +85,10 @@
       }
     },
     "seeding_statistics": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "userdetails.php?id={userId}",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
       "fields": {
         "size": {
           "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr[18]/td[2]/text()",
@@ -184,9 +104,6 @@
       }
     },
     "latest_notice": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "",
       "fields": {
         "title": {
           "selector": "//*[@id='outer']/table/tbody/tr/td/table[2]/tbody/tr/td/div/a[1]/*[self::b or self::strong]"

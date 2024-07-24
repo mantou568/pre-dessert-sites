@@ -95,10 +95,6 @@
           "selector": "a[href*=\"details.php?id=\"]",
           "attribute": "href"
         },
-        "poster": {
-          "selector": "img[data-orig]",
-          "attribute": "data-orig"
-        },
         "download": {
           "selector": "a[href*=\"download.php?id=\"]",
           "attribute": "href"
@@ -142,21 +138,6 @@
             "*": 1
           }
         },
-        "tags": {
-          "selector": "div > a.torrents-tag"
-        },
-        "subject": {
-          "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
-          "filters": [
-            {
-              "name": "split",
-              "args": [
-                "\n",
-                -1
-              ]
-            }
-          ]
-        },
         "description": {
           "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1)",
           "remove": "span,a,img,font,b",
@@ -185,6 +166,43 @@
               ]
             }
           ]
+        }
+      }
+    },
+    "my_hr": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "myhr.php?status=1",
+      "list": {
+        "selector": "#hr-table tr:nth-of-type(n+2)"
+      },
+      "fields": {
+        "id": {
+          "selector": "td:nth-of-type(1)"
+        },
+        "name": {
+          "selector": "td:nth-of-type(2)"
+        },
+        "uploaded": {
+          "selector": "td:nth-of-type(3)"
+        },
+        "downloaded": {
+          "selector": "td:nth-of-type(4)"
+        },
+        "share_ratio": {
+          "selector": "td:nth-of-type(5)"
+        },
+        "need_seed_time": {
+          "selector": "td:nth-of-type(6)"
+        },
+        "downloaded_time": {
+          "selector": "td:nth-of-type(7)"
+        },
+        "remaining_inspection_time": {
+          "selector": "td:nth-of-type(8)"
+        },
+        "note": {
+          "selector": "td:nth-of-type(9)"
         }
       }
     }

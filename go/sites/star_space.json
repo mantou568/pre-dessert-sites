@@ -14,29 +14,7 @@
   },
   "requests": {
     "user_basic_info": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "",
       "fields": {
-        "is_login": {
-          "any": [
-            {
-              "selector": "//a[contains(@href, 'logout') or contains(@data-url, 'logout') or contains(@href, 'mybonus') or contains(@onclick, 'logout') or contains(@href, 'usercp')]"
-            },
-            {
-              "selector": "//form[contains(@action, 'logout')]"
-            },
-            {
-              "selector": "//div[@class='user-info-side']"
-            }
-          ],
-          "filters": [
-            {
-              "name": "regex",
-              "args": "^[^\\\\s]+$"
-            }
-          ]
-        },
         "id": {
           "selector": "*",
           "selection": "html",
@@ -98,14 +76,7 @@
       }
     },
     "search": {
-      "parser": "CssSelector",
-      "method": "GET",
       "path": "p_torrent/video_list_t.php",
-      "params": {
-        "search": [
-          "{keyword}"
-        ]
-      },
       "list": {
         "selector": "table#tb_content table#table_tm tr#tr_list"
       },
@@ -147,10 +118,6 @@
           "selector": "a[href*=\"video_detail.php?tid=\"]",
           "attribute": "href"
         },
-        "poster": {
-          "selector": "img[data-orig]",
-          "attribute": "data-orig"
-        },
         "download": {
           "selector": "a[href*=\"download.php?tid=\"]",
           "attribute": "href"
@@ -175,31 +142,6 @@
           "selector": "td#tm_td_uploader",
           "remove": "span"
         },
-        "downloadvolumefactor": {
-          "case": {
-            "img.pro_free": 0,
-            "img.pro_free2up": 0,
-            "img.pro_50pctdown": 0.5,
-            "img.pro_50pctdown2up": 0.5,
-            "img.pro_30pctdown": 0.3,
-            "*": 1
-          }
-        },
-        "uploadvolumefactor": {
-          "case": {
-            "img.pro_50pctdown2up": 2,
-            "img.pro_free2up": 2,
-            "img.pro_2up": 2,
-            "*": 1
-          }
-        },
-        "tags": {
-          "selector": "div > a.torrents-tag"
-        },
-        "subject": {
-          "selector": "td.embedded:nth-child(2) > div > div:nth-child(2) > span",
-          "contents": -1
-        },
         "description": {
           "selector": "td#tm_td_info div#tm_div_desc"
         },
@@ -209,8 +151,6 @@
       }
     },
     "unread_messages": {
-      "parser": "XPath",
-      "method": "GET",
       "path": "p_sms/msg_in.php",
       "list": {
         "selector": "//tr[@id='tr_list'][td/i[not(contains(@class, 'fa-envelope-close'))]]"
@@ -231,9 +171,6 @@
       }
     },
     "unread_message_detail": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "",
       "fields": {
         "content": {
           "selector": "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td/table/tbody/tr[3]/td[2]"
@@ -241,9 +178,6 @@
       }
     },
     "latest_notice": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "",
       "fields": {
         "title": {
           "selector": "//*[@id='tr_list' and position()=1]/td/a/text()",
@@ -280,8 +214,6 @@
       }
     },
     "details": {
-      "parser": "XPath",
-      "method": "GET",
       "path": "p_torrent/video_detail.php",
       "params": {
         "tid": [
@@ -322,9 +254,10 @@
       }
     },
     "seeding_statistics": {
-      "parser": "XPath",
-      "method": "GET",
       "path": "p_torrent/torrent_user.php?pop=8",
+      "disabled_extends": {
+        "headers": true
+      },
       "list": {
         "selector": "//table[@id='table_tm']/tbody/tr[@id='tr_list']"
       },

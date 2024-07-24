@@ -147,14 +147,15 @@
             }
           ]
         },
-        "description_free_forever": {
-          "selector": "div.name_left > a > b > font > span"
-        },
-        "description_normal": {
-          "selector": "div.name_left > a > b > span"
-        },
         "description": {
-          "text": "{% if fields['description_free_forever'] %}{{ fields['description_free_forever'] }}{% else %}{{ fields['description_normal'] }}{% endif %}"
+          "any": [
+            {
+              "selector": "div.name_left > a > b > font > span"
+            },
+            {
+              "selector": "div.name_left > a > b > span"
+            }
+          ]
         },
         "labels": {
           "selector": "div.name_left > span > b"
@@ -183,9 +184,6 @@
         "download": {
           "selector": "a.dl_a",
           "attribute": "href"
-        },
-        "files": {
-          "selector": "td:nth-child(3)"
         },
         "size": {
           "selector": "td:nth-child(7)"
@@ -241,18 +239,6 @@
           "case": {
             "img[alt=\"200%\"]": 2,
             "*": 1
-          }
-        },
-        "minimumratio": {
-          "case": {
-            "img[title=\"Hit and Run\"]": 1,
-            "*": 0
-          }
-        },
-        "minimumseedtime": {
-          "case": {
-            "img[title=\"Hit and Run\"]": 216000,
-            "*": 0
           }
         },
         "hr_days": {

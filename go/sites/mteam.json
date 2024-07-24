@@ -30,17 +30,26 @@
         "id": {
           "selector": "id"
         },
+        "category": {
+          "selector": "category"
+        },
         "title": {
           "selector": "name"
         },
         "details": {
-          "selector": "smallDescr"
-        },
-        "poster": {
-          "selector": "imageList.0"
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "detail/"
+            }
+          ]
         },
         "size": {
           "selector": "size"
+        },
+        "grabs": {
+          "selector": "status.timesCompleted"
         },
         "seeders": {
           "selector": "status.seeders"
@@ -53,20 +62,44 @@
         },
         "downloadvolumefactor": {
           "selector": "status.discount",
-          "case": {
-            "FREE": 0,
-            "PERCENT_50": 0.5,
-            "PERCENT_70": 0.3,
-            "NORMAL": 1
-          }
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "FREE": "0",
+                "PERCENT_50": "0.5",
+                "PERCENT_70": "0.3",
+                "NORMAL": "1"
+              }
+            }
+          ]
         },
         "uploadvolumefactor": {
-          "case": {
-            "": 1
-          }
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
         },
-        "grabs": {
-          "selector": "status.timesCompleted"
+        "description": {
+          "selector": "smallDescr"
+        },
+        "labels": {
+          "selector": "labels",
+          "array": true,
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "0": "",
+                "4": "中字",
+                "5": "DIY|中字",
+                "6": "国配|中字",
+                "7": "DIY|国配|中字"
+              }
+            }
+          ]
         }
       }
     },

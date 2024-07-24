@@ -46,94 +46,9 @@
   },
   "requests": {
     "search": {
-      "parser": "CssSelector",
-      "method": "GET",
-      "path": "torrents.php",
-      "params": {
-        "search": [
-          "{keyword}"
-        ]
-      },
-      "list": {
-        "selector": "table.torrents tr:has(table.torrentname)"
-      },
       "fields": {
-        "id": {
-          "selector": "a[href*=\"details.php?id=\"]",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
-            }
-          ]
-        },
-        "category": {
-          "selector": "a[href*=\"?cat=\"]",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "querystring",
-              "args": "cat"
-            }
-          ]
-        },
         "title": {
           "selector": "td:nth-child(2) > div > div:nth-child(1) > a > b"
-        },
-        "details": {
-          "selector": "a[href*=\"details.php?id=\"]",
-          "attribute": "href"
-        },
-        "poster": {
-          "selector": "img[data-orig]",
-          "attribute": "data-orig"
-        },
-        "download": {
-          "selector": "a[href*=\"download.php?id=\"]",
-          "attribute": "href"
-        },
-        "size": {
-          "selector": "td.rowfollow:nth-child(5)"
-        },
-        "grabs": {
-          "selector": "td.rowfollow:nth-child(8)"
-        },
-        "seeders": {
-          "selector": "td.rowfollow:nth-child(6)"
-        },
-        "leechers": {
-          "selector": "td.rowfollow:nth-child(7)"
-        },
-        "date_elapsed": {
-          "selector": "td.rowfollow:nth-child(4) > span",
-          "optional": true
-        },
-        "date_added": {
-          "selector": "td.rowfollow:nth-child(4) > span",
-          "attribute": "title",
-          "optional": true
-        },
-        "downloadvolumefactor": {
-          "case": {
-            "img.pro_free": 0,
-            "img.pro_free2up": 0,
-            "img.pro_50pctdown": 0.5,
-            "img.pro_50pctdown2up": 0.5,
-            "img.pro_30pctdown": 0.3,
-            "*": 1
-          }
-        },
-        "uploadvolumefactor": {
-          "case": {
-            "img.pro_50pctdown2up": 2,
-            "img.pro_free2up": 2,
-            "img.pro_2up": 2,
-            "*": 1
-          }
         },
         "description": {
           "selector": "td:nth-child(2) > div > div:nth-child(2) > span"
@@ -144,59 +59,7 @@
       }
     },
     "details": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "details.php",
-      "params": {
-        "id": [
-          "{id}"
-        ],
-        "hit": [
-          "1"
-        ]
-      },
       "fields": {
-        "absent": {
-          "selector": "*",
-          "selection": "html",
-          "filters": [
-            {
-              "name": "regex",
-              "args": "没有该ID的种子"
-            }
-          ]
-        },
-        "free": {
-          "any": [
-            {
-              "selector": "//h1[@id='top']/b/font[@class='free']"
-            },
-            {
-              "selector": "//h1[@id='top']/b/font[@class='twoupfree']"
-            }
-          ],
-          "filters": [
-            {
-              "name": "not_blank"
-            }
-          ]
-        },
-        "2x_free": {
-          "selector": "//h1[@id='top']/b/font[@class='twoupfree']",
-          "filters": [
-            {
-              "name": "not_blank"
-            }
-          ]
-        },
-        "hr": {
-          "selector": "//h1[@id='top']/img[@class='hitandrun']",
-          "filters": [
-            {
-              "name": "not_blank"
-            }
-          ]
-        },
         "peer_count": {
           "selector": "(//td[@align='left' and @class='rowfollow' and @valign='top']/b[1])[3]",
           "filters": [

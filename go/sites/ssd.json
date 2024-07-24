@@ -46,60 +46,7 @@
   },
   "requests": {
     "search": {
-      "parser": "CssSelector",
-      "method": "GET",
-      "path": "torrents.php",
-      "params": {
-        "search": [
-          "{keyword}"
-        ]
-      },
-      "list": {
-        "selector": "table.torrents tr:has(table.torrentname)"
-      },
       "fields": {
-        "id": {
-          "selector": "a[href*=\"details.php?id=\"]",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
-            }
-          ]
-        },
-        "category": {
-          "selector": "a[href*=\"?cat=\"]",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "querystring",
-              "args": "cat"
-            }
-          ]
-        },
-        "title_default": {
-          "selector": "a[href*=\"details.php?id=\"]"
-        },
-        "title_optional": {
-          "optional": true,
-          "selector": "a[title][href*=\"details.php?id=\"]",
-          "attribute": "title"
-        },
-        "title": {
-          "text": "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
-        },
-        "details": {
-          "selector": "a[href*=\"details.php?id=\"]",
-          "attribute": "href"
-        },
-        "download": {
-          "selector": "a[href*=\"download.php?id=\"]",
-          "attribute": "href"
-        },
         "imdbid": {
           "selector": "a[href*=\"imdb.com/title/tt\"]",
           "attribute": "href",
@@ -114,25 +61,25 @@
           ]
         },
         "date_elapsed": {
-          "selector": "td.rowfollow:nth-last-child(6) > span",
+          "selector": "td:nth-last-child(6) > span",
           "optional": true
         },
         "date_added": {
-          "selector": "td.rowfollow:nth-last-child(6) > span",
+          "selector": "td:nth-last-child(6) > span",
           "attribute": "title",
           "optional": true
         },
         "size": {
-          "selector": "td.rowfollow:nth-last-child(5)"
+          "selector": "td:nth-last-child(5)"
         },
         "seeders": {
-          "selector": "td.rowfollow:nth-last-child(4)"
+          "selector": "td:nth-last-child(4)"
         },
         "leechers": {
-          "selector": "td.rowfollow:nth-last-child(3)"
+          "selector": "td:nth-last-child(3)"
         },
         "grabs": {
-          "selector": "td.rowfollow:nth-last-child(2)"
+          "selector": "td:nth-last-child(2)"
         },
         "downloadvolumefactor": {
           "case": {
@@ -178,9 +125,6 @@
       }
     },
     "latest_notice": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "",
       "fields": {
         "title": {
           "selector": "//*[@id='outer']/div[2]/div[1]/div/div[1]/a/span/b"

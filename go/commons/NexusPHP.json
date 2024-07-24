@@ -278,6 +278,119 @@
         }
       }
     },
+    "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "torrents.php",
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
+      },
+      "list": {
+        "selector": "table.torrents tr:has(table.torrentname)"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href*=\"details.php?id=\"]",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        },
+        "category": {
+          "selector": "a[href*=\"?cat=\"]",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "querystring",
+              "args": "cat"
+            }
+          ]
+        },
+        "title": {
+          "any": [
+            {
+              "selector": "a[title][href*=\"details.php?id=\"]",
+              "attribute": "title"
+            },
+            {
+              "selector": "a[href*=\"details.php?id=\"]"
+            }
+          ]
+        },
+        "details": {
+          "selector": "a[href*=\"details.php?id=\"]",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*=\"download.php?id=\"]",
+          "attribute": "href"
+        },
+        "size": {
+          "selector": "td:nth-child(5)"
+        },
+        "grabs": {
+          "selector": "td:nth-child(8)"
+        },
+        "seeders": {
+          "selector": "td:nth-child(6)"
+        },
+        "leechers": {
+          "selector": "td:nth-child(7)"
+        },
+        "date_elapsed": {
+          "selector": "td:nth-child(4) > span",
+          "optional": true
+        },
+        "date_added": {
+          "selector": "td:nth-child(4) > span",
+          "attribute": "title",
+          "optional": true
+        },
+        "downloadvolumefactor": {
+          "case": {
+            "img.pro_free": 0,
+            "img.pro_free2up": 0,
+            "img.pro_50pctdown": 0.5,
+            "img.pro_50pctdown2up": 0.5,
+            "img.pro_30pctdown": 0.3,
+            "*": 1
+          }
+        },
+        "uploadvolumefactor": {
+          "case": {
+            "img.pro_50pctdown2up": 2,
+            "img.pro_free2up": 2,
+            "img.pro_2up": 2,
+            "*": 1
+          }
+        },
+        "description": {
+          "selector": "td:nth-child(2) > table > tbody > tr > td:nth-child(2)",
+          "remove": "span,a,img,font,b",
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "selector": "td:nth-child(2) > span[title=\"\"]",
+          "array": true
+        }
+      }
+    },
     "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
@@ -387,7 +500,11 @@
       "parser": "CssSelector",
       "method": "GET",
       "path": "attendance.php",
-      "success_status_codes": "200,403,500",
+      "success_status_codes": [
+        200,
+        403,
+        500
+      ],
       "fields": {
         "signed_in": {
           "selector": "*",
@@ -415,12 +532,10 @@
       },
       "fields": {
         "absent": {
-          "selector": "*",
-          "selection": "html",
+          "selector": "//td[text()='没有该ID的种子']",
           "filters": [
             {
-              "name": "regex",
-              "args": "没有该ID的种子"
+              "name": "not_blank"
             }
           ]
         },
@@ -466,6 +581,40 @@
               ]
             }
           ]
+        }
+      }
+    },
+    "my_hr": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "myhr.php?hrtype=1",
+      "list": {
+        "selector": "//*[@id='outer']/table/tbody/tr/td/table/tbody/tr[position()>1 and count(td) > 1]"
+      },
+      "fields": {
+        "id": {
+          "selector": "td[1]"
+        },
+        "name": {
+          "selector": "td[2]"
+        },
+        "uploaded": {
+          "selector": "td[3]"
+        },
+        "downloaded": {
+          "selector": "td[4]"
+        },
+        "share_ratio": {
+          "selector": "td[5]"
+        },
+        "need_seed_time": {
+          "selector": "td[6]"
+        },
+        "downloaded_time": {
+          "selector": "td[7]"
+        },
+        "remaining_inspection_time": {
+          "selector": "td[8]"
         }
       }
     }
