@@ -76,6 +76,7 @@
           ]
         },
         "labels": {
+          "array": true,
           "selector": "font.subtitle > div[style] > div.tag"
         }
       }

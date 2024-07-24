@@ -116,6 +116,7 @@
           ]
         },
         "labels": {
+          "array": true,
           "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span.optiontag"
         }
       }

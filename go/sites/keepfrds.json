@@ -76,6 +76,7 @@
           "attribute": "title"
         },
         "labels": {
+          "array": true,
           "selector": "a[title][href*=\"details.php?id=\"] > span"
         },
         "title": {

@@ -52,6 +52,7 @@
           "remove": "span,a,img,font,b"
         },
         "labels": {
+          "array": true,
           "selector": "td:nth-child(2) > table.torrentname > tbody > tr > td:nth-child(2) > span",
           "remove": "svg,a,img,font,b"
         }

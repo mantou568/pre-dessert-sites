@@ -108,6 +108,7 @@
           ]
         },
         "labels": {
+          "array": true,
           "selector": "table.torrentname > tr:nth-child(2) > td:nth-child(2) > div#tag > span > font.tag"
         }
       }

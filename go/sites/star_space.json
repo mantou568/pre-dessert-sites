@@ -146,6 +146,7 @@
           "selector": "td#tm_td_info div#tm_div_desc"
         },
         "labels": {
+          "array": true,
           "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > span[title=\"\"]"
         }
       }

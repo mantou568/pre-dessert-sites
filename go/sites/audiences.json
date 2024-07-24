@@ -75,6 +75,7 @@
           "selector": "td.embedded > span[style]"
         },
         "labels": {
+          "array": true,
           "selector": "td.embedded > span.tags"
         },
         "hr_days": {

@@ -54,6 +54,7 @@
           "selector": "td:nth-child(2) > div > div:nth-child(2) > span"
         },
         "labels": {
+          "array": true,
           "selector": "td:nth-child(2) > div > div:nth-child(2) > a.torrents-tag"
         }
       }

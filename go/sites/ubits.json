@@ -152,6 +152,7 @@
           ]
         },
         "labels": {
+          "array": true,
           "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > span[title=\"\"]"
         },
         "hr_days": {

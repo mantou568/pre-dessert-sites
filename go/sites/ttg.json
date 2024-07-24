@@ -158,6 +158,7 @@
           ]
         },
         "labels": {
+          "array": true,
           "selector": "div.name_left > span > b"
         },
         "title": {

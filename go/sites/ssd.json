@@ -120,6 +120,7 @@
           ]
         },
         "labels": {
+          "array": true,
           "selector": "table.torrentname > tr > td > div.torrent-smalldescr > a > span"
         }
       }

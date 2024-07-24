@@ -72,6 +72,7 @@
           "remove": "div,a,img,b"
         },
         "labels": {
+          "array": true,
           "selector": "table.torrentname tr > td.embedded > div > a > div.tag"
         },
         "hr_days": {
