@@ -334,7 +334,12 @@
           "attribute": "href"
         },
         "size": {
-          "selector": "td:nth-child(5)"
+          "selector": "td:nth-child(5)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         },
         "grabs": {
           "selector": "td:nth-child(8)"
@@ -572,10 +577,12 @@
       },
       "fields": {
         "absent": {
-          "selector": "//td[text()='没有该ID的种子']",
+          "selector": "*",
+          "selection": "html",
           "filters": [
             {
-              "name": "not_blank"
+              "name": "regex",
+              "args": "没有该ID的种子"
             }
           ]
         },

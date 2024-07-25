@@ -187,7 +187,12 @@
           "attribute": "href"
         },
         "size": {
-          "selector": "td:nth-child(7)"
+          "selector": "td:nth-child(7)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         },
         "seeders": {
           "selector": "td:nth-child(9) > b > a >font"

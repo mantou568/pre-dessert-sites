@@ -104,7 +104,12 @@
           "selector": "table.table.table-bordered tr:has(td:contains(Total)) td:nth-child(2)"
         },
         "size": {
-          "selector": "table.table.table-bordered tr:has(td:contains(Total)) td:nth-child(3)"
+          "selector": "table.table.table-bordered tr:has(td:contains(Total)) td:nth-child(3)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         }
       }
     }

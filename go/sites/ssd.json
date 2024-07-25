@@ -68,7 +68,12 @@
           "attribute": "title"
         },
         "size": {
-          "selector": "td:nth-last-child(5)"
+          "selector": "td:nth-last-child(5)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         },
         "seeders": {
           "selector": "td:nth-last-child(4)"

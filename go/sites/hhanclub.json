@@ -1,0 +1,280 @@
+{
+  "id": "hhanclub",
+  "name": "憨憨",
+  "domain": "https://hhanclub.top/",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "price": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 401,
+        "cat": "Movies",
+        "desc": "Movies/电影"
+      }
+    ],
+    "tv": [
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
+      {
+        "id": 402,
+        "cat": "TV",
+        "desc": "TV Series/连续剧"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "TV Shows/综艺"
+      }
+    ]
+  },
+  "requests": {
+    "user_details": {
+      "fields": {
+        "level": {
+          "selector": "//*[@id=\"mainContent\"]/div[1]/div[2]/div[2]/div[4]/span[2]/b"
+        },
+        "join_at": {
+          "selector": "//*[@id=\"mainContent\"]/div[1]/div[2]/div[4]/div[4]/span[2]/span/@title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//*[@id=\"mainContent\"]/div[1]/div[2]/div[4]/div[5]/span[2]/span/@title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
+    "search": {
+      "list": {
+        "selector": "div.torrent-table-sub-info"
+      },
+      "fields": {
+        "category": {
+          "selector": "a[href*=\"?cat[]=\"]",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "querystring",
+              "args": "cat"
+            }
+          ]
+        },
+        "title": {
+          "any": [
+            {
+              "selector": "a[title][href*=\"details.php?id=\"]",
+              "attribute": "title",
+              "remove": "span"
+            },
+            {
+              "selector": "a[href*=\"details.php?id=\"]",
+              "remove": "span"
+            }
+          ]
+        },
+        "size": {
+          "selector": "div.torrent-info-text-size",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "grabs": {
+          "selector": "div.torrent-info-text-finished"
+        },
+        "seeders": {
+          "selector": "div.torrent-info-text-seeders > a[href*=\"#seeders\"]"
+        },
+        "leechers": {
+          "selector": "div.torrent-info-text-leechers > a[href*=\"#leechers\"]"
+        },
+        "date_elapsed": {
+          "selector": "div.torrent-info-text-added > span",
+          "optional": true
+        },
+        "date_added": {
+          "selector": "div.torrent-info-text-added > span",
+          "attribute": "title",
+          "optional": true
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "span.promotion-tag-free,span.promotion-tag-free2up",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "span.promotion-tag-50pctdown,span.promotion-tag-50pctdown2up",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "span.promotion-tag-30pctdown",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "span.promotion-tag-50pctdown2up,span.promotion-tag-free2up,span.promotion-tag-2up",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    2,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "selector": "div.items-center > a > span.tag",
+          "array": true
+        },
+        "description": {
+          "selector": "div.torrent-info-text-small_name"
+        },
+        "hr_days": {
+          "selector": "div.text-\\[12px\\].text-\\[\\#FFFFFF\\].bg-\\[\\#000000\\].torrent-info-hr.rounded-md.px-\\[5px\\]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d*",
+                0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "details": {
+      "fields": {
+        "free": {
+          "any": [
+            {
+              "selector": "//span[contains(@class, 'promotion-tag-free')]"
+            },
+            {
+              "selector": "//span[contains(@class, 'promotion-tag-2xfree')]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "2x_free": {
+          "selector": "//span[contains(@class, 'promotion-tag-2xfree')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "hr": {
+          "selector": "//span[contains(text(), 'H&R')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "//div[@id='seeder-count']",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "JsonPath",
+      "path": "getusertorrentlistajax.php?type=size&userid={userId}",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "total_count"
+        },
+        "size": {
+          "selector": "total_size",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "my_hr": {
+      "path": "myhr.php?status=1",
+      "selector": "//table[@id='hr-table']/tr[position() > 1 and count(td) > 1]"
+    }
+  }
+}
