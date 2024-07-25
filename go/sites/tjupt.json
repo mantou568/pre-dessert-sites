@@ -68,31 +68,71 @@
         },
         "date_elapsed": {
           "selector": "td:nth-child(4)",
-          "remove": "br",
-          "optional": true
+          "remove": "br"
         },
         "date_added": {
           "selector": "td:nth-child(4)",
-          "remove": "br",
-          "optional": true
+          "remove": "br"
         },
         "downloadvolumefactor": {
-          "case": {
-            "font.free": 0,
-            "font.twoupfree": 0,
-            "font.halfdown": 0.5,
-            "font.twouphalfdown": 0.5,
-            "font.thirtypercent": 0.3,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "font.free,font.twoupfree",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "font.halfdown,font.twouphalfdown",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "font.thirtypercent",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "uploadvolumefactor": {
-          "case": {
-            "font.twouphalfdown": 2,
-            "font.twoupfree": 2,
-            "font.twoup": 2,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "font.twouphalfdown,font.twoupfree,font.twoup",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    2,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "description": {
           "selector": "table.torrentname > tr:nth-child(1) > td:nth-child(2)",

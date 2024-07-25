@@ -61,13 +61,11 @@
           ]
         },
         "date_elapsed": {
-          "selector": "td:nth-last-child(6) > span",
-          "optional": true
+          "selector": "td:nth-last-child(6) > span"
         },
         "date_added": {
           "selector": "td:nth-last-child(6) > span",
-          "attribute": "title",
-          "optional": true
+          "attribute": "title"
         },
         "size": {
           "selector": "td:nth-last-child(5)"
@@ -82,22 +80,64 @@
           "selector": "td:nth-last-child(2)"
         },
         "downloadvolumefactor": {
-          "case": {
-            "span.torrent-pro-icon.torrent-pro-free": 0,
-            "span.torrent-pro-icon.torrent-pro-twoupfree": 0,
-            "span.torrent-pro-icon.torrent-pro-halfdown": 0.5,
-            "span.torrent-pro-icon.torrent-pro-twouphalfdown": 0.5,
-            "span.torrent-pro-icon.torrent-pro-thirtypercent": 0.3,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "span.torrent-pro-icon,span.torrent-pro-free,span.torrent-pro-twoupfree",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "span.torrent-pro-icon,span.torrent-pro-halfdown,span.torrent-pro-twouphalfdown",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "span.torrent-pro-icon,span.torrent-pro-thirtypercent",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "uploadvolumefactor": {
-          "case": {
-            "span.torrent-pro-icon.torrent-pro-twouphalfdown": 2,
-            "span.torrent-pro-icon.torrent-pro-twoupfree": 2,
-            "span.torrent-pro-icon.torrent-pro-twoup": 2,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "span.torrent-pro-icon,span.torrent-pro-twouphalfdown,span.torrent-pro-twoupfree,span.torrent-pro-twoup",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    2,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "description": {
           "selector": "table.torrentname > tr > td > div.torrent-smalldescr > span",

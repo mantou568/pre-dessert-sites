@@ -135,8 +135,7 @@
           "selector": "td#tm_td_dl a"
         },
         "date_elapsed": {
-          "selector": "td.rowfollow:nth-child(4) > span",
-          "optional": true
+          "selector": "td.rowfollow:nth-child(4) > span"
         },
         "date_added": {
           "selector": "td#tm_td_uploader",

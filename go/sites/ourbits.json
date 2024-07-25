@@ -64,8 +64,7 @@
     "search": {
       "fields": {
         "date_elapsed": {
-          "selector": "td:nth-child(4) > span[title]",
-          "optional": true
+          "selector": "td:nth-child(4) > span[title]"
         },
         "description": {
           "selector": "table.torrentname tr > td.embedded",

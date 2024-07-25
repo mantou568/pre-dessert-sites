@@ -208,12 +208,10 @@
           ]
         },
         "date_elapsed": {
-          "selector": "td:nth-child(6)",
-          "optional": true
+          "selector": "td:nth-child(6)"
         },
         "date_added": {
-          "selector": "td:nth-child(5) > nobr",
-          "optional": true
+          "selector": "td:nth-child(5) > nobr"
         },
         "imdbid": {
           "selector": "span.imdb_rate > a",
@@ -229,18 +227,64 @@
           ]
         },
         "downloadvolumefactor": {
-          "case": {
-            "img[alt=\"free\"]": 0,
-            "img[alt=\"50%\"]": 0.5,
-            "img[alt=\"30%\"]": 0.3,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "img[alt=\"free\"]",
+              "attribute": "alt",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "img[alt=\"50%\"]",
+              "attribute": "alt",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "img[alt=\"30%\"]",
+              "attribute": "alt",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "uploadvolumefactor": {
-          "case": {
-            "img[alt=\"200%\"]": 2,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "img[alt=\"200%\"]",
+              "attribute": "alt",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    2,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "hr_days": {
           "optional": true,

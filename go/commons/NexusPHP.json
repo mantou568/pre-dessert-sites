@@ -346,31 +346,71 @@
           "selector": "td:nth-child(7)"
         },
         "date_elapsed": {
-          "selector": "td:nth-child(4) > span",
-          "optional": true
+          "selector": "td:nth-child(4) > span"
         },
         "date_added": {
           "selector": "td:nth-child(4) > span",
-          "attribute": "title",
-          "optional": true
+          "attribute": "title"
         },
         "downloadvolumefactor": {
-          "case": {
-            "img.pro_free": 0,
-            "img.pro_free2up": 0,
-            "img.pro_50pctdown": 0.5,
-            "img.pro_50pctdown2up": 0.5,
-            "img.pro_30pctdown": 0.3,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "img.pro_free,img.pro_free2up",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "img.pro_50pctdown,img.pro_50pctdown2up",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "img.pro_30pctdown",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "uploadvolumefactor": {
-          "case": {
-            "img.pro_50pctdown2up": 2,
-            "img.pro_free2up": 2,
-            "img.pro_2up": 2,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "img.pro_50pctdown2up,img.pro_free2up,img.pro_2up",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    2,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "description": {
           "selector": "td:nth-child(2) > table > tbody > tr > td:nth-child(2)",
