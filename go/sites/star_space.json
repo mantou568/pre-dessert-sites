@@ -4,8 +4,8 @@
   "domain": "https://star-space.net/",
   "encoding": "UTF-8",
   "public": false,
-  "schema": "StarSpace",
-  "reuse_schema": "NexusPHP",
+  "schema": "NexusPHP",
+  "count_message": true,
   "required": {
     "cookie": true
   },

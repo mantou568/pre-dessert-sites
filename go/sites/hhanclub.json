@@ -5,6 +5,7 @@
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
+  "count_message": true,
   "required": {
     "cookie": true,
     "sign_in": true
@@ -46,6 +47,26 @@
     ]
   },
   "requests": {
+    "user_basic_info": {
+      "fields": {
+        "uploaded": {
+          "selector": "//*[@id=\"user-info-panel\"]/div[2]/div[2]/div[4]/text()",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "//*[@id=\"user-info-panel\"]/div[2]/div[2]/div[5]/text()",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
     "user_details": {
       "fields": {
         "level": {
@@ -275,6 +296,63 @@
     "my_hr": {
       "path": "myhr.php?status=1",
       "selector": "//table[@id='hr-table']/tr[position() > 1 and count(td) > 1]"
+    },
+    "unread_messages": {
+      "list": {
+        "selector": "//*[@id=\"mail-table-display\"]/div"
+      },
+      "fields": {
+        "head": {
+          "selector": "div[3]/a"
+        },
+        "date": {
+          "selector": "div[5]/span/text()"
+        },
+        "link": {
+          "selector": "div[3]/a/@href"
+        }
+      }
+    },
+    "unread_message_detail": {
+      "fields": {
+        "content": {
+          "selector": "//*[@id=\"mail-message-container\"]/text()",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "请前往站点查看消息详情！"
+            }
+          ]
+        }
+      }
+    },
+    "latest_notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "title": {
+          "selector": "//*[@id=\"mainContent\"]/div[1]/div/div/div[2]/div[1]/div[3]/div[1]/p"
+        },
+        "date": {
+          "selector": "//*[@id=\"mainContent\"]/div[1]/div/div/div[2]/div[1]/div[3]/div[1]/p",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}\\.\\d{2}\\.\\d{2})",
+                1
+              ]
+            },
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "content": {
+          "selector": "//*[@id=\"mainContent\"]/div[1]/div/div/div[2]/div[1]/div[3]/div[2]"
+        }
+      }
     }
   }
 }
