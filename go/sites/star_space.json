@@ -158,7 +158,7 @@
     "unread_messages": {
       "path": "p_sms/msg_in.php",
       "list": {
-        "selector": "//tr[@id='tr_list'][td/i[not(contains(@class, 'fa-envelope-close'))]]"
+        "selector": "//tr[@id='tr_list'][td/i[not(contains(@class, 'fa-envelope-open'))]]"
       },
       "fields": {
         "id": {
