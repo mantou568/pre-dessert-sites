@@ -30,6 +30,16 @@
             }
           ]
         },
+        "signed_in": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(已签|签到已得|签到排名)"
+            }
+          ]
+        },
         "id": {
           "selector": "*",
           "selection": "html",
@@ -521,23 +531,6 @@
         },
         "content": {
           "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div/div[1]"
-        }
-      }
-    },
-    "verify_signed_in": {
-      "parser": "CssSelector",
-      "method": "GET",
-      "path": "",
-      "fields": {
-        "signed_in": {
-          "selector": "*",
-          "selection": "html",
-          "filters": [
-            {
-              "name": "regex",
-              "args": "(已签|签到已得|签到排名)"
-            }
-          ]
         }
       }
     },
