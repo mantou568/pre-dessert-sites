@@ -4,7 +4,7 @@
     "favicon": {
       "parser": "None",
       "method": "GET",
-      "path": "favicon.ico"
+      "path": "/favicon.ico"
     },
     "user_basic_info": {
       "parser": "XPath",
@@ -215,7 +215,7 @@
     "user_details": {
       "parser": "XPath",
       "method": "GET",
-      "path": "userdetails.php?id={userId}",
+      "path": "/userdetails.php?id={userId}",
       "fields": {
         "join_at": {
           "any": [
@@ -291,7 +291,7 @@
     "search": {
       "parser": "CssSelector",
       "method": "GET",
-      "path": "torrents.php",
+      "path": "/torrents.php",
       "params": {
         "search": [
           "{keyword}"
@@ -449,7 +449,7 @@
     "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
-      "path": "getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
       "headers": {
         "Referer": "{domain}userdetails.php?id={userId}"
       },
@@ -473,7 +473,7 @@
     "unread_messages": {
       "parser": "XPath",
       "method": "GET",
-      "path": "messages.php?unread=yes",
+      "path": "/messages.php?unread=yes",
       "list": {
         "selector": "//form[@action='messages.php']//tr[position() > 1][.//td[a[contains(@href, 'messages.php')]]]"
       },
@@ -537,7 +537,7 @@
     "sign_in": {
       "parser": "CssSelector",
       "method": "GET",
-      "path": "attendance.php",
+      "path": "/attendance.php",
       "success_status_codes": [
         200,
         403,
@@ -559,7 +559,7 @@
     "details": {
       "parser": "XPath",
       "method": "GET",
-      "path": "details.php",
+      "path": "/details.php",
       "params": {
         "id": [
           "{id}"
@@ -627,7 +627,7 @@
     "my_hr": {
       "parser": "XPath",
       "method": "GET",
-      "path": "myhr.php?hrtype=1",
+      "path": "/myhr.php?hrtype=1",
       "list": {
         "selector": "//*[@id='outer']/table/tbody/tr/td/table/tbody/tr[position()>1 and count(td) > 1]"
       },

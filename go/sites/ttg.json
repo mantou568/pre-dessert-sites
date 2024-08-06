@@ -1,7 +1,7 @@
 {
   "id": "ttg",
   "name": "听听歌",
-  "domain": "https://totheglory.im/",
+  "domain": "https://totheglory.im",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -121,7 +121,7 @@
     "search": {
       "parser": "CssSelector",
       "method": "GET",
-      "path": "browse.php",
+      "path": "/browse.php",
       "params": {
         "search": [
           "{keyword}"
@@ -310,7 +310,7 @@
     "details": {
       "parser": "XPath",
       "method": "GET",
-      "path": "t/{id}/",
+      "path": "/t/{id}/",
       "fields": {
         "absent": {
           "selector": "*",

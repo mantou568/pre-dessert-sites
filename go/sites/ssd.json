@@ -1,7 +1,7 @@
 {
   "id": "ssd",
   "name": "春天",
-  "domain": "https://springsunday.net/",
+  "domain": "https://springsunday.net",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",

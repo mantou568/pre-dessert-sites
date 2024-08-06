@@ -1,7 +1,7 @@
 {
   "id": "leaves",
   "name": "红叶PT",
-  "domain": "https://leaves.red/",
+  "domain": "https://leaves.red",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -59,7 +59,7 @@
       }
     },
     "sign_in": {
-      "path": "attendance_new.php"
+      "path": "/attendance_new.php"
     }
   }
 }

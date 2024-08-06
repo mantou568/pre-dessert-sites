@@ -1,7 +1,7 @@
 {
   "id": "star_space",
   "name": "影",
-  "domain": "https://star-space.net/",
+  "domain": "https://star-space.net",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -76,7 +76,7 @@
       }
     },
     "search": {
-      "path": "p_torrent/video_list_t.php",
+      "path": "/p_torrent/video_list_t.php",
       "list": {
         "selector": "table#tb_content table#table_tm tr#tr_list"
       },
@@ -156,7 +156,7 @@
       }
     },
     "unread_messages": {
-      "path": "p_sms/msg_in.php",
+      "path": "/p_sms/msg_in.php",
       "list": {
         "selector": "//tr[@id='tr_list'][td/i[not(contains(@class, 'fa-envelope-open'))]]"
       },
@@ -219,7 +219,7 @@
       }
     },
     "details": {
-      "path": "p_torrent/video_detail.php",
+      "path": "/p_torrent/video_detail.php",
       "params": {
         "tid": [
           "{id}"
@@ -259,7 +259,7 @@
       }
     },
     "seeding_statistics": {
-      "path": "p_torrent/torrent_user.php?pop=8",
+      "path": "/p_torrent/torrent_user.php?pop=8",
       "disabled_extends": {
         "headers": true
       },

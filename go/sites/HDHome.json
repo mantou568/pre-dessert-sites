@@ -1,7 +1,7 @@
 {
   "id": "HDHome",
   "name": "家园",
-  "domain": "https://hdhome.org/",
+  "domain": "https://hdhome.org",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",

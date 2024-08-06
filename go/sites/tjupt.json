@@ -1,7 +1,7 @@
 {
   "id": "tjupt",
   "name": "北洋园",
-  "domain": "https://tjupt.org/",
+  "domain": "https://tjupt.org",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -184,7 +184,7 @@
     "my_hr": {
       "parser": "CssSelector",
       "method": "GET",
-      "path": "hnr_details.php?show=ongoing",
+      "path": "/hnr_details.php?show=ongoing",
       "list": {
         "selector": "table.coltable tr:has(td.rowfollow)"
       },

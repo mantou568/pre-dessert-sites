@@ -1,7 +1,7 @@
 {
   "id": "keepfrds",
   "name": "朋友",
-  "domain": "https://pt.keepfrds.com/",
+  "domain": "https://pt.keepfrds.com",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",

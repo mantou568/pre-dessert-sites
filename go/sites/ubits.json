@@ -1,7 +1,7 @@
 {
   "id": "ubits",
   "name": "UBits",
-  "domain": "https://ubits.club/",
+  "domain": "https://ubits.club",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -79,7 +79,7 @@
       }
     },
     "my_hr": {
-      "path": "myhr.php?status=1",
+      "path": "/myhr.php?status=1",
       "list": {
         "selector": "//*[@id='hr-table']/tbody/tr[position()>1 and count(td) > 1]"
       }

@@ -1,7 +1,7 @@
 {
   "id": "ptchdbits",
   "name": "彩虹岛",
-  "domain": "https://ptchdbits.co/",
+  "domain": "https://ptchdbits.co",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",

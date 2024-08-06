@@ -1,8 +1,8 @@
 {
   "id": "mteam",
   "name": "馒头",
-  "domain": "https://kp.m-team.cc/",
-  "api": "https://api.m-team.cc/",
+  "domain": "https://kp.m-team.cc",
+  "api": "https://api.m-team.cc",
   "encoding": "UTF-8",
   "public": false,
   "schema": "mTorrent",
@@ -18,7 +18,7 @@
     "search": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/torrent/search",
+      "path": "/api/torrent/search",
       "use_api": true,
       "required_headers": [
         "x-api-key"
@@ -108,7 +108,7 @@
     "my_peer_status": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/tracker/myPeerStatus",
+      "path": "/api/tracker/myPeerStatus",
       "use_api": true,
       "required_headers": [
         "x-api-key"
@@ -125,7 +125,7 @@
     "msg_notify_statistic": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/msg/notify/statistic",
+      "path": "/api/msg/notify/statistic",
       "use_api": true,
       "required_headers": [
         "x-api-key"
@@ -142,7 +142,7 @@
     "profile": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/member/profile",
+      "path": "/api/member/profile",
       "use_api": true,
       "required_headers": [
         "x-api-key"
@@ -195,7 +195,7 @@
     "user_torrent_list": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/member/getUserTorrentList",
+      "path": "/api/member/getUserTorrentList",
       "use_api": true,
       "required_headers": [
         "x-api-key"
@@ -212,7 +212,7 @@
     "sys_role_list": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/member/sysRoleList",
+      "path": "/api/member/sysRoleList",
       "use_api": true,
       "required_headers": [
         "x-api-key"
@@ -235,7 +235,7 @@
     "latest_notice": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/news/list",
+      "path": "/api/news/list",
       "use_api": true,
       "required_headers": [
         "x-api-key"
@@ -260,7 +260,7 @@
     "unread_messages": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/msg/search",
+      "path": "/api/msg/search",
       "use_api": true,
       "required_headers": [
         "x-api-key",
@@ -309,7 +309,7 @@
     "mark_as_read": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/msg/markRead",
+      "path": "/api/msg/markRead",
       "use_api": true,
       "required_headers": [
         "x-api-key",
@@ -341,7 +341,7 @@
     "gen_dl_token": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/msg/search",
+      "path": "/api/msg/search",
       "use_api": true,
       "required_headers": [
         "x-api-key"
@@ -363,7 +363,7 @@
     "details": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "api/torrent/detail",
+      "path": "/api/torrent/detail",
       "use_api": true,
       "required_headers": [
         "x-api-key",

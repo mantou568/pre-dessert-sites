@@ -1,7 +1,7 @@
 {
   "id": "hdsky",
   "name": "天空",
-  "domain": "https://hdsky.me/",
+  "domain": "https://hdsky.me",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",

@@ -1,7 +1,7 @@
 {
   "id": "hhanclub",
   "name": "憨憨",
-  "domain": "https://hhanclub.top/",
+  "domain": "https://hhanclub.top",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -274,7 +274,7 @@
     },
     "seeding_statistics": {
       "parser": "JsonPath",
-      "path": "getusertorrentlistajax.php?type=size&userid={userId}",
+      "path": "/getusertorrentlistajax.php?type=size&userid={userId}",
       "disabled_extends": {
         "headers": true,
         "list": true
@@ -294,7 +294,7 @@
       }
     },
     "my_hr": {
-      "path": "myhr.php?status=1",
+      "path": "/myhr.php?status=1",
       "selector": "//table[@id='hr-table']/tr[position() > 1 and count(td) > 1]"
     },
     "unread_messages": {
