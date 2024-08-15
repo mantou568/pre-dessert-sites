@@ -657,6 +657,28 @@
           "selector": "td[8]"
         }
       }
+    },
+    "get_subtitle_url": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/details.php",
+      "params": {
+        "id": [
+          "{id}"
+        ],
+        "hit": [
+          "1"
+        ]
+      },
+      "fields": {
+        "url": {
+          "selector": "//td[@class=\"rowhead\"][text()=\"字幕\"]/following-sibling::td//a/@href"
+        }
+      }
+    },
+    "download_subtitle": {
+      "parser": "None",
+      "method": "GET"
     }
   }
 }
