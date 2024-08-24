@@ -241,6 +241,22 @@
     ]
   },
   "requests": {
+    "user_basic_info": {
+      "fields": {
+        "bonus": {
+          "selector": "//*[@id=\"info_block\"]/tbody/tr/td/table/tbody/tr/td[1]/span/text()[7]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\s*([\\d,]+\\.\\d+)",
+                1
+              ]
+            }
+          ]
+        }
+      }
+    },
     "search": {
       "fields": {
         "category": {
@@ -301,6 +317,34 @@
               ]
             }
           ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "size": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "Total:\\s(\\d+\\.\\d+ \\wB)",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "count": {
+          "selector": "//b[1]/text()"
         }
       }
     }
