@@ -45,6 +45,26 @@
     ]
   },
   "requests": {
+    "user_details": {
+      "fields": {
+        "join_at": {
+          "selector": "//*[@id=\"outer\"]/div[3]/table/tbody/tr[3]/td[2]/span/@title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//*[@id=\"outer\"]/div[3]/table/tbody/tr[4]/td[2]/span/@title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
     "search": {
       "fields": {
         "imdbid": {

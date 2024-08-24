@@ -248,15 +248,7 @@
               "selector": "//tr/td[text()='加入日期' or *[text()='加入日期'] or text()='注册日期' or *[text()='注册日期']]/following-sibling::td[1]//text()"
             },
             {
-              "selector": "//tr/td[text()='加入日期' or *[text()='加入日期'] or text()='注册日期' or *[text()='注册日期']]/following-sibling::td[1]//text()",
-              "attribute": "title"
-            },
-            {
               "selector": "//div/b[text()='加入日期' or text()='注册日期']/../text()"
-            },
-            {
-              "selector": "//div/b[text()='加入日期' or text()='注册日期']/../text()",
-              "attribute": "title"
             }
           ],
           "filters": [
@@ -264,6 +256,13 @@
               "name": "replace",
               "args": [
                 " (",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "\n",
                 ""
               ]
             },
@@ -278,15 +277,7 @@
               "selector": "//tr/td[text()='最近访问' or *[text()='最近访问'] or text()='最近动向' or *[text()='最近动向'] or text()='上次访问' or *[text()='上次访问']]/following-sibling::td[1]//text()"
             },
             {
-              "selector": "//tr/td[text()='最近访问' or *[text()='最近访问'] or text()='最近动向' or *[text()='最近动向'] or text()='上次访问' or *[text()='上次访问']]/following-sibling::td[1]//text()",
-              "attribute": "title"
-            },
-            {
               "selector": "//div/b[text()='最近访问' or text()='最近动向' or text()='上次访问']/../text()"
-            },
-            {
-              "selector": "//div/b[text()='最近访问' or text()='最近动向' or text()='上次访问']/../text()",
-              "attribute": "title"
             }
           ],
           "filters": [
@@ -294,6 +285,13 @@
               "name": "replace",
               "args": [
                 " (",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "\n",
                 ""
               ]
             },
