@@ -167,7 +167,7 @@
                 {
                   "name": "re_search",
                   "args": [
-                    "([\\d,.]+)`",
+                    "([\\d,.]+)",
                     1
                   ]
                 }
@@ -217,50 +217,6 @@
       "method": "GET",
       "path": "/userdetails.php?id={userId}",
       "fields": {
-        "join_at": {
-          "any": [
-            {
-              "selector": "//tr/td[contains(text(), '加入日期') or contains(text(), '注册日期')]/following-sibling::td[1]//text()"
-            },
-            {
-              "selector": "//div/b[contains(text(), '加入日期')]/../text()"
-            }
-          ],
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                " (",
-                ""
-              ]
-            },
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
-        "last_accessed": {
-          "any": [
-            {
-              "selector": "//tr/td[contains(text(), '最近动向') or contains(text(), '最近动向')]/following-sibling::td[1]//text()"
-            },
-            {
-              "selector": "//div/b[contains(text(), '最近动向')]/../text()"
-            }
-          ],
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                " (",
-                ""
-              ]
-            },
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
         "level": {
           "any": [
             {
@@ -283,6 +239,66 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        "join_at": {
+          "any": [
+            {
+              "selector": "//tr/td[text()='加入日期' or *[text()='加入日期'] or text()='注册日期' or *[text()='注册日期']]/following-sibling::td[1]//text()"
+            },
+            {
+              "selector": "//tr/td[text()='加入日期' or *[text()='加入日期'] or text()='注册日期' or *[text()='注册日期']]/following-sibling::td[1]//text()",
+              "attribute": "title"
+            },
+            {
+              "selector": "//div/b[text()='加入日期' or text()='注册日期']/../text()"
+            },
+            {
+              "selector": "//div/b[text()='加入日期' or text()='注册日期']/../text()",
+              "attribute": "title"
+            }
+          ],
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                " (",
+                ""
+              ]
+            },
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "last_accessed": {
+          "any": [
+            {
+              "selector": "//tr/td[text()='最近访问' or *[text()='最近访问'] or text()='最近动向' or *[text()='最近动向'] or text()='上次访问' or *[text()='上次访问']]/following-sibling::td[1]//text()"
+            },
+            {
+              "selector": "//tr/td[text()='最近访问' or *[text()='最近访问'] or text()='最近动向' or *[text()='最近动向'] or text()='上次访问' or *[text()='上次访问']]/following-sibling::td[1]//text()",
+              "attribute": "title"
+            },
+            {
+              "selector": "//div/b[text()='最近访问' or text()='最近动向' or text()='上次访问']/../text()"
+            },
+            {
+              "selector": "//div/b[text()='最近访问' or text()='最近动向' or text()='上次访问']/../text()",
+              "attribute": "title"
+            }
+          ],
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                " (",
+                ""
+              ]
+            },
+            {
+              "name": "timestamp"
             }
           ]
         }
@@ -456,7 +472,7 @@
       "method": "GET",
       "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
       "headers": {
-        "Referer": "{domain}userdetails.php?id={userId}"
+        "Referer": "{domain}/userdetails.php?id={userId}"
       },
       "list": {
         "selector": "//tr[position()>1]",

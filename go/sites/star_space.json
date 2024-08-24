@@ -62,18 +62,21 @@
           ]
         },
         "bonus": {
-          "selector": "/html/body/table[2]/tbody/tr/td/table[1]/tbody/tr[2]/td/span[4]/a",
+          "selector": "//a[contains(@href,\"bonus_hour.php\")]/text()",
           "filters": [
             {
               "name": "re_search",
               "args": [
-                "([\\d,.]+)`",
+                "([\\d,.]+)",
                 1
               ]
             }
           ]
         }
       }
+    },
+    "user_details": {
+      "path": "/p_user/user_detail.php?uid={userId}"
     },
     "search": {
       "path": "/p_torrent/video_list_t.php",

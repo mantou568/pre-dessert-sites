@@ -1,8 +1,8 @@
 {
   "id": "mteam",
   "name": "馒头",
-  "domain": "https://kp.m-team.io",
-  "api": "https://api.m-team.io",
+  "domain": "https://kp.m-team.cc",
+  "api": "https://api.m-team.cc",
   "encoding": "UTF-8",
   "public": false,
   "schema": "mTorrent",
@@ -397,7 +397,7 @@
     "gen_dl_token": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "/api/msg/search",
+      "path": "/api/torrent/genDlToken",
       "use_api": true,
       "required_headers": [
         "x-api-key"
