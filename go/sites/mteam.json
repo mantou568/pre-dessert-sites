@@ -109,7 +109,12 @@
           "selector": "status.leechers"
         },
         "date_added": {
-          "selector": "createdDate"
+          "selector": "createdDate",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         },
         "downloadvolumefactor": {
           "selector": "status.discount",

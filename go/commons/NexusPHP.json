@@ -365,7 +365,12 @@
         },
         "date_added": {
           "selector": "td:nth-child(4) > span",
-          "attribute": "title"
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         },
         "downloadvolumefactor": {
           "any": [

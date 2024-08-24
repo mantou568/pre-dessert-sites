@@ -65,7 +65,12 @@
         },
         "date_added": {
           "selector": "td:nth-last-child(6) > span",
-          "attribute": "title"
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         },
         "size": {
           "selector": "td:nth-last-child(5)",

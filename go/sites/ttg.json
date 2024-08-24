@@ -216,7 +216,12 @@
           "selector": "td:nth-child(6)"
         },
         "date_added": {
-          "selector": "td:nth-child(5) > nobr"
+          "selector": "td:nth-child(5) > nobr",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         },
         "imdbid": {
           "selector": "span.imdb_rate > a",

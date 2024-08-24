@@ -144,7 +144,12 @@
         },
         "date_added": {
           "selector": "td#tm_td_uploader",
-          "remove": "span"
+          "remove": "span",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         },
         "description": {
           "selector": "td#tm_td_info div#tm_div_desc"
