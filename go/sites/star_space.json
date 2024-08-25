@@ -172,7 +172,7 @@
         "id": {
           "selector": "td[1]/input/@value"
         },
-        "head": {
+        "title": {
           "selector": "td[3]/a"
         },
         "date": {

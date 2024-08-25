@@ -497,7 +497,7 @@
         "selector": "//form[@action='messages.php']//tr[position() > 1][.//td[a[contains(@href, 'messages.php')]]]"
       },
       "fields": {
-        "head": {
+        "title": {
           "selector": "td[2]/a/text()"
         },
         "date": {
@@ -513,7 +513,7 @@
       "method": "GET",
       "path": "",
       "fields": {
-        "head": {
+        "title": {
           "selector": "//h1/text()|//div[@class='layui-card-header']/span[1]/text()"
         },
         "date": {

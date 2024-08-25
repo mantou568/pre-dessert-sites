@@ -305,7 +305,7 @@
         "selector": "//*[@id=\"mail-table-display\"]/div"
       },
       "fields": {
-        "head": {
+        "title": {
           "selector": "div[3]/a"
         },
         "date": {
