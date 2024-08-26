@@ -500,9 +500,6 @@
         "title": {
           "selector": "td[2]/a/text()"
         },
-        "date": {
-          "selector": "td[4]/span/text()"
-        },
         "link": {
           "selector": "td[2]/a/@href"
         },
@@ -515,6 +512,16 @@
                 "id=(\\d+)",
                 1
               ]
+            }
+          ]
+        },
+        "date": {
+          "any": [
+            {
+              "selector": "td[4]/span/text()"
+            },
+            {
+              "selector": "td[4]/text()"
             }
           ]
         }
