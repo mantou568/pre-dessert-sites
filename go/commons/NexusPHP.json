@@ -508,7 +508,7 @@
         },
         "id": {
           "selector": "td[2]/a/@href",
-          "filter": [
+          "filters": [
             {
               "name": "re_search",
               "args": [

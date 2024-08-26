@@ -316,7 +316,7 @@
         },
         "id": {
           "selector": "td[3]/a/@href",
-          "filter": [
+          "filters": [
             {
               "name": "re_search",
               "args": [
