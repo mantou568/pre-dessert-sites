@@ -104,29 +104,10 @@
         }
       }
     },
-    "latest_notice": {
+    "notice": {
       "fields": {
-        "title": {
-          "selector": "//*[@id='outer']/table/tbody/tr/td/table[2]/tbody/tr/td/div/a[1]/*[self::b or self::strong]"
-        },
-        "date": {
-          "selector": "//*[@id='outer']/table/tbody/tr/td/table[2]/tbody/tr/td/div/a[1]/text()",
-          "remove": "b",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "(\\d{4}\\.\\d{2}\\.\\d{2})",
-                1
-              ]
-            },
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
         "content": {
-          "selector": "//*[@id='outer']/table/tbody/tr/td/table[2]/tbody/tr/td/div/div[1]"
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table[2]/tbody/tr/td"
         }
       }
     }

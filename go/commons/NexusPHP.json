@@ -489,12 +489,17 @@
         }
       }
     },
-    "unread_messages": {
+    "messages": {
       "parser": "XPath",
       "method": "GET",
-      "path": "/messages.php?unread=yes",
+      "path": "/messages.php?action=viewmailbox&box=1",
       "list": {
         "selector": "//form[@action='messages.php']//tr[position() > 1][.//td[a[contains(@href, 'messages.php')]]]"
+      },
+      "params": {
+        "page": [
+          "{page}"
+        ]
       },
       "fields": {
         "title": {
@@ -527,7 +532,7 @@
         }
       }
     },
-    "unread_message_detail": {
+    "message_detail": {
       "parser": "XPath",
       "method": "GET",
       "path": "",
@@ -543,32 +548,13 @@
         }
       }
     },
-    "latest_notice": {
+    "notice": {
       "parser": "XPath",
       "method": "GET",
       "path": "",
       "fields": {
-        "title": {
-          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div/a[1]/*[self::b or self::strong]"
-        },
-        "date": {
-          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div/a[1]/text()",
-          "remove": "b",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "(\\d{4}\\.\\d{2}\\.\\d{2})",
-                1
-              ]
-            },
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
         "content": {
-          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div/div[1]"
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div"
         }
       }
     },

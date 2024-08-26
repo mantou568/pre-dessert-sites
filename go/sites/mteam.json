@@ -288,7 +288,7 @@
         }
       }
     },
-    "latest_notice": {
+    "notice": {
       "parser": "JsonPath",
       "method": "POST",
       "path": "/api/news/list",
@@ -296,24 +296,22 @@
       "required_headers": [
         "x-api-key"
       ],
+      "list": {
+        "selector": "data"
+      },
       "fields": {
         "title": {
-          "selector": "data.0.subject"
+          "selector": "subject"
         },
         "date": {
-          "selector": "data.0.createdDate",
-          "filters": [
-            {
-              "name": "timestamp"
-            }
-          ]
+          "selector": "createdDate"
         },
         "content": {
-          "selector": "data.0.context"
+          "selector": "context"
         }
       }
     },
-    "unread_messages": {
+    "messages": {
       "parser": "JsonPath",
       "method": "POST",
       "path": "/api/msg/search",
@@ -359,6 +357,9 @@
         },
         "content": {
           "selector": "context"
+        },
+        "unread": {
+          "selector": "unread"
         }
       }
     },

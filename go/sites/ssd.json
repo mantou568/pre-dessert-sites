@@ -195,29 +195,10 @@
         }
       }
     },
-    "latest_notice": {
+    "notice": {
       "fields": {
-        "title": {
-          "selector": "//*[@id='outer']/div[2]/div[1]/div/div[1]/a/span/b"
-        },
-        "date": {
-          "selector": "/html/body/main/div[2]/div[2]/div[1]/div/div[1]/a/span",
-          "remove": "b",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "(\\d{4}\\.\\d{2}\\.\\d{2})",
-                1
-              ]
-            },
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
         "content": {
-          "selector": "//*[@id='outer']/div[2]/div[1]/div/div[1]/div"
+          "selector": "//*[@id=\"outer\"]/div[2]/div[1]"
         }
       }
     }

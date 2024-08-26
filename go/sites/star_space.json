@@ -163,7 +163,7 @@
         }
       }
     },
-    "unread_messages": {
+    "messages": {
       "path": "/p_sms/msg_in.php",
       "list": {
         "selector": "//tr[@id='tr_list'][td/i[not(contains(@class, 'fa-envelope-open'))]]"
@@ -183,46 +183,17 @@
         }
       }
     },
-    "unread_message_detail": {
+    "message_detail": {
       "fields": {
         "content": {
           "selector": "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td/table/tbody/tr[3]/td[2]"
         }
       }
     },
-    "latest_notice": {
+    "notice": {
       "fields": {
-        "title": {
-          "selector": "//*[@id='tr_list' and position()=1]/td/a/text()",
-          "remove": "img",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "【(.*)】(.*)",
-                2
-              ]
-            }
-          ]
-        },
-        "date": {
-          "selector": "//*[@id='tr_list' and position()=1]/td/a/text()",
-          "remove": "img",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "【(.*)】(.*)",
-                1
-              ]
-            },
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
         "content": {
-          "selector": "//*[@class='row_list' and position()=1]/td[2]"
+          "selector": "//*[@id='tb_content']/tbody/tr/td"
         }
       }
     },

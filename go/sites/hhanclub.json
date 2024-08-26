@@ -300,7 +300,7 @@
       "path": "/myhr.php?status=1",
       "selector": "//table[@id='hr-table']/tr[position() > 1 and count(td) > 1]"
     },
-    "unread_messages": {
+    "messages": {
       "list": {
         "selector": "//*[@id=\"mail-table-display\"]/div"
       },
@@ -328,7 +328,7 @@
         }
       }
     },
-    "unread_message_detail": {
+    "message_detail": {
       "fields": {
         "content": {
           "selector": "//*[@id=\"mail-message-container\"]/text()",
@@ -341,31 +341,10 @@
         }
       }
     },
-    "latest_notice": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "",
+    "notice": {
       "fields": {
-        "title": {
-          "selector": "//*[@id=\"mainContent\"]/div[1]/div/div/div[2]/div[1]/div[3]/div[1]/p"
-        },
-        "date": {
-          "selector": "//*[@id=\"mainContent\"]/div[1]/div/div/div[2]/div[1]/div[3]/div[1]/p",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "(\\d{4}\\.\\d{2}\\.\\d{2})",
-                1
-              ]
-            },
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
         "content": {
-          "selector": "//*[@id=\"mainContent\"]/div[1]/div/div/div[2]/div[1]/div[3]/div[2]"
+          "selector": "//*[@id='news-content']"
         }
       }
     }
