@@ -505,6 +505,18 @@
         },
         "link": {
           "selector": "td[2]/a/@href"
+        },
+        "id": {
+          "selector": "td[2]/a/@href",
+          "filter": [
+            {
+              "name": "re_search",
+              "args": [
+                "id=(\\d+)",
+                1
+              ]
+            }
+          ]
         }
       }
     },

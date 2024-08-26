@@ -313,6 +313,18 @@
         },
         "link": {
           "selector": "div[3]/a/@href"
+        },
+        "id": {
+          "selector": "td[3]/a/@href",
+          "filter": [
+            {
+              "name": "re_search",
+              "args": [
+                "id=(\\d+)",
+                1
+              ]
+            }
+          ]
         }
       }
     },
