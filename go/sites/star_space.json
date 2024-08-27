@@ -14,6 +14,14 @@
   "requests": {
     "user_basic_info": {
       "fields": {
+        "is_login": {
+          "selector": "//a[contains(@href, 'logout')]/span/text()",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
         "id": {
           "selector": "*",
           "selection": "html",
