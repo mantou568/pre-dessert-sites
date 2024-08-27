@@ -2,7 +2,6 @@
   "id": "hddolby",
   "name": "高清杜比",
   "domain": "https://www.hddolby.com",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "required": {

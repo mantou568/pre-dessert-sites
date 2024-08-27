@@ -2,7 +2,6 @@
   "id": "cyanbug",
   "name": "大青虫",
   "domain": "https://cyanbug.net",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "required": {

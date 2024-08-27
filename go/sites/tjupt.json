@@ -2,7 +2,6 @@
   "id": "tjupt",
   "name": "北洋园",
   "domain": "https://tjupt.org",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "required": {

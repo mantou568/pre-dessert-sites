@@ -2,7 +2,6 @@
   "id": "hhanclub",
   "name": "憨憨",
   "domain": "https://hhanclub.top",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "count_message": true,

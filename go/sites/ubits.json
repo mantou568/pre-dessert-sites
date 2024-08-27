@@ -2,7 +2,6 @@
   "id": "ubits",
   "name": "UBits",
   "domain": "https://ubits.club",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "required": {

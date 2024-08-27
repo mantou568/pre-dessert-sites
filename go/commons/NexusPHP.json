@@ -10,6 +10,9 @@
       "parser": "XPath",
       "method": "GET",
       "path": "",
+      "headers": {
+        "Referer": "{domain}/forums.php"
+      },
       "fields": {
         "is_login": {
           "any": [

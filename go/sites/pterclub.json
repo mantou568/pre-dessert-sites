@@ -2,7 +2,6 @@
   "id": "pterclub",
   "name": "猫站",
   "domain": "https://pterclub.com",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "required": {

@@ -2,7 +2,6 @@
   "id": "ttg",
   "name": "听听歌",
   "domain": "https://totheglory.im",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "required": {

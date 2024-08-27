@@ -2,7 +2,6 @@
   "id": "ourbits",
   "name": "我堡",
   "domain": "https://ourbits.club",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "required": {

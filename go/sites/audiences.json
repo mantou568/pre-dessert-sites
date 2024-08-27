@@ -2,7 +2,6 @@
   "id": "audiences",
   "name": "观众",
   "domain": "https://audiences.me",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "required": {

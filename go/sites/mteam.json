@@ -3,7 +3,6 @@
   "name": "馒头",
   "domain": "https://kp.m-team.cc",
   "api": "https://api.m-team.cc",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "mTorrent",
   "reuse_schema": "NexusPHP",

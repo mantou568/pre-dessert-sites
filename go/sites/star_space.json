@@ -2,7 +2,6 @@
   "id": "star_space",
   "name": "影",
   "domain": "https://star-space.net",
-  "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "count_message": true,
