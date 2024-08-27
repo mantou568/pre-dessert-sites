@@ -10,26 +10,22 @@
       "parser": "XPath",
       "method": "GET",
       "path": "",
-      "headers": {
-        "Referer": "{domain}/forums.php"
-      },
       "fields": {
         "is_login": {
           "any": [
             {
-              "selector": "//a[contains(@href, 'logout') or contains(@data-url, 'logout') or contains(@href, 'mybonus') or contains(@onclick, 'logout') or contains(@href, 'usercp')]"
+              "selector": "//a[contains(@href, 'logout') or contains(@data-url, 'logout') or contains(@href, 'mybonus') or contains(@onclick, 'logout') or contains(@href, 'usercp')]/text()"
             },
             {
-              "selector": "//form[contains(@action, 'logout')]"
+              "selector": "//form[contains(@action, 'logout')]/text()"
             },
             {
-              "selector": "//div[@class='user-info-side']"
+              "selector": "//div[@class='user-info-side']/text()"
             }
           ],
           "filters": [
             {
-              "name": "regex",
-              "args": "^[^\\\\s]+$"
+              "name": "not_blank"
             }
           ]
         },
@@ -66,18 +62,6 @@
             },
             {
               "selector": "//a[contains(@href, 'userdetails')]//strong//text()"
-            }
-          ]
-        },
-        "unread_message_count": {
-          "selector": "//a[@href='messages.php']/.. | //a[contains(@href, 'messages.php')]/..",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "[^Date](信息箱\\s*|\\(|你有\\xa0)(\\d+)",
-                2
-              ]
             }
           ]
         },
