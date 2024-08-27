@@ -1,0 +1,42 @@
+{
+  "id": "hares",
+  "name": "白兔",
+  "domain": "https://club.hares.top",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "price": {
+    "has_free": true,
+    "has_2x_free": true
+  },
+  "requests": {
+    "torrents": {
+      "list": {
+        "selector": "table.torrents > tr"
+      }
+    },
+    "details": {
+      "fields": {
+        "free": {
+          "selector": "//b[@class='free'][text()='免费']",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "2x_free": {
+          "selector": "//b[@class='twoupfree'][text()='2X免费']",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
