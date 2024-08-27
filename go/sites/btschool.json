@@ -1,0 +1,45 @@
+{
+  "id": "btschool",
+  "name": "学校",
+  "domain": "https://pt.btschool.club",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true
+  },
+  "price": {
+    "has_free": true,
+    "has_2x_free": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 405,
+        "cat": "Movies",
+        "desc": "电影/Movies"
+      }
+    ],
+    "tv": [
+      {
+        "id": 406,
+        "cat": "TV",
+        "desc": "连续剧/TV-Series"
+      },
+      {
+        "id": 407,
+        "cat": "TV/Anime",
+        "desc": "动漫/Animation"
+      },
+      {
+        "id": 408,
+        "cat": "TV/Documentary",
+        "desc": "纪录片/Documentary"
+      },
+      {
+        "id": 412,
+        "cat": "TV",
+        "desc": "综艺/TV-Show"
+      }
+    ]
+  }
+}
