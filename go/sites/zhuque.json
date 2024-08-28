@@ -44,10 +44,13 @@
       "method": "POST",
       "path": "/api/torrent/advancedSearch",
       "required_headers": [
-        "x-csrf-token"
+        "X-Csrf-Token"
       ],
       "list": {
         "selector": "data.torrents"
+      },
+      "disabled_extends": {
+        "params": true
       },
       "fields": {
         "id": {
@@ -93,7 +96,7 @@
           "selector": "subtitle"
         },
         "labels": {
-          "selector": "labels",
+          "selector": "tags",
           "array": true,
           "filters": [
             {
