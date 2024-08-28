@@ -1,0 +1,167 @@
+{
+  "id": "zhuque",
+  "name": "朱雀",
+  "domain": "https://zhuque.in",
+  "encoding": "UTF-8",
+  "schema": "zhuQue",
+  "reuse_schema": "NexusPHP",
+  "required": {
+    "cookie": true
+  },
+  "price": {
+    "has_free": true
+  },
+  "public": false,
+  "category": {
+    "movie": [
+      {
+        "id": 501,
+        "cat": "Movies",
+        "desc": "电影"
+      },
+      {
+        "id": 503,
+        "cat": "Movies",
+        "desc": "动画"
+      }
+    ],
+    "tv": [
+      {
+        "id": 502,
+        "cat": "TV",
+        "desc": "剧集"
+      },
+      {
+        "id": 503,
+        "cat": "TV",
+        "desc": "动画"
+      }
+    ]
+  },
+  "requests": {
+    "search": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/torrent/advancedSearch",
+      "required_headers": [
+        "x-csrf-token"
+      ],
+      "list": {
+        "selector": "data.torrents"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "category": {
+          "selector": "category"
+        },
+        "title": {
+          "selector": "title"
+        },
+        "details": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "torrent/info/"
+            }
+          ]
+        },
+        "size": {
+          "selector": "size"
+        },
+        "grabs": {
+          "selector": "complete"
+        },
+        "seeders": {
+          "selector": "seeding"
+        },
+        "leechers": {
+          "selector": "leeching"
+        },
+        "date_added": {
+          "selector": "upload_time"
+        },
+        "downloadvolumefactor": {
+          "selector": "uploadRate"
+        },
+        "uploadvolumefactor": {
+          "selector": "downloadRate"
+        },
+        "description": {
+          "selector": "subtitle"
+        },
+        "labels": {
+          "selector": "labels",
+          "array": true,
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "101": "H264",
+                "102": "H265",
+                "103": "x264",
+                "104": "x265",
+                "199": "Other",
+                "301": "UHD Blu-ray",
+                "302": "UHD Blu-ray DIY",
+                "303": "Blu-ray",
+                "304": "Blu-ray DIY",
+                "305": "Remux",
+                "306": "Encode",
+                "307": "UHDTV",
+                "308": "HDTV",
+                "309": "WEB-DL",
+                "399": "Other",
+                "401": "720p",
+                "402": "1080i",
+                "403": "1080p",
+                "404": "2160p",
+                "499": "Other",
+                "501": "电影",
+                "502": "剧集",
+                "503": "动画",
+                "504": "节目",
+                "599": "其它",
+                "601": "官方",
+                "602": "禁转",
+                "603": "国语",
+                "604": "中字",
+                "611": "杜比视界",
+                "613": "HDR10",
+                "614": "特效字幕",
+                "621": "完结",
+                "622": "分集"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "details": {
+      "fields": {
+        "free": {
+          "selector": "//span[@class='text-download'][contains(text(),'0x')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "//div[@class='ant-form-item-control-input-content']/span[contains(text(),'正在做种: )]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
