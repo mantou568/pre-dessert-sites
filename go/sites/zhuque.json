@@ -39,6 +39,11 @@
     ]
   },
   "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/assets/images/512.png"
+    },
     "search": {
       "parser": "JsonPath",
       "method": "POST",
@@ -70,6 +75,9 @@
               "args": "torrent/info/"
             }
           ]
+        },
+        "download": {
+          "selector": "download"
         },
         "size": {
           "selector": "size"
@@ -142,27 +150,175 @@
         }
       }
     },
-    "details": {
+    "user_basic_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/user/getMainInfo",
       "fields": {
-        "free": {
-          "selector": "//span[@class='text-download'][contains(text(),'0x')]",
+        "is_login": {
+          "selector": "status",
           "filters": [
             {
-              "name": "not_blank"
+              "name": "eq",
+              "args": "200"
+            }
+          ]
+        },
+        "signed_in": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "0"
+            }
+          ]
+        },
+        "id": {
+          "selector": "data.id"
+        },
+        "name": {
+          "selector": "data.username"
+        },
+        "uploaded": {
+          "selector": "data.upload"
+        },
+        "downloaded": {
+          "selector": "data.download"
+        },
+        "bonus": {
+          "selector": "data.bonus"
+        }
+      }
+    },
+    "user_details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/user/getInfo?id={userId}",
+      "fields": {
+        "level": {
+          "selector": "data.class.name"
+        },
+        "join_at": {
+          "selector": "data.regTime"
+        },
+        "last_accessed": {
+          "selector": "data.lastActivity"
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/user/listTorrentActivity?id={userId}&type=seeding&page={page}&size=100",
+      "headers": {
+        "Referer": "{domain}/user/info/{userId}"
+      },
+      "list": {
+        "selector": "data.torrents",
+        "next_page": {
+          "selector": "/api/user/listTorrentActivity?id={userId}&type=seeding&page={page}&size=100"
+        }
+      },
+      "fields": {
+        "size": {
+          "selector": "size"
+        }
+      }
+    },
+    "messages": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/message/listSystem?page={page}&size=100",
+      "list": {
+        "selector": "data.messages"
+      },
+      "fields": {
+        "title": {
+          "selector": "title"
+        },
+        "id": {
+          "selector": "id"
+        },
+        "date": {
+          "selector": "create_time"
+        },
+        "content": {
+          "selector": "content"
+        }
+      }
+    },
+    "notice": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/announcement/list",
+      "list": {
+        "selector": "data"
+      },
+      "fields": {
+        "title": {
+          "selector": "title"
+        },
+        "content": {
+          "selector": "content"
+        },
+        "create_time": {
+          "selector": "create_time"
+        }
+      }
+    },
+    "sign_in": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/gaming/fireGenshinCharacterMagic",
+      "body": {
+        "all": 1,
+        "resetModal": true
+      },
+      "fields": {
+        "signed_in": {
+          "selector": "status",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "200"
+            }
+          ]
+        }
+      }
+    },
+    "details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/torrent/info",
+      "params": {
+        "id": [
+          "{id}"
+        ]
+      },
+      "success_status_codes": [
+        200,
+        404
+      ],
+      "fields": {
+        "absent": {
+          "selector": "status",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "404"
+            }
+          ]
+        },
+        "free": {
+          "selector": "data.torrent.downloadRate",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
             }
           ]
         },
         "peer_count": {
-          "selector": "//div[@class='ant-form-item-control-input-content']/span[contains(text(),'正在做种: )]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
-            }
-          ]
+          "selector": "leeching"
         }
       }
     }
