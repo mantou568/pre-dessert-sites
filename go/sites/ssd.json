@@ -44,10 +44,37 @@
     ]
   },
   "requests": {
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "bonus": {
+          "selector": "//a[contains(@href,\"mybonus\")]/@title",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "([\\d,.]+)",
+                1
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            }
+          ]
+        }
+      }
+    },
     "user_details": {
       "fields": {
         "join_at": {
-          "selector": "//*[@id=\"outer\"]/div[3]/table/tbody/tr[3]/td[2]/span/@title",
+          "selector": "//*[@id=\"outer\"]/div[3]/table/tbody/tr[3]/td[2]/text()[1]",
+          "trim_chars": true,
           "filters": [
             {
               "name": "timestamp"
@@ -55,7 +82,8 @@
           ]
         },
         "last_accessed": {
-          "selector": "//*[@id=\"outer\"]/div[3]/table/tbody/tr[4]/td[2]/span/@title",
+          "selector": "//*[@id=\"outer\"]/div[3]/table/tbody/tr[4]/td[2]/text()[1]",
+          "trim_chars": true,
           "filters": [
             {
               "name": "timestamp"

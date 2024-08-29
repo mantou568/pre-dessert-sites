@@ -230,6 +230,7 @@
           ]
         },
         "join_at": {
+          "trim_chars": true,
           "any": [
             {
               "selector": "//tr/td[text()='加入日期' or *[text()='加入日期'] or text()='注册日期' or *[text()='注册日期']]/following-sibling::td[1]//text()"
@@ -240,25 +241,12 @@
           ],
           "filters": [
             {
-              "name": "replace",
-              "args": [
-                " (",
-                ""
-              ]
-            },
-            {
-              "name": "replace",
-              "args": [
-                "\n",
-                ""
-              ]
-            },
-            {
               "name": "timestamp"
             }
           ]
         },
         "last_accessed": {
+          "trim_chars": true,
           "any": [
             {
               "selector": "//tr/td[text()='最近访问' or *[text()='最近访问'] or text()='最近动向' or *[text()='最近动向'] or text()='上次访问' or *[text()='上次访问']]/following-sibling::td[1]//text()"
@@ -268,20 +256,6 @@
             }
           ],
           "filters": [
-            {
-              "name": "replace",
-              "args": [
-                " (",
-                ""
-              ]
-            },
-            {
-              "name": "replace",
-              "args": [
-                "\n",
-                ""
-              ]
-            },
             {
               "name": "timestamp"
             }
