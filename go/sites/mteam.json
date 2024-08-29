@@ -1,8 +1,8 @@
 {
   "id": "mteam",
   "name": "馒头",
-  "domain": "https://kp.m-team.cc",
-  "api": "https://api.m-team.cc",
+  "domain": "https://kp.m-team.io",
+  "api": "https://api.m-team.io",
   "public": false,
   "schema": "mTorrent",
   "reuse_schema": "NexusPHP",
@@ -91,7 +91,7 @@
           "filters": [
             {
               "name": "append_left",
-              "args": "detail/"
+              "args": "/detail/"
             }
           ]
         },
@@ -284,6 +284,15 @@
         },
         "name_eng": {
           "selector": "nameEng"
+        },
+        "image": {
+          "selector": "image",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/static/roles/"
+            }
+          ]
         }
       }
     },
