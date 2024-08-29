@@ -207,13 +207,13 @@
         "level": {
           "any": [
             {
-              "selector": "//tr/td[text()='等級' or text()='等级' or *[text()='等级']]/following-sibling::td[1]/img[1]/@title"
+              "selector": "//tr/td[contains(text(), '等級') or contains(text(), '等级')]/following-sibling::td[1]/img[1]/@title"
             },
             {
-              "selector": "//tr/td[text()='等級' or text()='等级']/following-sibling::td[1 and not(img)]|//tr/td[text()='等級' or text()='等级']/following-sibling::td[1 and img[not(@title)]]"
+              "selector": "//tr/td[contains(text(), '等級') or contains(text(), '等级')]/following-sibling::td[1 and not(img)]|//tr/td[contains(text(), '等級') or contains(text(), '等级')]/following-sibling::td[1 and img[not(@title)]]"
             },
             {
-              "selector": "//tr/td[text()='等級' or text()='等级']/following-sibling::td[1]"
+              "selector": "//tr/td[contains(text(), '等級') or contains(text(), '等级')]/following-sibling::td[1]"
             },
             {
               "selector": "//a[contains(@href, 'userdetails')]/text()",
@@ -230,11 +230,7 @@
           ]
         },
         "level_icon": {
-          "any": [
-            {
-              "selector": "//tr/td[text()='等級' or text()='等级' or *[text()='等级']]/following-sibling::td[1]/img[1]/@src"
-            }
-          ]
+          "selector": "//tr/td[contains(text(), '等級') or contains(text(), '等级')]/following-sibling::td[1]/img[1]/@src"
         },
         "join_at": {
           "trim_chars": true,

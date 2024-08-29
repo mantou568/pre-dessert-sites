@@ -83,7 +83,27 @@
       }
     },
     "user_details": {
-      "path": "/p_user/user_detail.php?uid={userId}"
+      "path": "/p_user/user_detail.php?uid={userId}",
+      "fields": {
+        "join_at": {
+          "trim_chars": true,
+          "selector": "//tr/td[contains(text(), '加入日期')]/following-sibling::td[1]/text()",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "last_accessed": {
+          "trim_chars": true,
+          "selector": "//tr/td[contains(text(), '最近访问')]/following-sibling::td[1]/text()",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
     },
     "search": {
       "path": "/p_torrent/video_list_t.php",
