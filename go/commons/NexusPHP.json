@@ -233,9 +233,6 @@
           "any": [
             {
               "selector": "//tr/td[text()='等級' or text()='等级' or *[text()='等级']]/following-sibling::td[1]/img[1]/@src"
-            },
-            {
-              "selector": "//a[contains(@href, 'userdetails')]/img[1]/@src"
             }
           ]
         },
