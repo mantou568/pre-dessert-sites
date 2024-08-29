@@ -47,7 +47,7 @@
     "user_basic_info": {
       "fields": {
         "bonus": {
-          "selector": "//*[@id=\"info_block\"]/tbody/tr/td/table/tbody/tr/td[1]/span/text()[9]",
+          "selector": "//*[@id='info_block']/tbody/tr/td/table/tbody/tr/td[1]/span/text()[9]",
           "filters": [
             {
               "name": "re_search",

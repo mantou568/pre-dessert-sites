@@ -43,7 +43,7 @@
     "search": {
       "fields": {
         "category": {
-          "selector": "a[href*=\"cat=\"]",
+          "selector": "a[href*='cat=']",
           "attribute": "href",
           "filters": [
             {
@@ -53,7 +53,7 @@
           ]
         },
         "imdbid": {
-          "selector": "a[href*=\"imdb.com/title/tt\"]",
+          "selector": "a[href*='imdb.com/title/tt']",
           "attribute": "href",
           "filters": [
             {

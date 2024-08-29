@@ -71,12 +71,12 @@
     "search": {
       "fields": {
         "description": {
-          "selector": "a[title][href*=\"details.php?id=\"]",
+          "selector": "a[title][href*='details.php?id=']",
           "attribute": "title"
         },
         "labels": {
           "array": true,
-          "selector": "a[title][href*=\"details.php?id=\"] > span"
+          "selector": "a[title][href*='details.php?id='] > span"
         },
         "title": {
           "selector": "table.torrentname tr td",

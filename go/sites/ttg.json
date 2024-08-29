@@ -238,7 +238,7 @@
         "downloadvolumefactor": {
           "any": [
             {
-              "selector": "img[alt=\"free\"]",
+              "selector": "img[alt='free']",
               "attribute": "alt",
               "filters": [
                 {
@@ -251,7 +251,7 @@
               ]
             },
             {
-              "selector": "img[alt=\"50%\"]",
+              "selector": "img[alt='50%']",
               "attribute": "alt",
               "filters": [
                 {
@@ -264,7 +264,7 @@
               ]
             },
             {
-              "selector": "img[alt=\"30%\"]",
+              "selector": "img[alt='30%']",
               "attribute": "alt",
               "filters": [
                 {
@@ -281,7 +281,7 @@
         "uploadvolumefactor": {
           "any": [
             {
-              "selector": "img[alt=\"200%\"]",
+              "selector": "img[alt='200%']",
               "attribute": "alt",
               "filters": [
                 {

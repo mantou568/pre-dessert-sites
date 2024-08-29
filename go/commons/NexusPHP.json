@@ -72,7 +72,7 @@
             {
               "name": "re_search",
               "args": [
-                "[^总]上[传傳]量?[:：_<>/a-zA-Z-=\"'\\s#;]+([\\d,.\\s]+[KMGTPI]*B)",
+                "[^总]上[传傳]量?[:：_<>/a-zA-Z-=''\\s#;]+([\\d,.\\s]+[KMGTPI]*B)",
                 1
               ]
             },
@@ -88,7 +88,7 @@
             {
               "name": "re_search",
               "args": [
-                "[^总子影力]下[载載]量?[:：_<>/a-zA-Z-=\"'\\s#;]+([\\d,.\\s]+[KMGTPI]*B)",
+                "[^总子影力]下[载載]量?[:：_<>/a-zA-Z-=''\\s#;]+([\\d,.\\s]+[KMGTPI]*B)",
                 1
               ]
             },
@@ -104,14 +104,14 @@
             {
               "name": "re_search",
               "args": [
-                "分享率[:：_<>/a-zA-Z-=\"'\\s#;]+([\\d,.\\s]+)",
+                "分享率[:：_<>/a-zA-Z-=''\\s#;]+([\\d,.\\s]+)",
                 1
               ]
             }
           ]
         },
         "gold": {
-          "selector": "//span[@class = \"ucoin-symbol ucoin-gold\"]//text()",
+          "selector": "//span[@class = 'ucoin-symbol ucoin-gold']//text()",
           "filters": [
             {
               "name": "replace",
@@ -123,7 +123,7 @@
           ]
         },
         "silver": {
-          "selector": "//span[@class = \"ucoin-symbol ucoin-silver\"]//text()",
+          "selector": "//span[@class = 'ucoin-symbol ucoin-silver']//text()",
           "filters": [
             {
               "name": "replace",
@@ -135,7 +135,7 @@
           ]
         },
         "copper": {
-          "selector": "//span[@class = \"ucoin-symbol ucoin-copper\"]//text()",
+          "selector": "//span[@class = 'ucoin-symbol ucoin-copper']//text()",
           "filters": [
             {
               "name": "replace",
@@ -149,7 +149,7 @@
         "bonus": {
           "any": [
             {
-              "selector": "//a[contains(@href,\"mybonus\")]/text()",
+              "selector": "//a[contains(@href,'mybonus')]/text()",
               "filters": [
                 {
                   "name": "re_search",
@@ -167,7 +167,7 @@
                 {
                   "name": "re_search",
                   "args": [
-                    "mybonus.[\\[\\]:：<>/a-zA-Z_\\-=\"'\\s#;.(使用魔力值豆]+\\s*([\\d,.]+)[<()&\\s\\[]",
+                    "mybonus.[\\[\\]:：<>/a-zA-Z_\\-=''\\s#;.(使用魔力值豆]+\\s*([\\d,.]+)[<()&\\s\\[]",
                     1
                   ]
                 }
@@ -180,7 +180,7 @@
                 {
                   "name": "re_search",
                   "args": [
-                    "[魔力值|\\]][\\[\\]:：<>/a-zA-Z_\\-=\"'\\s#;]+\\s*([\\d,.]+|\\\"[\\d,.]+\")[<>()&\\s\\[]",
+                    "[魔力值|\\]][\\[\\]:：<>/a-zA-Z_\\-=''\\s#;]+\\s*([\\d,.]+|\\'[\\d,.]+')[<>()&\\s\\[]",
                     1
                   ]
                 }
@@ -207,16 +207,16 @@
         "level": {
           "any": [
             {
-              "selector": "//tr/td[text()=\"等級\" or text()=\"等级\" or *[text()=\"等级\"]]/following-sibling::td[1]/img[1]/@title"
+              "selector": "//tr/td[text()='等級' or text()='等级' or *[text()='等级']]/following-sibling::td[1]/img[1]/@title"
             },
             {
-              "selector": "//tr/td[text()=\"等級\" or text()=\"等级\"]/following-sibling::td[1 and not(img)]|//tr/td[text()=\"等級\" or text()=\"等级\"]/following-sibling::td[1 and img[not(@title)]]"
+              "selector": "//tr/td[text()='等級' or text()='等级']/following-sibling::td[1 and not(img)]|//tr/td[text()='等級' or text()='等级']/following-sibling::td[1 and img[not(@title)]]"
             },
             {
-              "selector": "//tr/td[text()=\"等級\" or text()=\"等级\"]/following-sibling::td[1]"
+              "selector": "//tr/td[text()='等級' or text()='等级']/following-sibling::td[1]"
             },
             {
-              "selector": "//a[contains(@href, \"userdetails\")]/text()",
+              "selector": "//a[contains(@href, 'userdetails')]/text()",
               "filters": [
                 {
                   "name": "re_search",
@@ -229,14 +229,27 @@
             }
           ]
         },
+        "level_icon": {
+          "any": [
+            {
+              "selector": "//tr/td[text()='等級' or text()='等级' or *[text()='等级']]/following-sibling::td[1]/img[1]/@src"
+            },
+            {
+              "selector": "//a[contains(@href, 'userdetails')]/img[1]/@src"
+            }
+          ]
+        },
         "join_at": {
           "trim_chars": true,
           "any": [
             {
-              "selector": "//tr/td[text()='加入日期' or *[text()='加入日期'] or text()='注册日期' or *[text()='注册日期']]/following-sibling::td[1]//text()"
+              "selector": "//tr/td[contains(text(), '加入日期') or contains(text(), '注册日期')]/following-sibling::td[1]//@title"
             },
             {
-              "selector": "//div/b[text()='加入日期' or text()='注册日期']/../text()"
+              "selector": "//tr/td[contains(text(), '加入日期') or contains(text(), '注册日期')]/following-sibling::td[1]//text()"
+            },
+            {
+              "selector": "//div/b[contains(text(), '加入日期') or contains(text(), '注册日期')]/../text()"
             }
           ],
           "filters": [
@@ -249,10 +262,13 @@
           "trim_chars": true,
           "any": [
             {
-              "selector": "//tr/td[text()='最近访问' or *[text()='最近访问'] or text()='最近动向' or *[text()='最近动向'] or text()='上次访问' or *[text()='上次访问']]/following-sibling::td[1]//text()"
+              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/following-sibling::td[1]//@title"
             },
             {
-              "selector": "//div/b[text()='最近访问' or text()='最近动向' or text()='上次访问']/../text()"
+              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/following-sibling::td[1]//text()"
+            },
+            {
+              "selector": "//div/b[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/../text()"
             }
           ],
           "filters": [
@@ -277,7 +293,7 @@
       },
       "fields": {
         "id": {
-          "selector": "a[href*=\"details.php?id=\"]",
+          "selector": "a[href*='details.php?id=']",
           "attribute": "href",
           "filters": [
             {
@@ -290,7 +306,7 @@
           ]
         },
         "category": {
-          "selector": "a[href*=\"?cat=\"]",
+          "selector": "a[href*='?cat=']",
           "attribute": "href",
           "filters": [
             {
@@ -302,20 +318,20 @@
         "title": {
           "any": [
             {
-              "selector": "a[title][href*=\"details.php?id=\"]",
+              "selector": "a[title][href*='details.php?id=']",
               "attribute": "title"
             },
             {
-              "selector": "a[href*=\"details.php?id=\"]"
+              "selector": "a[href*='details.php?id=']"
             }
           ]
         },
         "details": {
-          "selector": "a[href*=\"details.php?id=\"]",
+          "selector": "a[href*='details.php?id=']",
           "attribute": "href"
         },
         "download": {
-          "selector": "a[href*=\"download.php?id=\"]",
+          "selector": "a[href*='download.php?id=']",
           "attribute": "href"
         },
         "size": {
@@ -421,7 +437,7 @@
           ]
         },
         "labels": {
-          "selector": "td:nth-child(2) > span[title=\"\"]",
+          "selector": "td:nth-child(2) > span[title='']",
           "array": true
         }
       }
@@ -436,7 +452,7 @@
       "list": {
         "selector": "//tr[position()>1]",
         "next_page": {
-          "selector": "//a[contains(.//text(), '下一页') or contains(.//text(), '下一頁')]/@href"
+          "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
         }
       },
       "fields": {
@@ -657,7 +673,7 @@
       },
       "fields": {
         "url": {
-          "selector": "//td[@class=\"rowhead\"][text()=\"字幕\"]/following-sibling::td//a/@href"
+          "selector": "//td[@class='rowhead'][text()='字幕']/following-sibling::td//a/@href"
         }
       }
     },

@@ -77,7 +77,7 @@
     "search": {
       "fields": {
         "category": {
-          "selector": "a[href*=\"?cat=\"]",
+          "selector": "a[href*='?cat=']",
           "attribute": "href",
           "filters": [
             {
@@ -94,7 +94,7 @@
           ]
         },
         "download": {
-          "selector": "form[action*=\"/download.php?id=\"]",
+          "selector": "form[action*='/download.php?id=']",
           "attribute": "action"
         },
         "imdbid": {

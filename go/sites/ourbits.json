@@ -63,7 +63,7 @@
     "user_details": {
       "fields": {
         "last_accessed": {
-          "selector": "//*[@id=\"outer\"]/table/tbody/tr/td/table/tbody/tr[4]/td[2]/text()[1]",
+          "selector": "//*[@id='outer']/table/tbody/tr/td/table/tbody/tr[4]/td[2]/text()[1]",
           "filters": [
             {
               "name": "re_search",

@@ -49,7 +49,7 @@
     "user_basic_info": {
       "fields": {
         "uploaded": {
-          "selector": "//*[@id=\"user-info-panel\"]/div[2]/div[2]/div[4]/text()",
+          "selector": "//*[@id='user-info-panel']/div[2]/div[2]/div[4]/text()",
           "filters": [
             {
               "name": "byte_size"
@@ -57,7 +57,7 @@
           ]
         },
         "downloaded": {
-          "selector": "//*[@id=\"user-info-panel\"]/div[2]/div[2]/div[5]/text()",
+          "selector": "//*[@id='user-info-panel']/div[2]/div[2]/div[5]/text()",
           "filters": [
             {
               "name": "byte_size"
@@ -69,10 +69,13 @@
     "user_details": {
       "fields": {
         "level": {
-          "selector": "//*[@id=\"mainContent\"]/div[1]/div[2]/div[2]/div[4]/span[2]/b"
+          "selector": "//div/span[contains(text(),'等级')]/following-sibling::span[1]//@title"
+        },
+        "level_icon": {
+          "selector": "//div/span[contains(text(),'等级')]/following-sibling::span[1]//@src"
         },
         "join_at": {
-          "selector": "//*[@id=\"mainContent\"]/div[1]/div[2]/div[4]/div[4]/span[2]/span/@title",
+          "selector": "//div/span[contains(text(),'加入日期')]/following-sibling::span[1]//@title",
           "filters": [
             {
               "name": "timestamp"
@@ -80,7 +83,7 @@
           ]
         },
         "last_accessed": {
-          "selector": "//*[@id=\"mainContent\"]/div[1]/div[2]/div[4]/div[5]/span[2]/span/@title",
+          "selector": "//div/span[contains(text(),'最近动向')]/following-sibling::span[1]//@title",
           "filters": [
             {
               "name": "timestamp"
@@ -95,7 +98,7 @@
       },
       "fields": {
         "category": {
-          "selector": "a[href*=\"?cat[]=\"]",
+          "selector": "a[href*='?cat[]=']",
           "attribute": "href",
           "filters": [
             {
@@ -107,12 +110,12 @@
         "title": {
           "any": [
             {
-              "selector": "a[title][href*=\"details.php?id=\"]",
+              "selector": "a[title][href*='details.php?id=']",
               "attribute": "title",
               "remove": "span"
             },
             {
-              "selector": "a[href*=\"details.php?id=\"]",
+              "selector": "a[href*='details.php?id=']",
               "remove": "span"
             }
           ]
@@ -129,10 +132,10 @@
           "selector": "div.torrent-info-text-finished"
         },
         "seeders": {
-          "selector": "div.torrent-info-text-seeders > a[href*=\"#seeders\"]"
+          "selector": "div.torrent-info-text-seeders > a[href*='#seeders']"
         },
         "leechers": {
-          "selector": "div.torrent-info-text-leechers > a[href*=\"#leechers\"]"
+          "selector": "div.torrent-info-text-leechers > a[href*='#leechers']"
         },
         "date_elapsed": {
           "selector": "div.torrent-info-text-added > span"
@@ -301,7 +304,7 @@
     },
     "messages": {
       "list": {
-        "selector": "//*[@id=\"mail-table-display\"]/div"
+        "selector": "//*[@id='mail-table-display']/div"
       },
       "fields": {
         "title": {
@@ -330,7 +333,7 @@
     "message_detail": {
       "fields": {
         "content": {
-          "selector": "//*[@id=\"mail-message-container\"]/text()",
+          "selector": "//*[@id='mail-message-container']/text()",
           "filters": [
             {
               "name": "constant",

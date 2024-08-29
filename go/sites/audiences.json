@@ -41,7 +41,7 @@
     "search": {
       "fields": {
         "category": {
-          "selector": "a[href*=\"?cat=\"]",
+          "selector": "a[href*='?cat=']",
           "attribute": "href",
           "filters": [
             {

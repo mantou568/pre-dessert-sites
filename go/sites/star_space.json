@@ -69,7 +69,7 @@
           ]
         },
         "bonus": {
-          "selector": "//a[contains(@href,\"bonus_hour.php\")]/text()",
+          "selector": "//a[contains(@href,'bonus_hour.php')]/text()",
           "filters": [
             {
               "name": "re_search",
@@ -92,7 +92,7 @@
       },
       "fields": {
         "id": {
-          "selector": "a[href*=\"video_detail.php?tid=\"]",
+          "selector": "a[href*='video_detail.php?tid=']",
           "attribute": "href",
           "filters": [
             {
@@ -125,11 +125,11 @@
           "selector": "td#tm_td_info div#tm_div_name a"
         },
         "details": {
-          "selector": "a[href*=\"video_detail.php?tid=\"]",
+          "selector": "a[href*='video_detail.php?tid=']",
           "attribute": "href"
         },
         "download": {
-          "selector": "a[href*=\"download.php?tid=\"]",
+          "selector": "a[href*='download.php?tid=']",
           "attribute": "href"
         },
         "size": {
@@ -166,7 +166,7 @@
         },
         "labels": {
           "array": true,
-          "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > span[title=\"\"]"
+          "selector": "td:nth-child(2) > table.torrentname > tr > td:nth-child(1) > span[title='']"
         }
       }
     },
