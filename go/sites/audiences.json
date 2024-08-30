@@ -57,19 +57,6 @@
             }
           ]
         },
-        "imdbid": {
-          "selector": "div.imdb_100 > a",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "tt\\d+",
-                1
-              ]
-            }
-          ]
-        },
         "description": {
           "selector": "td.embedded > span[style]"
         },

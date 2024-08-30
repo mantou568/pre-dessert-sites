@@ -72,19 +72,6 @@
     },
     "search": {
       "fields": {
-        "imdbid": {
-          "selector": "a[href*='imdb.com/title/tt']",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "tt\\d+",
-                0
-              ]
-            }
-          ]
-        },
         "date_elapsed": {
           "selector": "td:nth-last-child(6) > span"
         },

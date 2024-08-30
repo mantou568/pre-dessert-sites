@@ -97,10 +97,6 @@
           "selector": "form[action*='/download.php?id=']",
           "attribute": "action"
         },
-        "imdbid": {
-          "selector": "div.imdb_100 > a",
-          "attribute": "href"
-        },
         "description": {
           "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span:not(.optiontag)",
           "remove": "img,a,b",

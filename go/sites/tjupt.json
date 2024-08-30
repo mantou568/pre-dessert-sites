@@ -52,19 +52,6 @@
             }
           ]
         },
-        "imdbid": {
-          "selector": "a[href*='imdb.com/title/tt']",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "tt\\d+",
-                1
-              ]
-            }
-          ]
-        },
         "date_elapsed": {
           "selector": "td:nth-child(4)",
           "remove": "br"

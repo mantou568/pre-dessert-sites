@@ -222,19 +222,6 @@
             }
           ]
         },
-        "imdbid": {
-          "selector": "span.imdb_rate > a",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "tt\\d+",
-                0
-              ]
-            }
-          ]
-        },
         "downloadvolumefactor": {
           "any": [
             {
