@@ -1,0 +1,152 @@
+{
+  "id": "pttime",
+  "name": "PT时间",
+  "domain": "https://www.pttime.org",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "price": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 401,
+        "cat": "Movies",
+        "desc": "Movies/电影"
+      }
+    ],
+    "tv": [
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
+      {
+        "id": 402,
+        "cat": "TV",
+        "desc": "TV Series/连续剧"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "TV Shows/综艺"
+      },
+      {
+        "id": 419,
+        "cat": "TV",
+        "desc": "Short Play/短剧"
+      }
+    ]
+  },
+  "requests": {
+    "user_basic_info": {
+      "fields": {
+        "signed_in": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(签到详情)"
+            }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "fields": {
+        "level": {
+          "any": [
+            {
+              "selector": "//td[contains(text(), '用户等级')]/following-sibling::td[1]/b[@class='fcr']/@title"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlist.php?userid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "list": {
+        "selector": "//table[@class='torrents']/tbody/tr[position()>1]",
+        "next_page": {
+          "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
+        }
+      },
+      "fields": {
+        "size": {
+          "selector": "/td[3]",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "list": {
+        "selector": "//table[@id='message']//tr[position() > 1]"
+      },
+      "fields": {
+        "title": {
+          "selector": "td[3]/text()"
+        },
+        "link": {
+          "selector": "td[3]/a[0]/@href"
+        },
+        "id": {
+          "selector": "td[3]/a[0]/@href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "date": {
+          "any": [
+            {
+              "selector": "td[5]/text()"
+            }
+          ]
+        }
+      }
+    },
+    "message_detail": {
+      "fields": {
+        "content": {
+          "selector": "//*[@id='outer']/table[2]/tbody/tr[2]/td"
+        }
+      }
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "content": {
+          "selector": "//*[@id='outer']/table/tbody/tr/td/div[2]/div[1]"
+        }
+      }
+    }
+  }
+}
