@@ -1,8 +1,8 @@
 {
   "id": "mteam",
   "name": "馒头",
-  "domain": "https://kp.m-team.io",
-  "api": "https://api.m-team.io",
+  "domain": "https://kp.m-team.cc",
+  "api": "https://api.m-team.cc",
   "public": false,
   "schema": "mTorrent",
   "reuse_schema": "NexusPHP",
