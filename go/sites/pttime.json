@@ -147,6 +147,21 @@
           "selector": "//*[@id='outer']/table/tbody/tr/td/div[2]/div[1]"
         }
       }
+    },
+    "sign_in": {
+      "path": "/attendance.php?type=list",
+      "fields": {
+        "signed_in": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(签到详情)"
+            }
+          ]
+        }
+      }
     }
   }
 }
