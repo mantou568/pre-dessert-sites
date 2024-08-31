@@ -242,10 +242,20 @@
               "selector": "//tr/td[contains(text(), '加入日期') or contains(text(), '注册日期')]/following-sibling::td[1]//text()"
             },
             {
+              "selector": "//tr/td[contains(text(), '加入日期') or contains(text(), '注册日期')]/following-sibling::td[1]/text()"
+            },
+            {
               "selector": "//div/b[contains(text(), '加入日期') or contains(text(), '注册日期')]/../text()"
             }
           ],
           "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})",
+                1
+              ]
+            },
             {
               "name": "timestamp"
             }
@@ -261,10 +271,20 @@
               "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/following-sibling::td[1]//text()"
             },
             {
+              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/following-sibling::td[1]/text()"
+            },
+            {
               "selector": "//div/b[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/../text()"
             }
           ],
           "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})",
+                1
+              ]
+            },
             {
               "name": "timestamp"
             }
