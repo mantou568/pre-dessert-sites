@@ -18,6 +18,26 @@
         "selector": "table.torrents > tr"
       }
     },
+    "user_basic_info": {
+      "fields": {
+        "uploaded": {
+          "selector": "/html/body/div[1]/div/div/div/ul/li[4]/span",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "/html/body/div[1]/div/div/div/ul/li[5]/span",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
     "details": {
       "fields": {
         "free": {

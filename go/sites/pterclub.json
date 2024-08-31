@@ -89,6 +89,9 @@
           ]
         }
       }
+    },
+    "seeding_statistics": {
+      "path": "/getusertorrentlist.php?do_ajax=1&userid={userId}&type=seeding"
     }
   }
 }

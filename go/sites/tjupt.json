@@ -147,7 +147,6 @@
     "seeding_statistics": {
       "parser": "CssSelector",
       "disabled_extends": {
-        "headers": true,
         "list": true
       },
       "fields": {
