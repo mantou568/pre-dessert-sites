@@ -122,7 +122,7 @@
         "bonus": {
           "any": [
             {
-              "selector": "//a[contains(@href,'mybonus')]/text()",
+              "selector": "//a[contains(@href,'mybonus') or contains(@href,'bonus.php')]/text()",
               "filters": [
                 {
                   "name": "re_search",

@@ -48,6 +48,18 @@
   "requests": {
     "user_basic_info": {
       "fields": {
+        "bonus": {
+          "selector": "//a[contains(@href,'mybonus')]/div/text()",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "([\\d,.]+)",
+                1
+              ]
+            }
+          ]
+        },
         "uploaded": {
           "selector": "//*[@id='user-info-panel']/div[2]/div[2]/div[4]/text()",
           "filters": [
