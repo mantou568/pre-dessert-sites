@@ -111,40 +111,13 @@
           ]
         },
         "gold": {
-          "selector": "//span[@class = 'ucoin-symbol ucoin-gold']//text()",
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                ",",
-                ""
-              ]
-            }
-          ]
+          "selector": "//span[@class = 'ucoin-symbol ucoin-gold']//text()"
         },
         "silver": {
-          "selector": "//span[@class = 'ucoin-symbol ucoin-silver']//text()",
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                ",",
-                ""
-              ]
-            }
-          ]
+          "selector": "//span[@class = 'ucoin-symbol ucoin-silver']//text()"
         },
         "copper": {
-          "selector": "//span[@class = 'ucoin-symbol ucoin-copper']//text()",
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                ",",
-                ""
-              ]
-            }
-          ]
+          "selector": "//span[@class = 'ucoin-symbol ucoin-copper']//text()"
         },
         "bonus": {
           "any": [
@@ -184,15 +157,6 @@
                     1
                   ]
                 }
-              ]
-            }
-          ],
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                ",",
-                ""
               ]
             }
           ]

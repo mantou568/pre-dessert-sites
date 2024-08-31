@@ -58,15 +58,9 @@
         "params": true
       },
       "fields": {
-        "id": {
-          "selector": "id"
-        },
-        "category": {
-          "selector": "category"
-        },
-        "title": {
-          "selector": "title"
-        },
+        "id": {},
+        "category": {},
+        "title": {},
         "details": {
           "selector": "id",
           "filters": [
@@ -76,12 +70,8 @@
             }
           ]
         },
-        "download": {
-          "selector": "download"
-        },
-        "size": {
-          "selector": "size"
-        },
+        "download": {},
+        "size": {},
         "grabs": {
           "selector": "complete"
         },
@@ -219,9 +209,7 @@
         }
       },
       "fields": {
-        "size": {
-          "selector": "size"
-        }
+        "size": {}
       }
     },
     "messages": {
@@ -232,18 +220,12 @@
         "selector": "data.messages"
       },
       "fields": {
-        "title": {
-          "selector": "title"
-        },
-        "id": {
-          "selector": "id"
-        },
+        "title": {},
+        "id": {},
         "date": {
           "selector": "create_time"
         },
-        "content": {
-          "selector": "content"
-        }
+        "content": {}
       }
     },
     "notice": {
@@ -254,15 +236,9 @@
         "selector": "data"
       },
       "fields": {
-        "title": {
-          "selector": "title"
-        },
-        "content": {
-          "selector": "content"
-        },
-        "create_time": {
-          "selector": "create_time"
-        }
+        "title": {},
+        "content": {},
+        "create_time": {}
       }
     },
     "sign_in": {
