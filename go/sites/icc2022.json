@@ -50,6 +50,37 @@
         "desc": "Short Play/短剧"
       }
     ]
+  },
+  "requests": {
+    "user_basic_info": {
+      "fields": {
+        "seedingCount": {
+          "selector": "normalize-space(//img[@class='arrowup']/following::text()[1])"
+        }
+      }
+    },
+    "search": {
+      "fields": {
+        "description": {
+          "selector": "td:nth-child(2) > table.torrentname > tbody > tr > td:nth-child(1)",
+          "remove": "span,a,img,font,b",
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "selector": "td:nth-child(2) > table.torrentname > tbody > tr > td:nth-child(1) > span[title='']",
+          "array": true
+        }
+      }
+
+    }
   }
 }
 
