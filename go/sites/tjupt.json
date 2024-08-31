@@ -254,18 +254,6 @@
               ]
             }
           ]
-        },
-        "remaining_time": {
-          "selector": "td:nth-child(8)",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "考核期限：(.*)",
-                1
-              ]
-            }
-          ]
         }
       }
     },
