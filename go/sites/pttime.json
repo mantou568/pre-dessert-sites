@@ -105,13 +105,13 @@
       },
       "fields": {
         "title": {
-          "selector": "td[3]/a/text()"
+          "selector": "td[3]/a[1]/text()"
         },
         "link": {
-          "selector": "td[3]/a[0]/@href"
+          "selector": "td[3]/a[1]/@href"
         },
         "id": {
-          "selector": "td[3]/a[0]/@href",
+          "selector": "td[3]/a[1]/@href",
           "filters": [
             {
               "name": "re_search",
