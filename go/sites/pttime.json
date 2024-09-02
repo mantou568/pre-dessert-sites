@@ -101,7 +101,7 @@
     },
     "messages": {
       "list": {
-        "selector": "//table[@id='message']//tr[position() > 1][.//td[a[contains(@href, 'messages.php')]]]",
+        "selector": "//table[@id='message']//tr[position() > 1][.//td[a[contains(@href, 'messages.php')]]]"
       },
       "fields": {
         "title": {
