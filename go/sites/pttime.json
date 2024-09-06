@@ -75,6 +75,47 @@
         }
       }
     },
+    "search": {
+      "fields": {
+        "size": {
+          "selector": "td:nth-child(6)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "grabs": {
+          "selector": "td:nth-child(9)"
+        },
+        "seeders": {
+          "selector": "td:nth-child(7)"
+        },
+        "leechers": {
+          "selector": "td:nth-child(8)"
+        },
+        "date_elapsed": {
+          "selector": "td:nth-child(5) > span"
+        },
+        "date_added": {
+          "selector": "td:nth-child(5) > span",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "description": {
+          "selector": "td:nth-child(2) > table.torrentname > tbody > tr > td.embedded > font[title]:not([title=''])",
+          "attribute": "title"
+        },
+        "labels": {
+          "selector": "td:nth-child(2) > table.torrentname > tbody  > tr > td.embedded > a > span.tags",
+          "array": true
+        }
+      }
+    },
     "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
