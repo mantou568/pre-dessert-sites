@@ -93,7 +93,6 @@
           "selector": "td:nth-child(2) > table > tr > td.embedded > span.tags"
         },
         "hr_days": {
-          "default_value": 1,
           "selector": "img.hitandrun",
           "attribute": "title",
           "filters": [
