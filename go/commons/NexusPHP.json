@@ -14,7 +14,19 @@
         "is_login": {
           "any": [
             {
-              "selector": "//a[contains(@href, 'logout') or contains(@data-url, 'logout') or contains(@href, 'mybonus') or contains(@onclick, 'logout') or contains(@href, 'usercp')]/text()"
+              "selector": "//a[contains(@href, 'logout')]/text()"
+            },
+            {
+              "selector": "//a[contains(@data-url, 'logout')]/text()"
+            },
+            {
+              "selector": "//a[contains(@href, 'mybonus')]/text()"
+            },
+            {
+              "selector": "//a[contains(@onclick, 'logout')]/text()"
+            },
+            {
+              "selector": "//a[contains(@href, 'usercp')]/text()"
             },
             {
               "selector": "//form[contains(@action, 'logout')]/text()"
