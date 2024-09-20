@@ -60,6 +60,16 @@
         }
       }
     },
+    "user_details": {
+      "fields": {
+        "level": {
+          "selector": "//img[contains(@src, 'pic/user_class')]/@alt"
+        },
+        "level_icon": {
+          "selector": "//img[contains(@src, 'pic/user_class')]/@src"
+        }
+      }
+    },
     "search": {
       "fields": {
         "title": {
