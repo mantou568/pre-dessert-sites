@@ -1,0 +1,42 @@
+{
+    "commons": [
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/commons/NexusPHP.json"
+    ],
+    "sites": [
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/agsvpt.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/audiences.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/btschool.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/cyanbug.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/dajiao.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/hares.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/hdatmos.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/hddolby.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/HDHome.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/hdsky.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/HDTime.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/hdvideo.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/hhanclub.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/icc2022.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/keepfrds.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/leaves.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/mteam.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/okpt.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/ourbits.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/pandapt.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/piggo.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/ptchdbits.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/pterclub.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/ptsbao.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/pttime.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/ptvicomo.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/rousi.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/soulvoice.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/ssd.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/star_space.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/tjupt.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/ttg.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/ubits.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/wintersakura.json",
+        "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/go/sites/zhuque.json"
+    ]
+}

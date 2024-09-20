@@ -1,0 +1,42 @@
+{
+    "commons": [
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/commons/NexusPHP.json"
+    ],
+    "sites": [
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/agsvpt.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/audiences.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/btschool.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/cyanbug.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/dajiao.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/hares.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/hdatmos.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/hddolby.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/HDHome.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/hdsky.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/HDTime.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/hdvideo.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/hhanclub.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/icc2022.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/keepfrds.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/leaves.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/mteam.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/okpt.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/ourbits.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/pandapt.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/piggo.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/ptchdbits.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/pterclub.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/ptsbao.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/pttime.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/ptvicomo.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/rousi.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/soulvoice.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/ssd.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/star_space.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/tjupt.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/ttg.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/ubits.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/wintersakura.json",
+        "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/go/sites/zhuque.json"
+    ]
+}
