@@ -9,7 +9,8 @@
   },
   "price": {
     "has_free": true,
-    "has_2x_free": true
+    "has_2x_free": true,
+    "has_hr": true
   },
   "category": {
     "movie": [
@@ -41,5 +42,26 @@
         "desc": "综艺/TV-Show"
       }
     ]
+  },
+  "requests":{
+    "search": {
+      "fields": {
+        "hr_days": {
+          "default_value": 1
+        },
+        "labels": {
+          "selector": "td.embedded > span.label",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span,a,img,font,b,br",
+          "contents": -1
+        }
+      }
+    }
+  },
+  "my_hr": {
+    "path": "/myhr.php?hrtype=A"
   }
 }
