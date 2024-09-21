@@ -42,5 +42,45 @@
         "desc": "Documentaries(记录片)"
       }
     ]
+  },
+  "requests":{
+    "search": {
+      "fields": {
+        "hr_days":{
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        },
+        "labels": {
+          "selector": "td.embedded > span.tag",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span.label,a,img,b,br",
+          "contents": -1
+        },
+        "size": {
+          "selector": "td:nth-child(6)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "grabs": {
+          "selector": "td:nth-child(9)"
+        },
+        "seeders": {
+          "selector": "td:nth-child(7)"
+        }
+      }
+    }
+  },
+  "my_hr": {
+    "path": "/hr.php?hr=1"
   }
 }

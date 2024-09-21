@@ -45,15 +45,17 @@
     ]
   },
   "requests": {
-    "message_detail": {
-        "fields": {
-          "content": {
-            "selector": "//*[@id='outer']/font/b/table[2]/tbody/tr[3]/td"
-          }
-        }
-      },
     "search": {
       "fields": {
+        "labels": {
+          "selector": "td.embedded > span",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span.label,a,img,b,br",
+          "contents": -1
+        },
         "hr_days": {
           "selector": "img.hitandrun",
           "attribute": "title",
