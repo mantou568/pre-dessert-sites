@@ -1,0 +1,33 @@
+{
+  "id": "nicept",
+  "name": "老师",
+  "domain": "https://www.nicept.net/",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "price": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": true
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "hr_days":{
+          "filters": [
+            {
+              "name": "constant",
+              "args": "6"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
+  }
+}

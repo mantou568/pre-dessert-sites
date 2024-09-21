@@ -1,0 +1,46 @@
+{
+  "id": "eastgame",
+  "name": "吐鲁番",
+  "domain": "https://pt.eastgame.org/",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "price": {
+    "has_free": true,
+    "has_2x_free": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 438,
+        "cat": "Movies",
+        "desc": "Movies/电影"
+      }
+    ],
+    "tv": [
+      {
+        "id": 443,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 442,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
+      {
+        "id": 440,
+        "cat": "TV",
+        "desc": "TV Series/连续剧"
+      },
+      {
+        "id": 441,
+        "cat": "TV",
+        "desc": "TV Shows/综艺"
+      }
+    ]
+  }
+}
