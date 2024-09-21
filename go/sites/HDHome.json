@@ -276,7 +276,7 @@
           ]
         },
         "description": {
-          "selector": "td:nth-child(2) > table > tr > td.embedded > span[style]",
+          "selector": "td.embedded > span[style]",
           "filters": [
             {
               "name": "split",

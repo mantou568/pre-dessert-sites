@@ -40,7 +40,7 @@
       {
         "id": 423,
         "cat": "TV/Anime",
-        "desc": "Animation series/动漫剧集(合集)\t"
+        "desc": "Animation series/动漫剧集(合集)"
       },
       {
         "id": 414,
@@ -63,5 +63,8 @@
         "desc": "TV Shows/综艺(分集）"
       }
     ]
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }

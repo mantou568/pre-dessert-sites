@@ -38,10 +38,18 @@
         "desc": "TV Series/连续剧"
       },
       {
+        "id": 416,
+        "cat": "TV",
+        "desc": "TV Series/电视节目"
+      },
+      {
         "id": 403,
         "cat": "TV",
         "desc": "TV Shows/综艺"
       }
     ]
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }

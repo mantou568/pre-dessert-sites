@@ -1,7 +1,7 @@
 {
-  "id": "HDTime",
-  "name": "高清时间",
-  "domain": "https://hdtime.org",
+  "id": "ptchina",
+  "name": "铂金学院",
+  "domain": "https://ptchina.org/",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -10,7 +10,8 @@
   },
   "price": {
     "has_free": true,
-    "has_2x_free": true
+    "has_2x_free": true,
+    "has_hr": true
   },
   "category": {
     "movie": [
@@ -43,9 +44,12 @@
       },
       {
         "id": 406,
-        "cat": "MV",
-        "desc": "MV/MV"
+        "cat": "Music",
+        "desc": "Music/音乐"
       }
     ]
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }
