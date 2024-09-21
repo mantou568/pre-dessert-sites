@@ -11,5 +11,16 @@
   "price": {
     "has_free": true,
     "has_2x_free": true
+  },
+  "category": {
+    "movie": [
+    ],
+    "tv": [
+      {
+        "id": 403,
+        "cat": "TRAINING",
+        "desc": "TRAINING MATERIALS/训练教程"
+      }
+    ]
   }
 }

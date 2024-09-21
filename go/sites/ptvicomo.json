@@ -44,5 +44,65 @@
         "desc": "TV Shows/综艺"
       }
     ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "size": {
+          "selector": "td:nth-child(4)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "grabs": {
+          "selector": "td:nth-child(7)"
+        },
+        "seeders": {
+          "selector": "td:nth-child(5)"
+        },
+        "leechers": {
+          "selector": "td:nth-child(6)"
+        },
+        "date_elapsed": {
+          "selector": "td:nth-child(3)  > b > span"
+        },
+        "date_added": {
+          "selector": "td:nth-child(3)  > b > span",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "hr_days": {
+          "selector": "img.hitandrun",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "not_blank",
+              "args": [
+                "7",
+                "0"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "array": true,
+          "selector": "td.embedded > span[title]"
+        },
+        "description": {
+          "selector": "td.embedded:nth-child(1)",
+          "remove": "span.label,a,img,b,br",
+          "contents": -1
+        }
+      }
+    }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }

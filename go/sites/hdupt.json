@@ -54,6 +54,11 @@
               "args": "3"
             }
           ]
+        },
+        "description": {
+          "selector": "td.embedded:nth-child(1)",
+          "remove": "span.label,a,img,b,br",
+          "contents": -1
         }
       }
     }

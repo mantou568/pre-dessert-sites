@@ -43,5 +43,36 @@
         "desc": "动漫"
       }
     ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "hr_days": {
+          "selector": "img.hitandrun",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "not_blank",
+              "args": [
+                "1",
+                "0"
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "array": true,
+          "selector": "td.embedded > span[title]"
+        },
+        "description": {
+          "selector": "td.embedded:nth-child(1)",
+          "remove": "span.label,a,img,b,br",
+          "contents": -1
+        }
+      }
+    }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }
