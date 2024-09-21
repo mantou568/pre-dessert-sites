@@ -342,6 +342,26 @@
           ]
         }
       }
+    },
+    "user_basic_info": {
+      "fields": {
+        "uploaded": {
+          "selector": "/html/body/table[2]/tbody/tr/td/table/tbody/tr/td[1]/span/font[4]/a/text()",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "/html/body/table[2]/tbody/tr/td/table/tbody/tr/td[1]/span/font[6]/a/text()",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
     }
   }
 }
