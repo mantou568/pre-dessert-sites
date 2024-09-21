@@ -1,0 +1,15 @@
+{
+  "id": "htpt",
+  "name": "海棠",
+  "domain": "https://www.htpt.cc/",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "price": {
+    "has_free": true,
+    "has_2x_free": true
+  }
+}
