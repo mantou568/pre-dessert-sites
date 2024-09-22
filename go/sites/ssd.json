@@ -154,29 +154,13 @@
             }
           ]
         },
-        "description": {
-          "selector": "table.torrentname > tr > td > div.torrent-smalldescr > span",
-          "remove": "a, b, img, span",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+-\\d+-\\d+ \\d+:\\d+:\\d+",
-                0
-              ]
-            },
-            {
-              "name": "split",
-              "args": [
-                "\n",
-                0
-              ]
-            }
-          ]
-        },
         "labels": {
-          "array": true,
-          "selector": "table.torrentname > tr > td > div.torrent-smalldescr > a > span"
+          "selector": "td.embedded > div.torrent-smalldescr > a > span",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded > div.torrent-smalldescr > span",
+          "contents": -1
         }
       }
     },
