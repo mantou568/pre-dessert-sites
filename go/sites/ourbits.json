@@ -92,6 +92,14 @@
           "array": true,
           "selector": "table.torrentname tr > td.embedded > div > a > div.tag"
         },
+        "size": {
+          "selector": "td.rowfollow:nth-child(5)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
         "hr_days": {
           "selector": "img.hitandrun",
           "attribute": "title",
