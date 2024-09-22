@@ -45,13 +45,6 @@
     ]
   },
   "requests": {
-    "message_detail": {
-        "fields": {
-          "content": {
-            "selector": "//*[@id='outer']/font/b/table[2]/tbody/tr[3]/td"
-          }
-        }
-      },
     "search": {
       "fields": {
         "hr_days": {
@@ -66,6 +59,15 @@
               ]
             }
           ]
+        },
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded:nth-child(1)",
+          "remove": "span.label,a,img,font,b,br",
+          "contents": -1
         }
       }
     }

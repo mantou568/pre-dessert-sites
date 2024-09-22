@@ -42,5 +42,15 @@
         "desc": "TV Shows/综艺"
       }
     ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "labels": {
+          "selector": "td.embedded:nth-child(2) > span[title]",
+          "array": true
+        }
+      }
+    }
   }
 }
