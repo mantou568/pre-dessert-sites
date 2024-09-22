@@ -78,6 +78,66 @@
             }
           ]
         },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "font.free,font.twoupfree",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "font.halfdown,font.twouphalfdown",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "font.thirtypercent",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "font.twouphalfdown,font.twoupfree,font.twoup",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    2,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         "labels": {
           "array": true,
           "selector": "td:nth-child(2) > div#tag > span > font.tag"
