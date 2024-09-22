@@ -53,5 +53,39 @@
         "desc": "儿童电影"
       }
     ]
+  },
+  "requests":{
+    "search": {
+      "fields": {
+        "hr_days": {
+          "selector": "img.kaohe",
+          "filters": [
+            {
+              "name": "not_blank",
+              "args": [
+                "3",
+                "0"
+              ]
+            }
+          ]
+        },
+        "date_elapsed": {
+          "selector": "td.rowfollow:nth-child(4)",
+          "remove": "br"
+        },
+        "date_added": {
+          "selector": "td.rowfollow:nth-child(4)",
+          "remove": "br",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }
