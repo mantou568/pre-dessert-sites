@@ -65,19 +65,6 @@
             }
           ]
         },
-        "description": {
-          "selector": "td:nth-child(2)",
-          "remove": "a, img, div",
-          "filters": [
-            {
-              "name": "split",
-              "args": [
-                "\n",
-                -1
-              ]
-            }
-          ]
-        },
         "downloadvolumefactor": {
           "any": [
             {
@@ -134,6 +121,19 @@
                     1
                   ]
                 }
+              ]
+            }
+          ]
+        },
+        "description": {
+          "selector": "td:nth-child(2)",
+          "remove": "a, img, div",
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
               ]
             }
           ]
