@@ -219,7 +219,8 @@
           "selector": "td:nth-child(5) > nobr",
           "filters": [
             {
-              "name": "timestamp"
+              "name": "timestamp",
+              "args": "2006-01-0215:04:05"
             }
           ]
         },
