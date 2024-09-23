@@ -201,12 +201,13 @@
         },
         "grabs": {
           "selector": "td:nth-child(8)",
+          "remove": "br",
           "filters": [
             {
-              "name": "split",
+              "name": "replace",
               "args": [
-                "\n",
-                0
+                "次",
+                ""
               ]
             }
           ]

@@ -1,0 +1,144 @@
+{
+  "id": "exoticaz",
+  "name": "exoticaz",
+  "domain": "https://exoticaz.to/",
+  "encoding": "UTF-8",
+  "public": false,
+  "reuse_schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "price": {
+    "has_free": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": "Video Clip",
+        "cat": "AV/Video Clip",
+        "desc": "Video Clip"
+      },
+      {
+        "id": "Video Pack",
+        "cat": "AV/Video Pack",
+        "desc": "Video Pack"
+      },
+      {
+        "id": "Siterip Pack",
+        "cat": "AV/cate_level2_desc",
+        "desc": "Siterip Pack"
+      },
+      {
+        "id": "Pornstar Pack",
+        "cat": "AV/Pornstar Pack",
+        "desc": "Pornstar Pack"
+      },
+      {
+        "id": "DVD",
+        "cat": "AV/DVD",
+        "desc": "DVD"
+      },
+      {
+        "id": "BluRay",
+        "cat": "AV/BluRay",
+        "desc": "BluRay"
+      },
+      {
+        "id": "Photo Pack",
+        "cat": "AV/Photo Pack",
+        "desc": "Photo Pack"
+      },
+      {
+        "id": "Books &amp; Magazines",
+        "cat": "AV/Books",
+        "desc": "Books &amp; Magazines"
+      }
+    ]
+  },
+  "requests":{
+    "search": {
+      "path": "/torrents",
+      "list": {
+        "selector": "div.card.mt-2 > div.card-body.p-2 > div.table-responsive > table > tbody > tr"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href^=\"https://exoticaz.to/torrent/\"]",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        },
+        "title": {
+          "selector": "a[title][href*=\"/torrent/\"]",
+          "attribute": "title"
+        },
+        "category": {
+          "selector": "td:nth-child(1) > i.fa.fa-video.category-icon[title]",
+          "attribute": "title"
+        },
+        "details": {
+          "selector": "a[href^=\"https://exoticaz.to/torrent/\"]",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "https://exoticaz.to/",
+                ""
+              ]
+            }
+          ]
+        },
+        "download": {
+          "selector": "a[href^=\"https://exoticaz.to/download/torrent/\"]",
+          "attribute": "href"
+        },
+        "date_elapsed": {
+          "selector": "td:nth-child(4)"
+        },
+        "size": {
+          "selector": "td:nth-child(5)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "seeders": {
+          "selector": "td:nth-child(6)"
+        },
+        "leechers": {
+          "selector": "td:nth-child(7)"
+        },
+        "grabs": {
+          "selector": "td:nth-child(8)"
+        },
+        "labels": {
+          "selector": "td:nth-child(2) > div.tags > a.tag",
+          "array": true
+        },
+        "downloadvolumefactor": {
+          "case": {
+            "i.fa.fa-star.text-yellow": 0,
+            "i.fa.fa-star-half-alt.text-pink": 0.5,
+            "*": 1
+          }
+        },
+        "uploadvolumefactor": {
+          "case": {
+            "i.fa.fa-gem.text-green": 2,
+            "*": 1
+          }
+        }
+      }
+    }
+  }
+}
