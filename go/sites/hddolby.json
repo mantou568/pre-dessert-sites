@@ -77,7 +77,7 @@
           ]
         },
         "description": {
-          "selector": "td:nth-child(2) > table > tr > td.embedded > span[style]",
+          "selector": "td.embedded > span[style]",
           "filters": [
             {
               "name": "split",
@@ -90,7 +90,7 @@
         },
         "labels": {
           "array": true,
-          "selector": "td:nth-child(2) > table > tr > td.embedded > span.tags"
+          "selector": "td.embedded > span.tags"
         },
         "hr_days": {
           "selector": "img.hitandrun",
