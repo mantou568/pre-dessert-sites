@@ -139,6 +139,35 @@
             "value": "medium16"
           }
         ]
+      },
+      {
+        "title": "分辨率",
+        "options": [
+          {
+            "text": "4K/2160p",
+            "value": "standard5"
+          },
+          {
+            "text": "2K/1080p",
+            "value": "standard1"
+          },
+          {
+            "text": "1080i",
+            "value": "standard2"
+          },
+          {
+            "text": "720p",
+            "value": "standard3"
+          },
+          {
+            "text": "SD",
+            "value": "standard4"
+          },
+          {
+            "text": "8K/4320P",
+            "value": "standard6"
+          }
+        ]
       }
     ]
   },

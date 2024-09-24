@@ -102,6 +102,31 @@
             "value": "medium1"
           }
         ]
+      },
+      {
+        "title": "分辨率",
+        "options": [
+          {
+            "text": "SD",
+            "value": "standard4"
+          },
+          {
+            "text": "720p",
+            "value": "standard3"
+          },
+          {
+            "text": "1080i",
+            "value": "standard2"
+          },
+          {
+            "text": "1080p",
+            "value": "standard1"
+          },
+          {
+            "text": "2160p",
+            "value": "standard5"
+          }
+        ]
       }
     ]
   },
