@@ -48,6 +48,63 @@
       }
     ]
   },
+  "search_box": {
+    "checkbox": [
+      {
+        "title": "媒介",
+        "options": [
+          {
+            "text": "Other",
+            "value": "medium12"
+          },
+          {
+            "text": "Track",
+            "value": "medium9"
+          },
+          {
+            "text": "CD",
+            "value": "medium8"
+          },
+          {
+            "text": "DVDR",
+            "value": "medium6"
+          },
+          {
+            "text": "MiniBD",
+            "value": "medium4"
+          },
+          {
+            "text": "HDTV",
+            "value": "medium5"
+          },
+          {
+            "text": "HD DVD",
+            "value": "medium2"
+          },
+          {
+            "text": "WEB-DL",
+            "value": "medium10"
+          },
+          {
+            "text": "Encode",
+            "value": "medium7"
+          },
+          {
+            "text": "Remux",
+            "value": "medium3"
+          },
+          {
+            "text": "UHD Blu-ray",
+            "value": "medium11"
+          },
+          {
+            "text": "Blu-ray",
+            "value": "medium1"
+          }
+        ]
+      }
+    ]
+  },
   "requests": {
     "search": {
       "parser": "CssSelector",

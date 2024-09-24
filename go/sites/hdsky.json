@@ -73,6 +73,75 @@
       }
     ]
   },
+  "search_box": {
+    "checkbox": [
+      {
+        "title": "媒介",
+        "options": [
+          {
+            "text": "UHD Blu-ray",
+            "value": "medium13"
+          },
+          {
+            "text": "UHD Blu-ray/DIY",
+            "value": "medium14"
+          },
+          {
+            "text": "Blu-ray",
+            "value": "medium1"
+          },
+          {
+            "text": "Blu-ray/DIY",
+            "value": "medium12"
+          },
+          {
+            "text": "Remux",
+            "value": "medium3"
+          },
+          {
+            "text": "Encode",
+            "value": "medium7"
+          },
+          {
+            "text": "HDTV",
+            "value": "medium5"
+          },
+          {
+            "text": "DVDR",
+            "value": "medium6"
+          },
+          {
+            "text": "CD",
+            "value": "medium8"
+          },
+          {
+            "text": "MiniBD",
+            "value": "medium4"
+          },
+          {
+            "text": "Track",
+            "value": "medium9"
+          },
+          {
+            "text": "WEB-DL",
+            "value": "medium11"
+          },
+          {
+            "text": "SACD",
+            "value": "medium15"
+          },
+          {
+            "text": "HD DVD",
+            "value": "medium2"
+          },
+          {
+            "text": "3D Blu-ray",
+            "value": "medium16"
+          }
+        ]
+      }
+    ]
+  },
   "requests": {
     "search": {
       "fields": {
