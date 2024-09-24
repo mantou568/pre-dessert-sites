@@ -74,9 +74,11 @@
     ]
   },
   "search_box": {
-    "checkbox": [
+    "fields": [
       {
         "title": "媒介",
+        "name": "medium",
+        "type": "checkbox",
         "options": [
           {
             "text": "UHD Blu-ray",
@@ -142,6 +144,8 @@
       },
       {
         "title": "分辨率",
+        "name": "standard",
+        "type": "checkbox",
         "options": [
           {
             "text": "4K/2160p",
