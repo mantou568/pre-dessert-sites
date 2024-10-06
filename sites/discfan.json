@@ -203,9 +203,12 @@
         ]
       },
       "description": {
-        "selector": "td:nth-child(2) > table > tr > td.embedded",
+        "selector": "td:nth-child(2) > table > tr > td.embedded:nth-child(2)",
         "remove": "span,a,img,font,b",
         "contents": -1
+      },
+      "labels": {
+        "selector": "td.embedded:nth-child(2) > span[title=\"\"]"
       }
     }
   },
