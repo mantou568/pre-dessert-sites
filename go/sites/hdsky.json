@@ -73,6 +73,108 @@
       }
     ]
   },
+  "search_box": {
+    "fields": [
+      {
+        "title": "媒介",
+        "name": "medium",
+        "type": "checkbox",
+        "options": [
+          {
+            "text": "UHD Blu-ray",
+            "value": "medium13"
+          },
+          {
+            "text": "UHD Blu-ray/DIY",
+            "value": "medium14"
+          },
+          {
+            "text": "Blu-ray",
+            "value": "medium1"
+          },
+          {
+            "text": "Blu-ray/DIY",
+            "value": "medium12"
+          },
+          {
+            "text": "Remux",
+            "value": "medium3"
+          },
+          {
+            "text": "Encode",
+            "value": "medium7"
+          },
+          {
+            "text": "HDTV",
+            "value": "medium5"
+          },
+          {
+            "text": "DVDR",
+            "value": "medium6"
+          },
+          {
+            "text": "CD",
+            "value": "medium8"
+          },
+          {
+            "text": "MiniBD",
+            "value": "medium4"
+          },
+          {
+            "text": "Track",
+            "value": "medium9"
+          },
+          {
+            "text": "WEB-DL",
+            "value": "medium11"
+          },
+          {
+            "text": "SACD",
+            "value": "medium15"
+          },
+          {
+            "text": "HD DVD",
+            "value": "medium2"
+          },
+          {
+            "text": "3D Blu-ray",
+            "value": "medium16"
+          }
+        ]
+      },
+      {
+        "title": "分辨率",
+        "name": "standard",
+        "type": "checkbox",
+        "options": [
+          {
+            "text": "4K/2160p",
+            "value": "standard5"
+          },
+          {
+            "text": "2K/1080p",
+            "value": "standard1"
+          },
+          {
+            "text": "1080i",
+            "value": "standard2"
+          },
+          {
+            "text": "720p",
+            "value": "standard3"
+          },
+          {
+            "text": "SD",
+            "value": "standard4"
+          },
+          {
+            "text": "8K/4320P",
+            "value": "standard6"
+          }
+        ]
+      }
+    ]
+  },
   "requests": {
     "search": {
       "fields": {

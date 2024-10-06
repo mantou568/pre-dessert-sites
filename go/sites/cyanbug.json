@@ -48,6 +48,92 @@
       }
     ]
   },
+  "search_box": {
+    "fields": [
+      {
+        "title": "媒介",
+        "name": "medium",
+        "type": "checkbox",
+        "options": [
+          {
+            "text": "Other",
+            "value": "medium12"
+          },
+          {
+            "text": "Track",
+            "value": "medium9"
+          },
+          {
+            "text": "CD",
+            "value": "medium8"
+          },
+          {
+            "text": "DVDR",
+            "value": "medium6"
+          },
+          {
+            "text": "MiniBD",
+            "value": "medium4"
+          },
+          {
+            "text": "HDTV",
+            "value": "medium5"
+          },
+          {
+            "text": "HD DVD",
+            "value": "medium2"
+          },
+          {
+            "text": "WEB-DL",
+            "value": "medium10"
+          },
+          {
+            "text": "Encode",
+            "value": "medium7"
+          },
+          {
+            "text": "Remux",
+            "value": "medium3"
+          },
+          {
+            "text": "UHD Blu-ray",
+            "value": "medium11"
+          },
+          {
+            "text": "Blu-ray",
+            "value": "medium1"
+          }
+        ]
+      },
+      {
+        "title": "分辨率",
+        "name": "standard",
+        "type": "checkbox",
+        "options": [
+          {
+            "text": "SD",
+            "value": "standard4"
+          },
+          {
+            "text": "720p",
+            "value": "standard3"
+          },
+          {
+            "text": "1080i",
+            "value": "standard2"
+          },
+          {
+            "text": "1080p",
+            "value": "standard1"
+          },
+          {
+            "text": "2160p",
+            "value": "standard5"
+          }
+        ]
+      }
+    ]
+  },
   "requests": {
     "search": {
       "parser": "CssSelector",
