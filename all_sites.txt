@@ -87,6 +87,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptchina.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pterclub.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptgtk.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pthome.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptlgs.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptlsp_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/PTMSG.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptsbao.json

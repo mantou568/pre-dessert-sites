@@ -87,6 +87,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ptchina
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/pterclub.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ptgtk.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/pthome.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ptlgs.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ptlsp_com.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/PTMSG.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ptsbao.json
