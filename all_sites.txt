@@ -88,15 +88,14 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pterclub.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptgtk.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pthome.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptlgs.json
-https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptlsp_com.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/PTMSG.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptsbao.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/pttime.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptvicomo.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/putao.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/qingwa.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/raingfh.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/rousi.json
-https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/sharkpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/skyeysnow.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/soulvoice.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/srvfi.json
