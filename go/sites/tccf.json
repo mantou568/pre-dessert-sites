@@ -1,0 +1,51 @@
+{
+  "id": "tccf",
+  "name": "TCCF",
+  "domain": "https://et8.org/",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "price": {
+    "has_free": true,
+    "has_2x_free": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 622,
+        "cat": "Movies",
+        "desc": "Movies/电影"
+      }
+    ],
+    "tv": [
+      {
+        "id": 624,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 623,
+        "cat": "TV",
+        "desc": "TV Series/连续剧"
+      }
+    ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span.label,a,img,font,b,br",
+          "contents": -1
+        }
+      }
+    }
+  }
+}

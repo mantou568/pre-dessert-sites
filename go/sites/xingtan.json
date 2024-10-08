@@ -1,0 +1,30 @@
+{
+  "id": "xingtan",
+  "name": "杏坛",
+  "domain": "https://xingtan.one/",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "price": {
+    "has_free": true,
+    "has_2x_free": true
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span.label,a,img,font,b,br",
+          "contents": -1
+        }
+      }
+    }
+  }
+}
