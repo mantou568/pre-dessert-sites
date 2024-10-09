@@ -101,7 +101,19 @@
       }
     },
     "seeding_statistics": {
-      "path": "/getusertorrentlist.php?do_ajax=1&userid={userId}&type=seeding"
+      "path": "/getusertorrentlist.php?do_ajax=1&userid={userId}&type=seeding",
+      "headers": {
+        "accept": "*/*",
+        "accept-language": "zh-CN,zh;q=0.9",
+        "cache-control": "no-cache",
+        "pragma": "no-cache",
+        "priority": "u=1, i",
+        "referer": "{domain}/userdetails.php?id={userId}",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "x-requested-with": "XMLHttpRequest"
+      }
     }
   }
 }
