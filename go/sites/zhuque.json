@@ -144,6 +144,9 @@
       "parser": "JsonPath",
       "method": "GET",
       "path": "/api/user/getMainInfo",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
       "fields": {
         "is_login": {
           "selector": "status",
@@ -183,6 +186,9 @@
       "parser": "JsonPath",
       "method": "GET",
       "path": "/api/user/getInfo?id={userId}",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
       "fields": {
         "level": {
           "selector": "data.class.name"
@@ -199,6 +205,9 @@
       "parser": "JsonPath",
       "method": "GET",
       "path": "/api/user/listTorrentActivity?id={userId}&type=seeding&page={page}&size=100",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
       "headers": {
         "Referer": "{domain}/user/info/{userId}"
       },
@@ -232,6 +241,9 @@
       "parser": "JsonPath",
       "method": "GET",
       "path": "/api/announcement/list",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
       "list": {
         "selector": "data"
       },
@@ -245,6 +257,9 @@
       "parser": "JsonPath",
       "method": "POST",
       "path": "/api/gaming/fireGenshinCharacterMagic",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
       "body": {
         "all": 1,
         "resetModal": true
@@ -265,6 +280,9 @@
       "parser": "JsonPath",
       "method": "GET",
       "path": "/api/torrent/info",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
       "params": {
         "id": [
           "{id}"

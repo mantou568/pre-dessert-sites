@@ -1,0 +1,247 @@
+{
+  "id": "fsm_me",
+  "name": "飞天拉面",
+  "domain": "https://fsm.name",
+  "api": "https://api.fsm.name",
+  "public": false,
+  "schema": "fsm",
+  "reuse_schema": "NexusPHP",
+  "price": {
+    "has_free": true
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "user_basic_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/Users/infos",
+      "required_headers": [
+        "APITOKEN"
+      ],
+      "fields": {
+        "is_login": {
+          "selector": "status",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "200"
+            }
+          ]
+        },
+        "signed_in": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "0"
+            }
+          ]
+        },
+        "id": {
+          "selector": "data.uid"
+        },
+        "name": {
+          "selector": "data.username"
+        },
+        "uploaded": {
+          "selector": "data.upload"
+        },
+        "downloaded": {
+          "selector": "data.download"
+        },
+        "bonus": {
+          "selector": "data.point"
+        }
+      }
+    },
+    "infos": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/Users/infos",
+      "required_headers": [
+        "APITOKEN"
+      ],
+      "fields": {
+        "passkey": {
+          "selector": "data.passkey"
+        }
+      }
+    },
+    "user_details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/Users/profile?uid={userId}",
+      "required_headers": [
+        "APITOKEN"
+      ],
+      "fields": {
+        "level": {
+          "selector": "data.userRank.name"
+        },
+        "join_at": {
+          "selector": "data.createdTs",
+          "filters": [
+            {
+              "name": "append_right",
+              "args": "000"
+            }
+          ]
+        }
+      }
+    },
+    "search": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/Torrents/listTorrents?type=0&systematics=0&tags=[]",
+      "params": {
+        "keyword": [
+          "{keyword}"
+        ],
+        "page": [
+          "{page}"
+        ]
+      },
+      "required_headers": [
+        "APITOKEN"
+      ],
+      "list": {
+        "selector": "data.list"
+      },
+      "disabled_extends": {
+        "params": true
+      },
+      "fields": {
+        "id": {
+          "selector": "tid"
+        },
+        "category": {
+          "selector": "type.id"
+        },
+        "title": {},
+        "details": {
+          "selector": "tid",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/Torrents/details?tid="
+            }
+          ]
+        },
+        "download": {},
+        "size": {
+          "selector": "fileRawSize"
+        },
+        "grabs": {
+          "selector": "finish"
+        },
+        "seeders": {
+          "selector": "peers.upload"
+        },
+        "leechers": {
+          "selector": "peers.download"
+        },
+        "date_added": {
+          "selector": "createdTs"
+        },
+        "uploadvolumefactor": {
+          "selector": "status.upCoefficient"
+        },
+        "downloadvolumefactor": {
+          "selector": "status.downCoefficient"
+        },
+        "description": {},
+        "labels": {
+          "selector": "tags",
+          "array": true
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/Users/profile?uid={userId}",
+      "required_headers": [
+        "APITOKEN"
+      ],
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "size": {
+          "selector": "data.nowActiveUploadSize"
+        },
+        "count": {
+          "selector": "data.nowActiveUpload"
+        }
+      }
+    },
+    "messages": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/Mail/list?type=receive",
+      "required_headers": [
+        "APITOKEN"
+      ],
+      "list": {
+        "selector": "data"
+      },
+      "fields": {
+        "title": {},
+        "id": {},
+        "date": {
+          "selector": "sendTs",
+          "filters": [
+            {
+              "name": "append_right",
+              "args": "000"
+            }
+          ]
+        },
+        "content": {}
+      }
+    },
+    "details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/Torrents/details",
+      "required_headers": [
+        "APITOKEN"
+      ],
+      "params": {
+        "tid": [
+          "{id}"
+        ],
+        "page": [
+          "1"
+        ]
+      },
+      "fields": {
+        "absent": {
+          "selector": "msg",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "未找到种子内容"
+            }
+          ]
+        },
+        "free": {
+          "selector": "data.torrent.status.downCoefficient",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "data.torrent.peers.upload"
+        }
+      }
+    }
+  }
+}
