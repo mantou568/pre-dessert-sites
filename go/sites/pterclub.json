@@ -81,10 +81,6 @@
         "labels": {
           "array": true,
           "selector": "td:nth-child(2) > div > div:nth-child(2) > a.torrents-tag"
-        },
-        "cover": {
-          "selector": "td:nth-child(2) > table > tbody > tr > td:nth-child(1) > img",
-          "attribute": "data-src"
         }
       }
     },
