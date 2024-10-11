@@ -136,13 +136,11 @@
   },
   "requests": {
     "search": {
-      "parser": "CssSelector",
-      "method": "GET",
-      "path": "/torrents.php",
-      "params": {
-        "search": [
-          "{keyword}"
-        ]
+      "fields": {
+        "cover": {
+          "selector": "td:nth-child(1) > img",
+          "attribute": "data-src"
+        }
       }
     },
     "seeding_statistics": {
