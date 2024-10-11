@@ -156,7 +156,8 @@
         "labels": {
           "selector": "tags",
           "array": true
-        }
+        },
+        "cover": {}
       }
     },
     "seeding_statistics": {
