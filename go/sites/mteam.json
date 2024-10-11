@@ -82,6 +82,9 @@
         "title": {
           "selector": "name"
         },
+        "cover": {
+          "selector": "imageList.[0]"
+        },
         "details": {
           "selector": "id",
           "filters": [
