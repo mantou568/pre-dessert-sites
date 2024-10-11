@@ -24,11 +24,11 @@
       ],
       "fields": {
         "is_login": {
-          "selector": "status",
+          "selector": "success",
           "filters": [
             {
               "name": "eq",
-              "args": "200"
+              "args": "true"
             }
           ]
         },
