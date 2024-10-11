@@ -328,7 +328,7 @@
           "attribute": "href"
         },
         "size": {
-          "selector": "td:nth-child(5)",
+          "selector": "td:nth-child(5):not(.embedded)",
           "filters": [
             {
               "name": "byte_size"
@@ -336,19 +336,19 @@
           ]
         },
         "grabs": {
-          "selector": "td:nth-child(8)"
+          "selector": "td:nth-child(8):not(.embedded)"
         },
         "seeders": {
-          "selector": "td:nth-child(6)"
+          "selector": "td:nth-child(6):not(.embedded)"
         },
         "leechers": {
-          "selector": "td:nth-child(7)"
+          "selector": "td:nth-child(7):not(.embedded)"
         },
         "date_elapsed": {
-          "selector": "td:nth-child(4) > span"
+          "selector": "td:nth-child(4):not(.embedded) > span"
         },
         "date_added": {
-          "selector": "td:nth-child(4) > span",
+          "selector": "td:nth-child(4):not(.embedded) > span",
           "attribute": "title",
           "filters": [
             {
