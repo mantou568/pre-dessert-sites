@@ -114,6 +114,10 @@
         "labels": {
           "selector": "td:nth-child(2) > table.torrentname > tbody  > tr > td.embedded > a > span.tags",
           "array": true
+        },
+        "cover": {
+          "selector": "td.torrentimg > img",
+          "attribute": "alt"
         }
       }
     },
