@@ -9,7 +9,7 @@
   "required": {
     "user_id": true
   },
-  "price": {
+  "meta": {
     "has_free": true,
     "has_2x_free": true
   },

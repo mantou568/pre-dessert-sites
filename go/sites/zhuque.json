@@ -8,7 +8,7 @@
   "required": {
     "cookie": true
   },
-  "price": {
+  "meta": {
     "has_free": true
   },
   "public": false,

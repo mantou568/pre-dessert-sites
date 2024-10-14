@@ -6,7 +6,7 @@
   "public": false,
   "schema": "fsm",
   "reuse_schema": "NexusPHP",
-  "price": {
+  "meta": {
     "has_free": true
   },
   "requests": {

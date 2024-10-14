@@ -9,7 +9,7 @@
     "cookie": true,
     "sign_in": true
   },
-  "price": {
+  "meta": {
     "has_free": true
   },
   "requests":{
