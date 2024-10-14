@@ -33,10 +33,11 @@
           ]
         },
         "signed_in": {
+          "selector": "success",
           "filters": [
             {
-              "name": "constant",
-              "args": "0"
+              "name": "eq",
+              "args": "true"
             }
           ]
         },

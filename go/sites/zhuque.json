@@ -158,10 +158,11 @@
           ]
         },
         "signed_in": {
+          "selector": "status",
           "filters": [
             {
-              "name": "constant",
-              "args": "0"
+              "name": "eq",
+              "args": "200"
             }
           ]
         },
