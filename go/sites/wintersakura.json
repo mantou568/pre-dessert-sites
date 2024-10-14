@@ -8,9 +8,10 @@
     "cookie": true,
     "sign_in": true
   },
-  "price": {
+  "meta": {
     "has_free": true,
-    "has_2x_free": true
+    "has_2x_free": true,
+    "has_cover": true
   },
   "category": {
     "movie": [
