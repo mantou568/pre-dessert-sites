@@ -10,7 +10,8 @@
     "sign_in": true
   },
   "meta": {
-    "has_free": true
+    "has_free": true,
+    "has_cover": true
   },
   "requests":{
     "search": {
@@ -71,6 +72,10 @@
         },
         "grabs": {
           "selector": "td.torrent-listings-completed > a > span"
+        },
+        "cover": {
+          "selector": "td.torrent-listings-poster > div > a > img",
+          "attribute": "src"
         },
         "downloadvolumefactor": {
           "case": {
