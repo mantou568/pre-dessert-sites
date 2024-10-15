@@ -1,0 +1,203 @@
+{
+  "id": "yemapt",
+  "name": "野马",
+  "domain": "https://www.yemapt.org/",
+  "api": "https://www.yemapt.org/",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "mTorrent",
+  "reuse_schema": "NexusPHP",
+  "required": {
+    "cookie": true
+  },
+  "price": {
+    "has_free": true
+  },
+  "requests":{
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/icons/icons8-mustang-96.png"
+    },
+    "search": {
+      "parser": "JsonPath",
+      "path": "/api/torrent/fetchOpenTorrentList",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {"keyword":"","pageParam":{"current":1,"pageSize":20,"pageSizeOptions":["10","20","40"],"size":"small"},"sorter":{}},
+      "list": {
+        "selector": "data"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "title": {
+          "selector": "showName"
+        },
+        "details": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/#/torrent/detail/"
+            }
+          ]
+        },
+        "size": {
+          "selector": "fileSize"
+        },
+        "seeders": {
+          "selector": "seedNum"
+        },
+        "leechers": {
+          "selector": "leechNum"
+        },
+        "date_added": {
+          "selector": "listingTime",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "selector": "downloadPromotion",
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "FREE": "0",
+                "half": "0.5",
+                "PERCENT_70": "0.3",
+                "NORMAL": "1"
+              }
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        },
+        "description": {
+          "selector": "shortDesc"
+        },
+        "labels": {
+          "selector": "tagList",
+          "array": true,
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "0": "",
+                "1": "",
+                "2": "",
+                "4": "",
+                "5": "中字",
+                "6": "英字",
+                "7": "粤语",
+                "8": "英字",
+                "10": "国语"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "parser": "JsonPath",
+      "path": "/api/torrent/fetchOpenTorrentList",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {"keyword":"","pageParam":{"current":1,"pageSize":20,"pageSizeOptions":["10","20","40"],"size":"small"},"sorter":{}},
+      "list": {
+        "selector": "data"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "title": {
+          "selector": "showName"
+        },
+        "details": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/#/torrent/detail/"
+            }
+          ]
+        },
+        "size": {},
+        "seeders": {
+          "selector": "seedNum"
+        },
+        "leechers": {
+          "selector": "leechNum"
+        },
+        "date_added": {
+          "selector": "listingTime",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "selector": "downloadPromotion",
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "FREE": "0",
+                "half": "0.5",
+                "PERCENT_70": "0.3",
+                "NORMAL": "1"
+              }
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        },
+        "description": {
+          "selector": "shortDesc"
+        },
+        "labels": {
+          "selector": "tagList",
+          "array": true,
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "0": "",
+                "1": "",
+                "2": "",
+                "4": "",
+                "5": "中字",
+                "6": "英字",
+                "7": "粤语",
+                "8": "英字",
+                "10": "国语"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

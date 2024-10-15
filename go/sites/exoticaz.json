@@ -10,7 +10,8 @@
     "sign_in": true
   },
   "meta": {
-    "has_free": true
+    "has_free": true,
+    "has_cover": true
   },
   "category": {
     "movie": [
@@ -124,6 +125,10 @@
         "labels": {
           "selector": "td:nth-child(2) > div.tags > a.tag",
           "array": true
+        },
+        "cover": {
+          "selector": "td:nth-child(2) > div > img",
+          "attribute": "src"
         },
         "downloadvolumefactor": {
           "case": {
