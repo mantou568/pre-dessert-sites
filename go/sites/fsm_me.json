@@ -128,7 +128,7 @@
           "filters": [
             {
               "name": "append_left",
-              "args": "/Torrents/details?tid="
+              "args": "https://fsm.name/Torrents/details?tid="
             }
           ]
         },
