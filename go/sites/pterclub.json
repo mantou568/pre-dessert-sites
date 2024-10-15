@@ -85,7 +85,7 @@
         },
         "cover": {
           "selector": "td:nth-child(1) > img",
-          "attribute": "src"
+          "attribute": "data-orig"
         }
       }
     },
