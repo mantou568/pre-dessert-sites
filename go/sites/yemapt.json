@@ -5,7 +5,7 @@
   "api": "https://www.yemapt.org/",
   "encoding": "UTF-8",
   "public": false,
-  "schema": "mTorrent",
+  "schema": "NexusPHP",
   "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true
