@@ -17,7 +17,7 @@
     "favicon": {
       "parser": "None",
       "method": "GET",
-      "path": "/icons/icons8-mustang-96.png"
+      "path": "https://static-ay.yemapt.org/icons/icons8-mustang-96.png"
     },
     "search": {
       "parser": "JsonPath",
