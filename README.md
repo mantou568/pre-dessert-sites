@@ -2,8 +2,12 @@
 
 这是一个你懂我懂大家懂的配置文件。大家群策群力，欢迎 pull requests，推动站点配置更新，人人为我，我为人人。
 
-- sites: 有效站点
+- sites: 有效的站点适配文件
 - closed_sites: 已关闭站点
+- go 隔壁项目最新适配
+  - commons 基于框架的公共适配文件
+  - sites 单个站点的适配文件
+- site_favicon 站点图标
 - all_sites: 用于项目站点配置文件的自动化订阅更新
   - all_sites.txt: CDN 源，无需科学上网，由于缓存机制，更新滞后于 GitHub 源
   - all_sites_github.txt: GitHub 源，需要科学上网
