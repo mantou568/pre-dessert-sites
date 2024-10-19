@@ -67,6 +67,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/kelu.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/kisssub_org.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/kufei.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/leaves.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/lemonhd.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/mikanani.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/monikadesign.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/mteam.json

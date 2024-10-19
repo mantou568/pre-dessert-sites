@@ -67,6 +67,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/kelu.js
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/kisssub_org.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/kufei.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/leaves.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/lemonhd.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/mikanani.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/monikadesign.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/mteam.json
