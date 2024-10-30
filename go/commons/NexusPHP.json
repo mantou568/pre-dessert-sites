@@ -596,11 +596,12 @@
             }
           ]
         },
-        "hr": {
-          "selector": "//h1[@id='top']/img[@class='hitandrun']",
+        "hr_days": {
+          "selector": "//*[@id='outer']/table[1]/tbody/tr[3]/td[2]/text()",
           "filters": [
             {
-              "name": "not_blank"
+              "name": "re_search",
+              "args": ["(\\d+)day", 1]
             }
           ]
         },
