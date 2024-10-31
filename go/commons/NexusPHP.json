@@ -464,7 +464,7 @@
           "selector": "//link"
         },
         "enclosure": {
-          "selector": "//enclosure/@id"
+          "selector": "//enclosure/@url"
         },
         "size": {
           "selector": "//enclosure/@length",
