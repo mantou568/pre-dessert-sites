@@ -435,6 +435,55 @@
         }
       }
     },
+    "rss": {
+      "parser": "Xml",
+      "method": "GET",
+      "list": {
+        "selector": "//item"
+      },
+      "fields": {
+        "id": {
+          "selector": "//link",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        },
+        "title": {
+          "selector": "//title"
+        },
+        "description": {
+          "selector": "//description"
+        },
+        "link": {
+          "selector": "//link"
+        },
+        "enclosure": {
+          "selector": "//enclosure/@id"
+        },
+        "size": {
+          "selector": "//enclosure/@length",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "pub_date": {
+          "selector": "//pubDate",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
     "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
@@ -601,7 +650,10 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["(\\d+)day", 1]
+              "args": [
+                "(\\d+)day",
+                1
+              ]
             }
           ]
         },
