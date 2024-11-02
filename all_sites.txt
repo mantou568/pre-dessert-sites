@@ -73,6 +73,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/monikadesign.
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/mteam.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/nanyangpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/nicept.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/njtupt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/nyaa.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/nyaa_ink.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/okpt.json

@@ -73,6 +73,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/monikad
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/mteam.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/nanyangpt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/nicept.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/njtupt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/nyaa.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/nyaa_ink.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/okpt.json
