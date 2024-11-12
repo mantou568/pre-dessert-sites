@@ -105,10 +105,10 @@
         }
       }
     },
-    "profile": {
+    "user_basic_info": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/user/profile",
+      "path": "/api/consumer/fetchSelfDetail",
       "headers": {
         "Content-Type": "application/json"
       },
@@ -129,13 +129,34 @@
           "selector": "data.name"
         },
         "uploaded": {
-          "selector": "data.uploadSize"
+          "selector": "data.promotionUploadSize"
         },
         "downloaded": {
-          "selector": "data.downloadSize"
+          "selector": "data.promotionDownloadSize"
         },
         "bonus": {
           "selector": "data.bonus"
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/torrent/fetchUserTorrentList",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "list": {
+        "selector": "data"
+      },
+      "fields": {
+        "size": {
+          "selector": "fileSize",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         }
       }
     }
