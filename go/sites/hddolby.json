@@ -54,6 +54,18 @@
               "name": "not_blank"
             }
           ]
+        },
+        "bonus": {
+          "selector": "//a[contains(@href,'mybonus')]/following-sibling::text()[1]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "([\\d,.]+)",
+                1
+              ]
+            }
+          ]
         }
       }
     },
