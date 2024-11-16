@@ -105,90 +105,56 @@
         }
       }
     },
-    "messages": {
+    "user_basic_info": {
       "parser": "JsonPath",
-      "path": "/api/torrent/fetchOpenTorrentList",
-      "method": "POST",
+      "method": "GET",
+      "path": "/api/consumer/fetchSelfDetail",
       "headers": {
         "Content-Type": "application/json"
       },
-      "body": {"keyword":"","pageParam":{"current":1,"pageSize":20,"pageSizeOptions":["10","20","40"],"size":"small"},"sorter":{}},
+      "fields": {
+        "created_date": {
+          "selector": "data.registerTime",
+          "filters": [
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05",
+                "2024-05-13T01:51:53.000+00:00"
+              ]
+            }
+          ]
+        },
+        "username": {
+          "selector": "data.name"
+        },
+        "uploaded": {
+          "selector": "data.promotionUploadSize"
+        },
+        "downloaded": {
+          "selector": "data.promotionDownloadSize"
+        },
+        "bonus": {
+          "selector": "data.bonus"
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/torrent/fetchUserTorrentList",
+      "headers": {
+        "Content-Type": "application/json"
+      },
       "list": {
         "selector": "data"
       },
       "fields": {
-        "id": {
-          "selector": "id"
-        },
-        "title": {
-          "selector": "showName"
-        },
-        "details": {
-          "selector": "id",
+        "size": {
+          "selector": "fileSize",
           "filters": [
             {
-              "name": "append_left",
-              "args": "/#/torrent/detail/"
-            }
-          ]
-        },
-        "size": {},
-        "seeders": {
-          "selector": "seedNum"
-        },
-        "leechers": {
-          "selector": "leechNum"
-        },
-        "date_added": {
-          "selector": "listingTime",
-          "filters": [
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
-        "downloadvolumefactor": {
-          "selector": "downloadPromotion",
-          "filters": [
-            {
-              "name": "case",
-              "args": {
-                "FREE": "0",
-                "half": "0.5",
-                "PERCENT_70": "0.3",
-                "NORMAL": "1"
-              }
-            }
-          ]
-        },
-        "uploadvolumefactor": {
-          "filters": [
-            {
-              "name": "constant",
-              "args": "1"
-            }
-          ]
-        },
-        "description": {
-          "selector": "shortDesc"
-        },
-        "labels": {
-          "selector": "tagList",
-          "array": true,
-          "filters": [
-            {
-              "name": "case",
-              "args": {
-                "0": "",
-                "1": "",
-                "2": "",
-                "4": "",
-                "5": "中字",
-                "6": "英字",
-                "7": "粤语",
-                "8": "英字",
-                "10": "国语"
-              }
+              "name": "byte_size"
             }
           ]
         }

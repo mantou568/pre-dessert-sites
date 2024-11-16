@@ -366,7 +366,7 @@
     "notice": {
       "fields": {
         "content": {
-          "selector": "//*[@id='news-content']"
+          "selector": "//*[@id='news-content']//div[2]"
         }
       }
     }
