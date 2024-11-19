@@ -1,5 +1,14 @@
 {
   "id": "NexusPHP",
+  "torrent_id_filters": [
+    {
+      "name": "re_search",
+      "args": [
+        "\\d+",
+        0
+      ]
+    }
+  ],
   "requests": {
     "favicon": {
       "parser": "None",
@@ -668,6 +677,9 @@
               ]
             }
           ]
+        },
+        "enclosure": {
+          "selector": "//a[contains(@href, 'download.php?id=')]/@href"
         }
       }
     },
@@ -722,10 +734,6 @@
           "selector": "//td[@class='rowhead'][text()='字幕']/following-sibling::td//a/@href"
         }
       }
-    },
-    "download_subtitle": {
-      "parser": "None",
-      "method": "GET"
     }
   }
 }
