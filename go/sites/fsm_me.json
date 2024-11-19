@@ -4,8 +4,7 @@
   "domain": "https://fsm.name",
   "api": "https://api.fsm.name",
   "public": false,
-  "schema": "fsm",
-  "reuse_schema": "NexusPHP",
+  "schema": "NexusPHP",
   "meta": {
     "has_free": true,
     "has_cover": true
@@ -15,6 +14,12 @@
       "parser": "None",
       "method": "GET",
       "path": "/favicon.ico"
+    },
+    "notice": {
+      "disabled": true
+    },
+    "get_subtitle_url": {
+      "disabled": true
     },
     "user_basic_info": {
       "parser": "JsonPath",

@@ -44,6 +44,9 @@
       "method": "GET",
       "path": "/assets/images/512.png"
     },
+    "get_subtitle_url": {
+      "disabled": true
+    },
     "search": {
       "parser": "JsonPath",
       "method": "POST",

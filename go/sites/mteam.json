@@ -66,6 +66,9 @@
     ]
   },
   "requests": {
+    "get_subtitle_url": {
+      "disabled": true
+    },
     "search": {
       "parser": "JsonPath",
       "method": "POST",
