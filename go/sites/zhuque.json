@@ -9,7 +9,6 @@
     "cookie": true
   },
   "meta": {
-    "inactive_day": 7,
     "has_free": true
   },
   "public": false,
