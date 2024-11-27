@@ -6,6 +6,7 @@
   "public": false,
   "schema": "NexusPHP",
   "meta": {
+    "inactive_day": 7,
     "has_free": true,
     "has_cover": true
   },
