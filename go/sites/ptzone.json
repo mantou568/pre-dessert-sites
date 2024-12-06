@@ -1,0 +1,47 @@
+{
+  "id": "ptzone",
+  "name": "ptzone",
+  "domain": "https://ptzone.xyz/",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 401,
+        "cat": "Movies",
+        "desc": "Movies/电影"
+      }
+    ],
+    "tv": [
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
+      {
+        "id": 402,
+        "cat": "TV",
+        "desc": "TV Series/连续剧"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "TV Shows/综艺"
+      }
+    ]
+  }
+}
