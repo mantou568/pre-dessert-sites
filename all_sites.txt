@@ -39,6 +39,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/HDarea.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdatmos.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdbd.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdchina.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdcity.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hddolby.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdfans.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/HDHome.json
@@ -104,6 +105,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/srvfi.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ssd.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/star_space.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/sukebei_nyaa.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/sunny.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/TCCF.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/tjupt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/torrentgalaxy.json

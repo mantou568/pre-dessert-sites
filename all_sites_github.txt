@@ -39,6 +39,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/HDarea.
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hdatmos.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hdbd.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hdchina.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hdcity.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hddolby.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hdfans.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/HDHome.json
@@ -104,6 +105,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/srvfi.j
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ssd.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/star_space.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/sukebei_nyaa.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/sunny.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/TCCF.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/tjupt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/torrentgalaxy.json
