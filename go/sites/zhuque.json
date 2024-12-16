@@ -73,7 +73,22 @@
             }
           ]
         },
-        "download": {},
+        "download": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/api/torrent/download/"
+            },
+            {
+              "name": "append_right",
+              "args": "/{torrent_key}"
+            },
+            {
+              "name": "user_profile_holder"
+            }
+          ]
+        },
         "size": {},
         "grabs": {
           "selector": "complete"
@@ -317,6 +332,22 @@
         },
         "peer_count": {
           "selector": "leeching"
+        }
+      }
+    },
+    "get_security_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/user/getSecurityInfo",
+      "tags": [
+        "user_profile"
+      ],
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "fields": {
+        "torrent_key": {
+          "selector": "data.torrentKey"
         }
       }
     }
