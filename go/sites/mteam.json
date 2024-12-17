@@ -160,45 +160,14 @@
         }
       }
     },
-    "my_peer_status": {
-      "parser": "JsonPath",
-      "method": "POST",
-      "path": "/api/tracker/myPeerStatus",
-      "use_api": true,
-      "required_headers": [
-        "x-api-key"
-      ],
-      "fields": {
-        "leecher": {
-          "selector": "data.leecher"
-        },
-        "seeder": {
-          "selector": "data.seeder"
-        }
-      }
-    },
-    "msg_notify_statistic": {
-      "parser": "JsonPath",
-      "method": "POST",
-      "path": "/api/msg/notify/statistic",
-      "use_api": true,
-      "required_headers": [
-        "x-api-key"
-      ],
-      "fields": {
-        "count": {
-          "selector": "data.count"
-        },
-        "un_make": {
-          "selector": "data.unMake"
-        }
-      }
-    },
     "profile": {
       "parser": "JsonPath",
       "method": "POST",
       "path": "/api/member/profile",
       "use_api": true,
+      "tags": [
+        "user_profile"
+      ],
       "required_headers": [
         "x-api-key"
       ],
