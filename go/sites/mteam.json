@@ -165,9 +165,6 @@
       "method": "POST",
       "path": "/api/member/profile",
       "use_api": true,
-      "tags": [
-        "user_profile"
-      ],
       "required_headers": [
         "x-api-key"
       ],
