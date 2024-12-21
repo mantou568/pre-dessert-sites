@@ -250,16 +250,16 @@
           "trim_chars": true,
           "any": [
             {
-              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/following-sibling::td[1]//@title"
+              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问') or contains(text(), '最近動向')]/following-sibling::td[1]//@title"
             },
             {
-              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/following-sibling::td[1]//text()"
+              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问') or contains(text(), '最近動向')]/following-sibling::td[1]//text()"
             },
             {
-              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/following-sibling::td[1]/text()"
+              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问') or contains(text(), '最近動向')]/following-sibling::td[1]/text()"
             },
             {
-              "selector": "//div/b[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问')]/../text()"
+              "selector": "//div/b[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问') or contains(text(), '最近動向')]/../text()"
             }
           ],
           "filters": [
