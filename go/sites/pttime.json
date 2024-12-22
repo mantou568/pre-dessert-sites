@@ -20,6 +20,11 @@
         "id": 401,
         "cat": "Movies",
         "desc": "Movies/电影"
+      },
+      {
+        "id": 409,
+        "cat": "Movies",
+        "desc": "Art/曲艺、相声、小品、戏曲、舞蹈、歌剧、评书等"
       }
     ],
     "tv": [

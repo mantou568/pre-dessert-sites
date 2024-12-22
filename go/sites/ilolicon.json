@@ -18,6 +18,11 @@
         "id": 401,
         "cat": "Movies",
         "desc": "Movies/电影"
+      },
+      {
+        "id": 410,
+        "cat": "Movies",
+        "desc": "Stage Performance/舞台演出"
       }
     ],
     "tv": [

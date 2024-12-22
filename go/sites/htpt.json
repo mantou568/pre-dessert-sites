@@ -11,5 +11,49 @@
   "meta": {
     "has_free": true,
     "has_2x_free": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 1,
+        "cat": "Movies",
+        "desc": "Movies/相声"
+      },
+      {
+        "id": 4091,
+        "cat": "Movies",
+        "desc": "评书"
+      },
+      {
+        "id": 4097,
+        "cat": "Movies",
+        "desc": "戏曲"
+      },
+      {
+        "id": 4098,
+        "cat": "Movies",
+        "desc": "鼓/琴"
+      },
+      {
+        "id": 4099,
+        "cat": "Movies",
+        "desc": "小曲"
+      },
+      {
+        "id": 4101,
+        "cat": "Movies",
+        "desc": "小品"
+      },
+      {
+        "id": 4104,
+        "cat": "Movies",
+        "desc": "二人转"
+      },
+      {
+        "id": 4105,
+        "cat": "Movies",
+        "desc": "小剧种"
+      }
+    ]
   }
 }

@@ -16,51 +16,42 @@
   "category": {
     "movie": [
       {
-        "id": 401,
+        "id": 1,
         "cat": "Movies",
         "desc": "Movies cn/大陆电影"
+      },
+      {
+        "id": 7,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
+      },
+      {
+        "id": 11,
+        "cat": "MV",
+        "desc": "MV/音乐MV"
       }
     ],
     "tv": [
       {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
-      },
-      {
-        "id": 402,
+        "id": 2,
         "cat": "TV",
         "desc": "TV Series cn/大陆剧集"
       },
       {
-        "id": 403,
+        "id": 3,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
+
+      {
+        "id": 5,
         "cat": "TV",
         "desc": "TV Shows cn/大陆综艺"
       },
       {
-        "id": 406,
-        "cat": "MV",
-        "desc": "MV/音乐MV"
-      },
-      {
-        "id": 407,
-        "cat": "Sports",
-        "desc": "Sports/体育"
-      },
-      {
-        "id": 408,
-        "cat": "Music",
-        "desc": "Music cn/华语音乐"
-      },
-      {
-        "id": 409,
-        "cat": "其他",
-        "desc": "其他"
+        "id": 9,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
       }
     ]
   },

@@ -18,6 +18,16 @@
         "id": 501,
         "cat": "Movies",
         "desc": "Movies(电影)"
+      },
+      {
+        "id": 506,
+        "cat": "Movies",
+        "desc": "Sports(体育)"
+      },
+      {
+        "id": 507,
+        "cat": "Movies/Sports",
+        "desc": "MV(音乐视频)"
       }
     ],
     "tv": [

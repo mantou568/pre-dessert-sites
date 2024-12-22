@@ -19,6 +19,11 @@
         "id": 405,
         "cat": "Movies",
         "desc": "电影/Movies"
+      },
+      {
+        "id": 410,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
       }
     ],
     "tv": [

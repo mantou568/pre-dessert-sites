@@ -24,19 +24,14 @@
         "id": 406,
         "cat": "Movies",
         "desc": "Music Videos/音樂短片/演唱會"
+      },
+      {
+        "id": 407,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
       }
     ],
     "tv": [
-      {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
-      },
       {
         "id": 402,
         "cat": "TV",
@@ -46,6 +41,16 @@
         "id": 403,
         "cat": "TV",
         "desc": "TV Shows/综艺"
+      },
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
       }
     ]
   },

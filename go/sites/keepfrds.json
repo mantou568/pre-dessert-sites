@@ -20,6 +20,26 @@
         "desc": "Movies/电影"
       },
       {
+        "id": 406,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": 407,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
+      },
+      {
+        "id": 420,
+        "cat": "Movies",
+        "desc": "Movies/演唱会-音乐剧"
+      },
+      {
+        "id": 421,
+        "cat": "Movies",
+        "desc": "Movies/舞台"
+      },
+      {
         "id": 301,
         "cat": "Movies",
         "desc": "Movie Packs/电影(合集)"
