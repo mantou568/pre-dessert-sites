@@ -14,29 +14,29 @@
   "category": {
     "movie": [
       {
-        "id": 401,
+        "id": "mo",
         "cat": "Movies",
-        "desc": "Movies/电影"
+        "desc": "电影"
       }
     ],
     "tv": [
       {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
+        "id": "tv",
+        "cat": "TV",
+        "desc": "剧集"
       },
       {
-        "id": 405,
+        "id": "an",
         "cat": "TV/Anime",
         "desc": "Animations/动漫"
       },
       {
-        "id": 402,
-        "cat": "TV",
-        "desc": "TV Series/连续剧"
+        "id": "do",
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
       },
       {
-        "id": 403,
+        "id": "ot",
         "cat": "TV",
         "desc": "TV Shows/综艺"
       }
@@ -165,8 +165,6 @@
                 "电视": "tv",
                 "动画": "an",
                 "纪录片": "do",
-                "MV": "do",
-                "体育": "sp",
                 "综艺": "ot"
               }
             }
