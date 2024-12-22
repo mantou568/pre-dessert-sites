@@ -183,8 +183,16 @@
           "attribute": "action"
         },
         "description": {
-          "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span:not(.optiontag)",
-          "remove": "img,a,b",
+          "any": [
+            {
+              "selector": "td:nth-child(2) > table.torrentname > tbody > tr > td.embedded > span:not(.optiontag)",
+              "remove": "img,a,b"
+            },
+            {
+              "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span:not(.optiontag)",
+              "remove": "img,a,b"
+            }
+          ],
           "filters": [
             {
               "name": "replace",
@@ -197,7 +205,14 @@
         },
         "labels": {
           "array": true,
-          "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span.optiontag"
+          "any": [
+            {
+              "selector": "td:nth-child(2) > table.torrentname > tbody > tr > td.embedded > span.optiontag"
+            },
+            {
+              "selector": "td:nth-child(2) > table.torrentname > tr > td.embedded > span.optiontag"
+            }
+          ]
         }
       }
     }
