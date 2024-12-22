@@ -12,6 +12,8 @@
     "has_free": true
   },
   "category": {
+    "single": true,
+    "query": "cat",
     "movie": [
       {
         "id": "mo",

@@ -9,6 +9,51 @@
     "has_free": true,
     "has_cover": true
   },
+  "category": {
+    "single": true,
+    "movie": [
+      {
+        "id": 1,
+        "cat": "Movies",
+        "desc": "日本AV"
+      },
+      {
+        "id": 2,
+        "cat": "Movies",
+        "desc": "国产电影"
+      },
+      {
+        "id": 3,
+        "cat": "Movies",
+        "desc": "写真"
+      },
+      {
+        "id": 4,
+        "cat": "Movies",
+        "desc": "黄油"
+      },
+      {
+        "id": 5,
+        "cat": "Movies",
+        "desc": "里番"
+      },
+      {
+        "id": 6,
+        "cat": "Movies",
+        "desc": "黄色漫画"
+      },
+      {
+        "id": 7,
+        "cat": "Movies",
+        "desc": "欧美视频"
+      },
+      {
+        "id": 8,
+        "cat": "Movies",
+        "desc": "其他"
+      }
+    ]
+  },
   "requests": {
     "favicon": {
       "parser": "None",
