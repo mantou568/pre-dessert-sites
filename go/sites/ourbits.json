@@ -88,7 +88,7 @@
         },
         "labels": {
           "array": true,
-          "selector": "table.torrentname tr > td.embedded > div > a > div.tag"
+          "selector": "table.torrentname tr > td.embedded > div > a[href*='?tags[]='] > span"
         },
         "size": {
           "selector": "td.rowfollow:nth-child(5)",
