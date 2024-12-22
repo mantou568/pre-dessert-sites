@@ -82,6 +82,10 @@
         "title": {
           "selector": "table.torrentname tr td",
           "remove": "a,b"
+        },
+        "cover": {
+          "selector": "table.torrentname tr td div img",
+          "attribute": "src"
         }
       }
     },
