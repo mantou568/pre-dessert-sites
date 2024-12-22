@@ -178,23 +178,6 @@
   "requests": {
     "search": {
       "fields": {
-        "category": {
-          "selector": "a[href*='?cat=']",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                "?",
-                ""
-              ]
-            },
-            {
-              "name": "querystring",
-              "args": "cat"
-            }
-          ]
-        },
         "download": {
           "selector": "form[action*='/download.php?id=']",
           "attribute": "action"

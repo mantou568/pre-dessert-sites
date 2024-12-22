@@ -47,8 +47,11 @@
           "attribute": "href",
           "filters": [
             {
-              "name": "querystring",
-              "args": "cat"
+              "name": "re_search",
+              "args": [
+                "cat=(.*)",
+                1
+              ]
             }
           ]
         },

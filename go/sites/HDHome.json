@@ -258,23 +258,6 @@
     },
     "search": {
       "fields": {
-        "category": {
-          "selector": "a[href*='?cat=']",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                "?",
-                ""
-              ]
-            },
-            {
-              "name": "querystring",
-              "args": "cat"
-            }
-          ]
-        },
         "description": {
           "selector": "td.embedded > span[style]",
           "filters": [
