@@ -102,9 +102,6 @@
           "selector": "a[href^=\"https://exoticaz.to/download/torrent/\"]",
           "attribute": "href"
         },
-        "date_elapsed": {
-          "selector": "td:nth-child(4)"
-        },
         "size": {
           "selector": "td:nth-child(5)",
           "filters": [

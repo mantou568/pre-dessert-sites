@@ -72,9 +72,6 @@
           "selector": "a[href*=\"download.php?id=\"]",
           "attribute": "href"
         },
-        "date_elapsed": {
-          "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.time_col > span[title]"
-        },
         "size": {
           "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.video_size"
         },

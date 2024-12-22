@@ -160,9 +160,6 @@
         "leechers": {
           "selector": "div.torrent-info-text-leechers > a[href*='#leechers']"
         },
-        "date_elapsed": {
-          "selector": "div.torrent-info-text-added > span"
-        },
         "date_added": {
           "selector": "div.torrent-info-text-added > span",
           "attribute": "title",

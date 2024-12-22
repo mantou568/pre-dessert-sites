@@ -356,9 +356,6 @@
         "leechers": {
           "selector": "td:nth-child(7):not(.embedded)"
         },
-        "date_elapsed": {
-          "selector": "td:nth-child(4):not(.embedded) > span"
-        },
         "date_added": {
           "selector": "td:nth-child(4):not(.embedded) > span",
           "attribute": "title",

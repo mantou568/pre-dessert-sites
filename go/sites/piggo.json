@@ -70,10 +70,6 @@
             }
           ]
         },
-        "date_elapsed": {
-          "selector": "td.rowfollow:nth-child(4)",
-          "remove": "br"
-        },
         "date_added": {
           "selector": "td.rowfollow:nth-child(4)",
           "remove": "br",

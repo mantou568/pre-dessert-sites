@@ -435,9 +435,6 @@
           "selector": "a[href*=\"/torrents/download/\"]",
           "attribute": "href"
         },
-        "date_elapsed": {
-          "selector": "td.torrent-listings-age > span.badge-extra"
-        },
         "date_added": {
           "selector": "td.torrent-listings-age > span.badge-extra",
           "attribute": "data-original-title",

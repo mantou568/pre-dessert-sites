@@ -40,10 +40,6 @@
           "selector": "a[href*=\"/torrents/download/\"]",
           "attribute": "href"
         },
-        "date_elapsed": {
-          "selector": "td.torrent-search--list__age > time",
-          "diff_date": true
-        },
         "date_added": {
           "selector": "td.torrent-search--list__age > time",
           "attribute": "title",

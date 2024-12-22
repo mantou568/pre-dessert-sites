@@ -65,9 +65,6 @@
         "leechers": {
           "selector": "td:nth-child(6)"
         },
-        "date_elapsed": {
-          "selector": "td:nth-child(3)  > b > span"
-        },
         "date_added": {
           "selector": "td:nth-child(3)  > b > span",
           "attribute": "title",
