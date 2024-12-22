@@ -76,6 +76,15 @@
         },
         "seeders": {
           "selector": "td:nth-child(7)"
+        },
+        "date_added": {
+          "selector": "td:nth-child(5):not(.embedded) > span",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         }
       }
     }
