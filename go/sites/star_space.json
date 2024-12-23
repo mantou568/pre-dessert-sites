@@ -19,6 +19,16 @@
         "id": "mo",
         "cat": "Movies",
         "desc": "电影"
+      },
+      {
+        "id": "mv",
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": "sp",
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
       }
     ],
     "tv": [
