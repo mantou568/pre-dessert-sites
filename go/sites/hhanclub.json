@@ -15,6 +15,7 @@
     "has_hr": true
   },
   "category": {
+    "query": "cat[]",
     "movie": [
       {
         "id": 401,

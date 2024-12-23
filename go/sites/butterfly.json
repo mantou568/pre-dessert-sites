@@ -16,37 +16,117 @@
   "category": {
     "movie": [
       {
-        "id": 1,
+        "id": 401,
         "cat": "Movies",
-        "desc": "Movies cn/大陆电影"
+        "desc": "大陆电影"
       },
       {
-        "id": 7,
-        "cat": "Movies/Sports",
-        "desc": "Sports/体育"
+        "id": 413,
+        "cat": "Movies",
+        "desc": "港台电影"
       },
       {
-        "id": 11,
-        "cat": "MV",
-        "desc": "MV/音乐MV"
+        "id": 414,
+        "cat": "Movies",
+        "desc": "亚洲电影"
+      },
+      {
+        "id": 415,
+        "cat": "Movies",
+        "desc": "欧美电影"
+      },
+      {
+        "id": 433,
+        "cat": "Movies",
+        "desc": "抢先视频"
+      },
+      {
+        "id": 407,
+        "cat": "Movies",
+        "desc": "体育"
+      },
+      {
+        "id": 406,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": 428,
+        "cat": "Movies",
+        "desc": "剧场OVA"
       }
     ],
     "tv": [
       {
-        "id": 2,
+        "id": 402,
         "cat": "TV",
-        "desc": "TV Series cn/大陆剧集"
+        "desc": "大陆剧集"
       },
       {
-        "id": 3,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
+        "id": 417,
+        "cat": "TV",
+        "desc": "港台剧集"
       },
 
       {
-        "id": 5,
+        "id": 416,
         "cat": "TV",
-        "desc": "TV Shows cn/大陆综艺"
+        "desc": "亚洲剧集"
+      },
+      {
+        "id": 418,
+        "cat": "TV",
+        "desc": "欧美剧集"
+      },
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "大陆综艺"
+      },
+      {
+        "id": 419,
+        "cat": "TV",
+        "desc": "港台综艺"
+      },
+      {
+        "id": 420,
+        "cat": "TV",
+        "desc": "亚洲综艺"
+      },
+      {
+        "id": 421,
+        "cat": "TV",
+        "desc": "欧美综艺"
+      },
+      {
+        "id": 505,
+        "cat": "TV",
+        "desc": "完结动漫"
+      },
+      {
+        "id": 427,
+        "cat": "TV",
+        "desc": "连载动漫"
+      },
+      {
+        "id": 9,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 9,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 9,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
       },
       {
         "id": 9,
@@ -54,6 +134,5 @@
         "desc": "Documentaries/纪录片"
       }
     ]
-  },
-  "ext_domain": ["https://zeus.hamsters.space/"]
+  }
 }
