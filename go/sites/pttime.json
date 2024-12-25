@@ -53,6 +53,53 @@
         "cat": "TV",
         "desc": "Short Play/短剧"
       }
+    ],
+    "9kg": [
+      {
+        "id": 440,
+        "cat": "Movies",
+        "desc": "9kg-步兵(步兵/无码)"
+      },
+      {
+        "id": 441,
+        "cat": "Movies",
+        "desc": "9kg-骑兵(骑兵/有码)"
+      },
+      {
+        "id": 442,
+        "cat": "Movies",
+        "desc": "9kg-III(三级片、限制级电影)"
+      },
+      {
+        "id": 443,
+        "cat": "Movies",
+        "desc": "9kg-H漫(动漫、漫画)"
+      },
+      {
+        "id": 444,
+        "cat": "Movies",
+        "desc": "9kg-III(三级片、限制级电影)"
+      },
+      {
+        "id": 445,
+        "cat": "Movies",
+        "desc": "9kg-H书(书籍、有声书)"
+      },
+      {
+        "id": 446,
+        "cat": "Movies",
+        "desc": "9kg-H图(写真、图片、私拍、短视频）"
+      },
+      {
+        "id": 448,
+        "cat": "Movies",
+        "desc": "9kg-H综(综艺、综合、剪辑、其他等)"
+      },
+      {
+        "id": 449,
+        "cat": "Movies",
+        "desc": "9kg-H同(男同、女同、人妖)"
+      }
     ]
   },
   "requests": {

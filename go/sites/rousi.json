@@ -29,31 +29,6 @@
         "id": 407,
         "cat": "Movies/Sports",
         "desc": "Sports/体育"
-      },
-      {
-        "id": 420,
-        "cat": "Movies",
-        "desc": "步兵(步兵/无码)"
-      },
-      {
-        "id": 421,
-        "cat": "Movies",
-        "desc": "骑兵(骑兵/有码)"
-      },
-      {
-        "id": 422,
-        "cat": "Movies",
-        "desc": "III(三级片、限制级电影)"
-      },
-      {
-        "id": 428,
-        "cat": "Movies",
-        "desc": "H综(综艺、综合、剪辑、其它等)"
-      },
-      {
-        "id": 429,
-        "cat": "Movies",
-        "desc": "H同(男同、女同)"
       }
     ],
     "tv": [
@@ -81,6 +56,33 @@
         "id": 415,
         "cat": "TV",
         "desc": "ACGN/二次元、漫画、动漫"
+      }
+    ],
+    "9kg": [
+      {
+        "id": 420,
+        "cat": "Movies",
+        "desc": "步兵(步兵/无码)"
+      },
+      {
+        "id": 421,
+        "cat": "Movies",
+        "desc": "骑兵(骑兵/有码)"
+      },
+      {
+        "id": 422,
+        "cat": "Movies",
+        "desc": "III(三级片、限制级电影)"
+      },
+      {
+        "id": 428,
+        "cat": "Movies",
+        "desc": "H综(综艺、综合、剪辑、其它等)"
+      },
+      {
+        "id": 429,
+        "cat": "Movies",
+        "desc": "H同(男同、女同)"
       }
     ]
   }

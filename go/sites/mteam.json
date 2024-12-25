@@ -63,6 +63,83 @@
         "cat": "TV",
         "desc": "剧集/DVDiSo"
       }
+    ],
+    "9kg": [
+      {
+        "id": 410,
+        "cat": "Movies",
+        "desc": "AV(有碼)/HD Censored"
+      },
+      {
+        "id": 424,
+        "cat": "Movies",
+        "desc": "AV(有碼)/SD Censored"
+      },
+      {
+        "id": 437,
+        "cat": "Movies",
+        "desc": "AV(有碼)/DVDiSo Censored"
+      },
+      {
+        "id": 431,
+        "cat": "Movies",
+        "desc": "AV(有碼)/Blu-Ray Censored"
+      },
+      {
+        "id": 429,
+        "cat": "Movies",
+        "desc": "AV(無碼)/HD Uncensored"
+      },
+      {
+        "id": 430,
+        "cat": "Movies",
+        "desc": "AV(無碼)/SD Uncensored"
+      },
+      {
+        "id": 426,
+        "cat": "Movies",
+        "desc": "AV(無碼)/DVDiSo Uncensored"
+      },
+      {
+        "id": 432,
+        "cat": "Movies",
+        "desc": "AV(無碼)/Blu-Ray Uncensored"
+      },
+      {
+        "id": 436,
+        "cat": "Movies",
+        "desc": "AV(網站)/0Day"
+      },
+      {
+        "id": 440,
+        "cat": "Movies",
+        "desc": "AV(Gay)/HD"
+      },
+      {
+        "id": 425,
+        "cat": "Movies",
+        "desc": "IV(寫真影集)"
+      },
+      {
+        "id": 433,
+        "cat": "Movies",
+        "desc": "IV(寫真圖集)"
+      },
+      {
+        "id": 411,
+        "cat": "Movies",
+        "desc": "H-遊戲"
+      },
+      {
+        "id": 412,
+        "cat": "Movies",
+        "desc": "H-動畫"
+      },
+      {
+        "id": 413,
+        "cat": "Movies",
+        "desc": "H-漫畫"
+      }
     ]
   },
   "requests": {
