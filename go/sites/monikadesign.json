@@ -16,7 +16,6 @@
     "has_cover": true
   },
   "category": {
-    "query": "categories[]",
     "movie": [
       {
         "id": 6,
