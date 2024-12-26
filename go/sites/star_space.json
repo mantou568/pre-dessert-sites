@@ -150,6 +150,12 @@
     },
     "search": {
       "path": "/p_torrent/video_list_t.php",
+      "params": {
+        "area": "name",
+        "search": [
+          "{keyword}"
+        ]
+      },
       "list": {
         "selector": "table#tb_content table#table_tm tr#tr_list"
       },
