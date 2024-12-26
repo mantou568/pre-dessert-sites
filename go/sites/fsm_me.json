@@ -55,11 +55,6 @@
     ]
   },
   "requests": {
-    "favicon": {
-      "parser": "None",
-      "method": "GET",
-      "path": "/favicon.ico"
-    },
     "notice": {
       "disabled": true
     },

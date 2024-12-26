@@ -16,8 +16,8 @@
   "requests":{
     "search": {
       "parser": "JsonPath",
-      "path": "/api/torrent/fetchOpenTorrentList",
       "method": "POST",
+      "path": "/api/torrent/fetchOpenTorrentList",
       "headers": {
         "Content-Type": "application/json"
       },
@@ -64,10 +64,10 @@
             {
               "name": "case",
               "args": {
-                "FREE": "0",
+                "free": "0",
                 "half": "0.5",
-                "PERCENT_70": "0.3",
-                "NORMAL": "1"
+                "percent_70": "0.3",
+                "normal": "1"
               }
             }
           ]
