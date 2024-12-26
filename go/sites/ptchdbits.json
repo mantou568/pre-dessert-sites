@@ -106,10 +106,7 @@
       "Referer": "{domain}/userdetails.php?id={userId}"
     },
     "list": {
-      "selector": "//tr[position()>1]",
-      "next_page": {
-        "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
-      }
+      "selector": "//tr[position()>1]"
     },
     "fields": {
       "size": {
