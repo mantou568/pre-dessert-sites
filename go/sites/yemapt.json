@@ -21,20 +21,7 @@
       "headers": {
         "Content-Type": "application/json"
       },
-      "params": {
-        "keyword": [
-          "{keyword}"
-        ],
-        "pageParam.current": [
-          "{page}"
-        ],
-        "pageParam.pageSize": [
-          "20"
-        ],
-        "pageParam.size": [
-          "small"
-        ]
-      },
+      "body": {"keyword": "{keyword}","pageParam":{"current": "{page}","pageSize":20,"pageSizeOptions":["10","20","40"],"size":"small"},"sorter":{}},
       "list": {
         "selector": "data"
       },
