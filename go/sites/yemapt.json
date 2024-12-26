@@ -21,7 +21,7 @@
       "headers": {
         "Content-Type": "application/json"
       },
-      "body": {"keyword": "{keyword}","pageParam":{"current": "{page}","pageSize":20,"pageSizeOptions":["10","20","40"],"size":"small"},"sorter":{}},
+      "body": {"keyword": "{keyword}","pageParam":{"current": "1","pageSize":40,"pageSizeOptions":["10","20","40"],"size":"small"},"sorter":{}},
       "list": {
         "selector": "data"
       },
