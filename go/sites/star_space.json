@@ -151,7 +151,7 @@
     "search": {
       "path": "/p_torrent/video_list_t.php",
       "params": {
-        "area": "name",
+        "area": ["name"],
         "search": [
           "{keyword}"
         ]
