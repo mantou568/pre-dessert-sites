@@ -97,5 +97,29 @@
         }
       }
     }
+  },
+  "seeding_statistics": {
+    "parser": "XPath",
+    "method": "GET",
+    "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+    "headers": {
+      "Referer": "{domain}/userdetails.php?id={userId}"
+    },
+    "list": {
+      "selector": "//tr[position()>1]",
+      "next_page": {
+        "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
+      }
+    },
+    "fields": {
+      "size": {
+        "selector": "/td[3]",
+        "filters": [
+          {
+            "name": "byte_size"
+          }
+        ]
+      }
+    }
   }
 }
