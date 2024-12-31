@@ -114,5 +114,69 @@
         "desc": "连载动漫"
       }
     ]
+  },
+  "requests": {
+    "search": {
+      "list": {
+        "selector": "table.torrents tr"
+      },
+      "fields": {
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "img.free,img.twoupfree",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "img.halfdown,img.twouphalfdown",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "img.thirtypercent",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "description": {
+          "selector": "td:nth-child(2) > div > div > div:nth-child(2) > h3",
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
+        }
+      }
+    }
   }
 }
