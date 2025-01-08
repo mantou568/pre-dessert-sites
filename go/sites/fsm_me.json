@@ -11,7 +11,7 @@
   },
   "category": {
     "single": true,
-    "movie": [
+    "9kg": [
       {
         "id": 1,
         "cat": "Movies",
@@ -55,11 +55,6 @@
     ]
   },
   "requests": {
-    "favicon": {
-      "parser": "None",
-      "method": "GET",
-      "path": "/favicon.ico"
-    },
     "notice": {
       "disabled": true
     },

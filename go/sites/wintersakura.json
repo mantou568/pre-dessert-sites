@@ -21,6 +21,16 @@
         "desc": "Movies/电影"
       },
       {
+        "id": 406,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": 407,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
+      },
+      {
         "id": 422,
         "cat": "Movies",
         "desc": "Animation flims/动漫电影"
@@ -28,39 +38,39 @@
     ],
     "tv": [
       {
+        "id": 402,
+        "cat": "TV",
+        "desc": "TV Series/剧集(分集）"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "TV Shows/综艺(合集)"
+      },
+      {
         "id": 410,
         "cat": "TV/Documentary",
         "desc": "Documentaries/纪录片"
       },
       {
         "id": 413,
-        "cat": "TV/Anime",
+        "cat": "TV",
         "desc": "Animation series/动漫剧集(分集)"
+      },
+      {
+        "id": 414,
+        "cat": "TV",
+        "desc": "TV Series/剧集(合集）"
+      },
+      {
+        "id": 418,
+        "cat": "TV",
+        "desc": "TV Shows/综艺(分集）"
       },
       {
         "id": 423,
         "cat": "TV/Anime",
         "desc": "Animation series/动漫剧集(合集)"
-      },
-      {
-        "id": 414,
-        "cat": "TV/Series",
-        "desc": "TV Series/剧集(合集）"
-      },
-      {
-        "id": 402,
-        "cat": "TV/Series",
-        "desc": "TV Series/剧集(分集）"
-      },
-      {
-        "id": 403,
-        "cat": "TV/Shows",
-        "desc": "TV Shows/综艺(合集)"
-      },
-      {
-        "id": 418,
-        "cat": "TV/Shows",
-        "desc": "TV Shows/综艺(分集）"
       }
     ]
   }

@@ -16,12 +16,12 @@
   "requests":{
     "search": {
       "parser": "JsonPath",
-      "path": "/api/torrent/fetchOpenTorrentList",
       "method": "POST",
+      "path": "/api/torrent/fetchOpenTorrentList",
       "headers": {
         "Content-Type": "application/json"
       },
-      "body": {"keyword":"","pageParam":{"current":1,"pageSize":20,"pageSizeOptions":["10","20","40"],"size":"small"},"sorter":{}},
+      "body": {"keyword":"{keyword}","pageParam":{"current":"{page}","pageSize":40,"pageSizeOptions":["10","20","40"],"size":"small"},"sorter":{}},
       "list": {
         "selector": "data"
       },
@@ -64,10 +64,10 @@
             {
               "name": "case",
               "args": {
-                "FREE": "0",
-                "half": "0.5",
-                "PERCENT_70": "0.3",
-                "NORMAL": "1"
+                "free": 0,
+                "half": 0.5,
+                "percent_70": 0.3,
+                "normal": 1
               }
             }
           ]
@@ -94,11 +94,13 @@
                 "1": "",
                 "2": "",
                 "4": "",
-                "5": "中字",
-                "6": "英字",
+                "5": "国语",
+                "6": "中字",
                 "7": "粤语",
                 "8": "英字",
-                "10": "国语"
+                "10": "杜比视界",
+                "11": "分集",
+                "12": "完结"
               }
             }
           ]

@@ -19,6 +19,16 @@
         "id": "mo",
         "cat": "Movies",
         "desc": "电影"
+      },
+      {
+        "id": "mv",
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": "sp",
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
       }
     ],
     "tv": [
@@ -140,6 +150,12 @@
     },
     "search": {
       "path": "/p_torrent/video_list_t.php",
+      "params": {
+        "area": ["name"],
+        "search": [
+          "{keyword}"
+        ]
+      },
       "list": {
         "selector": "table#tb_content table#table_tm tr#tr_list"
       },

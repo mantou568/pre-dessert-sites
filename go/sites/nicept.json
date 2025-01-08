@@ -14,6 +14,45 @@
     "has_hr": true,
     "has_cover": true
   },
+  "category": {
+    "9kg": [
+      {
+        "id": 504,
+        "cat": "Movies",
+        "desc": "SM调教（限制级）"
+      },
+      {
+        "id": 503,
+        "cat": "Movies",
+        "desc": "真人秀，自拍（限制级）"
+      },
+      {
+        "id": 403,
+        "cat": "Movies",
+        "desc": "动漫（限制级）"
+      },
+      {
+        "id": 501,
+        "cat": "Movies",
+        "desc": "其他（限制级）"
+      },
+      {
+        "id": 402,
+        "cat": "Movies",
+        "desc": "欧美"
+      },
+      {
+        "id": 401,
+        "cat": "Movies",
+        "desc": "日本无码"
+      },
+      {
+        "id": 500,
+        "cat": "Movies",
+        "desc": "日本有码"
+      }
+    ]
+  },
   "requests": {
     "search": {
       "fields": {

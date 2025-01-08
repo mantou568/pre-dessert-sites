@@ -19,6 +19,26 @@
         "id": 401,
         "cat": "Movies",
         "desc": "Movies/电影"
+      },
+      {
+        "id": 407,
+        "cat": "Movies/Music Videos",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": 408,
+        "cat": "Movies",
+        "desc": "Concert/演唱会"
+      },
+      {
+        "id": 409,
+        "cat": "Movies",
+        "desc": "Drama/戏剧"
+      },
+      {
+        "id": 418,
+        "cat": "Movies",
+        "desc": "Concert/演唱会"
       }
     ],
     "tv": [

@@ -18,6 +18,16 @@
         "id": 438,
         "cat": "Movies",
         "desc": "Movies/电影"
+      },
+      {
+        "id": 445,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": 444,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
       }
     ],
     "tv": [

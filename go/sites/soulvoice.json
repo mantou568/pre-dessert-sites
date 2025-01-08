@@ -19,6 +19,11 @@
         "id": 401,
         "cat": "Movies",
         "desc": "Movies/电影"
+      },
+      {
+        "id": 406,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
       }
     ],
     "tv": [
