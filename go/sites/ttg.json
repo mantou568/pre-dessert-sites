@@ -120,9 +120,6 @@
       "method": "GET",
       "path": "/browse.php",
       "params": {
-        "search_field": [
-          "{keyword}"
-        ],
         "c": [
           "M"
         ]
