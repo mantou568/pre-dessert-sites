@@ -67,6 +67,23 @@
         }
       }
     },
+    "user_basic_info": {
+      "fields": {
+        "bonus": {
+          "selector": "//a[contains(@href,'mybonus') or contains(@href,'bonus.php')]/following-sibling::text()",
+          "trim_chars": true,
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "] :",
+                ""
+              ]
+            }
+          ]
+        }
+      }
+    },
     "seeding_statistics": {
       "parser": "CssSelector",
       "disabled_extends": {
