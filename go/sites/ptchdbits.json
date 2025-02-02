@@ -49,6 +49,9 @@
     ]
   },
   "requests": {
+    "sign_in": {
+      "path": "/bakatest.php"
+    },
     "search": {
       "fields": {
         "title": {
