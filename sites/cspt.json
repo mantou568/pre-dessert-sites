@@ -155,7 +155,7 @@
         ]
       },
       "description": {
-        "selector": "table.torrentname > tr > td.embedded",
+        "selector": "table.torrentname > tr > td.embedded:nth-child(2)",
         "contents": -1
       },
       "labels": {
