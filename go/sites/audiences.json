@@ -5,7 +5,8 @@
   "public": false,
   "schema": "NexusPHP",
   "required": {
-    "cookie": true
+    "cookie": true,
+    "sign_in": true
   },
   "meta": {
     "has_free": true,
@@ -61,6 +62,23 @@
               "args": [
                 "2",
                 "0"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "user_basic_info": {
+      "fields": {
+        "bonus": {
+          "selector": "//a[contains(@href,'mybonus') or contains(@href,'bonus.php')]/following-sibling::text()",
+          "trim_chars": true,
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "] :",
+                ""
               ]
             }
           ]

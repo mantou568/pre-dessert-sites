@@ -6,7 +6,8 @@
   "schema": "NexusPHP",
   "required": {
     "cookie": true,
-    "sign_in": true
+    "sign_in": true,
+    "user_id": true
   },
   "meta": {
     "has_free": true,
@@ -249,7 +250,7 @@
       }
     },
     "sign_in": {
-      "path": "/attendance.php?type=list",
+      "path": "/attendance.php?type=sign&uid={userId}",
       "fields": {
         "signed_in": {
           "selector": "*",

@@ -50,6 +50,9 @@
     ]
   },
   "requests":{
+    "sign_in": {
+      "path": "/index.php?action=addbonus"
+    },
     "search": {
       "fields": {
         "hr_days":{
