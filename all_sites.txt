@@ -17,6 +17,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/cdfile.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/cinemageddon.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/clmp4.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/comicat.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/cspt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/cyanbug.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/dajiao.cyou.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/discfan.json
@@ -55,6 +56,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hdvideo.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/HDZone.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hhanclub.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hitpt.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/hspt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/htpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/icc2022.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ihdbits.json

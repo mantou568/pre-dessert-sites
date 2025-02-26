@@ -17,6 +17,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/cdfile.
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/cinemageddon.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/clmp4.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/comicat.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/cspt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/cyanbug.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/dajiao.cyou.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/discfan.json
@@ -55,6 +56,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hdvideo
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/HDZone.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hhanclub.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hitpt.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/hspt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/htpt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/icc2022.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ihdbits.json
