@@ -123,6 +123,7 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/winters
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/wukongwendao.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/xhb.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/xingtan.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/xingyunge.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/yinfans.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/yizidy.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/zhuque.json

@@ -123,6 +123,7 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/wintersakura.
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/wukongwendao.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/xhb.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/xingtan.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/xingyunge.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/yinfans.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/yizidy.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/zhuque.json

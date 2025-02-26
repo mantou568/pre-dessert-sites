@@ -1,7 +1,7 @@
 {
-  "id": "hspt",
-  "name": "回声",
-  "domain": "https://hspt.club/",
+  "id": "xingyunge",
+  "name": "星陨阁",
+  "domain": "https://xingyunge.top/",
   "encoding": "UTF-8",
   "public": false,
   "search": {
@@ -155,7 +155,7 @@
         ]
       },
       "description": {
-        "selector": "table.torrentname > tr > td.embedded",
+        "selector": "table.torrentname > tr > td.embedded:nth-child(2)",
         "remove": "span,a,img,font,b",
         "contents": -1
       },
