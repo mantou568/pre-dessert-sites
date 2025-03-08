@@ -118,7 +118,7 @@
   "requests": {
     "search": {
       "list": {
-        "selector": "table.torrents tr"
+        "selector": "table#torrents > tbody > tr"
       },
       "fields": {
         "downloadvolumefactor": {
