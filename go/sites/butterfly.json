@@ -164,6 +164,19 @@
             }
           ]
         },
+        "date_added": {
+          "selector": "td:nth-child(4)",
+          "filters": [
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05",
+                "2006-01-0215:04:05"
+              ]
+            }
+
+          ]
+        },
         "description": {
           "selector": "td:nth-child(2) > div > div > div:nth-child(2) > h3",
           "filters": [
