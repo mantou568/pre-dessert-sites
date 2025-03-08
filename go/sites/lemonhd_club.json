@@ -51,7 +51,7 @@
           "array": true
         },
         "description": {
-          "selector": "td.embedded small_descr",
+          "selector": "td.embedded .small_descr",
           "remove": "div,span,a,img,font,b,br",
           "contents": -1
         }
