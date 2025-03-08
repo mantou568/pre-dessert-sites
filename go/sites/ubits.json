@@ -69,7 +69,7 @@
           ]
         },
         "labels": {
-          "selector": "td:nth-child(2) > table.torrentname > tbody > tr > td:nth-child(1) > span[title='']",
+          "selector": "td.embedded > a > span[title]",
           "array": true
         },
         "hr_days": {
