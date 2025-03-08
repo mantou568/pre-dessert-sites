@@ -3,7 +3,7 @@
   "name": "蝴蝶",
   "domain": "https://hudbt.hust.edu.cn/",
   "public": false,
-  "schema": "NexusPHP",
+  "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true

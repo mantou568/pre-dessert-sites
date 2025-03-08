@@ -4,7 +4,7 @@
   "domain": "https://www.haidan.video/",
   "encoding": "UTF-8",
   "public": false,
-  "reuse_schema": "NexusPHP",
+  "schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
