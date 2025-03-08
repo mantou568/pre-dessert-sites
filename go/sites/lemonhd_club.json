@@ -52,7 +52,7 @@
         },
         "description": {
           "selector": "td.embedded .small_descr",
-          "remove": "div,span,a,img,font,b,br",
+          "remove": "div.tags_block,span,a,img,font,b,br",
           "contents": -1
         }
       }
