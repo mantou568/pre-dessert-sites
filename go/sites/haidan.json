@@ -85,7 +85,12 @@
           "attribute": "href"
         },
         "size": {
-          "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.video_size"
+          "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.video_size",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         },
         "seeders": {
           "selector": "div.torrent_group > div.group_content > div.group > div.seeder_col"
