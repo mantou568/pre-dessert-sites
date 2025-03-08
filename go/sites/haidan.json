@@ -104,6 +104,15 @@
         "labels": {
           "selector": "div.torrent_group > div.group_content > div.group > div.table_cell > div.name > div.video_name_extra > div",
           "array": true
+        },
+        "date_added": {
+          "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.time_col > span[title]",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         }
       }
     }
