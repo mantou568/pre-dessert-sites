@@ -141,6 +141,65 @@
           }
         }
       }
+    },
+    "messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/messenger",
+      "list": {
+        "selector": "//table//tr[position() > 1][.//td[a[contains(@href, 'messenger')]]]"
+      },
+      "params": {
+        "page": [
+          "{page}"
+        ]
+      },
+      "fields": {
+        "title": {
+          "selector": "td[2]/a/text()"
+        },
+        "link": {
+          "selector": "td[2]/a/@href"
+        },
+        "id": {
+          "selector": "td[2]/a/@href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "date": {
+          "any": [
+            {
+              "selector": "td[4]/span/text()"
+            },
+            {
+              "selector": "td[4]/text()"
+            }
+          ]
+        }
+      }
+    },
+    "message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "title": {
+          "selector": "//h1/text()|//div[@class='layui-card-header']/span[1]/text()"
+        },
+        "date": {
+          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[2]/td[2]|//div[@class='layui-card-header']/span[2]/span[2]"
+        },
+        "content": {
+          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[3]/td|//div[contains(@class,'layui-card-body')]"
+        }
+      }
     }
   }
 }
