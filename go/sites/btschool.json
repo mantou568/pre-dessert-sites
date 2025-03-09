@@ -69,7 +69,7 @@
         },
         "description": {
           "selector": "td.embedded",
-          "remove": "span.label,a,img,b,br",
+          "remove": "span,a,img,b,br,font",
           "contents": -1
         }
       }
