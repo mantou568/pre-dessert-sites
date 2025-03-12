@@ -70,7 +70,30 @@
         "description": {
           "selector": "td.embedded",
           "remove": "span,a,img,b,br,font",
-          "contents": -1
+          "contents": -1,
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                " (",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "(剩余时间：",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                ")",
+                ""
+              ]
+            }
+          ]
         }
       }
     }
