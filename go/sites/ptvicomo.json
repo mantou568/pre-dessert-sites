@@ -12,7 +12,8 @@
   "meta": {
     "has_free": true,
     "has_2x_free": true,
-    "has_hr": true
+    "has_hr": false,
+    "has_cover": false
   },
   "category": {
     "movie": [

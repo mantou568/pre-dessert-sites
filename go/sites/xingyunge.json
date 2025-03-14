@@ -1,7 +1,7 @@
 {
   "id": "xingyunge",
   "name": "星陨阁",
-  "domain": "https://xingyunge.top/i",
+  "domain": "https://xingyunge.top/",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -11,7 +11,8 @@
   "meta": {
     "has_free": true,
     "has_2x_free": true,
-    "has_hr": false
+    "has_hr": false,
+    "has_cover": true
   },
   "category": {
     "movie": [

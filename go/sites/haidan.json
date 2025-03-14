@@ -4,14 +4,14 @@
   "domain": "https://www.haidan.video/",
   "encoding": "UTF-8",
   "public": false,
-  "reuse_schema": "NexusPHP",
+  "schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
   },
   "meta": {
     "has_free": true,
-    "has_cover": true
+    "has_cover": false
   },
   "category": {
     "movie": [
@@ -85,7 +85,12 @@
           "attribute": "href"
         },
         "size": {
-          "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.video_size"
+          "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.video_size",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         },
         "seeders": {
           "selector": "div.torrent_group > div.group_content > div.group > div.seeder_col"
@@ -99,6 +104,15 @@
         "labels": {
           "selector": "div.torrent_group > div.group_content > div.group > div.table_cell > div.name > div.video_name_extra > div",
           "array": true
+        },
+        "date_added": {
+          "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.time_col > span[title]",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         }
       }
     }
