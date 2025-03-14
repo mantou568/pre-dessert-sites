@@ -129,3 +129,5 @@ https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/yizidy.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/zhuque.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/zmpt.json
 https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/sanpro.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/tmpt.json
+https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/ptlover.json

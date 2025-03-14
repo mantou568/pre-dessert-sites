@@ -129,3 +129,5 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/yizidy.
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/zhuque.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/zmpt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/sanpro.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/tmpt.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ptlover.json
