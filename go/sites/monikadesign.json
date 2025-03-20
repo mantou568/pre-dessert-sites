@@ -439,7 +439,12 @@
       }
     },
     "search": {
-      "path": "torrents?perPage=100&name={keyword}&categories[0]=6&categories[1]=7&categories[2]=5&categories[3]=1&categories[4]=8&categories[5]=2",
+      "path": "torrents?perPage=100&categories[0]=6&categories[1]=7&categories[2]=5&categories[3]=1&categories[4]=8&categories[5]=2",
+      "params": {
+        "name": [
+          "{keyword}"
+        ]
+      },
       "list": {
         "selector": "table#torrent-list-table > tbody > tr"
       },
