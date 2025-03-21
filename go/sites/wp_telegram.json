@@ -1,0 +1,19 @@
+{
+  "id": "wp_telegram",
+  "name": "TG 网盘资源",
+  "domain": "https://t.me",
+  "public": true,
+  "schema": "wpTelegram",
+  "required": {
+    "cookie": false,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": false,
+    "has_2x_free": false,
+    "has_cover": true
+  },
+  "custom_config": {
+    "channels": "guaguale115,hao115,pan115_share,Channel_Shares_115"
+  }
+}
