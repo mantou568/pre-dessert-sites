@@ -1,9 +1,9 @@
 {
-  "id": "wp_telegram",
-  "name": "TG 网盘资源",
+  "id": "telegram",
+  "name": "Telegram",
   "domain": "https://t.me",
   "public": true,
-  "schema": "wpTelegram",
+  "schema": "telegram",
   "required": {
     "cookie": false,
     "sign_in": false
