@@ -4,6 +4,7 @@
   "domain": "https://t.me",
   "public": true,
   "schema": "telegram",
+  "reuse_schema": "bt",
   "required": {
     "cookie": false,
     "sign_in": false

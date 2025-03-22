@@ -1,0 +1,17 @@
+{
+  "id": "gying",
+  "name": "观影 GYING",
+  "domain": "https://www.gyg.si",
+  "public": true,
+  "schema": "gying",
+  "reuse_schema": "bt",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": false,
+    "has_2x_free": false,
+    "has_cover": true
+  }
+}
