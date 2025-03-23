@@ -57,6 +57,15 @@
   },
   "requests":{
     "search": {
+      "path": "/search.php",
+      "params": {
+        "search": [
+          "{keyword}"
+        ],
+        "search_area": [
+          "0"
+        ]
+      },
       "fields": {
         "hr_days": {
           "selector": "img.kaohe",
@@ -78,6 +87,23 @@
               "name": "timestamp"
             }
           ]
+        },
+        "description": {
+          "selector": "td:nth-child(2) > table > tbody > tr > td:nth-child(1)",
+          "remove": "span,a,img,font,b",
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
+        },  
+        "labels": {
+          "selector": "td:nth-child(1) > span[title='']",
+          "array": true
         }
       }
     }
