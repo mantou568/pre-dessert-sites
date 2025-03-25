@@ -101,6 +101,8 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/putao.j
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/qingwa.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/raingfh.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/rousi.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/sanpro.json
+https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/sewerpt.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/skyeysnow.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/soulvoice.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/srvfi.json
@@ -128,6 +130,3 @@ https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/yinfans
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/yizidy.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/zhuque.json
 https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/zmpt.json
-https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/sanpro.json
-https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/tmpt.json
-https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/ptlover.json
