@@ -3,7 +3,8 @@
   "name": "天空",
   "domain": "https://hdsky.me",
   "public": false,
-  "schema": "NexusPHP",
+  "schema": "hdsky",
+  "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -214,6 +215,72 @@
             }
           ]
         }
+      }
+    },
+    "sign_in_image_code": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/image_code_ajax.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "form_data": {
+        "action": [
+          "new"
+        ]
+      },
+      "headers": {
+        "Referer": "https://hdsky.me/index.php",
+        "X-Requested-With": "XMLHttpRequest"
+      },
+      "fields": {
+        "success": {},
+        "code": {}
+      }
+    },
+    "sign_in_image": {
+      "parser": "None",
+      "path": "/image.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "params": {
+        "action": [
+          "regimage"
+        ],
+        "imagehash": [
+          "{image_hash}"
+        ]
+      },
+      "headers": {
+        "Referer": "https://hdsky.me/index.php"
+      }
+    },
+    "sign_in_showup": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/showup.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "form_data": {
+        "action": [
+          "showup"
+        ],
+        "imagehash": [
+          "{image_hash}"
+        ],
+        "imagestring": [
+          "{image_string}"
+        ]
+      },
+      "headers": {
+        "Referer": "https://hdsky.me/index.php",
+        "X-Requested-With": "XMLHttpRequest"
+      },
+      "fields": {
+        "success": {},
+        "message": {}
       }
     }
   }
