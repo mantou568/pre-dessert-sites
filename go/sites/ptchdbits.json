@@ -3,7 +3,8 @@
   "name": "彩虹岛",
   "domain": "https://ptchdbits.co",
   "public": false,
-  "schema": "NexusPHP",
+  "schema": "chdbits",
+  "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -98,6 +99,41 @@
             }
           ]
         }
+      }
+    },
+    "chdbits_sign_in_page": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/bakatest.php",
+      "disabled_extends": {
+        "params": true
+      },
+
+      "headers": {
+        "Referer": "https://ptchdbits.co/torrents.php"
+      }
+    },
+   "chdbits_sign_in_submit": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/bakatest.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "form_data": {
+        "questionid": [
+          "{questionid}"
+        ],
+        "choice[]": [
+          "{choice[]}"
+        ],
+        "usercomment": [
+          "{usercomment}"
+        ]
+      },
+      "headers": {
+        "Referer": "https://ptchdbits.co/bakatest.php",
+        "content-type": "application/x-www-form-urlencoded"
       }
     }
   },
