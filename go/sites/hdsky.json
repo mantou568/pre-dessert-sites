@@ -238,7 +238,7 @@
         "code": {}
       }
     },
-    "sign_in_image": {
+    "image": {
       "parser": "None",
       "path": "/image.php",
       "disabled_extends": {
