@@ -1,7 +1,7 @@
 {
   "id": "agsvpt.com",
   "name": "agsvpt",
-  "domain": "https://www.agsvpt.com/",
+  "domain": "https://pt.agsvpt.cn",
   "encoding": "UTF-8",
   "public": false,
   "search": {
@@ -187,7 +187,7 @@
     "PEER_COUNT": ["//div[@id='peercount']/b[1]"]
   },
   "system_type": "nexus_php",
-  "ext_domain": ["https://abroad.agsvpt.com"],
+  "ext_domain": ["https://abroad.agsvpt.com","https://www.agsvpt.com"],
   "my_hr": {
     "url": "myhr.php?status=1",
     "method": "get",
