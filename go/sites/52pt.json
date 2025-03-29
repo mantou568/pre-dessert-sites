@@ -1,9 +1,10 @@
 {
   "id": "52pt",
   "name": "52pt",
-  "domain": "https://52pt.site/",
+  "domain": "https://52pt.site",
   "public": false,
-  "schema": "NexusPHP",
+  "schema": "pt52pt",
+  "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -80,6 +81,41 @@
           "remove": "span.label,a,img,b,br",
           "contents": -1
         }
+      }
+    },
+    "sign_in_page": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/bakatest.php",
+      "disabled_extends": {
+        "params": true
+      },
+
+      "headers": {
+        "Referer": "https://52pt.site/torrents.php"
+      }
+    },
+   "sign_in_submit": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/bakatest.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "form_data": {
+        "questionid": [
+          "{questionid}"
+        ],
+        "choice[]": [
+          "{choice[]}"
+        ],
+        "usercomment": [
+          "{usercomment}"
+        ]
+      },
+      "headers": {
+        "Referer": "https://52pt.site/bakatest.php",
+        "content-type": "application/x-www-form-urlencoded"
       }
     }
   },
