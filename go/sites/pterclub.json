@@ -119,6 +119,9 @@
         "sec-fetch-site": "same-origin",
         "x-requested-with": "XMLHttpRequest"
       }
+    },
+    "sign_in": {
+      "path": "/attendance-ajax.php"
     }
   }
 }
