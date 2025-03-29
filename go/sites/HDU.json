@@ -71,6 +71,9 @@
           "contents": -1
         }
       }
+    },
+    "sign_in": {
+      "path": "/added.php?action=qiandao"
     }
   }
 }
