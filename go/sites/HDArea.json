@@ -97,6 +97,9 @@
           "contents": -1
         }
       }
+    },
+    "sign_in": {
+      "path": "/signin.php"
     }
   }
 }

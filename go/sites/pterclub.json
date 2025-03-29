@@ -119,6 +119,22 @@
         "sec-fetch-site": "same-origin",
         "x-requested-with": "XMLHttpRequest"
       }
+    },
+    "sign_in": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/attendance-ajax.php",
+      "fields": {
+        "signed_in": {
+          "selector": "status",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        }
+      }
     }
   }
 }

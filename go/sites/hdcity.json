@@ -43,5 +43,10 @@
         "desc": "TV Shows/综艺"
       }
     ]
+  },
+  "requests":{
+    "sign_in": {
+      "path": "/sign"
+    }
   }
 }

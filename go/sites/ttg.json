@@ -3,7 +3,8 @@
   "name": "听听歌",
   "domain": "https://totheglory.im",
   "public": false,
-  "schema": "NexusPHP",
+  "schema": "ttg",
+  "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -358,6 +359,38 @@
             }
           ]
         }
+      }
+    },
+    "ttg_sign_in_start_page": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/index.php",
+      "disabled_extends": {
+        "params": true
+      },
+
+      "headers": {
+        "Referer": "https://totheglory.im/index.php"
+      }
+    },
+   "ttg_sign_in_submit": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/signed.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "form_data": {
+        "signed_timestamp": [
+          "{signed_timestamp}"
+        ],
+        "signed_token": [
+          "{signed_token}"
+        ]
+      },
+      "headers": {
+        "Referer": "https://totheglory.im/index.php",
+        "content-type": "application/x-www-form-urlencoded"
       }
     }
   }
