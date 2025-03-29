@@ -121,7 +121,20 @@
       }
     },
     "sign_in": {
-      "path": "/attendance-ajax.php"
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/attendance-ajax.php",
+      "fields": {
+        "signed_in": {
+          "selector": "status",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
+      }
     }
   }
 }
