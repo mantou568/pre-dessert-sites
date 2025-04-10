@@ -3,7 +3,8 @@
   "name": "皇后",
   "domain": "https://www.open.cd/",
   "public": false,
-  "schema": "NexusPHP",
+  "schema": "opencd",
+  "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -43,5 +44,50 @@
         "desc": "TV Shows/综艺"
       }
     ]
+  },
+  "requests": {
+    "user_basic_info": {
+      "fields": {
+        "signed_in": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "查看簽到記錄"
+            }
+          ]
+        }
+      }
+    },
+    "sign_in_page": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/plugin_sign-in.php",
+      "disabled_extends": {
+        "params": true
+      }
+    },
+    "image": {
+      "parser": "None",
+      "disabled_extends": {
+        "params": true
+      }
+    },
+    "sign_in_action": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/plugin_sign-in.php?cmd=signin",
+      "disabled_extends": {
+        "params": true
+      },
+      "fields": {
+        "success": {},
+        "message": {}
+      },
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    }
   }
 }
