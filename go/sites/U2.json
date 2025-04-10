@@ -3,7 +3,8 @@
   "name": "幼儿园",
   "domain": "https://u2.dmhy.org/",
   "public": false,
-  "schema": "NexusPHP",
+  "schema": "u2",
+  "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -123,5 +124,34 @@
         "desc": "加流重灌 (Modded Blu-rays)"
       }
     ]
+  },
+  "requests": {
+    "sign_in": {
+      "path": "/showup.php"
+    },
+    "u2_sign_in_page": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/showup.php",
+      "disabled_extends": {
+        "params": true
+      },
+
+      "headers": {
+        "Referer": "https://u2.dmhy.org/torrents.php"
+      }
+    },
+    "u2_sign_in_submit": {
+       "parser": "JsonPath",
+       "method": "POST",
+       "path": "/showup.php?action=show",
+       "disabled_extends": {
+         "params": true
+       },
+       "headers": {
+         "Referer": "https://u2.dmhy.org/showup.php",
+         "content-type": "application/x-www-form-urlencoded"
+       }
+     }
   }
 }
