@@ -58,10 +58,11 @@
       "path": "/users/niergouge",
       "fields": {
         "is_login": {
-          "selector": "//i[@class='far fa-sign-out']/text()",
+          "selector": "//button[@class='top-nav--right__link']/text()",
           "filters": [
             {
-              "name": "not_blank"
+              "name": "regex",
+              "args": "退出登录"
             }
           ]
         },
