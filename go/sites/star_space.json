@@ -6,7 +6,8 @@
   "schema": "NexusPHP",
   "count_message": true,
   "required": {
-    "cookie": true
+    "cookie": true,
+    "sign_in": false
   },
   "meta": {
     "has_free": true
