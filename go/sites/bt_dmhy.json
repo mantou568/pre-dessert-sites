@@ -1,0 +1,141 @@
+{
+  "id": "dmhy",
+  "name": "动漫花园",
+  "domain": "https://share.dmhy.org",
+  "public": true,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": false,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": false,
+    "has_2x_free": false,
+    "has_cover": false
+  },
+  "first_page_offset": 1,
+  "requests": {
+    "search": {
+      "disabled_extends": {
+        "fields": true,
+        "field": true
+      },
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/topics/list/page/{page}",
+      "params": {
+        "keyword": [
+          "{keyword}"
+        ]
+      },
+      "list": {
+        "selector": "table#topic_list tbody tr"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href*='/topics/view']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        },
+        "category": {
+          "selector": "td:nth-child(1) > font"
+        },
+        "title": {
+          "selector": "td:nth-child(3) > a[href*='/topics/view']"
+        },
+        "details": {
+          "selector": "td:nth-child(3) > a",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "td:nth-child(4) > a:nth-child(1)",
+          "attribute": "href"
+        },
+        "size": {
+          "selector": "td:nth-child(5)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "grabs": {
+          "selector": "td:nth-child(8)",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "-",
+                "0"
+              ]
+            }
+          ]
+        },
+        "seeders": {
+          "selector": "td:nth-child(7)",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "-",
+                "0"
+              ]
+            }
+          ]
+        },
+        "leechers": {
+          "selector": "td:nth-child(7)",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "-",
+                "0"
+              ]
+            }
+          ]
+        },
+        "date_added": {
+          "selector": "td:nth-child(1) > span",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        },
+        "link_type": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "300"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
