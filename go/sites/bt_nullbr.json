@@ -1,0 +1,18 @@
+{
+  "id": "nullbr",
+  "name": "NULLBR",
+  "domain": "https://nullbr.eu.org",
+  "api": "https://api.nullbr.eu.org",
+  "public": true,
+  "schema": "nullbr",
+  "reuse_schema": "bt",
+  "required": {
+    "cookie": false,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": false,
+    "has_2x_free": false,
+    "has_cover": false
+  }
+}
