@@ -17,6 +17,12 @@
   "category": {
     "tv": [
       {
+        "id": "動电视剧",
+        "cat": "TV/电视剧",
+        "desc": "电视剧",
+        "default": true
+      },
+      {
         "id": "動畫",
         "cat": "TV/動畫",
         "desc": "動畫",
