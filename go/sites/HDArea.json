@@ -93,7 +93,7 @@
       "fields": {
         "description": {
           "selector": "td.embedded",
-          "remove": "span.label,a,img,b,br",
+          "remove": "span,a,img,font,b,br",
           "contents": -1
         }
       }

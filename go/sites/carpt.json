@@ -61,7 +61,7 @@
         },
         "description": {
           "selector": "td:nth-child(1)",
-          "remove": "span.label,a,img,b,font,br",
+          "remove": "span,a,img,font,b,br",
           "contents": -1
         }
       }
