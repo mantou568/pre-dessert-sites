@@ -51,7 +51,7 @@
         },
         "description": {
           "selector": "td.embedded",
-          "remove": "span.label,a,img,font,b,br",
+          "remove": "span,a,img,font,b,br",
           "contents": -1
         }
       }

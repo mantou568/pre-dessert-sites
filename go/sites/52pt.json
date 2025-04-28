@@ -78,7 +78,7 @@
         },
         "description": {
           "selector": "td.embedded:nth-child(1)",
-          "remove": "span.label,a,img,b,br",
+          "remove": "span,a,img,font,b,br",
           "contents": -1
         }
       }
