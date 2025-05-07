@@ -177,7 +177,15 @@
             }
           ]
         },
-        "download": {},
+        "download": {
+          "selector": "tid",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://api.fsm.name/Torrents/download?tid="
+            }
+          ]
+        },
         "size": {
           "selector": "fileRawSize"
         },
