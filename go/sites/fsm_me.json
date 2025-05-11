@@ -183,6 +183,13 @@
             {
               "name": "append_left",
               "args": "https://api.fsm.name/Torrents/download?tid="
+            },
+            {
+              "name": "append_right",
+              "args": "&passkey=/{passkey}"
+            },
+            {
+              "name": "user_profile_holder"
             }
           ]
         },
