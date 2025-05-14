@@ -11,7 +11,7 @@
     },
     "meta": {
       "has_free": true,
-      "has_cover": false
+      "has_cover": true
     },
     "category": {
       "movie": [
@@ -49,73 +49,20 @@
         "desc": "动漫"
       }]
     },
-    "requests":{
-      "search": {
-        "path": "/torrents.php",
-        "list": {
-          "selector": "div.torrent_panel_inner > div.torrent_group"
+  "requests": {
+    "search": {
+      "fields": {
+        "labels": {
+          "selector": "td.embedded span[title=\\\"\\\"]\"",
+          "array": true
         },
-        "fields": {
-          "id": {
-            "selector": "a[href*=\"details.php?group_id=\"]",
-            "attribute": "href",
-            "filters": [
-              {
-                "name": "re_search",
-                "args": [
-                  "\\d+",
-                  0
-                ]
-              }
-            ]
-          },
-          "title": {
-            "selector": "a[href*=\"details.php?group_id=\"]"
-          },
-          "category": {
-            "selector": "a[href*=\"?cat=\"]",
-            "attribute": "title"
-          },
-          "details": {
-            "selector": "a[href*=\"details.php?group_id=\"]",
-            "attribute": "href"
-          },
-          "download": {
-            "selector": "a[href*=\"download.php?id=\"]",
-            "attribute": "href"
-          },
-          "size": {
-            "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.video_size",
-            "filters": [
-              {
-                "name": "byte_size"
-              }
-            ]
-          },
-          "seeders": {
-            "selector": "div.torrent_group > div.group_content > div.group > div.seeder_col"
-          },
-          "leechers": {
-            "selector": "div.torrent_group > div.group_content > div.group > div.leecher_col"
-          },
-          "grabs": {
-            "selector": "div.torrent_group > div.group_content > div.group > div.snatched_col"
-          },
-          "labels": {
-            "selector": "div.torrent_group > div.group_content > div.group > div.table_cell > div.name > div.video_name_extra > div",
-            "array": true
-          },
-          "date_added": {
-            "selector": "div.torrent_group > div.group_content > div.group_detail_wrap > div.group_detail > div.torrent_detail > div:nth-child(1) > div.torrent_item > div.time_col > span[title]",
-            "attribute": "title",
-            "filters": [
-              {
-                "name": "timestamp"
-              }
-            ]
-          }
+        "description": {
+          "selector": "td.embedded:nth-child(1)",
+          "remove": "span,a,img,font,b,br",
+          "contents": -1
         }
       }
     }
+  }
   }
   
