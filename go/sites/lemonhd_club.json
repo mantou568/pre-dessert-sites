@@ -61,7 +61,7 @@
           ]
         },
         "labels": {
-          "selector": "td.embedded span",
+          "selector": "td.embedded span.tag",
           "array": true
         },
         "description": {
