@@ -53,7 +53,7 @@
     "search": {
       "fields": {
         "labels": {
-          "selector": "td.embedded span[title]",
+          "selector": "td.embedded span[title=\"\"]",
           "array": true
         },
         "description": {
