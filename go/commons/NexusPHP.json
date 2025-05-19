@@ -439,7 +439,7 @@
           ]
         },
         "labels": {
-          "selector": "td:nth-child(2) > span[title='']",
+          "selector": "td:nth-child(2) > span[title=''],td:nth-child(2) > span[title='特效字幕'] ",
           "array": true
         }
       }
