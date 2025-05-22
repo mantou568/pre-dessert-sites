@@ -108,6 +108,9 @@
       "parser": "JsonPath",
       "method": "GET",
       "path": "/api/Users/infos",
+      "tags": [
+        "user_profile"
+      ],
       "required_headers": [
         "APITOKEN"
       ],
@@ -183,6 +186,13 @@
             {
               "name": "append_left",
               "args": "https://api.fsm.name/Torrents/download?tid="
+            },
+            {
+              "name": "append_right",
+              "args": "&passkey={passkey}"
+            },
+            {
+              "name": "user_profile_holder"
             }
           ]
         },
