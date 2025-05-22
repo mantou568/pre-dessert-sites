@@ -92,6 +92,25 @@
       "list": {
         "selector": "//*[@id='hr-table']/tbody/tr[position()>1 and count(td) > 1]"
       }
+    },
+    "get_rss": {
+      "parser": "XPath",
+      "method": "POST",
+      "path": "/getrss.php",
+      "form_data": {
+        "inclbookmarked": ["0"],
+        "paid": ["0"],
+        "itemcategory": ["1"],
+        "itemsmalldescr": ["1"],
+        "itemsize": ["1"],
+        "showrows": ["10"],
+        "search_mode": ["0"]
+      },
+      "fields": {
+        "content": {
+          "selector": "(//a[@class='faqlink'])[3]/@href"
+        }
+      }
     }
   }
 }
