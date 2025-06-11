@@ -220,20 +220,7 @@
         },
         "labels": {
           "array": true,
-          "filters": [
-            {
-              "name": "case",
-              "args": {
-                "0": "",
-                "1": "DIY",
-                "2": "国配",
-                "4": "中字",
-                "5": "DIY|中字",
-                "6": "国配|中字",
-                "7": "DIY|国配|中字"
-              }
-            }
-          ]
+          "selector": "labelsNew"
         }
       }
     },
