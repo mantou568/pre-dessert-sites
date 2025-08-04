@@ -46,8 +46,22 @@
   "requests": {
     "search": {
       "fields": {
+        "title": {
+          "any": [
+            {
+              "selector": "a[title][href*='details.php?id=']",
+              "attribute": "title"
+            },
+            {
+              "selector": "a[href*='details.php?id='] > b"
+            },
+            {
+              "selector": "a[href*='details.php?id=']"
+            }
+          ]
+        },
         "labels": {
-          "selector": "td.embedded span",
+          "selector": "td.embedded span.tag",
           "array": true
         },
         "description": {
