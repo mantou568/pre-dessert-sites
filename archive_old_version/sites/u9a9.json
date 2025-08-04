@@ -1,0 +1,74 @@
+{
+  "id": "u9a9",
+  "name": "u9a9",
+  "domain": "https://u9a9.de/",
+  "encoding": "UTF-8",
+  "public": true,
+  "proxy": true,
+  "search": {
+    "paths": [
+      {
+        "path": "?type=2&search={keyword}",
+        "method": "get"
+      }
+    ]
+  },
+  "browse": {
+    "path": "?type=2&p={page}",
+    "start": 1
+  },
+  "torrents": {
+    "list": {
+      "selector": "table.torrent-list > tbody > tr"
+    },
+    "fields": {
+      "id": {
+        "selector": "a[href*=\"/view/2/\"]",
+        "attribute": "href",
+        "filters": [
+          {
+            "name": "re_search",
+            "args": ["\\d+", 0]
+          }
+        ]
+      },
+      "title": {
+        "selector": "td:nth-child(2) > a"
+      },
+      "details": {
+        "selector": "td:nth-child(2) > a",
+        "attribute": "href"
+      },
+      "download": {
+        "selector": "td:nth-child(3) > a[href*=\"magnet:\"]",
+        "attribute": "href"
+      },
+      "date_added": {
+        "selector": "td:nth-child(5)"
+      },
+      "size": {
+        "selector": "td:nth-child(4)"
+      },
+      "seeders": {
+        "selector": "td:nth-child(6)"
+      },
+      "leechers": {
+        "selector": "td:nth-child(7)"
+      },
+      "grabs": {
+        "selector": "td:nth-child(8)"
+      },
+      "downloadvolumefactor": {
+        "case": {
+          "*": 0
+        }
+      },
+      "uploadvolumefactor": {
+        "case": {
+          "*": 1
+        }
+      }
+    }
+  },
+  "ext_domain": ["https://u9a9.one", "https://u9a9.com", "https://u9a9.cc", "https://u9a9.net", "https://u9a9.xyz", "https://u9a9.org", "https://u9a9.de"]
+}
