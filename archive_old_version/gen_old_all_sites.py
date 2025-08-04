@@ -24,8 +24,8 @@ def generate_remote_urls():
     for index, filename in enumerate(file_list):
         if filename.endswith(".json"):
             # 构建远程路径
-            remote_url_cdn = "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/sites/" + filename
-            remote_url_github = "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/sites/" + filename
+            remote_url_cdn = "https://cdn.jsdelivr.net/gh/mantou568/pre-dessert-sites@main/archive_old_version/sites/" + filename
+            remote_url_github = "https://raw.githubusercontent.com/mantou568/pre-dessert-sites/main/archive_old_version/sites/" + filename
             # 将远程路径写入 all_sites 文件
             try:
                 with open(output_file_cdn, "a", newline='\n') as f:
