@@ -2,6 +2,7 @@
   "id": "hdkyl",
   "name": "麒麟",
   "domain": "https://www.hdkyl.in",
+  "additional_domain": ["https://na.hdkylin.com/"],
   "public": false,
   "schema": "NexusPHP",
   "required": {

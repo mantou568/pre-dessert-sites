@@ -2,6 +2,7 @@
   "id": "crabpt",
   "name": "蟹黄堡",
   "domain": "https://crabpt.vip",
+  "additional_domain": ["https://pt.837576.xyz"],
   "public": false,
   "schema": "NexusPHP",
   "required": {

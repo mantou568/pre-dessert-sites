@@ -2,6 +2,7 @@
   "id": "agsvpt",
   "name": "末日种子",
   "domain": "https://pt.agsvpt.cn",
+  "additional_domain": ["https://abroad.agsvpt.com","https://www.agsvpt.com"],
   "public": false,
   "schema": "NexusPHP",
   "required": {

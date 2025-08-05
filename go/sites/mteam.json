@@ -2,6 +2,7 @@
   "id": "mteam",
   "name": "馒头",
   "domain": "https://kp.m-team.cc",
+  "additional_domain": ["https://api.m-team.cc/","https://mtapi.m-team.cc/"],
   "api": "https://api.m-team.cc",
   "public": false,
   "schema": "mTorrent",

@@ -2,6 +2,11 @@
   "id": "ptchdbits",
   "name": "彩虹岛",
   "domain": "https://ptchdbits.co",
+  "additional_domain": [
+    "https://bj.chddiy.xyz",
+    "https://js.chddiy.xyz",
+    "https://hn.chddiy.xyz"
+  ],
   "public": false,
   "schema": "chdbits",
   "reuse_schema": "NexusPHP",

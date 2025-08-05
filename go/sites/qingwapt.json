@@ -2,6 +2,7 @@
   "id": "qingwapt",
   "name": "青蛙",
   "domain": "https://qingwapt.com",
+  "additional_domain": ["https://www.qingwapt.com", "https://new.qingwa.pro"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
