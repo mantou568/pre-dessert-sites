@@ -2,7 +2,7 @@
   "id": "zmpt",
   "name": "织梦",
   "domain": "https://zmpt.cc",
-  "additional_domain": ["https://zmpt.club/"],
+  "additional_domain": ["https://zmpt.club"],
   "public": false,
   "schema": "NexusPHP",
   "required": {

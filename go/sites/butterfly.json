@@ -2,7 +2,7 @@
   "id": "butterfly",
   "name": "蝴蝶",
   "domain": "https://hudbt.hust.edu.cn",
-  "additional_domain": ["https://zeus.hamsters.space/"],
+  "additional_domain": ["https://zeus.hamsters.space"],
   "public": false,
   "reuse_schema": "NexusPHP",
   "required": {
