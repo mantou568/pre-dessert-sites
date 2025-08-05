@@ -1,7 +1,7 @@
 {
   "id": "tccf",
   "name": "TCCF",
-  "domain": "https://et8.org/",
+  "domain": "https://et8.org",
   "public": false,
   "schema": "NexusPHP",
   "required": {

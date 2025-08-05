@@ -1,7 +1,7 @@
 {
   "id": "butterfly",
   "name": "蝴蝶",
-  "domain": "https://hudbt.hust.edu.cn/",
+  "domain": "https://hudbt.hust.edu.cn",
   "public": false,
   "reuse_schema": "NexusPHP",
   "required": {
@@ -67,7 +67,6 @@
         "cat": "TV",
         "desc": "港台剧集"
       },
-
       {
         "id": 416,
         "cat": "TV",
@@ -174,7 +173,6 @@
                 "2006-01-0215:04:05"
               ]
             }
-
           ]
         },
         "description": {

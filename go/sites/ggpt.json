@@ -1,7 +1,7 @@
 {
   "id": "ggpt",
   "name": "GGPT",
-  "domain": "https://www.gamegamept.com/",
+  "domain": "https://www.gamegamept.com",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -16,7 +16,7 @@
   "requests": {
     "search": {
       "fields": {
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",

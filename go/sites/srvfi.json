@@ -1,7 +1,7 @@
 {
   "id": "srvfi",
   "name": "超分辨率",
-  "domain": "https://www.srvfi.top/",
+  "domain": "https://www.srvfi.top",
   "public": false,
   "schema": "NexusPHP",
   "required": {

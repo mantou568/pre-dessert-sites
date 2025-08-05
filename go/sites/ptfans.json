@@ -1,7 +1,7 @@
 {
   "id": "ptfans",
   "name": "PTFANS",
-  "domain": "https://ptfans.cc/",
+  "domain": "https://ptfans.cc",
   "public": false,
   "schema": "NexusPHP",
   "required": {

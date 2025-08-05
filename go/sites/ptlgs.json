@@ -1,7 +1,7 @@
 {
   "id": "ptlgs",
   "name": "PTLGS",
-  "domain": "https://ptlgs.org/",
+  "domain": "https://ptlgs.org",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -62,7 +62,7 @@
           "remove": "span,a,img,font,b,br",
           "contents": -1
         },
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",

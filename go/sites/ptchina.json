@@ -1,7 +1,7 @@
 {
   "id": "ptchina",
   "name": "铂金学院",
-  "domain": "https://ptchina.org/",
+  "domain": "https://ptchina.org",
   "public": false,
   "schema": "NexusPHP",
   "required": {

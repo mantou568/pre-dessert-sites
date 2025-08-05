@@ -1,7 +1,7 @@
 {
   "id": "hdcity",
   "name": "城市",
-  "domain": "https://hdcity.work/",
+  "domain": "https://hdcity.work",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -44,7 +44,7 @@
       }
     ]
   },
-  "requests":{
+  "requests": {
     "sign_in": {
       "path": "/sign"
     }

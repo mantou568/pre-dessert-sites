@@ -1,7 +1,7 @@
 {
   "id": "bilibili",
   "name": "BILIBILI",
-  "domain": "https://bilibili.download/",
+  "domain": "https://bilibili.download",
   "public": false,
   "schema": "NexusPHP",
   "required": {

@@ -1,7 +1,7 @@
 {
   "id": "qingwapt",
   "name": "青蛙",
-  "domain": "https://qingwapt.com/",
+  "domain": "https://qingwapt.com",
   "public": false,
   "schema": "NexusPHP",
   "required": {

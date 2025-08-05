@@ -1,7 +1,7 @@
 {
   "id": "hdbao",
   "name": "HDBAO",
-  "domain": "https://hdbao.cc/",
+  "domain": "https://hdbao.cc",
   "public": false,
   "schema": "NexusPHP",
   "required": {

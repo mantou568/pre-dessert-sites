@@ -1,7 +1,7 @@
 {
   "id": "tosky",
   "name": "tosky",
-  "domain": "https://t.tosky.club/",
+  "domain": "https://t.tosky.club",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -43,7 +43,7 @@
       }
     ]
   },
-  "requests":{
+  "requests": {
     "search": {
       "fields": {
         "labels": {

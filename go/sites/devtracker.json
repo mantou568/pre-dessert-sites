@@ -1,7 +1,7 @@
 {
   "id": "devtracker",
   "name": "DevTracker",
-  "domain": "https://www.devtracker.me/",
+  "domain": "https://www.devtracker.me",
   "public": false,
   "schema": "NexusPHP",
   "required": {

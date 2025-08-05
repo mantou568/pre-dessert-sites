@@ -1,7 +1,7 @@
 {
   "id": "HDU",
   "name": "好多油",
-  "domain": "https://pt.hdupt.com/",
+  "domain": "https://pt.hdupt.com",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -57,7 +57,7 @@
   "requests": {
     "search": {
       "fields": {
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",

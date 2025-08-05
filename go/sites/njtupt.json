@@ -1,7 +1,7 @@
 {
   "id": "njtupt",
   "name": "浦园PT",
-  "domain": "https://njtupt.top/",
+  "domain": "https://njtupt.top",
   "public": false,
   "schema": "NexusPHP",
   "required": {

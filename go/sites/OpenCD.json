@@ -1,7 +1,7 @@
 {
   "id": "OpenCD",
   "name": "皇后",
-  "domain": "https://www.open.cd/",
+  "domain": "https://www.open.cd",
   "public": false,
   "schema": "opencd",
   "reuse_schema": "NexusPHP",

@@ -1,7 +1,7 @@
 {
   "id": "nanyangpt",
   "name": "南洋PT",
-  "domain": "https://nanyangpt.com/",
+  "domain": "https://nanyangpt.com",
   "public": false,
   "schema": "NexusPHP",
   "required": {

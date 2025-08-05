@@ -1,7 +1,7 @@
 {
   "id": "ilolicon",
   "name": "萝莉",
-  "domain": "https://share.ilolicon.com/",
+  "domain": "https://share.ilolicon.com",
   "public": false,
   "schema": "NexusPHP",
   "required": {

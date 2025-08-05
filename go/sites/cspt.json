@@ -1,7 +1,7 @@
 {
   "id": "cspt",
   "name": "财神",
-  "domain": "https://cspt.top/",
+  "domain": "https://cspt.top",
   "public": false,
   "schema": "NexusPHP",
   "required": {

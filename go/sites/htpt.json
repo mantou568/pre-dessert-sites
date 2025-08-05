@@ -1,7 +1,7 @@
 {
   "id": "htpt",
   "name": "海棠",
-  "domain": "https://www.htpt.cc/",
+  "domain": "https://www.htpt.cc",
   "public": false,
   "schema": "NexusPHP",
   "required": {

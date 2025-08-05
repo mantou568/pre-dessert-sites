@@ -1,7 +1,7 @@
 {
   "id": "hdfans",
   "name": "红豆饭",
-  "domain": "https://hdfans.org/",
+  "domain": "https://hdfans.org",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -76,7 +76,7 @@
           "remove": "span,a,img,font,b,br",
           "contents": -1
         },
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",

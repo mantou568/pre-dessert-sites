@@ -1,7 +1,7 @@
 {
   "id": "nicept",
   "name": "老师",
-  "domain": "https://www.nicept.net/",
+  "domain": "https://www.nicept.net",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -56,7 +56,7 @@
   "requests": {
     "search": {
       "fields": {
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",

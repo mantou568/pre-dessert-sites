@@ -1,7 +1,7 @@
 {
   "id": "hitpt",
   "name": "百川",
-  "domain": "https://www.hitpt.com/",
+  "domain": "https://www.hitpt.com",
   "public": false,
   "schema": "NexusPHP",
   "required": {

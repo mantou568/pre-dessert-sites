@@ -1,7 +1,7 @@
 {
   "id": "carpt",
   "name": "小车站",
-  "domain": "https://carpt.net/",
+  "domain": "https://carpt.net",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -44,10 +44,10 @@
       }
     ]
   },
-  "requests":{
+  "requests": {
     "search": {
       "fields": {
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",

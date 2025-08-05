@@ -1,7 +1,7 @@
 {
   "id": "raingfh",
   "name": "雨",
-  "domain": "https://raingfh.top/",
+  "domain": "https://raingfh.top",
   "public": false,
   "schema": "NexusPHP",
   "required": {

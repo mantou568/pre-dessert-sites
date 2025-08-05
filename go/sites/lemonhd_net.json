@@ -1,7 +1,7 @@
 {
   "id": "lemonhd_net",
   "name": "柠檬不甜",
-  "domain": "https://lemonhd.net/",
+  "domain": "https://lemonhd.net",
   "public": false,
   "schema": "NexusPHP",
   "required": {

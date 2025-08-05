@@ -1,7 +1,7 @@
 {
   "id": "hdkyl",
   "name": "麒麟",
-  "domain": "https://www.hdkyl.in/",
+  "domain": "https://www.hdkyl.in",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -58,7 +58,7 @@
       }
     ]
   },
-  "requests":{
+  "requests": {
     "search": {
       "fields": {
         "labels": {

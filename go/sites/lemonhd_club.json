@@ -1,7 +1,7 @@
 {
   "id": "lemonhd_club",
   "name": "柠檬皮",
-  "domain": "https://lemonhd.club/",
+  "domain": "https://lemonhd.club",
   "public": false,
   "schema": "NexusPHP",
   "required": {

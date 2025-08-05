@@ -1,7 +1,7 @@
 {
   "id": "wukongwendao",
   "name": "悟空问道",
-  "domain": "https://wukongwendao.top/",
+  "domain": "https://wukongwendao.top",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -13,8 +13,7 @@
     "has_2x_free": true
   },
   "category": {
-    "movie": [
-    ],
+    "movie": [],
     "tv": [
       {
         "id": 403,

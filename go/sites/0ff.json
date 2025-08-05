@@ -1,7 +1,7 @@
 {
   "id": "0ff",
   "name": "自由农场",
-  "domain": "https://pt.0ff.cc/",
+  "domain": "https://pt.0ff.cc",
   "public": false,
   "schema": "NexusPHP",
   "required": {

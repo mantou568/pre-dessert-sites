@@ -1,7 +1,7 @@
 {
   "id": "exoticaz",
   "name": "exoticaz",
-  "domain": "https://exoticaz.to/",
+  "domain": "https://exoticaz.to",
   "encoding": "UTF-8",
   "public": false,
   "reuse_schema": "NexusPHP",
@@ -57,7 +57,7 @@
       }
     ]
   },
-  "requests":{
+  "requests": {
     "search": {
       "path": "/torrents",
       "list": {

@@ -1,7 +1,7 @@
 {
   "id": "hdpt",
   "name": "明教",
-  "domain": "https://hdpt.xyz/",
+  "domain": "https://hdpt.xyz",
   "public": false,
   "schema": "NexusPHP",
   "required": {

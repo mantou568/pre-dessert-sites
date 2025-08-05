@@ -1,7 +1,7 @@
 {
   "id": "joyhd",
   "name": "开心",
-  "domain": "https://www.joyhd.net/",
+  "domain": "https://www.joyhd.net",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -55,7 +55,7 @@
       }
     ]
   },
-  "requests":{
+  "requests": {
     "search": {
       "fields": {
         "labels": {

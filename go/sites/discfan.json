@@ -1,7 +1,7 @@
 {
   "id": "discfan",
   "name": "蝶粉",
-  "domain": "https://discfan.net/",
+  "domain": "https://discfan.net",
   "public": false,
   "schema": "NexusPHP",
   "required": {

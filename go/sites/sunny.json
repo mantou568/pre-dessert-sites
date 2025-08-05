@@ -1,7 +1,7 @@
 {
   "id": "sunny",
   "name": "sunny",
-  "domain": "https://sunnypt.top/",
+  "domain": "https://sunnypt.top",
   "public": false,
   "schema": "NexusPHP",
   "required": {

@@ -1,8 +1,8 @@
 {
   "id": "yemapt",
   "name": "野马",
-  "domain": "https://www.yemapt.org/",
-  "api": "https://www.yemapt.org/",
+  "domain": "https://www.yemapt.org",
+  "api": "https://www.yemapt.org",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -13,7 +13,7 @@
   "price": {
     "has_free": true
   },
-  "requests":{
+  "requests": {
     "search": {
       "parser": "JsonPath",
       "method": "POST",
@@ -21,7 +21,20 @@
       "headers": {
         "Content-Type": "application/json"
       },
-      "body": {"keyword":"{keyword}","pageParam":{"current":"{page}","pageSize":40,"pageSizeOptions":["10","20","40"],"size":"small"},"sorter":{}},
+      "body": {
+        "keyword": "{keyword}",
+        "pageParam": {
+          "current": "{page}",
+          "pageSize": 40,
+          "pageSizeOptions": [
+            "10",
+            "20",
+            "40"
+          ],
+          "size": "small"
+        },
+        "sorter": {}
+      },
       "list": {
         "selector": "data"
       },

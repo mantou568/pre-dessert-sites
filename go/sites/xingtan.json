@@ -1,7 +1,7 @@
 {
   "id": "xingtan",
   "name": "杏坛",
-  "domain": "https://xingtan.one/",
+  "domain": "https://xingtan.one",
   "public": false,
   "schema": "NexusPHP",
   "required": {

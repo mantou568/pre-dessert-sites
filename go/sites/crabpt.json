@@ -1,7 +1,7 @@
 {
   "id": "crabpt",
   "name": "蟹黄堡",
-  "domain": "https://crabpt.vip/",
+  "domain": "https://crabpt.vip",
   "public": false,
   "schema": "NexusPHP",
   "required": {

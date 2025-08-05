@@ -1,7 +1,7 @@
 {
   "id": "sanpro",
   "name": "伞",
-  "domain": "https://sanpro.pw/",
+  "domain": "https://sanpro.pw",
   "public": false,
   "schema": "NexusPHP",
   "required": {

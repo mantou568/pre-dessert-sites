@@ -1,7 +1,7 @@
 {
   "id": "ultrahd",
   "name": "ultrahd",
-  "domain": "https://ultrahd.net/",
+  "domain": "https://ultrahd.net",
   "public": false,
   "schema": "NexusPHP",
   "required": {

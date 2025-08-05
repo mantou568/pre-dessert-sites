@@ -1,7 +1,7 @@
 {
   "id": "zmpt",
   "name": "织梦",
-  "domain": "https://zmpt.cc/",
+  "domain": "https://zmpt.cc",
   "public": false,
   "schema": "NexusPHP",
   "required": {

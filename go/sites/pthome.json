@@ -1,7 +1,7 @@
 {
   "id": "pthome",
   "name": "铂金家",
-  "domain": "https://www.pthome.net/",
+  "domain": "https://www.pthome.net",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -61,7 +61,7 @@
           "remove": "span,a,img,font,b,br",
           "contents": -1
         },
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",

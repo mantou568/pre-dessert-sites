@@ -1,7 +1,7 @@
 {
   "id": "kamept",
   "name": "KamePT",
-  "domain": "https://kamept.com/",
+  "domain": "https://kamept.com",
   "public": false,
   "schema": "NexusPHP",
   "required": {

@@ -1,7 +1,7 @@
 {
   "id": "azusa",
   "name": "梓喵",
-  "domain": "https://azusa.wiki/",
+  "domain": "https://azusa.wiki",
   "public": false,
   "schema": "NexusPHP",
   "required": {

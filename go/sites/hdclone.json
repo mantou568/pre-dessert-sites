@@ -1,7 +1,7 @@
 {
   "id": "hdclone",
   "name": "HDCLONE",
-  "domain": "https://pt.hdclone.org/",
+  "domain": "https://pt.hdclone.org",
   "public": false,
   "schema": "NexusPHP",
   "required": {

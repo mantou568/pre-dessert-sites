@@ -1,7 +1,7 @@
 {
   "id": "putao",
   "name": "葡萄",
-  "domain": "https://pt.sjtu.edu.cn/",
+  "domain": "https://pt.sjtu.edu.cn",
   "public": false,
   "schema": "NexusPHP",
   "required": {

@@ -1,7 +1,7 @@
 {
   "id": "1ptba",
   "name": "壹PT",
-  "domain": "https://1ptba.com/",
+  "domain": "https://1ptba.com",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -57,7 +57,7 @@
   "requests": {
     "search": {
       "fields": {
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",

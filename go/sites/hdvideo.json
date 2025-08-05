@@ -1,7 +1,7 @@
 {
   "id": "hdvideo",
   "name": "HDVIDEO",
-  "domain": "https://hdvideo.one/",
+  "domain": "https://hdvideo.one",
   "public": false,
   "schema": "NexusPHP",
   "required": {

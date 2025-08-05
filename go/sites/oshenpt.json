@@ -1,7 +1,7 @@
 {
   "id": "oshenpt",
   "name": "奥神",
-  "domain": "https://www.oshen.win/",
+  "domain": "https://www.oshen.win",
   "public": false,
   "schema": "NexusPHP",
   "required": {

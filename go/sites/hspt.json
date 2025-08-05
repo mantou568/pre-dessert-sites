@@ -1,7 +1,7 @@
 {
   "id": "hspt",
   "name": "回声",
-  "domain": "https://hspt.club/",
+  "domain": "https://hspt.club",
   "public": false,
   "schema": "NexusPHP",
   "required": {

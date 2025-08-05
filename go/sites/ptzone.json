@@ -1,7 +1,7 @@
 {
   "id": "ptzone",
   "name": "ptzone",
-  "domain": "https://ptzone.xyz/",
+  "domain": "https://ptzone.xyz",
   "public": false,
   "schema": "NexusPHP",
   "required": {
