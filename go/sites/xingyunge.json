@@ -1,7 +1,8 @@
 {
   "id": "xingyunge",
   "name": "星陨阁",
-  "domain": "https://xingyunge.top",
+  "domain": "https://pt.xingyungept.org",
+  "additional_domain": ["www.xingyungept.org"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
