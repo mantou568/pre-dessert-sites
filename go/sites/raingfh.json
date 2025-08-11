@@ -2,6 +2,7 @@
   "id": "raingfh",
   "name": "雨",
   "domain": "https://raingfh.top",
+  "additional_domain": ["https://www.raingfh.top"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
