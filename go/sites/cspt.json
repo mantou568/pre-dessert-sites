@@ -44,5 +44,174 @@
         "desc": "TV Shows/综艺"
       }
     ]
+  },
+  "requests":{
+    "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/torrents.php",
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
+      },
+      "list": {
+        "selector": ".main .torrents .torrent-table-for-spider .torrent-table-sub-info"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href*='details.php?id=']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\d+",
+                0
+              ]
+            }
+          ]
+        },
+        "category": {
+          "selector": "a[href*='?cat=']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "cat=(.*)",
+                1
+              ]
+            }
+          ]
+        },
+        "cover": {
+          "selector": "td:nth-child(1) > img",
+          "attribute": "data-src"
+        },
+        "title": {
+          "any": [
+            {
+              "selector": "a[title][href*='details.php?id=']",
+              "attribute": "title"
+            },
+            {
+              "selector": "a[href*='details.php?id=']"
+            }
+          ]
+        },
+        "details": {
+          "selector": "a[href*='details.php?id=']",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*='download.php?id=']",
+          "attribute": "href"
+        },
+        "size": {
+          "selector": ".torrent-info .torrent-info-text.torrent-info-text-size",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "grabs": {
+          "selector": ".torrent-info .torrent-info-text.torrent-info-text-finished"
+        },
+        "seeders": {
+          "selector": ".torrent-info .torrent-info-text.torrent-info-text-seeder"
+        },
+        "leechers": {
+          "selector": ".torrent-info .torrent-info-text.torrent-info-text-leechers"
+        },
+        "date_added": {
+          "selector": ".torrent-info .torrent-info-text.torrent-info-text-added span",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "img.pro_free,img.pro_free2up",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "img.pro_50pctdown,img.pro_50pctdown2up",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "img.pro_30pctdown",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "img.pro_50pctdown2up,img.pro_free2up,img.pro_2up",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    2,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "description": {
+          "selector": ".torrent-info-text-small_name",
+          "remove": "span,a,img,font,b",
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "selector": "flex.gap-x-[5px].text-[9pt].items-center.pr-5 > span[title='']",
+          "array": true
+        }
+      }
+    }
   }
 }
