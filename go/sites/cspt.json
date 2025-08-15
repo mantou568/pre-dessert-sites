@@ -208,7 +208,7 @@
           ]
         },
         "labels": {
-          "selector": ".torrent-title > span[title='']",
+          "selector": ".flex.gap-x-[5px].text-[9pt].items-center.pr-5 > span[title='']",
           "array": true
         }
       }
