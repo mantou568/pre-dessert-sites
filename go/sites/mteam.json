@@ -278,7 +278,7 @@
         }
       }
     },
-    "user_torrent_list": {
+    "my_peer_statistics": {
       "parser": "JsonPath",
       "method": "POST",
       "path": "/api/tracker/myPeerStatistics",
@@ -289,22 +289,29 @@
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      "form_data": {
+      "params": {
         "uid": [
           "{userId}"
         ]
       },
       "fields": {
-        "count": {
+        "uid": {
+          "selector": "data.uid"
+        },
+        "leecherCount": {
+          "selector": "data.leecherCount"
+        },
+        "leecherSize": {
+          "selector": "data.leecherSize"
+        },
+        "seederCount": {
           "selector": "data.seederCount"
         },
-        "size": {
-          "selector": "data.seederSize",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
+        "seederSize": {
+          "selector": "data.seederSize"
+        },
+        "uploadCount": {
+          "selector": "data.uploadCount"
         }
       }
     },
