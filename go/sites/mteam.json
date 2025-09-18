@@ -281,17 +281,30 @@
     "user_torrent_list": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "/api/member/getUserTorrentList",
+      "path": "/api/tracker/myPeerStatistics",
       "use_api": true,
       "required_headers": [
         "x-api-key"
       ],
-      "list": {
-        "selector": "data.data"
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "form_data": {
+        "uid": [
+          "{userId}"
+        ]
       },
       "fields": {
+        "count": {
+          "selector": "data.seederCount"
+        },
         "size": {
-          "selector": "torrent.size"
+          "selector": "data.seederSize",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         }
       }
     },
