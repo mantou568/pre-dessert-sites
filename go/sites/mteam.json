@@ -365,82 +365,6 @@
         "content": {}
       }
     },
-    "messages": {
-      "parser": "JsonPath",
-      "method": "POST",
-      "path": "/api/msg/search",
-      "use_api": true,
-      "required_headers": [
-        "x-api-key",
-        "authorization"
-      ],
-      "headers": {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      "form_data": {
-        "keyword": [
-          ""
-        ],
-        "box": [
-          "-2"
-        ],
-        "pageNumber": [
-          "{pageNumber}"
-        ],
-        "pageSize": [
-          "100"
-        ]
-      },
-      "list": {
-        "selector": "data.data.#(unread=true)#"
-      },
-      "fields": {
-        "id": {},
-        "head": {
-          "selector": "title"
-        },
-        "date": {
-          "selector": "createdDate",
-          "filters": [
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
-        "content": {},
-        "unread": {}
-      }
-    },
-    "mark_as_read": {
-      "parser": "JsonPath",
-      "method": "POST",
-      "path": "/api/msg/markRead",
-      "use_api": true,
-      "required_headers": [
-        "x-api-key",
-        "authorization"
-      ],
-      "headers": {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      "form_data": {
-        "msgIds": [
-          "{ids}"
-        ]
-      },
-      "fields": {
-        "success": {
-          "selector": "code",
-          "filters": [
-            {
-              "name": "eq",
-              "args": "0"
-            }
-          ]
-        },
-        "message": {}
-      }
-    },
     "gen_dl_token": {
       "parser": "JsonPath",
       "method": "POST",
@@ -469,8 +393,7 @@
       "path": "/api/torrent/detail",
       "use_api": true,
       "required_headers": [
-        "x-api-key",
-        "authorization"
+        "x-api-key"
       ],
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded"
