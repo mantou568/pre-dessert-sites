@@ -106,18 +106,27 @@
       }
     },
     "seeding_statistics": {
-      "path": "/getusertorrentlist.php?do_ajax=1&userid={userId}&type=seeding",
+      "parser": "CssSelector",
+      "path": "/userdetails.php?id={userId}",
       "headers": {
-        "accept": "*/*",
-        "accept-language": "zh-CN,zh;q=0.9",
-        "cache-control": "no-cache",
-        "pragma": "no-cache",
-        "priority": "u=1, i",
-        "referer": "{domain}/userdetails.php?id={userId}",
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "cors",
-        "sec-fetch-site": "same-origin",
-        "x-requested-with": "XMLHttpRequest"
+        "Referer": "https://pterclub.com/userdetails.php"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "#info_block a[href*='getusertorrentlist.php'][href*='type=seeding']"
+        },
+        "size": {
+          "selector": "td.rowhead:contains('做种大小') + td, td.rowhead:contains('Seeding Size') + td, td.rowhead:contains('做種大小') + td",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
       }
     },
     "sign_in": {

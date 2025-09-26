@@ -87,6 +87,9 @@
     },
     "seeding_statistics": {
       "parser": "CssSelector",
+      "headers": {
+        "Referer": "https://audiences.me/userdetails.php"
+      },
       "disabled_extends": {
         "headers": true,
         "list": true
