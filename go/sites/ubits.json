@@ -5,7 +5,8 @@
   "public": false,
   "schema": "NexusPHP",
   "required": {
-    "cookie": true
+    "cookie": true,
+    "sign_in": true
   },
   "meta": {
     "has_free": true,
