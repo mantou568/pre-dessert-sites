@@ -6,7 +6,7 @@
   "schema": "NexusPHP",
   "required": {
     "cookie": true,
-    "sign_in": false
+    "sign_in": true
   },
   "meta": {
     "has_free": true,
