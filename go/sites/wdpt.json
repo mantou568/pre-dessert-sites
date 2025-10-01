@@ -1,7 +1,7 @@
 {
   "id": "mypt",
   "name": "我的PT",
-  "domain": "cc.mypt.cc",
+  "domain": "https://cc.mypt.cc/",
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -29,19 +29,19 @@
         "id": 407,
         "cat": "Movies/Sports",
         "desc": "Sports/体育"
+      },
+      {
+        "id": 410,
+        "cat": "Movies/Opera",
+        "desc": "Opera/戏曲 曲艺"
+      },
+      {
+        "id": 411,
+        "cat": "Movies/Erotic",
+        "desc": "Erotic/18+"
       }
     ],
     "tv": [
-      {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
-      },
       {
         "id": 402,
         "cat": "TV",
@@ -51,6 +51,16 @@
         "id": 403,
         "cat": "TV",
         "desc": "TV Shows/综艺"
+      },
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
       }
     ]
   }
