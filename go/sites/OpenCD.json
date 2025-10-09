@@ -12,7 +12,8 @@
   "meta": {
     "has_free": true,
     "has_2x_free": true,
-    "has_hr": false
+    "has_hr": true,
+    "has_cover": false
   },
   "category": {
     "movie": [
@@ -107,6 +108,14 @@
         "selector": "table.torrents tr:has(table.torrentname)"
       },
       "fields": {
+        "hr_days":{
+          "filters": [
+            {
+              "name": "constant",
+              "args": "3"
+            }
+          ]
+        },
         "id": {
           "selector": "a[href*='details.php?id=']",
           "attribute": "href",
