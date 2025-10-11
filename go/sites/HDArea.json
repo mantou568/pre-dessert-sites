@@ -98,11 +98,7 @@
           "filters": [
             {
               "name": "replace",
-              "args": ["(", ""]
-            },
-            {
-              "name": "replace",
-              "args": [")", ""]
+              "args": ["()", ""]
             }
           ]
         }
