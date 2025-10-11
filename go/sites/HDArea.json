@@ -98,17 +98,11 @@
           "filters": [
             {
               "name": "replace",
-              "args": [
-                " (",
-                ""
-              ]
+              "args": [" (", ""]
             },
             {
               "name": "replace",
-              "args": [
-                ")",
-                ""
-              ]
+              "args": [")", ""]
             }
           ]
         }
