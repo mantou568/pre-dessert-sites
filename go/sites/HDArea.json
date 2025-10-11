@@ -94,23 +94,7 @@
         "description": {
           "selector": "td.embedded",
           "remove": "span,a,img,font,b,br",
-          "contents": -1,
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                " (",
-                ""
-              ]
-            },
-            {
-              "name": "replace",
-              "args": [
-                ")",
-                ""
-              ]
-            }
-          ]
+          "contents": 2
         }
       }
     },
