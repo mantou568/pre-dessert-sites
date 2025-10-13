@@ -57,7 +57,7 @@
           "array": true
         },
         "description": {
-          "selector": "td.embedded",
+          "selector": "td.embedded > span[style]",
           "remove": "span,a,img,font,b,br",
           "contents": -1
         },
