@@ -87,7 +87,7 @@
           "selector": "td:nth-child(7)"
         },
         "grabs": {
-          "selector": "td:nth-last-child(2)"
+          "selector": "td:nth-child(8)"
         }
       }
     }
