@@ -63,28 +63,31 @@
           "remove": "span,a,img,font,b,br",
           "contents": -1
         },
-        "size": {
-          "selector": "td:nth-child(6)",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        },
-        "grabs": {
-          "selector": "td:nth-child(9)"
-        },
-        "seeders": {
-          "selector": "td:nth-child(7)"
-        },
         "date_added": {
-          "selector": "td:nth-child(5):not(.embedded) > span",
+          "selector": "td:nth-child(4):not(.embedded) > span",
           "attribute": "title",
           "filters": [
             {
               "name": "timestamp"
             }
           ]
+        },
+        "size": {
+          "selector": "td:nth-child(5)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "seeders": {
+          "selector": "td:nth-child(6)"
+        },
+        "leechers": {
+          "selector": "td:nth-child(7)"
+        },
+        "grabs": {
+          "selector": "td:nth-last-child(2)"
         }
       }
     }
