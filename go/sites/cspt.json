@@ -208,7 +208,7 @@
           ]
         },
         "labels": {
-          "selector": ".flex.gap-x-[5px].text-[9pt].items-center.pr-5 > span[style]",
+          "selector": ".flex > span[style]",
           "array": true
         }
       }
