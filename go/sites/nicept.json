@@ -63,6 +63,23 @@
               "args": "6"
             }
           ]
+        },
+        "description": {
+          "selector": "td:nth-child(2) > table > tbody > tr > td:nth-child(2)",
+          "remove": "span,a,img,font,b",
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            },
+            {
+              "name": "replace",
+              "args": ["剩餘時間：", ""]
+            }
+          ]
         }
       }
     }
