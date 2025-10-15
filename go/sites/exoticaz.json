@@ -124,7 +124,7 @@
           "array": true
         },
         "cover": {
-          "selector": "td:nth-child(2) > div > img",
+          "selector": "td:nth-child(2) > div.screen-image > img",
           "attribute": "src"
         },
         "downloadvolumefactor": {
