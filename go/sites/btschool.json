@@ -75,6 +75,13 @@
             {
               "name": "replace",
               "args": [
+                "(剩余时间：)",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
                 "()",
                 ""
               ]
