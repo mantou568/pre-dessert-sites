@@ -9,7 +9,7 @@
     "sign_in": true
   },
   "category": {
-    "features": [
+    "movie": [
         {
         "id": "国语配音",
         "cat": "特性/国语配音",
