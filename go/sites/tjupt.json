@@ -149,7 +149,7 @@
         },
         "labels": {
           "array": true,
-          "selector": "td:nth-child(2) > div#tag > span > font.tag"
+          "selector": "td:nth-child(2) > div#tag > span.tag"
         },
         "hr_days":{
           "filters": [
