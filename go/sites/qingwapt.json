@@ -64,7 +64,7 @@
     "search": {
       "fields": {
         "labels": {
-          "selector": "td:nth-child(2) > span[title=''],td:nth-child(2) > span[title='特效字幕'] ",
+          "selector": "td:nth-child(2) > span[title]",
           "array": true
         }
       }
