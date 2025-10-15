@@ -8,6 +8,34 @@
     "cookie": true,
     "sign_in": true
   },
+  "category": {
+    "features": [
+        {
+        "id": "国语配音",
+        "cat": "特性/国语配音",
+        "desc": "国语配音",
+        "default": false
+        },
+        {
+        "id": "特效字幕",
+        "cat": "特性/特效字幕",
+        "desc": "特效字幕",
+        "default": false
+        },
+        {
+        "id": "自制",
+        "cat": "特性/自制",
+        "desc": "自制",
+        "default": false
+        },
+        {
+        "id": "自购",
+        "cat": "特性/自购",
+        "desc": "自购",
+        "default": false
+        }
+    ]
+  },
   "requests": {
     "search": {
       "parser": "CssSelector",
