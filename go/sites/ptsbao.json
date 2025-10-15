@@ -55,7 +55,7 @@
           ]
         },
         "labels": {
-          "selector": "td.embedded > span.tag",
+          "selector": "td.embedded > span[title]",
           "array": true
         },
         "description": {
