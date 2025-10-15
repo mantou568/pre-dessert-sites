@@ -1,7 +1,7 @@
 {
-  "id": "momentpt",
-  "name": "瞬间",
-  "domain": "https://www.momentpt.top",
+  "id": "hxpt",
+  "name": "好学",
+  "domain": "https://www.hxpt.org",
   "additional_domain": [],
   "public": false,
   "schema": "NexusPHP",
@@ -18,48 +18,18 @@
     "movie": [
       {
         "id": 401,
-        "cat": "写真",
-        "desc": "写真"
+        "cat": "Movies",
+        "desc": "Movies/电影"
       },
       {
-        "id": 402,
-        "cat": "人像",
-        "desc": "人像"
+        "id": 406,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
       },
       {
-        "id": 403,
-        "cat": "风光",
-        "desc": "风光"
-      },
-      {
-        "id": 404,
-        "cat": "纪实",
-        "desc": "纪实"
-      },
-      {
-        "id": 405,
-        "cat": "人文",
-        "desc": "人文"
-      },
-      {
-        "id": 411,
-        "cat": "动物",
-        "desc": "动物"
-      },
-      {
-        "id": 412,
-        "cat": "美食",
-        "desc": "美食"
-      },
-      {
-        "id": 413,
-        "cat": "超现实",
-        "desc": "超现实"
-      },
-      {
-        "id": 414,
-        "cat": "儿童",
-        "desc": "儿童"
+        "id": 407,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
       }
     ],
     "tv": [
