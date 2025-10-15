@@ -113,12 +113,11 @@
       "disabled_extends": {
         "params": true
       },
-
       "headers": {
         "Referer": "https://ptchdbits.co/torrents.php"
       }
     },
-   "chdbits_sign_in_submit": {
+    "chdbits_sign_in_submit": {
       "parser": "JsonPath",
       "method": "POST",
       "path": "/bakatest.php",
@@ -140,26 +139,17 @@
         "Referer": "https://ptchdbits.co/bakatest.php",
         "content-type": "application/x-www-form-urlencoded"
       }
-    }
-  },
-  "seeding_statistics": {
-    "parser": "XPath",
-    "method": "GET",
-    "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
-    "headers": {
-      "Referer": "{domain}/userdetails.php?id={userId}"
     },
-    "list": {
-      "selector": "//tr[position()>1]"
-    },
-    "fields": {
-      "size": {
-        "selector": "/td[3]",
-        "filters": [
-          {
-            "name": "byte_size"
-          }
-        ]
+    "seeding_statistics": {
+      "fields": {
+        "size": {
+          "selector": ".//td[3]",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
       }
     }
   }
