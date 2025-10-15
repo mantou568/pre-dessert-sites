@@ -106,6 +106,33 @@
           "array": true
         }
       }
+    },
+    "seeding_statistics": {
+      "parser": "CssSelector",
+      "disabled_extends": {
+        "list": true
+      },
+      "fields": {
+        "size": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "总大小(.*)<br/>",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "count": {
+          "selector": "b"
+        }
+      }
     }
   },
   "my_hr": {
