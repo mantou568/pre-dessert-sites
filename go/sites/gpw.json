@@ -181,23 +181,19 @@
       }
     },
     "seeding_statistics": {
-      "parser": "XPath",
+      "parser": "JsonPath",
       "method": "GET",
-      "path": "/torrents.php?type=seeding&userid={userId}",
+      "path": "/ajax.php?action=index&id={userId}",
       "disabled_extends": {
-        "headers": true
-      },
-      "list": {
-        "selector": "//tr[position()>1]"
+        "headers": true,
+        "list": true
       },
       "fields": {
+        "count": {
+          "selector": "response.userstats.seedingCount"
+        },
         "size": {
-          "selector": "/td[2]",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
+          "selector": "response.userstats.seedingSize"
         }
       }
     }
