@@ -19,47 +19,47 @@
       {
         "id": 401,
         "cat": "写真",
-        "desc": "写真"
+        "desc": "写真/Portraiture"
       },
       {
         "id": 402,
         "cat": "人像",
-        "desc": "人像"
+        "desc": "人像/Portrait"
       },
       {
         "id": 403,
         "cat": "风光",
-        "desc": "风光"
+        "desc": "风光/Landscape"
       },
       {
         "id": 404,
         "cat": "纪实",
-        "desc": "纪实"
+        "desc": "纪实/Documentary"
       },
       {
         "id": 405,
         "cat": "人文",
-        "desc": "人文"
+        "desc": "人文/Humanity"
       },
       {
         "id": 411,
         "cat": "动物",
-        "desc": "动物"
+        "desc": "动物/Animals"
       },
       {
         "id": 412,
         "cat": "美食",
-        "desc": "美食"
+        "desc": "食物/Cuisine"
       },
       {
         "id": 413,
         "cat": "超现实",
-        "desc": "超现实"
+        "desc": "超现实/Surreal"
       },
       {
         "id": 414,
         "cat": "儿童",
-        "desc": "儿童"
+        "desc": "儿童/Children"
       }
     ],
     "tv": [
