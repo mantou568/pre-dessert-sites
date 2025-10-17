@@ -110,21 +110,37 @@
       }
     },
     "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
       "disabled_extends": {
         "headers": true,
         "list": true
       },
       "fields": {
         "size": {
-          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr[18]/td[2]/text()",
+          "selector": "//td[contains(., '当前做种')]/following-sibling::td[1]",
           "filters": [
+            {
+              "name": "re_search",
+              "args": ["([\\d,.]+\\s+(?:T|G|M|K|P)B)", 1]
+            },
             {
               "name": "byte_size"
             }
           ]
         },
         "count": {
-          "selector": "//*[@id='info_block']/tbody/tr/td/table/tbody/tr/td[1]/a[6]/text()"
+          "selector": "//td[contains(., 'Tracker')]/following-sibling::td[1]",
+          "filters": [
+            { 
+              "name": "re_search", 
+              "args": ["(\\d+)\\s+seeding", 1] 
+            }
+          ]
         }
       }
     },
