@@ -87,65 +87,65 @@
       "method": "GET",
       "path": "/index.php",
       "fields": {
-        "is_login": {
-          "selector": "a.is-logout[href*='logout.php']",
-          "filters": [
-            { "name": "not_blank" }
-          ]
-        },
         "id": {
-          "selector": "a#header-username-value",
+          "selector": "a.username[href*='user.php?id=']",
           "attribute": "href",
           "filters": [
             { "name": "re_search", "args": [ "id=(\\d+)", 1 ] }
           ]
         },
         "name": {
-          "selector": "a#header-username-value"
+          "selector": "a.username[href*='user.php?id=']"
         },
         "uploaded": {
-          "selector": "span#header-uploaded-value",
-          "attribute": "data-value"
+          "selector": "li#stats_seeding span.stat",
+          "filters": [
+            { "name": "byte_size" }
+          ]
         },
         "downloaded": {
-          "selector": "span#header-downloaded-value",
-          "attribute": "data-value"
+          "selector": "li#stats_leeching span.stat",
+          "filters": [
+            { "name": "byte_size" }
+          ]
         },
         "ratio": {
-          "selector": "span#header-ratio-value",
-          "attribute": "data-value"
+          "selector": "li#stats_ratio span.stat > span",
+          "filters": [
+            { "name": "replace", "args": ["∞", "-1"] }
+          ]
         },
         "bonus": {
-          "selector": "span#header-bp-value",
-          "attribute": "data-value"
+          "selector": "li#nav_bonus a.tooltip",
+          "filters": [
+            { "name": "re_search", "args": ["([\\d,]+)", 1] },
+            { "name": "replace", "args": [",", ""] }
+          ]
         },
         "messages": {
-          "selector": "a.is-inbox[href*='inbox.php']",
+          "selector": "li#nav_inbox a",
           "filters": [
-            { "name": "re_search", "args": [ "(\\d+)", 1 ] }
+            { "name": "re_search", "args": ["(\\d+)", 1] }
           ]
         }
       }
     },
     "user_details": {
-      "parser": "CssSelector",
+      "parser": "JsonPath",
       "method": "GET",
-      "path": "/user.php?id={userId}",
+      "path": "/ajax.php?action=user&id={userId}",
       "fields": {
         "level": {
-          "selector": "li#class-value",
-          "attribute": "data-value"
+          "selector": "response.personal.class"
         },
         "join_at": {
-          "selector": "li#join-date-value",
-          "attribute": "data-value",
+          "selector": "response.stats.joinedDate",
           "filters": [
             { "name": "timestamp" }
           ]
         },
         "last_accessed": {
-          "selector": "li#last-access-date-value",
-          "attribute": "data-value",
+          "selector": "response.stats.lastAccess",
           "filters": [
             { "name": "timestamp" }
           ]
@@ -153,16 +153,20 @@
       }
     },
     "seeding_size": {
-      "parser": "JsonPath",
+      "parser": "XPath",
       "method": "GET",
-      "path": "/ajax.php?action=index&id={userId}",
+      "path": "/bonus.php?action=bprates",
       "disabled_extends": {
-        "headers": true,
         "list": true
       },
       "fields": {
         "size": {
-          "selector": "response.userstats.seedingSize"
+          "selector": "//table[@id='bprates_overview']/tbody/tr/td[2]",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         }
       }
     },
