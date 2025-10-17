@@ -1,0 +1,184 @@
+{
+  "id": "dic",
+  "name": "海豚",
+  "domain": "https://dicmusic.com/",
+  "public": false,
+  "reuse_schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "requests": {
+    "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/torrents.php?page={page}",
+      "params": {
+        "keyword": [
+          "{keyword}"
+        ],
+        "searchsubmit": [
+          "1"
+        ],
+        "action": [
+          "basic"
+        ]
+      },
+      "list": {
+        "selector": "#torrent_table .TableTorrent-rowTitle"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href*='torrents.php?id=']",
+          "attribute": "href",
+          "filters": [
+            { "name": "re_search", "args": [ "id=(\\d+)", 1 ] }
+          ]
+        },
+        "title": {
+          "selector": "a[href*='torrents.php?id=']",
+          "attribute": "data-tooltip"
+        },
+        "details": {
+          "selector": "a[href*='torrents.php?id=']",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*='torrents.php?action=download']:first",
+          "attribute": "href"
+        },
+        "size": {
+          "selector": ".TableTorrent-cellStatSize",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "grabs": {
+          "selector": ".TableTorrent-cellStatSnatches"
+        },
+        "seeders": {
+          "selector": ".TableTorrent-cellStatSeeders"
+        },
+        "leechers": {
+          "selector": ".TableTorrent-cellStatLeechers"
+        },
+        "date_added": {
+          "selector": ".TableTorrent-cellStatTime span[data-tooltip]",
+          "attribute": "data-tooltip",
+          "filters": [
+            { "name": "timestamp" }
+          ]
+        },
+        "downloadvolumefactor": {
+          "selector": ".TorrentTitle-item.tl_free",
+          "filters": [
+            { "name": "not_blank", "args": [ 0, 1 ] }
+          ]
+        },
+        "uploadvolumefactor": {
+          "filters": [
+            { "name": "constant", "args": "1" }
+          ]
+        }
+      }
+    },
+    "user_basic_info": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/index.php",
+      "fields": {
+        "is_login": {
+          "selector": "a.is-logout[href*='logout.php']",
+          "filters": [
+            { "name": "not_blank" }
+          ]
+        },
+        "id": {
+          "selector": "a#header-username-value",
+          "attribute": "href",
+          "filters": [
+            { "name": "re_search", "args": [ "id=(\\d+)", 1 ] }
+          ]
+        },
+        "name": {
+          "selector": "a#header-username-value"
+        },
+        "uploaded": {
+          "selector": "span#header-uploaded-value",
+          "attribute": "data-value"
+        },
+        "downloaded": {
+          "selector": "span#header-downloaded-value",
+          "attribute": "data-value"
+        },
+        "ratio": {
+          "selector": "span#header-ratio-value",
+          "attribute": "data-value"
+        },
+        "bonus": {
+          "selector": "span#header-bp-value",
+          "attribute": "data-value"
+        },
+        "messages": {
+          "selector": "a.is-inbox[href*='inbox.php']",
+          "filters": [
+            { "name": "re_search", "args": [ "(\\d+)", 1 ] }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/user.php?id={userId}",
+      "fields": {
+        "level": {
+          "selector": "li#class-value",
+          "attribute": "data-value"
+        },
+        "join_at": {
+          "selector": "li#join-date-value",
+          "attribute": "data-value",
+          "filters": [
+            { "name": "timestamp" }
+          ]
+        },
+        "last_accessed": {
+          "selector": "li#last-access-date-value",
+          "attribute": "data-value",
+          "filters": [
+            { "name": "timestamp" }
+          ]
+        }
+      }
+    },
+    "seeding_size": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/ajax.php?action=index&id={userId}",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "size": {
+          "selector": "response.userstats.seedingSize"
+        }
+      }
+    },
+    "seeding_count": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/ajax.php?action=user&id={userId}",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "response.community.seeding"
+        }
+      }
+    }
+  }
+}
