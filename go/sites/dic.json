@@ -1,7 +1,7 @@
 {
   "id": "dic",
   "name": "海豚",
-  "domain": "https://dicmusic.com/",
+  "domain": "https://dicmusic.com",
   "public": false,
   "reuse_schema": "NexusPHP",
   "required": {
