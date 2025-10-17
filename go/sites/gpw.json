@@ -180,7 +180,7 @@
         }
       }
     },
-    "seeding_statistics": {
+    "seeding_size": {
       "parser": "JsonPath",
       "method": "GET",
       "path": "/ajax.php?action=index&id={userId}",
@@ -189,11 +189,22 @@
         "list": true
       },
       "fields": {
-        "count": {
-          "selector": "response.userstats.seedingCount"
-        },
         "size": {
           "selector": "response.userstats.seedingSize"
+        }
+      }
+    },
+    "seeding_count": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/ajax.php?action=user&id={userId}",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "response.community.seeding"
         }
       }
     }
