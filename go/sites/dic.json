@@ -112,7 +112,7 @@
         "ratio": {
           "selector": "li#stats_ratio span.stat > span",
           "filters": [
-            { "name": "replace", "args": ["∞", "-1"] }
+            { "name": "replace", "args": ["∞", 0] }
           ]
         },
         "bonus": {

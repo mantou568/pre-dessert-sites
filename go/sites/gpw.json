@@ -141,7 +141,10 @@
         },
         "ratio": {
           "selector": "span#header-ratio-value",
-          "attribute": "data-value"
+          "attribute": "data-value",
+          "filters": [
+            { "name": "replace", "args": ["∞", 0] }
+          ]
         },
         "bonus": {
           "selector": "span#header-bp-value",
