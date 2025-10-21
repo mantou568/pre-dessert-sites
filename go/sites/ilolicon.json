@@ -63,7 +63,7 @@
             {
               "name": "re_search",
               "args": [
-                "invite.php\\?id=(\\d+)",
+                "userdetails.php\\?uuid=([0-9a-f-]+)",
                 1
               ]
             }
@@ -71,11 +71,40 @@
         }
       }
     },
+     "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?uuid={userId}"
+    },
     "search": {
       "fields": {
         "labels": {
           "selector": "td.embedded:nth-child(2) > span[title]",
           "array": true
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlistajax.php?useruuid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?uuid={userId}"
+      },
+      "list": {
+        "selector": "//tr[position()>1]",
+        "next_page": {
+          "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
+        }
+      },
+      "fields": {
+        "size": {
+          "selector": "/td[4]",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         }
       }
     }
