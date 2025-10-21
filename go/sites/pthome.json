@@ -70,6 +70,18 @@
           ]
         }
       }
+    },
+    "seeding_statistics": {
+      "fields": {
+        "size": {
+          "selector": "/td[3]",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
     }
   }
 }

@@ -117,9 +117,21 @@
         "Referer": "https://52pt.site/bakatest.php",
         "content-type": "application/x-www-form-urlencoded"
       }
+    },
+    "seeding_statistics": {
+      "fields": {
+        "size": {
+          "selector": "/td[3]",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "my_hr": {
+      "path": "/myhr.php?hrtype=C"
     }
-  },
-  "my_hr": {
-    "path": "/myhr.php?hrtype=C"
   }
 }
