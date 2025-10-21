@@ -46,6 +46,26 @@
     ]
   },
   "requests":{
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "ratio": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "分享率:[:：_<>/a-zA-Z-=\\\"'\\s#;]+([\\d,.\\s]+)",
+                1
+              ]
+            }
+          ]
+        }
+      }
+    },
     "search": {
       "parser": "CssSelector",
       "method": "GET",
