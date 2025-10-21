@@ -51,6 +51,26 @@
     ]
   },
   "requests": {
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "id": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "invite.php\\?id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        }
+      }
+    },
     "search": {
       "fields": {
         "labels": {
