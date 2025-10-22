@@ -392,6 +392,27 @@
         "Referer": "https://totheglory.im/index.php",
         "content-type": "application/x-www-form-urlencoded"
       }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "list": {
+        "selector": "//td[contains(text(), ‘当前上传’)]/following-sibling::td/table//tr[position()>1]",
+        "next_page": {
+          "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
+        }
+      },
+      "fields": {
+        "size": {
+          "selector": "/td[4]",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
     }
   }
 }
