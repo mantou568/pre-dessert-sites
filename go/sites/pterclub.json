@@ -1,7 +1,8 @@
 {
   "id": "pterclub",
   "name": "猫站",
-  "domain": "https://pterclub.com",
+  "domain": "https://pterclub.net",
+  "additional_domain": ["https://pterclub.com"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
