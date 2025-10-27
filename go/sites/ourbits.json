@@ -85,7 +85,16 @@
       "fields": {
         "description": {
           "selector": "table.torrentname tr > td.embedded",
-          "remove": "div,a,img,b"
+          "remove": "div,a,img,b",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "剩余时间：",
+                ""
+              ]
+            }
+          ]
         },
         "labels": {
           "array": true,
