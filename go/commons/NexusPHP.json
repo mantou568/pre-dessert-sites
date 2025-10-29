@@ -756,7 +756,7 @@
     },
     "shoutbox": {
       "parser": "XPath",
-      "method": "post",
+      "method": "GET",
       "path": "/shoutbox.php",
       "params": {
         "shbox_text": [
