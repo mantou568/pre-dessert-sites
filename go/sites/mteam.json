@@ -251,7 +251,7 @@
           ]
         },
         "last_modified_date": {
-          "selector": "data.lastModifiedDate",
+          "selector": "data.memberStatus.lastModifiedDate",
           "filters": [
             {
               "name": "timestamp"
