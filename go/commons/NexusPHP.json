@@ -753,6 +753,25 @@
           "selector": "//td[@class='rowhead'][text()='字幕']/following-sibling::td//a/@href"
         }
       }
+    },
+    "shoutbox": {
+      "parser": "XPath",
+      "method": "post",
+      "path": "/shoutbox.php",
+      "params": {
+        "shbox_text": [
+          "{shbox_text}"
+        ],
+        "shout": [
+          "我喊"
+        ],
+        "sent": [
+          "yes"
+        ],
+        "type": [
+          "shoutbox"
+        ]
+      }
     }
   }
 }
