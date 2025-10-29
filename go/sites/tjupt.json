@@ -42,6 +42,16 @@
         "id": 405,
         "cat": "TV/Anime",
         "desc": "Animations动漫"
+      },
+      {
+        "id": 411,
+        "cat": "TV/Documentary",
+        "desc": "纪录片/Documentary"
+      },
+      {
+        "id": 412,
+        "cat": "TV",
+        "desc": "Short Play/短剧"
       }
     ]
   },
