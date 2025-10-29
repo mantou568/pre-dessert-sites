@@ -55,5 +55,20 @@
         "desc": "小剧种"
       }
     ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "labels": {
+          "array": true,
+          "selector": "td.embedded > span.torrent_tag"
+        },
+        "description": {
+          "selector": "td.embedded:nth-child(1)",
+          "remove": "span,a,img,font,b,br",
+          "contents": -1
+        }
+      }
+    }
   }
 }
