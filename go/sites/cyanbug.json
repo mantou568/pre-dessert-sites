@@ -11,7 +11,8 @@
   "meta": {
     "has_free": true,
     "has_2x_free": true,
-    "has_cover": true
+    "has_cover": true,
+    "shoutbox": true
   },
   "category": {
     "movie": [
