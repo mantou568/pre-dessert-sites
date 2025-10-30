@@ -65,7 +65,7 @@
     "search": {
       "fields": {
         "labels": {
-          "selector": "td:nth-child(2) > span[title]",
+          "selector": "td:nth-child(2) > .torrent_title_desc > span[title]",
           "array": true
         }
       }

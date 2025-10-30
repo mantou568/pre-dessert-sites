@@ -69,7 +69,16 @@
         "description": {
           "selector": "td.embedded",
           "remove": "img,a,span,br",
-          "contents": -1
+          "contents": -1,
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "剩余时间：",
+                ""
+              ]
+            }
+          ]
         }
       }
     }
