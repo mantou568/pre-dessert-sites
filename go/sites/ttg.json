@@ -398,7 +398,7 @@
       "method": "GET",
       "path": "/userdetails.php?id={userId}",
       "list": {
-        "selector": "//td[contains(text(), '当前上传')]/following-sibling::td//table//tr[position()>1]",
+        "selector": "//font[contains(text(),'上传量')]/following-sibling::font[1]/a/text()[1]",
         "next_page": {
           "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
         }
