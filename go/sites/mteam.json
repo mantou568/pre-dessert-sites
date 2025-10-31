@@ -222,6 +222,15 @@
         "labels": {
           "array": true,
           "selector": "labelsNew"
+        },
+        "imdb_id": {
+          "selector": "imdb",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["tt(\\d+)", 1]
+            }
+          ]
         }
       }
     },

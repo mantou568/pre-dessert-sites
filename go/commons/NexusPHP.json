@@ -441,6 +441,16 @@
         "labels": {
           "selector": "td:nth-child(2) > span[title='']",
           "array": true
+        },
+        "imdb_id": {
+          "selector": "div.imdb_100 > a",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["tt(\\d+)", 1]
+            }
+          ]
         }
       }
     },
