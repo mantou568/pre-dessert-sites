@@ -445,7 +445,7 @@
         "imdb_id": {
           "any": [
             {
-              "selector": "a[href*='https://www.imdb.com/title/tt']",
+              "selector": "a[href*='imdb.com/title/tt']",
               "attribute": "href",
               "filters": [
                 {
