@@ -443,15 +443,23 @@
           "array": true
         },
         "imdb_id": {
-          "selector": "a[href*='https://www.imdb.com/title/tt']",
-          "attribute": "href",
-          "filters": [
+          "any": [
             {
-              "name": "re_search",
-              "args": [
-                "tt(\\d+)",
-                1
+              "selector": "a[href*='https://www.imdb.com/title/tt']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "tt(\\d+)",
+                    1
+                  ]
+                }
               ]
+            },
+            {
+              "selector": "span[data-doubanid]",
+              "attribute": "data-doubanid"
             }
           ]
         }
