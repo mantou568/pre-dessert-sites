@@ -460,6 +460,10 @@
             {
               "selector": "span[data-imdbid]",
               "attribute": "data-imdbid"
+            },
+            {
+              "selector": "label[data-imdbid]",
+              "attribute": "data-imdbid"
             }
           ]
         }
