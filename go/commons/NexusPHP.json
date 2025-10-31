@@ -458,8 +458,8 @@
               ]
             },
             {
-              "selector": "span[data-doubanid]",
-              "attribute": "data-doubanid"
+              "selector": "span[data-imdbid]",
+              "attribute": "data-imdbid"
             }
           ]
         }
