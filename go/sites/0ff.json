@@ -2,6 +2,7 @@
   "id": "0ff",
   "name": "自由农场",
   "domain": "https://pt.0ff.cc",
+  "additional_domain": ["https://farmm.cc"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
