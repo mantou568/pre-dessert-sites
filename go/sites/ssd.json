@@ -82,6 +82,66 @@
         "description": {
           "selector": "td.embedded > div.torrent-smalldescr > span",
           "contents": -1
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "span.torrent-pro-icon.torrent-pro-free,span.torrent-pro-icon.torrent-pro-twoupfree",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "span.torrent-pro-icon.torrent-pro-halfdown,span.torrent-pro-icon.torrent-pro-twouphalfdown",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "span.torrent-pro-icon.torrent-pro-thirtypercent",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "span.torrent-pro-icon.torrent-pro-twouphalfdown,span.torrent-pro-icon.torrent-pro-twoupfree,span.torrent-pro-icon.torrent-pro-twoup",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    2,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
         }
       }
     },
