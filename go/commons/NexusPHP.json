@@ -443,12 +443,15 @@
           "array": true
         },
         "imdb_id": {
-          "selector": "div.imdb_100 > a",
+          "selector": "a[href*='https://www.imdb.com/title/tt']",
           "attribute": "href",
           "filters": [
             {
               "name": "re_search",
-              "args": ["tt(\\d+)", 1]
+              "args": [
+                "tt(\\d+)",
+                1
+              ]
             }
           ]
         }
@@ -467,8 +470,8 @@
             {
               "name": "re_search",
               "args": [
-                "\\d+",
-                0
+                "https://www.imdb.com/title/tt(\\d+)",
+                1
               ]
             }
           ]
@@ -478,6 +481,18 @@
         },
         "description": {
           "selector": "//description"
+        },
+        "imdb_id": {
+          "selector": "//description",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "tt(\\d+)",
+                1
+              ]
+            }
+          ]
         },
         "link": {
           "selector": "//link"
@@ -601,13 +616,27 @@
       "method": "POST",
       "path": "/getrss.php",
       "form_data": {
-        "inclbookmarked": ["0"],
-        "paid": ["0"],
-        "itemcategory": ["1"],
-        "itemsmalldescr": ["1"],
-        "itemsize": ["1"],
-        "showrows": ["10"],
-        "search_mode": ["0"]
+        "inclbookmarked": [
+          "0"
+        ],
+        "paid": [
+          "0"
+        ],
+        "itemcategory": [
+          "1"
+        ],
+        "itemsmalldescr": [
+          "1"
+        ],
+        "itemsize": [
+          "1"
+        ],
+        "showrows": [
+          "10"
+        ],
+        "search_mode": [
+          "0"
+        ]
       },
       "fields": {
         "content": {
