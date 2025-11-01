@@ -464,6 +464,19 @@
             {
               "selector": "label[data-imdbid]",
               "attribute": "data-imdbid"
+            },
+            {
+              "selector": "a[href*='search_area=4']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "search=(\\d+)",
+                    1
+                  ]
+                }
+              ]
             }
           ]
         }
