@@ -495,8 +495,8 @@
             {
               "name": "re_search",
               "args": [
-                "https://www.imdb.com/title/tt(\\d+)",
-                1
+                "\\d+",
+                0
               ]
             }
           ]
