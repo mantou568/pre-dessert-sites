@@ -157,16 +157,7 @@
           ]
         },
         "imdb_id": {
-          "selector": "imdb_id",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "tt(\\d+)",
-                1
-              ]
-            }
-          ]
+          "selector": "imdb_id"
         }
       }
     },

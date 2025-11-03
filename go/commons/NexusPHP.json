@@ -451,7 +451,7 @@
                 {
                   "name": "re_search",
                   "args": [
-                    "tt(\\d+)",
+                    "(tt\\d+)",
                     1
                   ]
                 }
@@ -513,7 +513,7 @@
             {
               "name": "re_search",
               "args": [
-                "tt(\\d+)",
+                "(tt\\d+)",
                 1
               ]
             }

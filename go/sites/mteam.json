@@ -228,7 +228,7 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["tt(\\d+)", 1]
+              "args": ["(tt\\d+)", 1]
             }
           ]
         }
