@@ -459,11 +459,31 @@
             },
             {
               "selector": "span[data-imdbid]",
-              "attribute": "data-imdbid"
+              "attribute": "data-imdbid",
+              "filters": [
+                {
+                  "name": "pad_zero",
+                  "args": 7
+                },
+                {
+                  "name": "append_left",
+                  "args": "tt"
+                }
+              ]
             },
             {
               "selector": "label[data-imdbid]",
-              "attribute": "data-imdbid"
+              "attribute": "data-imdbid",
+              "filters": [
+                {
+                  "name": "pad_zero",
+                  "args": 7
+                },
+                {
+                  "name": "append_left",
+                  "args": "tt"
+                }
+              ]
             },
             {
               "selector": "a[href*='search_area=4']",
@@ -475,6 +495,14 @@
                     "search=(\\d+)",
                     1
                   ]
+                },
+                {
+                  "name": "pad_zero",
+                  "args": 7
+                },
+                {
+                  "name": "append_left",
+                  "args": "tt"
                 }
               ]
             }
