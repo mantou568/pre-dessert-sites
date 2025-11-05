@@ -509,7 +509,9 @@
           ]
         },
         "douban_id": {
-          "selector": "a[href*='movie.douban.com/subject/']",
+          "any": [
+            {
+              "selector": "a[href*='movie.douban.com/subject/']",
               "attribute": "href",
               "filters": [
                 {
@@ -520,6 +522,29 @@
                   ]
                 }
               ]
+            },
+            {
+              "selector": "span[data-doubanid]",
+              "attribute": "data-doubanid"
+            },
+            {
+              "selector": "label[data-doubanid]",
+              "attribute": "data-doubanid"
+            },
+            {
+              "selector": "a[href*='search_area=5']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "search=(\\d+)",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
         }
       }
     },
