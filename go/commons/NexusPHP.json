@@ -507,6 +507,19 @@
               ]
             }
           ]
+        },
+        "douban_id": {
+          "selector": "a[href*='movie.douban.com/subject/']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "(\\d+)",
+                    0
+                  ]
+                }
+              ]
         }
       }
     },
