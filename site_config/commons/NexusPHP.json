@@ -619,7 +619,7 @@
       "list": {
         "selector": "//tr[position()>1]",
         "next_page": {
-          "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
+          "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁' or contains(.//text(), '下一页') or contains(.//text(), '下一頁'))]/@href"
         }
       },
       "fields": {
