@@ -2,7 +2,7 @@
   "id": "xingyunge",
   "name": "星陨阁",
   "domain": "https://pt.xingyungept.org",
-  "additional_domain": ["https://www.xingyungept.org"],
+  "additional_domain": ["https://www.xingyungept.org","https://xing.xingyunge.sbs","https://pt.xingyungept.cn"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
