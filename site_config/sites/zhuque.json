@@ -1,0 +1,358 @@
+{
+  "id": "zhuque",
+  "name": "朱雀",
+  "domain": "https://zhuque.in",
+  "encoding": "UTF-8",
+  "schema": "zhuQue",
+  "reuse_schema": "NexusPHP",
+  "required": {
+    "cookie": true
+  },
+  "meta": {
+    "has_free": true
+  },
+  "public": false,
+  "category": {
+    "movie": [
+      {
+        "id": 501,
+        "cat": "Movies",
+        "desc": "电影"
+      },
+      {
+        "id": 503,
+        "cat": "Movies",
+        "desc": "动画"
+      }
+    ],
+    "tv": [
+      {
+        "id": 502,
+        "cat": "TV",
+        "desc": "剧集"
+      },
+      {
+        "id": 503,
+        "cat": "TV",
+        "desc": "动画"
+      }
+    ]
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/assets/images/512.png"
+    },
+    "get_subtitle_url": {
+      "disabled": true
+    },
+    "search": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/torrent/advancedSearch",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "list": {
+        "selector": "data.torrents"
+      },
+      "disabled_extends": {
+        "params": true
+      },
+      "fields": {
+        "id": {},
+        "category": {},
+        "title": {},
+        "details": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/torrent/info/"
+            }
+          ]
+        },
+        "download": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/api/torrent/download/"
+            },
+            {
+              "name": "append_right",
+              "args": "/{torrent_key}"
+            },
+            {
+              "name": "user_profile_holder"
+            }
+          ]
+        },
+        "size": {},
+        "grabs": {
+          "selector": "complete"
+        },
+        "seeders": {
+          "selector": "seeding"
+        },
+        "leechers": {
+          "selector": "leeching"
+        },
+        "date_added": {
+          "selector": "upload_time"
+        },
+        "downloadvolumefactor": {
+          "selector": "uploadRate"
+        },
+        "uploadvolumefactor": {
+          "selector": "downloadRate"
+        },
+        "description": {
+          "selector": "subtitle"
+        },
+        "labels": {
+          "selector": "tags",
+          "array": true,
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "101": "H264",
+                "102": "H265",
+                "103": "x264",
+                "104": "x265",
+                "199": "Other",
+                "301": "UHD Blu-ray",
+                "302": "UHD Blu-ray DIY",
+                "303": "Blu-ray",
+                "304": "Blu-ray DIY",
+                "305": "Remux",
+                "306": "Encode",
+                "307": "UHDTV",
+                "308": "HDTV",
+                "309": "WEB-DL",
+                "399": "Other",
+                "401": "720p",
+                "402": "1080i",
+                "403": "1080p",
+                "404": "2160p",
+                "499": "Other",
+                "501": "电影",
+                "502": "剧集",
+                "503": "动画",
+                "504": "节目",
+                "599": "其它",
+                "601": "官方",
+                "602": "禁转",
+                "603": "国语",
+                "604": "中字",
+                "611": "杜比视界",
+                "613": "HDR10",
+                "614": "特效字幕",
+                "621": "完结",
+                "622": "分集"
+              }
+            }
+          ]
+        },
+        "imdb_id": {
+          "selector": "imdb_id"
+        }
+      }
+    },
+    "user_basic_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/user/getMainInfo",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "fields": {
+        "is_login": {
+          "selector": "status",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "200"
+            }
+          ]
+        },
+        "signed_in": {
+          "selector": "status",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "200"
+            }
+          ]
+        },
+        "id": {
+          "selector": "data.id"
+        },
+        "name": {
+          "selector": "data.username"
+        },
+        "uploaded": {
+          "selector": "data.upload"
+        },
+        "downloaded": {
+          "selector": "data.download"
+        },
+        "bonus": {
+          "selector": "data.bonus"
+        }
+      }
+    },
+    "user_details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/user/getInfo?id={userId}",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "fields": {
+        "level": {
+          "selector": "data.class.name"
+        },
+        "join_at": {
+          "selector": "data.regTime"
+        },
+        "last_accessed": {
+          "selector": "data.lastActivity"
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/user/listTorrentActivity?id={userId}&type=seeding&page={page}&size=100",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "headers": {
+        "Referer": "{domain}/user/info/{userId}"
+      },
+      "list": {
+        "selector": "data.torrents",
+        "next_page": {
+          "selector": "/api/user/listTorrentActivity?id={userId}&type=seeding&page={page}&size=100"
+        }
+      },
+      "fields": {
+        "size": {}
+      }
+    },
+    "messages": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/message/listSystem?page={page}&size=100",
+      "list": {
+        "selector": "data.messages"
+      },
+      "fields": {
+        "title": {},
+        "id": {},
+        "date": {
+          "selector": "create_time"
+        },
+        "content": {}
+      }
+    },
+    "notice": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/announcement/list",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "list": {
+        "selector": "data"
+      },
+      "fields": {
+        "title": {},
+        "content": {},
+        "create_time": {}
+      }
+    },
+    "sign_in": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/gaming/fireGenshinCharacterMagic",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "body": {
+        "all": 1,
+        "resetModal": true
+      },
+      "fields": {
+        "signed_in": {
+          "selector": "status",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "200"
+            }
+          ]
+        }
+      }
+    },
+    "details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/torrent/info",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "params": {
+        "id": [
+          "{id}"
+        ]
+      },
+      "success_status_codes": [
+        200,
+        404
+      ],
+      "fields": {
+        "absent": {
+          "selector": "status",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "404"
+            }
+          ]
+        },
+        "free": {
+          "selector": "data.torrent.downloadRate",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "leeching"
+        }
+      }
+    },
+    "get_security_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/user/getSecurityInfo",
+      "tags": [
+        "user_profile"
+      ],
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "fields": {
+        "torrent_key": {
+          "selector": "data.torrentKey"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "hdvideo",
+  "name": "HDVIDEO",
+  "domain": "https://hdvideo.top",
+  "additional_domain": ["https://hdvideo.one"],
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false,
+    "has_cover": false
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 401,
+        "cat": "Movies",
+        "desc": "Movies/电影"
+      }
+    ],
+    "tv": [
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
+      {
+        "id": 402,
+        "cat": "TV",
+        "desc": "TV Series/连续剧"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "TV Shows/综艺"
+      }
+    ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded:nth-child(1)",
+          "remove": "span,a,img,font,b,br",
+          "contents": -1
+        }
+      }
+    }
+  }
+}
