@@ -1,0 +1,2124 @@
+{
+  "adult": false,
+  "backdrop_path": "/94cS0mzODEoNIXFT7nhPcI8V4IJ.jpg",
+  "belongs_to_collection": {
+    "id": 1073029,
+    "name": "Wandering Earth Collection",
+    "poster_path": "/6qWFQkZfCmDmaAIQlXlBJWNga3k.jpg",
+    "backdrop_path": "/dDG37QLsERXFowAOfWYLwcsag4r.jpg"
+  },
+  "budget": 73800000,
+  "genres": [
+    {
+      "id": 878,
+      "name": "Science Fiction"
+    },
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 12,
+      "name": "Adventure"
+    }
+  ],
+  "homepage": "https://trinitycineasia.com/in-cinemas/the-wandering-earth-ii/",
+  "id": 842675,
+  "imdb_id": "tt13539646",
+  "origin_country": [
+    "CN"
+  ],
+  "original_language": "zh",
+  "original_title": "流浪地球2",
+  "overview": "Humans built huge engines on the surface of the earth to find a new home. But the road to the universe is perilous. In order to save earth, young people once again have to step forward to start a race against time for life and death.",
+  "popularity": 8.3252,
+  "poster_path": "/jAZzFYS36UFT0SKhKVmEY7qShal.jpg",
+  "production_companies": [
+    {
+      "id": 14714,
+      "logo_path": "/dSHaVKtBCpMU5VP9wMbTkqov62i.png",
+      "name": "China Film Group Corporation",
+      "origin_country": "CN"
+    },
+    {
+      "id": 191194,
+      "logo_path": null,
+      "name": "Guo Fan Culture and Media",
+      "origin_country": ""
+    },
+    {
+      "id": 115322,
+      "logo_path": null,
+      "name": "G!Film Studio",
+      "origin_country": ""
+    },
+    {
+      "id": 65442,
+      "logo_path": "/mAAUTVBF4KGW4QxESHWg4N8pLdF.png",
+      "name": "DF Pictures",
+      "origin_country": "CN"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "CN",
+      "name": "China"
+    }
+  ],
+  "release_date": "2023-01-22",
+  "revenue": 5,
+  "runtime": 173,
+  "spoken_languages": [
+    {
+      "english_name": "English",
+      "iso_639_1": "en",
+      "name": "English"
+    },
+    {
+      "english_name": "Spanish",
+      "iso_639_1": "es",
+      "name": "Español"
+    },
+    {
+      "english_name": "French",
+      "iso_639_1": "fr",
+      "name": "Français"
+    },
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    },
+    {
+      "english_name": "Portuguese",
+      "iso_639_1": "pt",
+      "name": "Português"
+    },
+    {
+      "english_name": "Russian",
+      "iso_639_1": "ru",
+      "name": "Pусский"
+    },
+    {
+      "english_name": "Mandarin",
+      "iso_639_1": "zh",
+      "name": "普通话"
+    }
+  ],
+  "status": "Released",
+  "tagline": "",
+  "title": "The Wandering Earth II",
+  "video": false,
+  "vote_average": 7.289,
+  "vote_count": 671,
+  "credits": {
+    "cast": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 78871,
+        "known_for_department": "Acting",
+        "name": "Wu Jing",
+        "original_name": "吴京",
+        "popularity": 2.9523,
+        "profile_path": "/cFuATO6PnffJXtsYF7BRqhCXlwe.jpg",
+        "cast_id": 2,
+        "character": "Liu Peiqiang",
+        "credit_id": "60cde9bc9c24fc002a2581ef",
+        "order": 0
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 25246,
+        "known_for_department": "Acting",
+        "name": "Andy Lau",
+        "original_name": "劉德華",
+        "popularity": 4.7444,
+        "profile_path": "/z9R2yerjfgxwDWIH8sjiS0hhcre.jpg",
+        "cast_id": 1,
+        "character": "Tu Hengyu",
+        "credit_id": "60cde97cb458b8006d026b46",
+        "order": 1
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 143358,
+        "known_for_department": "Acting",
+        "name": "Li Xuejian",
+        "original_name": "李雪健",
+        "popularity": 4.7999,
+        "profile_path": "/22QFJKWJPNj3O3A6PdRKJc0qeKK.jpg",
+        "cast_id": 5,
+        "character": "Zhou Zhezhi",
+        "credit_id": "63428be69c97bd00796d064c",
+        "order": 2
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 235518,
+        "known_for_department": "Acting",
+        "name": "Sha Yi",
+        "original_name": "沙溢",
+        "popularity": 3.2243,
+        "profile_path": "/ip9GpE5RhxBzqlbbVX0DwktOlss.jpg",
+        "cast_id": 57,
+        "character": "Zhang Peng",
+        "credit_id": "63b15150c56d2d00a982aefb",
+        "order": 3
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 987205,
+        "known_for_department": "Acting",
+        "name": "Ning Li",
+        "original_name": "宁理",
+        "popularity": 1.3749,
+        "profile_path": "/afb9OxvJ1SrSPlIraX0HqIeil5l.jpg",
+        "cast_id": 58,
+        "character": "Ma Zhao",
+        "credit_id": "63b1516ac56d2d007c83eaeb",
+        "order": 4
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1985026,
+        "known_for_department": "Acting",
+        "name": "Wang Zhi",
+        "original_name": "Wang Zhi",
+        "popularity": 1.2788,
+        "profile_path": "/q9KQAA8587VmYH6pxfd6DfVTFmj.jpg",
+        "cast_id": 60,
+        "character": "Liu Qi's Mom",
+        "credit_id": "63b151b17ef3811fde3584ea",
+        "order": 5
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2044184,
+        "known_for_department": "Acting",
+        "name": "Zhu Yanmanzi",
+        "original_name": "朱顏曼滋",
+        "popularity": 1.3088,
+        "profile_path": "/dObU6l2DnIB9ZToSP2r08CDsQEq.jpg",
+        "cast_id": 59,
+        "character": "Hao Xiaoxi",
+        "credit_id": "63b151935ad76b00cf429647",
+        "order": 6
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1552500,
+        "known_for_department": "Art",
+        "name": "Andy Friend",
+        "original_name": "Andy Friend",
+        "popularity": 0.7557,
+        "profile_path": "/gvSXc5UDHc9JQwmHKG7Eh9V3AHX.jpg",
+        "cast_id": 67,
+        "character": "Mike",
+        "credit_id": "63d207dea410c812385d026e",
+        "order": 7
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3891271,
+        "known_for_department": "Acting",
+        "name": "Wang Ruoxi",
+        "original_name": "Wang Ruoxi",
+        "popularity": 0.0789,
+        "profile_path": "/kTSFMqCndfJBdgd9u6Ng2lPmU1y.jpg",
+        "cast_id": 68,
+        "character": "Tu Yaya",
+        "credit_id": "63d207f55a07f500a29718cf",
+        "order": 8
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1173214,
+        "known_for_department": "Acting",
+        "name": "Tong Liya",
+        "original_name": "佟丽娅",
+        "popularity": 2.8138,
+        "profile_path": "/5sAxE9pC4l5lBWJV8m3YChyibsq.jpg",
+        "cast_id": 88,
+        "character": "Tu Hengyu's Wife",
+        "credit_id": "643e6e4ce0ca7f05090701cd",
+        "order": 9
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3891273,
+        "known_for_department": "Acting",
+        "name": "Vatilli Makarychev",
+        "original_name": "Vatilli Makarychev",
+        "popularity": 0.052,
+        "profile_path": "/vOeHJRk1FuxtgbW3Qf9KjHlEhKZ.jpg",
+        "cast_id": 69,
+        "character": "Andrey Gerasinov",
+        "credit_id": "63d2080e66ae4d008c92244d",
+        "order": 10
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 237824,
+        "known_for_department": "Acting",
+        "name": "Zhang Yi",
+        "original_name": "Zhang Yi",
+        "popularity": 0.4003,
+        "profile_path": "/nr946oJDZB6uBGG08hBjHVevLry.jpg",
+        "cast_id": 86,
+        "character": "Wang Zhijian",
+        "credit_id": "643e6de8c6006d04ab80a3e1",
+        "order": 11
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3782771,
+        "known_for_department": "Acting",
+        "name": "Kawawa Kadichi",
+        "original_name": "Kawawa Kadichi",
+        "popularity": 0.0873,
+        "profile_path": "/qHx6THemU3mDOeyJeA5kvQXnjFQ.jpg",
+        "cast_id": 87,
+        "character": "Herbert Copley",
+        "credit_id": "643e6e1443250f04ca511fc6",
+        "order": 12
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1149923,
+        "known_for_department": "Acting",
+        "name": "Clara Lee",
+        "original_name": "클라라",
+        "popularity": 1.3931,
+        "profile_path": "/rCu6AzXrPpuAC5THKlO4EQFRGOb.jpg",
+        "cast_id": 70,
+        "character": "Space Elevator Female Attacker A",
+        "credit_id": "63d2082bcb71b800a10d2e81",
+        "order": 13
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1203192,
+        "known_for_department": "Acting",
+        "name": "Vladimir Ershov",
+        "original_name": "Владимир Ершов",
+        "popularity": 0.4466,
+        "profile_path": "/yUumKmSevrSF61cjq0VHldL8Pom.jpg",
+        "cast_id": 103,
+        "character": "Space Elevator Male Attacker B",
+        "credit_id": "644f75036dc6c002e5eeb4da",
+        "order": 14
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851441,
+        "known_for_department": "Acting",
+        "name": "Tony Nicholson",
+        "original_name": "Tony Nicholson",
+        "popularity": 0.0214,
+        "profile_path": "/aVmX1PsxS7IR3DCk1Y198YfDMP0.jpg",
+        "cast_id": 153,
+        "character": "Space Elevator Male Attacker A",
+        "credit_id": "66a431152a907ee24735a987",
+        "order": 15
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1989460,
+        "known_for_department": "Acting",
+        "name": "Hu Xianxu",
+        "original_name": "胡先煦",
+        "popularity": 2.5323,
+        "profile_path": "/tvwi2L267zDUPfrnipgaxMMi2tm.jpg",
+        "cast_id": 89,
+        "character": "Young Diplomat",
+        "credit_id": "643e6f22c7176d04b498aa6f",
+        "order": 16
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2048196,
+        "known_for_department": "Acting",
+        "name": "Huo Qing",
+        "original_name": "Huo Qing",
+        "popularity": 0.3962,
+        "profile_path": "/ftF9OgkIeWIWTix6peR402KpQAo.jpg",
+        "cast_id": 71,
+        "character": "Chinese Chief Coordinator",
+        "credit_id": "63d20866cb71b80085dd9802",
+        "order": 17
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1926589,
+        "known_for_department": "Camera",
+        "name": "Liu Yin",
+        "original_name": "Liu Yin",
+        "popularity": 0.3872,
+        "profile_path": "/nscKF0hVwBThBm3NNSUQ3LeErJ5.jpg",
+        "cast_id": 112,
+        "character": "Zhou Zhezhi's Bodyguard",
+        "credit_id": "6450abff435011014135b110",
+        "order": 18
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3830287,
+        "known_for_department": "Acting",
+        "name": "Guo Yiqian",
+        "original_name": "国义骞",
+        "popularity": 0.6299,
+        "profile_path": "/pSdFqPmnl018ZSxAA51ZlteLnBG.jpg",
+        "cast_id": 90,
+        "character": "Wedding Host",
+        "credit_id": "643e6f38f2883804a1aabbaf",
+        "order": 19
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3309840,
+        "known_for_department": "Acting",
+        "name": "Wu Enxuan",
+        "original_name": "吴恩璇",
+        "popularity": 0.6976,
+        "profile_path": "/jLXwc2U5QptLpWR9KpGLhwqXua7.jpg",
+        "cast_id": 92,
+        "character": "TV Presenter",
+        "credit_id": "643e6f51e0ca7f0533070485",
+        "order": 20
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3111455,
+        "known_for_department": "Production",
+        "name": "Wang Hongwei",
+        "original_name": "Wang Hongwei",
+        "popularity": 0.1687,
+        "profile_path": "/9Xrw5xsGNf6Ue4Vc62V8mJdUVai.jpg",
+        "cast_id": 127,
+        "character": "Wang Hongwei",
+        "credit_id": "6450c22843501100e4804a0a",
+        "order": 21
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3163137,
+        "known_for_department": "Directing",
+        "name": "Kong Dashan",
+        "original_name": "孔大山",
+        "popularity": 0.942,
+        "profile_path": "/vH5HNuEZ7ESkwdTCkS0daQ9VMDD.jpg",
+        "cast_id": 121,
+        "character": "Chinese Astronaut",
+        "credit_id": "6450b4b612b10e054126e422",
+        "order": 22
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3834327,
+        "known_for_department": "Visual Effects",
+        "name": "Eric Xu",
+        "original_name": "Eric Xu",
+        "popularity": 0.2565,
+        "profile_path": "/g3rZnndOiBpvtxEPe5Vm6LLAQFL.jpg",
+        "cast_id": 128,
+        "character": "Xu Jian",
+        "credit_id": "6450c2e8af85de015be68335",
+        "order": 23
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851429,
+        "known_for_department": "Acting",
+        "name": "Liu Jiayun",
+        "original_name": "刘佳沄",
+        "popularity": 0.1673,
+        "profile_path": "/1GHBTFcvHF1jckdfC6RCtTBODtc.jpg",
+        "cast_id": 150,
+        "character": "4-Year-Old Liu Qi",
+        "credit_id": "66a42e015e6efa4cee521a77",
+        "order": 24
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851412,
+        "known_for_department": "Acting",
+        "name": "Ding Yanlai",
+        "original_name": "丁燕来",
+        "popularity": 0.5867,
+        "profile_path": "/dhWtKeInWwJlaDwZ4gEjgqn7tGz.jpg",
+        "cast_id": 149,
+        "character": "Construction Worker 1",
+        "credit_id": "66a42c1343dc97ae4e948452",
+        "order": 25
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2304111,
+        "known_for_department": "Art",
+        "name": "Gao Ang",
+        "original_name": "Gao Ang",
+        "popularity": 0.1867,
+        "profile_path": "/60V2GTzYeu94ai4yAtapdfQzacx.jpg",
+        "cast_id": 108,
+        "character": "Construction Worker 2",
+        "credit_id": "644f796b2fccee0302cdf366",
+        "order": 26
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2095747,
+        "known_for_department": "Acting",
+        "name": "Andrew Yan Hua",
+        "original_name": "严华",
+        "popularity": 0.9129,
+        "profile_path": "/6WesxAnQS6nnvX0ZO4dLO3U8zrj.jpg",
+        "cast_id": 109,
+        "character": "Construction Worker 3",
+        "credit_id": "644f7a94124c8d03067dee49",
+        "order": 27
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4851435,
+        "known_for_department": "Acting",
+        "name": "Li Ren",
+        "original_name": "Li Ren",
+        "popularity": 0.1289,
+        "profile_path": null,
+        "cast_id": 152,
+        "character": "Korean Pilot",
+        "credit_id": "66a43027b4e202897bb4a671",
+        "order": 28
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851433,
+        "known_for_department": "Acting",
+        "name": "Ang Cin",
+        "original_name": "洪真",
+        "popularity": 0.0509,
+        "profile_path": null,
+        "cast_id": 151,
+        "character": "Thai Astronaut",
+        "credit_id": "66a42fc746361dcb0f35a948",
+        "order": 29
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4844293,
+        "known_for_department": "Acting",
+        "name": "Wang Lei",
+        "original_name": "王磊",
+        "popularity": 0.9494,
+        "profile_path": "/9aag6dpK4jqGuPadd8Z8shFd716.jpg",
+        "cast_id": 140,
+        "character": "Wang Sanshi",
+        "credit_id": "669ed23dc06b14c032a8930b",
+        "order": 30
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3163139,
+        "known_for_department": "Writing",
+        "name": "Roy Wang",
+        "original_name": "Wang Yitong",
+        "popularity": 0.2132,
+        "profile_path": "/ptehnWmMOgguxCSDbxcdauRF9rx.jpg",
+        "cast_id": 130,
+        "character": "Male Research Assistant",
+        "credit_id": "6450c607e942ee0e38bd478d",
+        "order": 31
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3312771,
+        "known_for_department": "Acting",
+        "name": "Yang Hongtao",
+        "original_name": "Yang Hongtao",
+        "popularity": 0.0214,
+        "profile_path": "/revA5xipmu0LFmkCbhvVOZkxjX9.jpg",
+        "cast_id": 117,
+        "character": "Chinese Father Underground City",
+        "credit_id": "6450b16793bd6900e5fe45c8",
+        "order": 32
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 3255683,
+        "known_for_department": "Acting",
+        "name": "Zhao Yesuo",
+        "original_name": "Zhao Yesuo",
+        "popularity": 0.0479,
+        "profile_path": "/9HGsTRIb4XM0ppTsmNQ9zUgrXlR.jpg",
+        "cast_id": 132,
+        "character": "Interpreter",
+        "credit_id": "6450c70de16e5a0106c33881",
+        "order": 33
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3311183,
+        "known_for_department": "Acting",
+        "name": "Li Luqi",
+        "original_name": "Li Luqi",
+        "popularity": 0.2944,
+        "profile_path": "/7TZ7Dc2dZnj6WCqkqgYiqvfCsKn.jpg",
+        "cast_id": 124,
+        "character": "Young Man",
+        "credit_id": "6450b7b94350110124244f6e",
+        "order": 34
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851402,
+        "known_for_department": "Acting",
+        "name": "Huang Jiyuan",
+        "original_name": "黄纪渊",
+        "popularity": 0.3064,
+        "profile_path": "/lvQx3NDbq9ox7A6SS808TrgK7MH.jpg",
+        "cast_id": 146,
+        "character": "Diving Expert",
+        "credit_id": "66a426a835ba525a3ec709a1",
+        "order": 35
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1925763,
+        "known_for_department": "Acting",
+        "name": "Zheng Chuyi",
+        "original_name": "Zheng Chuyi",
+        "popularity": 0.2267,
+        "profile_path": "/492eVvPiAaCsiOpIqaZmDsuivPp.jpg",
+        "cast_id": 116,
+        "character": "Electrical Engineer",
+        "credit_id": "6450afd412b10e053dd67660",
+        "order": 36
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1276425,
+        "known_for_department": "Acting",
+        "name": "Wu Jingyi",
+        "original_name": "Wu Jingyi",
+        "popularity": 0.2022,
+        "profile_path": "/5R3vPgUhgeS3hz3IjhCLp4kLtQd.jpg",
+        "cast_id": 118,
+        "character": "Chinese Mother Underground City",
+        "credit_id": "6450b326d7107e016b7de710",
+        "order": 37
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851383,
+        "known_for_department": "Acting",
+        "name": "Fu Jiahao",
+        "original_name": "付嘉灏",
+        "popularity": 0.3946,
+        "profile_path": "/umY2nhs5TpRtZJbTpBgSdvYrXnl.jpg",
+        "cast_id": 143,
+        "character": "Departure Hall Young Soldier",
+        "credit_id": "66a42302d1f0b917d65fe8a7",
+        "order": 38
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851361,
+        "known_for_department": "Acting",
+        "name": "Valentin Vorobev",
+        "original_name": "Valentin Vorobev",
+        "popularity": 0.0143,
+        "profile_path": "/yX5zR9tPjpEVHAa4F3wf8weDwFP.jpg",
+        "cast_id": 123,
+        "character": "MakaRov",
+        "credit_id": "6450b6c2e16e5a015db437ec",
+        "order": 39
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4848249,
+        "known_for_department": "Acting",
+        "name": "Li Yiran",
+        "original_name": "李一冉",
+        "popularity": 0.2646,
+        "profile_path": "/q8Qc4J1zjfGouNYyt6e6mlY3FcH.jpg",
+        "cast_id": 141,
+        "character": "Liu Peiqiang's Mother",
+        "credit_id": "66a1a70232d4e61e6f0c032d",
+        "order": 40
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851331,
+        "known_for_department": "Acting",
+        "name": "Zhou Qiang",
+        "original_name": "周强",
+        "popularity": 0.3724,
+        "profile_path": "/rIbzKm8DL4omx3CAVN3sfaUrA3m.jpg",
+        "cast_id": 142,
+        "character": "Liu Peiqiang's Father",
+        "credit_id": "66a41aaa033a5598d719adfa",
+        "order": 41
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3830291,
+        "known_for_department": "Acting",
+        "name": "Zhu Chaoyi",
+        "original_name": "Zhu Chaoyi",
+        "popularity": 0.0453,
+        "profile_path": "/bGWMotMI1SZLP9n8SnTqJkWNE2a.jpg",
+        "cast_id": 131,
+        "character": "Pilot",
+        "credit_id": "6450c6ad93bd6900e5fe518c",
+        "order": 42
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851399,
+        "known_for_department": "Acting",
+        "name": "He Jinhelong",
+        "original_name": "何金和龙",
+        "popularity": 0.1075,
+        "profile_path": null,
+        "cast_id": 145,
+        "character": "Chinese Boy Underground City",
+        "credit_id": "66a425e4a8023a65219ea02a",
+        "order": 43
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4851396,
+        "known_for_department": "Acting",
+        "name": "He Jinhejin",
+        "original_name": "何金和金",
+        "popularity": 0.1539,
+        "profile_path": null,
+        "cast_id": 144,
+        "character": "Chinese Girl Underground City",
+        "credit_id": "66a4252e4db36632ae521a34",
+        "order": 44
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4851403,
+        "known_for_department": "Acting",
+        "name": "Daniela Tassy",
+        "original_name": "Daniela Tassy",
+        "popularity": 0.0338,
+        "profile_path": "/taGQFDZ3bEy7JseeLxjur56S1L.jpg",
+        "cast_id": 158,
+        "character": "Emilia",
+        "credit_id": "6911508a0041954608a0cc85",
+        "order": 45
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851406,
+        "known_for_department": "Acting",
+        "name": "Li Peidong",
+        "original_name": "李沛东",
+        "popularity": 0.279,
+        "profile_path": null,
+        "cast_id": 159,
+        "character": "Enthusiastic Passenger",
+        "credit_id": "6911508cb5004f2d5ea0c987",
+        "order": 46
+      }
+    ],
+    "crew": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1100748,
+        "known_for_department": "Directing",
+        "name": "Frant Gwo",
+        "original_name": "郭帆",
+        "popularity": 1.6493,
+        "profile_path": "/wvRKczLxlqeDRMsJilWZpbHM9QA.jpg",
+        "credit_id": "624deb0b7e12f000a22900bc",
+        "department": "Directing",
+        "job": "Director"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 1331178,
+        "known_for_department": "Costume & Make-Up",
+        "name": "Hannah Kittell",
+        "original_name": "Hannah Kittell",
+        "popularity": 1.9184,
+        "profile_path": "/jA3bt5hPs8nz72VyP4gPGVdnWLQ.jpg",
+        "credit_id": "636fdb552495ab007821c255",
+        "department": "Costume & Make-Up",
+        "job": "Costume Design"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3782776,
+        "known_for_department": "Camera",
+        "name": "Jeanna Canatsey",
+        "original_name": "Jeanna Canatsey",
+        "popularity": 0.0338,
+        "profile_path": null,
+        "credit_id": "636fdb6299259c0077050909",
+        "department": "Costume & Make-Up",
+        "job": "Key Makeup Artist"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3782778,
+        "known_for_department": "Camera",
+        "name": "James Gott",
+        "original_name": "James Gott",
+        "popularity": 0.0214,
+        "profile_path": null,
+        "credit_id": "636fdbdb21621b00777d8625",
+        "department": "Camera",
+        "job": "Data Wrangler"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3782780,
+        "known_for_department": "Crew",
+        "name": "Joanna Carpenter",
+        "original_name": "Joanna Carpenter",
+        "popularity": 0.0071,
+        "profile_path": null,
+        "credit_id": "636fdc0681383100abf63317",
+        "department": "Crew",
+        "job": "Stunts"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3747466,
+        "known_for_department": "Crew",
+        "name": "Catherine Gubernick",
+        "original_name": "Catherine Gubernick",
+        "popularity": 0.0478,
+        "profile_path": null,
+        "credit_id": "636fdb89172d7f0092da895c",
+        "department": "Art",
+        "job": "Assistant Property Master"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3782781,
+        "known_for_department": "Camera",
+        "name": "Tim Gilligan",
+        "original_name": "Tim Gilligan",
+        "popularity": 0.0143,
+        "profile_path": null,
+        "credit_id": "636fdc56798e0600dc3628c6",
+        "department": "Camera",
+        "job": "Assistant Camera"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3782782,
+        "known_for_department": "Camera",
+        "name": "Tomasz Gryz",
+        "original_name": "Tomasz Gryz",
+        "popularity": 0.0214,
+        "profile_path": null,
+        "credit_id": "636fdc63813831008b7c5a1f",
+        "department": "Camera",
+        "job": "Steadicam Operator"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3644850,
+        "known_for_department": "Directing",
+        "name": "Achille Vanderhaeghen",
+        "original_name": "Achille Vanderhaeghen",
+        "popularity": 0.0322,
+        "profile_path": null,
+        "credit_id": "636fdb781684f7008072b3e0",
+        "department": "Directing",
+        "job": "Second Assistant Director"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 2541803,
+        "known_for_department": "Art",
+        "name": "Diego Quecano",
+        "original_name": "Diego Quecano",
+        "popularity": 0.0214,
+        "profile_path": null,
+        "credit_id": "636fdb9821621b00cd62ad8a",
+        "department": "Art",
+        "job": "Property Master"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 1980649,
+        "known_for_department": "Crew",
+        "name": "Marco Wuest",
+        "original_name": "Marco Wuest",
+        "popularity": 0.0214,
+        "profile_path": null,
+        "credit_id": "636fdbab2495ab008231ef82",
+        "department": "Art",
+        "job": "Props"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1191795,
+        "known_for_department": "Acting",
+        "name": "Gong Geer",
+        "original_name": "Gong Geer",
+        "popularity": 0.2684,
+        "profile_path": "/iefh3KyxdBx4RWYaolg7z2ZD3iK.jpg",
+        "credit_id": "636fdb252495ab00b47479e7",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 2826845,
+        "known_for_department": "Art",
+        "name": "Hanrui Wang",
+        "original_name": "Hanrui Wang",
+        "popularity": 0.0311,
+        "profile_path": null,
+        "credit_id": "636fdb47798e06007fe5c5ba",
+        "department": "Art",
+        "job": "Production Design"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2053448,
+        "known_for_department": "Acting",
+        "name": "Fredrik Yderström",
+        "original_name": "Fredrik Yderström",
+        "popularity": 0.0617,
+        "profile_path": "/9KqJAg0BYPLvrKGp4ViugyiIkh6.jpg",
+        "credit_id": "636fdc24ca4f67009b54b869",
+        "department": "Crew",
+        "job": "Stunts"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 2837953,
+        "known_for_department": "Crew",
+        "name": "Han Cao",
+        "original_name": "Han Cao",
+        "popularity": 0.0416,
+        "profile_path": null,
+        "credit_id": "636fdbbe99259c007df12f06",
+        "department": "Visual Effects",
+        "job": "Visual Effects Supervisor"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 1836195,
+        "known_for_department": "Acting",
+        "name": "Ashleigh Awusie",
+        "original_name": "Ashleigh Awusie",
+        "popularity": 0.0239,
+        "profile_path": "/bstQGkZjOOBSY7Au2mhf3XVmcBS.jpg",
+        "credit_id": "636fdbf5ca4f67007fc2da66",
+        "department": "Crew",
+        "job": "Stunts"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3347828,
+        "known_for_department": "Crew",
+        "name": "Sunny Vinsavich",
+        "original_name": "Sunny Vinsavich",
+        "popularity": 0.5428,
+        "profile_path": null,
+        "credit_id": "636fdc16e894a6007acece9e",
+        "department": "Crew",
+        "job": "Stunts"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 1393837,
+        "known_for_department": "Camera",
+        "name": "Govinda Angulo",
+        "original_name": "Govinda Angulo",
+        "popularity": 0.1027,
+        "profile_path": null,
+        "credit_id": "636fdc47e894a600829216da",
+        "department": "Camera",
+        "job": "First Assistant Camera"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3541941,
+        "known_for_department": "Camera",
+        "name": "Josh Reyes",
+        "original_name": "Josh Reyes",
+        "popularity": 0.0143,
+        "profile_path": null,
+        "credit_id": "636fe4b321621b00b49ec7e0",
+        "department": "Camera",
+        "job": "First Assistant Camera"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 1953264,
+        "known_for_department": "Camera",
+        "name": "Geoffrey Jean-Baptiste",
+        "original_name": "Geoffrey Jean-Baptiste",
+        "popularity": 0.077,
+        "profile_path": null,
+        "credit_id": "636fe47d172d7f00ced455b6",
+        "department": "Camera",
+        "job": "Camera Operator"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3782806,
+        "known_for_department": "Camera",
+        "name": "Chloe Locarro",
+        "original_name": "Chloe Locarro",
+        "popularity": 0.0214,
+        "profile_path": null,
+        "credit_id": "636fe49d99259c00b4cc49ed",
+        "department": "Camera",
+        "job": "Second Assistant Camera"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3782807,
+        "known_for_department": "Camera",
+        "name": "Dominick Pietrzak",
+        "original_name": "Dominick Pietrzak",
+        "popularity": 0.0894,
+        "profile_path": null,
+        "credit_id": "636fe4a7ca4f67009b54ba4f",
+        "department": "Camera",
+        "job": "Digital Imaging Technician"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3574607,
+        "known_for_department": "Production",
+        "name": "Dash Porter",
+        "original_name": "Dash Porter",
+        "popularity": 0.0168,
+        "profile_path": null,
+        "credit_id": "636fe4d1ca4f67007ad99c21",
+        "department": "Production",
+        "job": "Location Assistant"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3782809,
+        "known_for_department": "Production",
+        "name": "Jake Loff",
+        "original_name": "Jake Loff",
+        "popularity": 0.0621,
+        "profile_path": null,
+        "credit_id": "636fe4f42495ab007821c482",
+        "department": "Production",
+        "job": "Production Accountant"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 1953264,
+        "known_for_department": "Camera",
+        "name": "Geoffrey Jean-Baptiste",
+        "original_name": "Geoffrey Jean-Baptiste",
+        "popularity": 0.077,
+        "profile_path": null,
+        "credit_id": "636fe49099259c007df1311d",
+        "department": "Camera",
+        "job": "Steadicam Operator"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3782808,
+        "known_for_department": "Production",
+        "name": "Anna Maues",
+        "original_name": "Anna Maues",
+        "popularity": 0.0429,
+        "profile_path": null,
+        "credit_id": "636fe4e999259c0082452d99",
+        "department": "Production",
+        "job": "Production Assistant"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1594537,
+        "known_for_department": "Writing",
+        "name": "Liu Cixin",
+        "original_name": "Liu Cixin",
+        "popularity": 0.9082,
+        "profile_path": "/3tkt4ZYVJpM8gM36R4Agi4w7gae.jpg",
+        "credit_id": "63ba8d2aa6e2d20092101056",
+        "department": "Writing",
+        "job": "Novel"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1100748,
+        "known_for_department": "Directing",
+        "name": "Frant Gwo",
+        "original_name": "郭帆",
+        "popularity": 1.6493,
+        "profile_path": "/wvRKczLxlqeDRMsJilWZpbHM9QA.jpg",
+        "credit_id": "63ba8cdeae6f093c4e65c333",
+        "department": "Writing",
+        "job": "Screenplay"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4219720,
+        "known_for_department": "Production",
+        "name": "Li Jie",
+        "original_name": "李捷",
+        "popularity": 1.2417,
+        "profile_path": "/PDE1mqcqZdPXBPuPjZshNFegZt.jpg",
+        "credit_id": "65d25e4e66751d018632b612",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1926589,
+        "known_for_department": "Camera",
+        "name": "Liu Yin",
+        "original_name": "Liu Yin",
+        "popularity": 0.3872,
+        "profile_path": "/nscKF0hVwBThBm3NNSUQ3LeErJ5.jpg",
+        "credit_id": "63d0d0949f51af0086459000",
+        "department": "Camera",
+        "job": "Director of Photography"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1323173,
+        "known_for_department": "Sound",
+        "name": "Roc Chen",
+        "original_name": "阿鲲",
+        "popularity": 0.9895,
+        "profile_path": "/zaAmLbksc4bxTr21dhveZ6I7WRr.jpg",
+        "credit_id": "63d0d0789e45860081359c56",
+        "department": "Sound",
+        "job": "Original Music Composer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2876313,
+        "known_for_department": "Production",
+        "name": "Luca Liang",
+        "original_name": "梁琳",
+        "popularity": 0.7581,
+        "profile_path": "/rj3ycvcxYEK8S7YIeTXpgtfbQLx.jpg",
+        "credit_id": "640b9589899da2007bc84bc7",
+        "department": "Crew",
+        "job": "Manager of Operations"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4022974,
+        "known_for_department": "Crew",
+        "name": "Lu Jia",
+        "original_name": "Lu Jia",
+        "popularity": 1.1373,
+        "profile_path": "/5CM2pdfn5szlCsTGy82Ctuw2JoG.jpg",
+        "credit_id": "64439abcb3f6f504f49e6cfa",
+        "department": "Crew",
+        "job": "Presenter"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 78871,
+        "known_for_department": "Acting",
+        "name": "Wu Jing",
+        "original_name": "吴京",
+        "popularity": 2.9523,
+        "profile_path": "/cFuATO6PnffJXtsYF7BRqhCXlwe.jpg",
+        "credit_id": "643bc37f37806204e615e6e7",
+        "department": "Crew",
+        "job": "Presenter"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1594537,
+        "known_for_department": "Writing",
+        "name": "Liu Cixin",
+        "original_name": "Liu Cixin",
+        "popularity": 0.9082,
+        "profile_path": "/3tkt4ZYVJpM8gM36R4Agi4w7gae.jpg",
+        "credit_id": "643bc3702ea6b9051751408b",
+        "department": "Production",
+        "job": "Executive Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1133016,
+        "known_for_department": "Production",
+        "name": "Wang Yibing",
+        "original_name": "王易冰",
+        "popularity": 0.6641,
+        "profile_path": "/fZOZf8F3KZTZ8ue3KbRDMZtYtWC.jpg",
+        "credit_id": "643bc32cda10f01b4464abc9",
+        "department": "Crew",
+        "job": "Presenter"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2385110,
+        "known_for_department": "Production",
+        "name": "Yaping Li",
+        "original_name": "Yaping Li",
+        "popularity": 0.2317,
+        "profile_path": "/zrXt62IamGSDr43mWIE4H0h4XW6.jpg",
+        "credit_id": "643bc7028ec4ab0446aed6a4",
+        "department": "Crew",
+        "job": "Presenter"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1191795,
+        "known_for_department": "Acting",
+        "name": "Gong Geer",
+        "original_name": "Gong Geer",
+        "popularity": 0.2684,
+        "profile_path": "/iefh3KyxdBx4RWYaolg7z2ZD3iK.jpg",
+        "credit_id": "643bcb3e378062051015e922",
+        "department": "Writing",
+        "job": "Screenplay"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2250465,
+        "known_for_department": "Production",
+        "name": "Liu Kailuo",
+        "original_name": "Liu Kailuo",
+        "popularity": 0.0516,
+        "profile_path": "/vkJOccZiYmbE5jPtrItDUlXOOHQ.jpg",
+        "credit_id": "643bccc9378062049215eaf9",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2250468,
+        "known_for_department": "Production",
+        "name": "Wang Hong",
+        "original_name": "Wang Hong",
+        "popularity": 0.8707,
+        "profile_path": null,
+        "credit_id": "643e6c41f288380559aab8d4",
+        "department": "Production",
+        "job": "Production Manager"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 4016271,
+        "known_for_department": "Production",
+        "name": "Wu Xian",
+        "original_name": "Wu Xian",
+        "popularity": 0.0958,
+        "profile_path": null,
+        "credit_id": "643e6a94d7a70a04b3ab1b1b",
+        "department": "Production",
+        "job": "Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2095747,
+        "known_for_department": "Acting",
+        "name": "Andrew Yan Hua",
+        "original_name": "严华",
+        "popularity": 0.9129,
+        "profile_path": "/6WesxAnQS6nnvX0ZO4dLO3U8zrj.jpg",
+        "credit_id": "643e712543250f04ca512173",
+        "department": "Crew",
+        "job": "Stunt Coordinator"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2304114,
+        "known_for_department": "Sound",
+        "name": "Wang Danrong",
+        "original_name": "Wang Danrong",
+        "popularity": 0.0214,
+        "profile_path": "/kF3PyeTwPXnJ4nP2awqsV5o3K7G.jpg",
+        "credit_id": "643e70ccf2883804fdaabc5a",
+        "department": "Sound",
+        "job": "Sound Supervisor"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2304120,
+        "known_for_department": "Editing",
+        "name": "Ye Ruchang",
+        "original_name": "叶濡畅",
+        "popularity": 0.6213,
+        "profile_path": "/uZeyikhD8K6jVxv4U8yC5FDozoZ.jpg",
+        "credit_id": "643e6cfbc6006d04ff809f74",
+        "department": "Writing",
+        "job": "Screenplay"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2251804,
+        "known_for_department": "Writing",
+        "name": "Yang Zhixue",
+        "original_name": "杨治学",
+        "popularity": 0.816,
+        "profile_path": "/f4qOLpaDA0q5bkDQn39yXwwUgu6.jpg",
+        "credit_id": "643e6ce3f2883804a1aaba0d",
+        "department": "Writing",
+        "job": "Screenplay"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3111455,
+        "known_for_department": "Production",
+        "name": "Wang Hongwei",
+        "original_name": "Wang Hongwei",
+        "popularity": 0.1687,
+        "profile_path": "/9Xrw5xsGNf6Ue4Vc62V8mJdUVai.jpg",
+        "credit_id": "643e6cc8e0ca7f04b50702b5",
+        "department": "Writing",
+        "job": "Script Consultant"
+      },
+      {
+        "adult": false,
+        "gender": 0,
+        "id": 3191619,
+        "known_for_department": "Crew",
+        "name": "Zhu Yanfeng",
+        "original_name": "Zhu Yanfeng",
+        "popularity": 0.0474,
+        "profile_path": null,
+        "credit_id": "643e70ecf2883804cfaabc80",
+        "department": "Sound",
+        "job": "Sound Designer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2463885,
+        "known_for_department": "Production",
+        "name": "Fu Ruoqing",
+        "original_name": "Fu Ruoqing",
+        "popularity": 0.1248,
+        "profile_path": "/pD9zTm9bB4gZCYUIjYPoC4NTfAL.jpg",
+        "credit_id": "644f5924124c8d02dd7e4df7",
+        "department": "Production",
+        "job": "Executive Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3853837,
+        "known_for_department": "Production",
+        "name": "Wang Ke",
+        "original_name": "王柯",
+        "popularity": 0.8275,
+        "profile_path": null,
+        "credit_id": "644f5b0e124c8d02e77e3de1",
+        "department": "Production",
+        "job": "Co-Executive Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 57618,
+        "known_for_department": "Production",
+        "name": "Wang Zhonglei",
+        "original_name": "王中磊",
+        "popularity": 1.8272,
+        "profile_path": "/iy9H7uNaEBrn9G7x04UwXRkA3gP.jpg",
+        "credit_id": "644f59ff6dc6c002f4ee7c90",
+        "department": "Production",
+        "job": "Co-Executive Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 121706,
+        "known_for_department": "Acting",
+        "name": "Wayne Chang",
+        "original_name": "Wayne Chang",
+        "popularity": 0.6313,
+        "profile_path": null,
+        "credit_id": "644f5d3b2fccee0302cdd79f",
+        "department": "Production",
+        "job": "Casting"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4038126,
+        "known_for_department": "Production",
+        "name": "Xiangjin Yin",
+        "original_name": "Xiangjin Yin",
+        "popularity": 0.0656,
+        "profile_path": "/mCEszDY4eD9weHGtwJIWb1EKeWK.jpg",
+        "credit_id": "644f91fa23a31402e57c0d8e",
+        "department": "Crew",
+        "job": "Presenter"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 64425,
+        "known_for_department": "Production",
+        "name": "Albert Yeung",
+        "original_name": "Albert Yeung",
+        "popularity": 0.2174,
+        "profile_path": "/5ZGpfKbQ00A7IF67Ej7WA5YHD6d.jpg",
+        "credit_id": "644fc222124c8d02dd7eea63",
+        "department": "Crew",
+        "job": "Presenter"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2250468,
+        "known_for_department": "Production",
+        "name": "Wang Hong",
+        "original_name": "Wang Hong",
+        "popularity": 0.8707,
+        "profile_path": null,
+        "credit_id": "645fe7326e0d7200ff4b2451",
+        "department": "Production",
+        "job": "Executive Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3257735,
+        "known_for_department": "Editing",
+        "name": "Ye Xiang",
+        "original_name": "Ye Xiang",
+        "popularity": 0.2189,
+        "profile_path": null,
+        "credit_id": "645fe861e3fa2f0145ec0a88",
+        "department": "Editing",
+        "job": "Editor"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2151104,
+        "known_for_department": "Directing",
+        "name": "Rao Xiaozhi",
+        "original_name": "饶晓志",
+        "popularity": 0.8553,
+        "profile_path": "/AoPunEmvRy52KRJPGofjcjZjubp.jpg",
+        "credit_id": "645fe74b8c44b901706ea149",
+        "department": "Crew",
+        "job": "Presenter"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4023688,
+        "known_for_department": "Crew",
+        "name": "Binxing Fu",
+        "original_name": "Binxing Fu",
+        "popularity": 0.0461,
+        "profile_path": "/lRcYi8uh1FyT5u3861gX5GSJp8r.jpg",
+        "credit_id": "645fe75adbbb420119f46ae1",
+        "department": "Crew",
+        "job": "Presenter"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 63574,
+        "known_for_department": "Editing",
+        "name": "Cheung Ka-Fai",
+        "original_name": "張嘉輝",
+        "popularity": 2.2471,
+        "profile_path": "/3i7L9OYMFvJUHBrVyd6C50BlhiO.jpg",
+        "credit_id": "645fe714ef8b32011b13842a",
+        "department": "Editing",
+        "job": "Editor"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4851443,
+        "known_for_department": "Production",
+        "name": "Meng Jun",
+        "original_name": "孟钧",
+        "popularity": 0.945,
+        "profile_path": null,
+        "credit_id": "66a431d2c221287d212245ca",
+        "department": "Production",
+        "job": "Co-Executive Producer"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2788761,
+        "known_for_department": "Visual Effects",
+        "name": "Allen Wei",
+        "original_name": "Allen Wei",
+        "popularity": 0.0954,
+        "profile_path": "/9SjMjXvvGkCoAIehMVaYL5AS5X9.jpg",
+        "credit_id": "685407751a22b18241c7275f",
+        "department": "Visual Effects",
+        "job": "Visual Effects"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3834327,
+        "known_for_department": "Visual Effects",
+        "name": "Eric Xu",
+        "original_name": "Eric Xu",
+        "popularity": 0.2565,
+        "profile_path": "/g3rZnndOiBpvtxEPe5Vm6LLAQFL.jpg",
+        "credit_id": "6854079019e9ba0db055059f",
+        "department": "Visual Effects",
+        "job": "Visual Effects"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1594537,
+        "known_for_department": "Writing",
+        "name": "Liu Cixin",
+        "original_name": "Liu Cixin",
+        "popularity": 0.9082,
+        "profile_path": "/3tkt4ZYVJpM8gM36R4Agi4w7gae.jpg",
+        "credit_id": "68540c5e1426ce9b110cf259",
+        "department": "Writing",
+        "job": "Writer"
+      }
+    ]
+  },
+  "alternative_titles": {
+    "titles": [
+      {
+        "iso_3166_1": "CN",
+        "title": "Liú Làng Dì Qiú 2",
+        "type": "pinyin"
+      },
+      {
+        "iso_3166_1": "US",
+        "title": "The Wandering Earth 2",
+        "type": "alternative spelling"
+      },
+      {
+        "iso_3166_1": "CN",
+        "title": "《流浪地球》前传",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "DE",
+        "title": "Die Wandernde Erde 2",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "RU",
+        "title": "Блуждающая Земля 2",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "TH",
+        "title": "ฝ่ามหันตภัยเพลิงสุริยะ",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "CN",
+        "title": "流浪地球2",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "DE",
+        "title": "Die Wandernde Erde II",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "CZ",
+        "title": "Země na pouti 2",
+        "type": "festivalový název"
+      },
+      {
+        "iso_3166_1": "US",
+        "title": "The Wandering Earth II",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "CO",
+        "title": "La Tierra errante II",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "EE",
+        "title": "Rändav maa 2",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "HU",
+        "title": "A vándorló Föld 2.",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "JP",
+        "title": "流転の地球－太陽系脱出計画",
+        "type": ""
+      }
+    ]
+  },
+  "translations": {
+    "translations": [
+      {
+        "iso_3166_1": "US",
+        "iso_639_1": "en",
+        "name": "English",
+        "english_name": "English",
+        "data": {
+          "homepage": "https://trinitycineasia.com/in-cinemas/the-wandering-earth-ii/",
+          "overview": "Humans built huge engines on the surface of the earth to find a new home. But the road to the universe is perilous. In order to save earth, young people once again have to step forward to start a race against time for life and death.",
+          "runtime": 173,
+          "tagline": "",
+          "title": "The Wandering Earth II"
+        }
+      },
+      {
+        "iso_3166_1": "CN",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "homepage": "",
+          "overview": "在并不遥远的未来，太阳急速衰老与膨胀，再过几百年整个太阳系将被它吞噬毁灭。为了应对这场史无前例的危机，地球各国放下芥蒂，成立联合政府，试图寻找人类存续的出路。通过摸索与考量，最终推着地球逃出太阳系的“移山计划”获得压倒性胜利。人们着手建造上万台巨大的行星发动机，带着地球踏上漫漫征程。满腔赤诚的刘培强和韩朵朵历经层层考验成为航天员大队的一员，并由此相知相恋。但是漫漫征途的前方，仿佛有一股神秘的力量不断破坏者人类的自救计划。看似渺小的刘培强、量子科学家图恒宇、联合政府中国代表周喆直以及无数平凡的地球人，构成了这项伟大计划的重要一环……本片根据刘慈欣同名科幻小说改编。",
+          "runtime": 173,
+          "tagline": "爱是穿越一切的力量",
+          "title": "流浪地球2"
+        }
+      },
+      {
+        "iso_3166_1": "FR",
+        "iso_639_1": "fr",
+        "name": "Français",
+        "english_name": "French",
+        "data": {
+          "homepage": "",
+          "overview": "Après avoir appris que le soleil s'éteint, les humains construisent des moteurs géants dans une ultime tentative de propulser la Terre vers un nouveau système solaire, laissant le sort de l'humanité entre les mains des quelques personnes pour accepter cette mission périlleuse.",
+          "runtime": 173,
+          "tagline": "",
+          "title": "The Wandering Earth II : La fin des temps"
+        }
+      },
+      {
+        "iso_3166_1": "PL",
+        "iso_639_1": "pl",
+        "name": "Polski",
+        "english_name": "Polish",
+        "data": {
+          "homepage": "",
+          "overview": "Akcja filmu dzieje się w niedalekiej przyszłości. Nasz układ słoneczny zaczyna dotykać seria katastrof, na czele z umierającym Słońcem. Naukowcy muszą znaleźć rozwiązanie tego problemu. Rozpoczyna się desperacka walka z czasem, której stawką jest przetrwanie całego ludzkiego gatunku. Czy uda im się pokonać wszystkie przeszkody i zapewnić przetrwanie naszej planecie?",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Wędrująca Ziemia 2"
+        }
+      },
+      {
+        "iso_3166_1": "TR",
+        "iso_639_1": "tr",
+        "name": "Türkçe",
+        "english_name": "Turkish",
+        "data": {
+          "homepage": "",
+          "overview": "Yakın gelecekte, güneşin hızla yanmakta olduğunu ve bu süreçte Dünya'yı yakında yok edeceğini öğrendikten sonra insanlar, gezegeni güneşin ateşli parlamalarının çok uzağına, yeni bir güneş sistemine itmek için devasa motorlar yaparlar. Bununla birlikte, evrene yolculuk tehlikelidir ve insanlığın hayatta kalması için son şansı, dünyayı kurtarmak için tehlikeli bir ölüm kalım operasyonunu gerçekleştirecek kadar cesur bir grup gence bağlı olacaktır.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Gezegenler Savaşı"
+        }
+      },
+      {
+        "iso_3166_1": "ES",
+        "iso_639_1": "es",
+        "name": "Español",
+        "english_name": "Spanish",
+        "data": {
+          "homepage": "",
+          "overview": "Después de descubrir que el Sol se está apagando rápidamente, la humanidad emprende una búsqueda para evitar la extinción. En un intento desesperado por impulsar la Tierra hacia un nuevo sistema solar, se construyen enormes motores en la superficie terrestre. En una carrera a contrarreloj, se deja el destino de la humanidad en manos de aquellos lo suficientemente valientes como para aceptar la peligrosa misión.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "La Tierra Errante II"
+        }
+      },
+      {
+        "iso_3166_1": "RU",
+        "iso_639_1": "ru",
+        "name": "Pусский",
+        "english_name": "Russian",
+        "data": {
+          "homepage": "",
+          "overview": "Солнце угасает. Последний шанс человечества на спасение — поиск нового дома. Объединившись, люди находят возможность изменить орбиту Земли, отправившись в неизвестность. Но это путешествие на много сотен световых лет во тьму несёт за собой разрушение и хаос. Планета растерзана катаклизмами, в которых выживут далеко не все. И всё же только в бесконечной пустоте можно обрести новую жизнь...",
+          "runtime": 173,
+          "tagline": "«Прощай, солнечная система»",
+          "title": "Блуждающая Земля 2"
+        }
+      },
+      {
+        "iso_3166_1": "VN",
+        "iso_639_1": "vi",
+        "name": "Tiếng Việt",
+        "english_name": "Vietnamese",
+        "data": {
+          "homepage": "",
+          "overview": "Con người đã chế tạo những động cơ khổng lồ trên bề mặt trái đất để tìm một ngôi nhà mới. Nhưng con đường đến với vũ trụ thật nguy hiểm. Để cứu trái đất, những người trẻ tuổi một lần nữa phải bước ra để bắt đầu một cuộc chạy đua với thời gian cho sự sống và cái chết.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Địa Cầu Lưu Lạc 2"
+        }
+      },
+      {
+        "iso_3166_1": "HK",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "homepage": "",
+          "overview": "太陽即將毀滅，人類在地球表面建造出巨大的推進器，尋找新的家園。然而宇宙之路危機四伏，為了拯救地球，流浪地球時代的年輕人再次挺身而出，展開爭分奪秒的生死之戰。",
+          "runtime": 0,
+          "tagline": "",
+          "title": "流浪地球2"
+        }
+      },
+      {
+        "iso_3166_1": "KR",
+        "iso_639_1": "ko",
+        "name": "한국어/조선말",
+        "english_name": "Korean",
+        "data": {
+          "homepage": "",
+          "overview": "태양계 소멸의 위기를 맞은 인류는 지구 표면에 거대한 엔진을 달아 궤도를 옮기는 ‘유랑지구 프로젝트’에 돌입한다. 하지만, 데이터베이스로 영생을 가지려는 ‘디지털 라이프’와 대립하게 되며 프로젝트는 난관에 부딪히게 되고, 그 과정 속 달과의 충돌이라는 예상치 못한 대재앙에 놓이게 되는데… 살아남기 위한 선택은 단 하나, 달을 파괴하라!",
+          "runtime": 0,
+          "tagline": "인류 생존을 위한  마지막 프로젝트의 서막!",
+          "title": "유랑지구 2"
+        }
+      },
+      {
+        "iso_3166_1": "CZ",
+        "iso_639_1": "cs",
+        "name": "Český",
+        "english_name": "Czech",
+        "data": {
+          "homepage": "",
+          "overview": "Lidé postavili na povrchu Země obrovské motory, aby našli nový domov. Cesta do vesmíru je však nebezpečná. Pro záchranu Země musí mladí lidé opět vystoupit a zahájit závod s časem na život a na smrt.",
+          "runtime": 173,
+          "tagline": "",
+          "title": "The Wandering Earth II"
+        }
+      },
+      {
+        "iso_3166_1": "BR",
+        "iso_639_1": "pt",
+        "name": "Português",
+        "english_name": "Portuguese",
+        "data": {
+          "homepage": "",
+          "overview": "Os humanos construíram enormes motores na superfície da terra para encontrar um novo lar. Mas a estrada para o universo é perigosa. Para salvar a Terra, os jovens mais uma vez precisam dar um passo à frente para iniciar uma corrida contra o tempo pela vida ou pela morte.",
+          "runtime": 173,
+          "tagline": "",
+          "title": "Terra à Deriva 2: Destino"
+        }
+      },
+      {
+        "iso_3166_1": "MX",
+        "iso_639_1": "es",
+        "name": "Español",
+        "english_name": "Spanish",
+        "data": {
+          "homepage": "",
+          "overview": "Tras descubrir que el Sol se apaga rápidamente, la humanidad construye enormes motores para mover la Tierra a un nuevo sistema solar. En una carrera contra el tiempo, valientes héroes asumen la misión de salvar a la humanidad de la extinción.",
+          "runtime": 175,
+          "tagline": "",
+          "title": "La Tierra errante II"
+        }
+      },
+      {
+        "iso_3166_1": "TH",
+        "iso_639_1": "th",
+        "name": "ภาษาไทย",
+        "english_name": "Thai",
+        "data": {
+          "homepage": "",
+          "overview": "มนุษย์สร้างเครื่องยนต์ขนาดใหญ่บนพื้นผิวโลกเพื่อหาบ้านใหม่ แต่เส้นทางสู่จักรวาลนั้นเต็มไปด้วยอันตราย เพื่อช่วยโลก คนหนุ่มสาวต้องก้าวไปข้างหน้าอีกครั้งเพื่อเริ่มการแข่งขันกับเวลาเพื่อชีวิตและความตาย",
+          "runtime": 173,
+          "tagline": "ไม่มีครั้งไหนที่มนุษยชาติจะเข้าใกล้ความตายมากเท่าครั้งนี้!!!",
+          "title": "ฝ่ามหันตภัยเพลิงสุริยะ"
+        }
+      },
+      {
+        "iso_3166_1": "PT",
+        "iso_639_1": "pt",
+        "name": "Português",
+        "english_name": "Portuguese",
+        "data": {
+          "homepage": "",
+          "overview": "Os humanos construíram enormes motores na superfície da terra para encontrar um novo lar. Mas a estrada para o universo é perigosa. Para salvar a Terra, os jovens mais uma vez precisam dar um passo à frente para iniciar uma corrida contra o tempo pela vida ou pela morte.",
+          "runtime": 173,
+          "tagline": "",
+          "title": "Terra à Deriva 2"
+        }
+      },
+      {
+        "iso_3166_1": "SA",
+        "iso_639_1": "ar",
+        "name": "العربية",
+        "english_name": "Arabic",
+        "data": {
+          "homepage": "",
+          "overview": "بنى البشر محركات ضخمة على سطح الأرض لإيجاد منزل جديد. لكن الطريق إلى الكون محفوف بالمخاطر. من أجل إنقاذ الأرض ، يجب على الشباب مرة أخرى أن يتقدموا لبدء السباق",
+          "runtime": 0,
+          "tagline": "",
+          "title": "تجول الأرض ٢"
+        }
+      },
+      {
+        "iso_3166_1": "UA",
+        "iso_639_1": "uk",
+        "name": "Український",
+        "english_name": "Ukrainian",
+        "data": {
+          "homepage": "",
+          "overview": "Людство продовжує подорож Всесвітом у пошуках нового притулку і стикається з черговими труднощами.",
+          "runtime": 0,
+          "tagline": "До побачення, Сонячна система",
+          "title": "Мандрівна Земля 2"
+        }
+      },
+      {
+        "iso_3166_1": "TW",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "homepage": "",
+          "overview": "距今不久的未來，科學家發現太陽正在急速膨脹，很快將吞噬整個太陽系。為了拯救全人類，世界各國組成聯合政府，傾全球之力研發自救計畫，最後由中國提出的「移山計畫」雀屏中選。「移山計畫」預計在地球表面建造數萬台行星發動機，驅使地球脫離太陽系，前往宇宙尋找新家園。面對計畫過程的重重險阻，人類最終能夠得救嗎？",
+          "runtime": 0,
+          "tagline": "流浪地球2",
+          "title": "流浪地球2"
+        }
+      },
+      {
+        "iso_3166_1": "JP",
+        "iso_639_1": "ja",
+        "name": "日本語",
+        "english_name": "Japanese",
+        "data": {
+          "homepage": "",
+          "overview": "そう遠くない未来に起こりえる太陽系消滅に備え、地球連合政府による1万基に及ぶロケットエンジンを使って、地球を太陽系から離脱させる巨大プロジェクト「移山計画」が始動! 人類存亡の危機を目前に、各国の思惑や、内紛、争いが相次ぐ中、自らの危険を顧みず立ち向かった人々がいた。亡き妻への想いを胸に、宇宙へと旅立つ飛行士・リウ。禁断のデジタル技術によって、事故死した娘を蘇らせようとする量子科学研究者・トゥー。そして、大きな決断を迫られる連合政府の中国代表・ジョウ。多くの犠牲を払いながら、地球と人類の存亡、そして希望を懸けた最終作戦が始まった!",
+          "runtime": 0,
+          "tagline": "SF小説「三体」著者の同名短編小説を基に映画化した中国SF超大作!",
+          "title": "流転の地球 -太陽系脱出計画-"
+        }
+      },
+      {
+        "iso_3166_1": "IL",
+        "iso_639_1": "he",
+        "name": "עִבְרִית",
+        "english_name": "Hebrew",
+        "data": {
+          "homepage": "",
+          "overview": "בני אדם בנו מנועים ענקיים על פני כדור הארץ כדי למצוא בית חדש. אבל הדרך ליקום מסוכנת. כדי להציל את כדור הארץ, צעירים צריכים שוב לצעוד קדימה כדי להתחיל במירוץ נגד הזמן לחיים ולמוות.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "האדמה הנודדת 2"
+        }
+      },
+      {
+        "iso_3166_1": "MY",
+        "iso_639_1": "my",
+        "name": "",
+        "english_name": "Burmese",
+        "data": {
+          "homepage": "",
+          "overview": "ကမ္ဘာကြီးဟာ Solar Crisis လို့ခေါ်တဲ့ နေမင်းကြီး ပေါက်ကွဲပြန့်ကားလာတဲ့အန္တရာယ်ကြောင့် နှစ်ပေါင်း ၃၀၀ နေရင် ကမ္ဘာပျက်တော့မယ့် အခြေအနေကိုရောက်လာပါပြီ။ ဒီအခြေအနေက‌နေ ရုန်းထွက်ဖို့ ကမ္ဘာ့နိုင်ငံပေါင်းစုံအဖြေရှာကြရင်းနောက်ဆုံးမှာတော့ ကမ္ဘာကြီးကို နေအဖွဲ့အစည်းကနေ ဝေးရာကိုသယ်ထုတ်သွားပြီး အခြားနေအဖွဲ့အစည်းတစ်ခုထဲမှာရှင်သန်ဖို့ ကမ္ဘာ့အင်ဂျင်ပေါင်း ၁၀၀၀၀ ကိုတည်ဆောက်ပြီး ခရီးသွားကမ္ဘာစီမံကိန်းကို စတင်ခဲ့ကြပါတော့တယ်။ အဲဒီခရီးစဉ်ဟာ လဆွဲအားကနေ လွတ်အောင် လကို တွန်းထုတ်တာတွေ၊ အရံအစီအစဉ်အနေနဲ့ လကိုဖောက်ခွဲရတာတွေ စတဲ့အဆင့်ပေါင်းများစွာပါပြီး နှစ်ပေါင်း ၂၅၀၀ ကြာမြင့်မှာလည်းဖြစ်ပါတယ်။ ဒါ့အပြင် အဲဒီအစီအစဉ်ကို ဆန့်ကျင်ပြီး လူတွေကို Matrix ရုပ်ရှင်ထဲကလို ဒစ်ဂျစ်တယ်သက်ရှိတွေအဖြစ် ရှင်သင်စေချင်တဲ့အဖွဲ့ကလည်း လိုက်ပြီးတိုက်ခိုက်လာတဲ့အခါ အခက်အခဲပေါင်းသောင်းခြောက်ထောင်ကို ရင်ဆိုင်ရပါတော့တယ်။",
+          "runtime": 0,
+          "tagline": "",
+          "title": "The Wandering Earth II"
+        }
+      },
+      {
+        "iso_3166_1": "HU",
+        "iso_639_1": "hu",
+        "name": "Magyar",
+        "english_name": "Hungarian",
+        "data": {
+          "homepage": "",
+          "overview": "A Nap életciklusa végéhez közeledik, ezért az emberiség a Naprendszer elhagyására kényszerül. Hatalmas hajtóműveket építenek a Föld felszínére, hogy felgyorsítva a bolygót kilépjenek a csillagközi térbe, és új otthont keressenek maguknak. A még életben lévő emberek a felszín alá húzódnak, úticél az Alfa Centauri, az út tervezett hossza 2500 év...",
+          "runtime": 0,
+          "tagline": "",
+          "title": "A vándorló Föld 2."
+        }
+      },
+      {
+        "iso_3166_1": "HR",
+        "iso_639_1": "hr",
+        "name": "Hrvatski",
+        "english_name": "Croatian",
+        "data": {
+          "homepage": "",
+          "overview": "Ljudi su izgradili ogromne strojeve na površini Zemlje kako bi pronašli novi dom. Ali put do svemira je opasan. Kako bi spasili Zemlju, mladi ljudi ponovno moraju iskoračiti kako bi započeli utrku s vremenom na život i smrt.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Lutajuća Zemlja 2"
+        }
+      },
+      {
+        "iso_3166_1": "NL",
+        "iso_639_1": "nl",
+        "name": "Nederlands",
+        "english_name": "Dutch",
+        "data": {
+          "homepage": "",
+          "overview": "Mensen bouwden enorme motoren op het aardoppervlak om een nieuw thuis te vinden. Maar de weg naar het universum is gevaarlijk. Om de aarde te redden, moeten jonge mensen opnieuw naar voren stappen om een race tegen de klok op leven en dood te beginnen.",
+          "runtime": 173,
+          "tagline": "",
+          "title": "The Wandering Earth II"
+        }
+      },
+      {
+        "iso_3166_1": "BG",
+        "iso_639_1": "bg",
+        "name": "български език",
+        "english_name": "Bulgarian",
+        "data": {
+          "homepage": "",
+          "overview": "След сто години Слънцето ще погълне Земята. След още триста, ще изчезне цялата Слънчева система. Човечеството започва строежа на огромни двигатели по повърхността на Земята,  за да се отправи тя на път през звездите, в търсене на нов дом. Но пътят е осеян с трудности и опасности. Човечеството е изправено пред най-предизвикателната в историята си битка с времето, живота и смъртта, за да запази надеждата за бъдеще. Зрелищен, незабравим, изключителен фантастичен филм от ранга на западния \"Интерстелар\", по творба на удивителния Лиу Цъсин!",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Странстващата земя 2"
+        }
+      },
+      {
+        "iso_3166_1": "LT",
+        "iso_639_1": "lt",
+        "name": "Lietuvių",
+        "english_name": "Lithuanian",
+        "data": {
+          "homepage": "",
+          "overview": "Žmonės žemės paviršiuje statė didžiulius variklius, kad surastų naujus namus, tačiau kelias į visatą labai pavojingas. Kad išgelbėtų Žemę, jauni žmonės vėl turi pradėti lenktynes su laiku dėl gyvybės ir mirties.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Klajojanti žemė II"
+        }
+      },
+      {
+        "iso_3166_1": "ID",
+        "iso_639_1": "id",
+        "name": "Bahasa indonesia",
+        "english_name": "Indonesian",
+        "data": {
+          "homepage": "https://wellgousa.com/films/wandering-earth-ii",
+          "overview": "Dengan kehancuran matahari yang akan segera terjadi, umat manusia membangun pendorong raksasa di permukaan Bumi untuk mencari rumah baru. Namun, jalan menuju alam semesta penuh dengan krisis. Untuk menyelamatkan Bumi, orang-orang muda dari Era Bumi Pengembara sekali lagi melangkah maju dan terlibat dalam pertempuran hidup dan mati untuk setiap detiknya.",
+          "runtime": 173,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "FI",
+        "iso_639_1": "fi",
+        "name": "suomi",
+        "english_name": "Finnish",
+        "data": {
+          "homepage": "",
+          "overview": "Lähitulevaisuudessa aurinko on sammumassa. Planeetan pelastamiseksi ihmiset ovat rakentaneet jättimäisiä moottoreita, jotka muuttavat maapallon avaruusalukseksi, ja pyrkivät asettumaan uuteen aurinkokuntaan. Matka avaruuteen on kuitenkin arvaamaton ja täynnä vaaroja. Maan ja ihmiskunnan viimeinen toivo on ryhmä nuoria sankareita, jotka ovat tarpeeksi rohkeita kohtaamaan vaarat silmästä silmään.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "The Wandering Earth II"
+        }
+      },
+      {
+        "iso_3166_1": "DK",
+        "iso_639_1": "da",
+        "name": "Dansk",
+        "english_name": "Danish",
+        "data": {
+          "homepage": "",
+          "overview": "Mennesker byggede enorme motorer på jordens overflade for at finde et nyt hjem. Men vejen til universet er farefuld. For at redde jorden må unge igen træde frem for at starte et kapløb mod tiden på liv og død.",
+          "runtime": 173,
+          "tagline": "",
+          "title": "The Wandering Earth 2"
+        }
+      },
+      {
+        "iso_3166_1": "IT",
+        "iso_639_1": "it",
+        "name": "Italiano",
+        "english_name": "Italian",
+        "data": {
+          "homepage": "",
+          "overview": "Gli esseri umani hanno costruito enormi motori sulla superficie della terra per trovare una nuova casa. Ma la strada verso l'universo è pericolosa. Per salvare la terra, i giovani devono ancora una volta farsi avanti per iniziare una corsa contro il tempo per la vita e la morte.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "The Wandering Earth - L'inizio"
+        }
+      },
+      {
+        "iso_3166_1": "DE",
+        "iso_639_1": "de",
+        "name": "Deutsch",
+        "english_name": "German",
+        "data": {
+          "homepage": "",
+          "overview": "Die Menschen haben auf der Erdoberfläche riesige Maschinen gebaut, um eine neue Heimat zu finden. Doch der Weg ins Universum ist gefährlich. Um die Erde zu retten, müssen wieder einmal junge Menschen vortreten und einen Wettlauf gegen die Zeit um Leben und Tod beginnen.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Die wandernde Erde 2"
+        }
+      },
+      {
+        "iso_3166_1": "RS",
+        "iso_639_1": "sr",
+        "name": "Srpski",
+        "english_name": "Serbian",
+        "data": {
+          "homepage": "",
+          "overview": "Људи су направили огромне моторе на површини земље да би пронашли нови дом. Али пут до универзума је опасан. Да би спасили земљу, млади људи поново морају искорачити да започну трку са временом за живот и смрт.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Лутајућа земља 2"
+        }
+      },
+      {
+        "iso_3166_1": "GR",
+        "iso_639_1": "el",
+        "name": "ελληνικά",
+        "english_name": "Greek",
+        "data": {
+          "homepage": "",
+          "overview": "Στο εγγύς μέλλον, αφού μαθαίνουν ότι ο ήλιος καίγεται ταχύτατα και θα εξαφανίσει τη Γη κατά τη διαδικασία αυτή, οι άνθρωποι κατασκευάζουν τεράστιες μηχανές για να προωθήσουν τον πλανήτη σε ένα νέο ηλιακό σύστημα, μακριά από τις πύρινες εκλάμψεις του ήλιου. Ωστόσο, το ταξίδι προς το σύμπαν είναι επικίνδυνο και η τελευταία ευκαιρία της ανθρωπότητας να επιβιώσει θα εξαρτηθεί από μια ομάδα νέων που θα είναι αρκετά γενναίοι για να αναλάβουν και να εκτελέσουν μια επικίνδυνη επιχείρηση ζωής ή θανάτου για να σώσουν τη Γη...",
+          "runtime": 0,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "CA",
+        "iso_639_1": "fr",
+        "name": "Français",
+        "english_name": "French",
+        "data": {
+          "homepage": "",
+          "overview": "Après avoir appris que le soleil s'éteint, les humains construisent des moteurs géants dans une ultime tentative de propulser la Terre vers un nouveau système solaire, laissant le sort de l'humanité entre les mains des quelques personnes pour accepter cette mission périlleuse.",
+          "runtime": 173,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "ES",
+        "iso_639_1": "ca",
+        "name": "Català",
+        "english_name": "Catalan",
+        "data": {
+          "homepage": "",
+          "overview": "Després de descobrir que el Sol s'està apagant ràpidament, la humanitat emprèn una cerca per evitar l'extinció. En un intent desesperat per impulsar la Terra cap a un nou sistema solar, es construeixen enormes motors a la superfície terrestre. En una carrera a contrarellotge, es deixa el destí de la humanitat en mans d'aquells prou valents per acceptar la perillosa missió.",
+          "runtime": 0,
+          "tagline": "",
+          "title": ""
+        }
+      }
+    ]
+  },
+  "external_ids": {
+    "imdb_id": "tt13539646",
+    "wikidata_id": "Q108659445",
+    "facebook_id": null,
+    "instagram_id": null,
+    "twitter_id": null
+  }
+}

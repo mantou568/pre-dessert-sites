@@ -1,0 +1,25 @@
+{
+  "results": [
+    {
+      "descriptors": [],
+      "iso_3166_1": "BR",
+      "rating": "14"
+    },
+    {
+      "descriptors": [],
+      "iso_3166_1": "US",
+      "rating": "TV-14"
+    },
+    {
+      "descriptors": [],
+      "iso_3166_1": "SG",
+      "rating": "PG13"
+    },
+    {
+      "descriptors": [],
+      "iso_3166_1": "KR",
+      "rating": "12"
+    }
+  ],
+  "id": 220269
+}

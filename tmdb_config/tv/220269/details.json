@@ -1,0 +1,517 @@
+{
+  "adult": false,
+  "backdrop_path": "/hew9LSQW4wk63aN1Z7cEBTISL9B.jpg",
+  "created_by": [
+    {
+      "id": 4909350,
+      "credit_id": "66cf5e5e6a3e5db859dd341e",
+      "name": "蓬莱客",
+      "original_name": "蓬莱客",
+      "gender": 1,
+      "profile_path": null
+    }
+  ],
+  "episode_run_time": [
+    46
+  ],
+  "first_air_date": "2025-05-13",
+  "genres": [
+    {
+      "id": 18,
+      "name": "剧情"
+    }
+  ],
+  "homepage": "https://v.qq.com/x/cover/mzc00200kqpbtfg.html",
+  "id": 220269,
+  "in_production": false,
+  "languages": [
+    "zh"
+  ],
+  "last_air_date": "2025-05-29",
+  "last_episode_to_air": {
+    "id": 6229781,
+    "name": "蛮蛮一劭甜蜜带娃终得圆满",
+    "overview": "君为我折腰，我亦为君倾倒。\n\n魏俨率边州军驰援渔郡，击溃薛泰保徐夫人无恙。磐邑城下大乔为破比彘心魔坠楼殉情，比彘联手魏劭斩杀刘琰。苏娥皇面具脱落遭侍女反噬，绝望自刎。魏梁葬礼上小桃以染血兰草冥婚，魏家四兵器合葬忠魂。永宁渠终成，魏劭缺席献鹿礼哄子，乱世烽烟散尽，家国安宁终得“折腰”之韵。",
+    "vote_average": 10.0,
+    "vote_count": 2,
+    "air_date": "2025-05-29",
+    "episode_number": 36,
+    "episode_type": "finale",
+    "production_code": "",
+    "runtime": 44,
+    "season_number": 1,
+    "show_id": 220269,
+    "still_path": "/eAC35yq3ohyTx3UMARVtJgVROBP.jpg"
+  },
+  "name": "折腰",
+  "next_episode_to_air": null,
+  "networks": [
+    {
+      "id": 2007,
+      "logo_path": "/6Lfll43wYG2eyereOBjpYFRSGs4.png",
+      "name": "Tencent Video",
+      "origin_country": "CN"
+    }
+  ],
+  "number_of_episodes": 36,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "CN"
+  ],
+  "original_language": "zh",
+  "original_name": "折腰",
+  "overview": "聪慧机敏系家国的乔家女郎小乔（宋祖儿 饰），与有勇有谋心纯善的魏家主公魏劭（刘宇宁 饰）联姻，起初二人因祖辈恩怨有所隔阂，过着相互试探与攻守的婚后日常，夫妻俩的多番较量中有笑也有泪；在历经诸多危机后，小乔和魏劭逐渐被对方的才智谋略与豁达胸襟所吸引，回过神时早已水滴石穿，心系彼此。二人凭借夫妻默契化解了家族矛盾，携手还百姓和平与安宁。",
+  "popularity": 8.7806,
+  "poster_path": "/AZdlvg8Rij2bBkV0V9vJxsejZ1.jpg",
+  "production_companies": [
+    {
+      "id": 74457,
+      "logo_path": "/mPsCbXC5k20bpKErrbOQd1fG0L7.png",
+      "name": "Tencent Video",
+      "origin_country": "CN"
+    },
+    {
+      "id": 202501,
+      "logo_path": "/8mDrx7TPXZ0sTS1PkIzT0oXkmvC.png",
+      "name": "Fat Bear Productions",
+      "origin_country": "CN"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "CN",
+      "name": "China"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2025-05-13",
+      "episode_count": 36,
+      "id": 328619,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/il1dwMHt3BPOJZP22qcd0r7XQ1M.jpg",
+      "season_number": 1,
+      "vote_average": 10.0
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Mandarin",
+      "iso_639_1": "zh",
+      "name": "普通话"
+    }
+  ],
+  "status": "Ended",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 8.7,
+  "vote_count": 30,
+  "credits": {
+    "cast": [
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2104489,
+        "known_for_department": "Acting",
+        "name": "宋祖儿",
+        "original_name": "宋祖儿",
+        "popularity": 1.9175,
+        "profile_path": "/aB1MfYz5LDZmfULDnqGjRgsg25Z.jpg",
+        "character": "Xiao Qiao",
+        "credit_id": "63e8c10c63aad2008f85ddf0",
+        "order": 0
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2365187,
+        "known_for_department": "Acting",
+        "name": "刘宇宁",
+        "original_name": "刘宇宁",
+        "popularity": 3.6351,
+        "profile_path": "/6JvMALlglmZB5gutlheu4J5KjAI.jpg",
+        "character": "Wei Shao",
+        "credit_id": "63e8c13a6c849200851b1376",
+        "order": 1
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2328652,
+        "known_for_department": "Acting",
+        "name": "宣璐",
+        "original_name": "宣璐",
+        "popularity": 1.4033,
+        "profile_path": "/ynOnYHbuAVLBcRMM57nBDTgtVqs.jpg",
+        "character": "Su Ehuang",
+        "credit_id": "63e8c14ad388ae007d29c235",
+        "order": 2
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2610694,
+        "known_for_department": "Acting",
+        "name": "刘端端",
+        "original_name": "刘端端",
+        "popularity": 1.266,
+        "profile_path": "/zbgSyFZhlHwrYWc3oFSMjffnbPv.jpg",
+        "character": "Wei Yan",
+        "credit_id": "63e8c15ba2e602007bb79aa6",
+        "order": 3
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 593163,
+        "known_for_department": "Acting",
+        "name": "刘晓庆",
+        "original_name": "刘晓庆",
+        "popularity": 1.8568,
+        "profile_path": "/riJzuzveXFO9XIazAFtvCQOtkQN.jpg",
+        "character": "Madame Xu",
+        "credit_id": "64900960263462014e58f64f",
+        "order": 4
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 1613347,
+        "known_for_department": "Acting",
+        "name": "何泓姗",
+        "original_name": "何泓姗",
+        "popularity": 1.6789,
+        "profile_path": "/3D38zuXKzqmj7TegdDvhh8Bow1K.jpg",
+        "character": "Da Qiao",
+        "credit_id": "6490096c2f8d0900ad35c741",
+        "order": 5
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2916765,
+        "known_for_department": "Acting",
+        "name": "李雪琴",
+        "original_name": "李雪琴",
+        "popularity": 1.3907,
+        "profile_path": "/sr3mNlb7ute2hj8AOen8HR5Vm7e.jpg",
+        "character": "Xiao Tao",
+        "credit_id": "649009a9c3c891012d5eacc9",
+        "order": 6
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 3094484,
+        "known_for_department": "Acting",
+        "name": "魏子昕",
+        "original_name": "Wei Zixin",
+        "popularity": 0.4929,
+        "profile_path": "/bNqFs9jJWJZ4xmZNOpxe4KN5trh.jpg",
+        "character": "Gongsun Yang",
+        "credit_id": "649009e6559d2200ad832f44",
+        "order": 7
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2752787,
+        "known_for_department": "Acting",
+        "name": "敖子逸",
+        "original_name": "敖子逸",
+        "popularity": 1.266,
+        "profile_path": "/48npqkxuro0nTSYHjQBVyxTQLWF.jpg",
+        "character": "Qiao Ci",
+        "credit_id": "64900a0cc3c891014ebeb904",
+        "order": 8
+      }
+    ],
+    "crew": [
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4119604,
+        "known_for_department": "Costume & Make-Up",
+        "name": "Ivan Ai",
+        "original_name": "Ivan Ai",
+        "popularity": 0.2617,
+        "profile_path": null,
+        "credit_id": "649008cdc2ff3d00ffbc84c9",
+        "department": "Costume & Make-Up",
+        "job": "Costume Design"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 2231057,
+        "known_for_department": "Writing",
+        "name": "南镇",
+        "original_name": "Nan Zhen",
+        "popularity": 0.1882,
+        "profile_path": "/b1uLqkIAEG8m49tfzbhRxKWiPFF.jpg",
+        "credit_id": "66cf5e880ba4f82ae8a4729f",
+        "department": "Writing",
+        "job": "Screenplay"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 1870419,
+        "known_for_department": "Directing",
+        "name": "邓科",
+        "original_name": "Ke Deng",
+        "popularity": 0.3718,
+        "profile_path": "/b5LYGXjV4xUN7YZvwbvH0UecDbd.jpg",
+        "credit_id": "6715b03a4bf37c883cb6e428",
+        "department": "Directing",
+        "job": "Director"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4909350,
+        "known_for_department": "Creator",
+        "name": "蓬莱客",
+        "original_name": "蓬莱客",
+        "popularity": 0.559,
+        "profile_path": null,
+        "credit_id": "67fadac9ea80d851759a0ae3",
+        "department": "Writing",
+        "job": "Novel"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 2365187,
+        "known_for_department": "Acting",
+        "name": "刘宇宁",
+        "original_name": "刘宇宁",
+        "popularity": 3.6351,
+        "profile_path": "/6JvMALlglmZB5gutlheu4J5KjAI.jpg",
+        "credit_id": "6825736f6f47db525831566a",
+        "department": "Sound",
+        "job": "Theme Song Performance"
+      },
+      {
+        "adult": false,
+        "gender": 1,
+        "id": 4964928,
+        "known_for_department": "Sound",
+        "name": "孙艾藜",
+        "original_name": "孙艾藜",
+        "popularity": 0.7765,
+        "profile_path": "/2nMeiNNpBlMRKugORxqWKOGzXQk.jpg",
+        "credit_id": "682b57635f05a71dd42f7699",
+        "department": "Sound",
+        "job": "Theme Song Performance"
+      },
+      {
+        "adult": false,
+        "gender": 2,
+        "id": 4933700,
+        "known_for_department": "Writing",
+        "name": "林乔",
+        "original_name": "林乔",
+        "popularity": 0.7576,
+        "profile_path": "/a3zLWMZFD3CrBCQRNqSsJ6UTzSl.jpg",
+        "credit_id": "6898108aaaa1bdb9a092eb0e",
+        "department": "Writing",
+        "job": "Lyricist"
+      }
+    ]
+  },
+  "alternative_titles": {
+    "results": [
+      {
+        "iso_3166_1": "BR",
+        "title": "Prisioneiros da beleza",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "CN",
+        "title": "Zhe Yao",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "CN",
+        "title": "折腰",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "TH",
+        "title": "ปรปักษ์จำนน",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "US",
+        "title": "The Prisoner Of Beauty",
+        "type": ""
+      },
+      {
+        "iso_3166_1": "US",
+        "title": "Zhe Yao",
+        "type": ""
+      }
+    ]
+  },
+  "translations": {
+    "translations": [
+      {
+        "iso_3166_1": "US",
+        "iso_639_1": "en",
+        "name": "English",
+        "english_name": "English",
+        "data": {
+          "name": "The Prisoner of Beauty",
+          "overview": "Xiao Qiao, a clever girl from the Qiao family, marries Wei Shao, the brave and kind master of the Wei family. Despite initial wariness due to ancestral grievances, Xiao Qiao and Wei Shao navigate their relationship with humor and determination. As they face challenges together, they come to appreciate each other's qualities through their warm daily life, intertwined with family and national affairs, and work to restore peace and resolve conflicts.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "CN",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "name": "折腰",
+          "overview": "聪慧机敏系家国的乔家女郎小乔（宋祖儿 饰），与有勇有谋心纯善的魏家主公魏劭（刘宇宁 饰）联姻，起初二人因祖辈恩怨有所隔阂，过着相互试探与攻守的婚后日常，夫妻俩的多番较量中有笑也有泪；在历经诸多危机后，小乔和魏劭逐渐被对方的才智谋略与豁达胸襟所吸引，回过神时早已水滴石穿，心系彼此。二人凭借夫妻默契化解了家族矛盾，携手还百姓和平与安宁。",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "TH",
+        "iso_639_1": "th",
+        "name": "ภาษาไทย",
+        "english_name": "Thai",
+        "data": {
+          "name": "ปรปักษ์จำนน",
+          "overview": "เสี่ยวเฉียวหญิงสาวจากสกุลเฉียวผู้งดงามและเฉลียวฉลาด ต้องแต่งงานเชื่อมสัมพันธไมตรีกับเว่ยเซ่าคุณชายเว่ยแห่งสกุลเว่ยผู้กล้าหาญ ปราดเปรื่องจิตใจดี แรกเริ่มทั้งสองคนห่างกันเพราะความแค้นจากบรรพบุรุษ หลังจากผ่านชีวิตการแต่งงานที่หยั่งเชิง โจมตีและตั้งรับกันไปมา การต่อสู้หลายครั้งหลายคราของคู่สามีภรรยามีทั้งรอยยิ้มและน้ำตา หลังจากผ่านภยันตรายมานับไม่ถ้วน เสี่ยวเฉียวและเว่ยเซ่าก็ค่อยๆ ถูกสติปัญญา กลยุทธ์แผนการและแนวคิดที่เปิดกว้างดึงดูดซึ่งกันและกัน เมื่อรู้สึกตัว น้ำก็กร่อนหินจนหัวใจผูกพันกันไปเสียแล้ว ทั้งสองคนใช้ความรู้ใจฉันสามีภรรยาขจัดความขัดแย้งระหว่างตระกูล ทั้งยังร่วมมือกันคืนสันติภาพและความสงบสุขให้แก่อาณาประชาราษฎร์อีกด้วย",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "TW",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "name": "",
+          "overview": "聰慧機敏系家國的喬家女郎小喬，與有勇有謀心純善的魏家主公魏劭聯姻，起初二人因祖輩恩怨有所隔閡，過著相互試探與攻守的婚後日常，夫妻倆的多番較量中有笑也有淚；在歷經諸多危機後，小喬和魏劭逐漸被對方的才智謀略與豁達胸襟所吸引，回過神時早已水滴石穿，心繫彼此。二人憑藉夫妻默契化解了家族矛盾，攜手還百姓和平與安寧。",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "ID",
+        "iso_639_1": "id",
+        "name": "Bahasa indonesia",
+        "english_name": "Indonesian",
+        "data": {
+          "name": "Tawanan Asmara",
+          "overview": "",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "KR",
+        "iso_639_1": "ko",
+        "name": "한국어/조선말",
+        "english_name": "Korean",
+        "data": {
+          "name": "절요",
+          "overview": "외나라의 위씨 가문과 언주의 교씨 가문은 오랜 동맹 관계였지만 변주의 침공 당시 교씨가 원군을 보내지 않으면서 위씨는 신도에서 참패하고 만다. 이로 인해 두 가문은 철천지원수가 되고, 14년 후 위씨 가문의 후손 위소는 신도를 되찾으며 다시금 기세를 떨친다. 교씨 가문은 과거의 실책을 만회하고자 딸 교만(소교)을 위소에게 시집보내고 영토까지 내어주며 동맹 복원을 시도한다. 위소는 국익을 위해 화친혼을 받아들이지만 위씨 종친들의 반발은 거세고, 소교 역시 자신이 정치적 희생양임을 자각한 채 위씨 가문에서 조심스럽게 살아간다. 서로를 경계하며 불신과 혐오로 얼룩진 관계. 하지만 반복되는 위기 속에서 두 사람은 점차 서로의 진심과 품격을 알아가게 되는데…",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "ES",
+        "iso_639_1": "es",
+        "name": "Español",
+        "english_name": "Spanish",
+        "data": {
+          "name": "El prisionero de la belleza",
+          "overview": "Qiao Nvjiao, Jun Houxiao, una pareja maravillosa hecha por la naturaleza. El rojo es mejor que el fuego, el negro es como la tinta, ¡es muy bueno para atraer riqueza y felicidad!",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "VN",
+        "iso_639_1": "vi",
+        "name": "Tiếng Việt",
+        "english_name": "Vietnamese",
+        "data": {
+          "name": "Khom Lưng",
+          "overview": "Năm xưa, tổ phụ của Tiểu Kiều rút quân trước trận chiến khiến tổ tôn nhà họ Ngụy thiệt mạng, hai tộc từ đó kết thâm thù huyết hận. Mười bốn năm sau, Ngụy Thiệu, người may mắn sống sót năm đó, dẫn quân đến Yên Châu, ngoài mặt lấy danh nghĩa báo thù, thực chất là muốn tu sửa kênh Vĩnh Ninh. Nhìn thấu mục đích ấy, Tiểu Kiều quyết định thay người xuất giá, mong hóa giải nguy cho Yên Châu.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "BR",
+        "iso_639_1": "pt",
+        "name": "Português",
+        "english_name": "Portuguese",
+        "data": {
+          "name": "A Prisioneira da Beleza",
+          "overview": "Xiao Qiao, uma mulher inteligente da família Xiao, é forçada a se casar com Wei Shao, o chefe da família Wei, para criar uma aliança estratégica entre esses clãs rivais. No início, eles não conseguem baixar a guarda perto um do outro devido aos anos de conflito que separaram suas famílias, mas, aos poucos, ambos começam a se abrir à medida que enfrentam problemas que exigem que a parceria entre o casal cresça. Com o tempo, as opiniões de cada um começam a mudar e, antes que percebam, Xiao Qiao e Wei Shao desenvolvem sentimentos genuínos um pelo outro.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "RU",
+        "iso_639_1": "ru",
+        "name": "Pусский",
+        "english_name": "Russian",
+        "data": {
+          "name": "Узник красоты",
+          "overview": "По слухам, Вэй Шао — настоящий злодей, который обожает войну. Нападать и завоевывать — его страсть. Потеряв отца и брата, Вэй Шао намерен отомстить за разрушенный город и погибших родных. Однако, взяв на себя бремя ответственности за семью, он осознаёт, что людям нужен не месть и война, а мир. Ради благополучия народа Вэй Шао предлагает брачный союз своим врагам — семье Цяо, и младшую дочь Цяо Мань заставляют выйти замуж за этого демона. Девушка понимает, что брак с Вэй Шао — лишь временная мера, и в семье Вэй она живёт как на тонком льду, в то время как вражда между родителями героев остаётся препятствием для их отношений. Но однажды жизнь и смерть семьи Вэй оказывается под угрозой, и Цяо Мань делает свой выбор.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "IR",
+        "iso_639_1": "fa",
+        "name": "فارسی",
+        "english_name": "Persian",
+        "data": {
+          "name": "در بند زیبایی",
+          "overview": "",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "FR",
+        "iso_639_1": "fr",
+        "name": "Français",
+        "english_name": "French",
+        "data": {
+          "name": "The Prisoner of Beauty",
+          "overview": "Xiao Qiao, une femme intelligente issue de la famille Xiao, doit épouser, Wei Shao le chef des Wei, afin de sceller une alliance stratégique entre les deux clans en conflit. Ils sont d’abord réticents à baisser la garde quand ils sont ensemble, à cause de ces longues années de querelle, mais ils se font petit à petit confiance lorsqu’ils doivent unir leurs forces face à certaines situations. Avec le temps, leur opinion commence à changer, et sans même s’en rendre compte, Xiao Qiao et Wei Shao développent de vrais sentiments l’un pour l’autre. Noueront-ils des liens solides malgré leurs scrupules au début de leur relation ?",
+          "homepage": "",
+          "tagline": ""
+        }
+      }
+    ]
+  },
+  "external_ids": {
+    "imdb_id": "tt28115977",
+    "freebase_mid": null,
+    "freebase_id": null,
+    "tvdb_id": 431004,
+    "tvrage_id": null,
+    "wikidata_id": "Q134497490",
+    "facebook_id": null,
+    "instagram_id": null,
+    "twitter_id": null
+  }
+}
