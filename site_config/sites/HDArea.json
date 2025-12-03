@@ -115,9 +115,6 @@
           ]
         }
       }
-    },
-    "sign_in": {
-      "path": "/signin.php"
     }
   }
 }
