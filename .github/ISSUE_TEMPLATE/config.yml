@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 项目文档
+    url: https://github.com/xylplm/pre-dessert-sites
+    about: 查看项目README和使用指南
+  - name: 💬 讨论区
+    url: https://github.com/xylplm/pre-dessert-sites/discussions
+    about: 一般性讨论、想法分享和社区交流

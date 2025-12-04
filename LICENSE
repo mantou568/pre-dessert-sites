@@ -1,21 +1,108 @@
-MIT License
+GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3.0 WITH NON-COMMERCIAL CLAUSE
 
-Copyright (c) 2023 mantou568
+Copyright (c) 2023-2025 Pre-Dessert Sites Community (xylplm and contributors)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+本项目采用 GNU Affero General Public License v3.0 许可证，并附加非商业使用限制条款。
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+===============================================================================
+重要约束条款 (ADDITIONAL TERMS)
+===============================================================================
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. 开源要求 (Copyleft Requirement):
+   任何使用、修改或基于本项目的衍生作品，必须以相同的 AGPL-3.0 许可证开源。
+   包括但不限于：
+   - 直接使用本项目代码或配置
+   - 修改本项目后的版本
+   - 基于本项目开发的衍生项目
+   - 通过网络提供服务的项目(即使未分发代码)
+
+2. 非商业使用限制 (Non-Commercial Use):
+   本项目及其衍生作品仅可用于非商业目的。禁止任何形式的商业使用，包括但不限于：
+   - 将本项目或其衍生作品作为商业产品销售或提供付费服务
+   - 在商业环境中使用本项目或其数据以获取直接或间接的经济利益
+   - 利用本项目的站点配置进行商业化集成或打包
+   - 私有化、二次销售或重新品牌化本项目
+   - 利用本项目进行广告推广或营销活动
+   - 接受捐赠、赞助等任何形式的经济回报
+   
+   如需商业使用，必须获得版权所有者的书面授权。
+   商业授权申请请通过 GitHub Issues 提交申请，说明产品名称、使用范围和商业意图。
+
+3. 知识产权保护 (Intellectual Property Protection):
+   本项目的站点配置、适配规则、站点图标等均为受保护的知识产权。禁止：
+   - 冒充为原创或声称拥有所有权
+   - 移除或修改版权声明
+   - 未经授权进行商业包装和分发
+   - 用于竞争性商业产品
+
+4. 归属声明 (Attribution):
+   在使用、修改或分发本项目时，必须：
+   - 保留原始版权声明
+   - 明确标注修改内容
+   - 提供本许可证的完整副本
+   - 提供源代码或配置的访问方式
+   - 注明本项目的原始位置和贡献者
+
+5. 社区贡献 (Community Contribution):
+   如果您对本项目进行了改进或修改，必须：
+   - 将改进回馈给社区（通过 Pull Request）
+   - 或以相同的 AGPL-3.0 许可证开源分发
+   - 不得私有化您的改进
+
+===============================================================================
+GNU AFFERO GENERAL PUBLIC LICENSE (完整条款)
+===============================================================================
+
+Version 3, 19 November 2007
+
+Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+
+Everyone is permitted to copy and distribute verbatim copies of this license 
+document, but changing it is not allowed.
+
+Preamble
+
+The GNU Affero General Public License is a free, copyleft license for software 
+and other kinds of works, specifically designed to ensure cooperation with the 
+community in the case of network server software.
+
+本许可证完整条款请参考: https://www.gnu.org/licenses/agpl-3.0.html
+
+===============================================================================
+免责声明 (DISCLAIMER)
+===============================================================================
+
+本项目按"现状"提供，不提供任何明示或暗示的保证，包括但不限于适销性、特定用途的
+适用性和非侵权性的保证。在任何情况下，作者或版权持有人均不对任何索赔、损害或其他
+责任负责，无论是在合同诉讼、侵权行为还是其他方面。
+
+使用本项目产生的任何责任需由使用者本人承担。
+
+===============================================================================
+使用条件 (CONDITIONS)
+===============================================================================
+
+若违反上述条款，您将自动失去本许可证授予的所有权利。
+
+任何违反本许可证的行为可能导致：
+- 权利的立即终止
+- 法律诉讼
+- 要求赔偿
+
+===============================================================================
+商业授权 (COMMERCIAL LICENSING)
+===============================================================================
+
+如需在商业产品或服务中使用本项目，请通过以下方式申请：
+
+GitHub Issues: https://github.com/mantou568/pre-dessert-sites/issues
+
+请在 Issue 中说明：
+- 产品/服务名称
+- 使用范围
+- 商业意图
+- 联系方式
+
+获得书面授权后方可进行商业使用。
+
+===============================================================================

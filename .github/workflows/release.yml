@@ -1,0 +1,103 @@
+name: Release Site Config
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - 'site_config/**'
+      - 'site_favicon/**'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine branch and version
+        id: branch_info
+        run: |
+          BRANCH=${GITHUB_REF#refs/heads/}
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          if [ "$BRANCH" = "main" ]; then
+            echo "version_prefix=main" >> $GITHUB_OUTPUT
+            echo "prerelease=false" >> $GITHUB_OUTPUT
+          else
+            echo "version_prefix=dev" >> $GITHUB_OUTPUT
+            echo "prerelease=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create release assets
+        run: |
+          # Create tar.gz archive with proper directory structure
+          cp -r site_config .
+          cp -r site_favicon .
+          tar -czf site_config.tar.gz site_config/ site_favicon/
+          rm -rf site_config site_favicon
+          
+          # Calculate checksum
+          sha256sum site_config.tar.gz > site_config.tar.gz.sha256
+          
+          # Display file size
+          echo "=== Archive Info ==="
+          ls -lh site_config.tar.gz
+          echo ""
+          echo "=== Checksum ==="
+          cat site_config.tar.gz.sha256
+
+      - name: Get current date and time
+        id: datetime
+        run: echo "datetime=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+
+      - name: Delete old release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION_PREFIX="${{ steps.branch_info.outputs.version_prefix }}"
+          # Find and delete old release with the same version prefix
+          OLD_RELEASE=$(gh release list --repo ${{ github.repository }} --limit 100 --json name -q '.[].name' | grep "^${VERSION_PREFIX}_" | head -1)
+          if [ -n "$OLD_RELEASE" ]; then
+            echo "Deleting old release: $OLD_RELEASE"
+            gh release delete "$OLD_RELEASE" --repo ${{ github.repository }} --yes
+          fi
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.run_id }}-${{ steps.branch_info.outputs.version_prefix }}
+          name: ${{ steps.branch_info.outputs.version_prefix }}_${{ steps.datetime.outputs.datetime }}
+          body: |
+            Pre-Dessert Sites 站点配置更新发布
+            
+            **分支**: ${{ steps.branch_info.outputs.branch }}
+            **版本号**: ${{ steps.branch_info.outputs.version_prefix }}_${{ steps.datetime.outputs.datetime }}
+            
+            **包含内容**: 
+            - site_config/（站点配置文件）
+            - site_favicon/（站点图标）
+            
+            **自动更新**: 相关程序会自动订阅和下载最新配置包，无需手动操作。
+
+          files: |
+            site_config.tar.gz
+            site_config.tar.gz.sha256
+          draft: false
+          prerelease: ${{ steps.branch_info.outputs.prerelease }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target_commitish: ${{ github.sha }}
+
+      - name: Update release notes
+        if: always()
+        run: |
+          echo "✓ Release created successfully!"
+          echo "Branch: ${{ steps.branch_info.outputs.branch }}"
+          echo "Version: ${{ steps.branch_info.outputs.version_prefix }}_${{ steps.datetime.outputs.datetime }}"
