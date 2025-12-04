@@ -65,10 +65,11 @@ jobs:
         run: |
           VERSION_PREFIX="${{ steps.branch_info.outputs.version_prefix }}"
           # Find and delete old release with the same version prefix
-          OLD_RELEASE=$(gh release list --repo ${{ github.repository }} --limit 100 --json name -q '.[].name' | grep "^${VERSION_PREFIX}_" | head -1)
-          if [ -n "$OLD_RELEASE" ]; then
-            echo "Deleting old release: $OLD_RELEASE"
-            gh release delete "$OLD_RELEASE" --repo ${{ github.repository }} --yes
+          # 获取Release列表，查找匹配前缀的Release，然后删除对应的tag
+          OLD_TAG=$(gh release list --repo ${{ github.repository }} --limit 100 --json tagName,name -q ".[] | select(.name | startswith(\"${VERSION_PREFIX}_\")) | .tagName" | head -1)
+          if [ -n "$OLD_TAG" ]; then
+            echo "Deleting old release with tag: $OLD_TAG"
+            gh release delete "$OLD_TAG" --repo ${{ github.repository }} --yes || echo "Failed to delete release, but continuing..."
           fi
 
       - name: Create Release
