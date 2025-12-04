@@ -39,10 +39,11 @@ jobs:
       - name: Create release assets
         run: |
           # Create tar.gz archive with proper directory structure
-          cp -r site_config .
-          cp -r site_favicon .
-          tar -czf site_config.tar.gz site_config/ site_favicon/
-          rm -rf site_config site_favicon
+          mkdir -p release_temp
+          cp -r site_config release_temp/
+          cp -r site_favicon release_temp/
+          tar -czf site_config.tar.gz -C release_temp site_config/ site_favicon/
+          rm -rf release_temp
           
           # Calculate checksum
           sha256sum site_config.tar.gz > site_config.tar.gz.sha256
