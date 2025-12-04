@@ -75,7 +75,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.run_id }}-${{ steps.branch_info.outputs.version_prefix }}
+          tag_name: ${{ steps.branch_info.outputs.version_prefix }}_${{ steps.datetime.outputs.datetime }}
           name: ${{ steps.branch_info.outputs.version_prefix }}_${{ steps.datetime.outputs.datetime }}
           body: |
             Pre-Dessert Sites 站点配置更新发布
