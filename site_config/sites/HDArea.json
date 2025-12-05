@@ -115,6 +115,15 @@
           ]
         }
       }
+    },
+    "sign_in": {
+      "path": "/sign_in.php",
+      "method": "POST",
+      "form_data": {
+        "action": [
+          "sign_in"
+        ]
+      }
     }
   }
 }
