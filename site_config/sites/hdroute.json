@@ -1,0 +1,1042 @@
+{
+  "id": "hdroute",
+  "name": "HDRoute",
+  "domain": "http://hdroute.org",
+  "cookie": true,
+  "torrent_id_filters": [
+    {
+      "name": "re_search",
+      "args": [
+        "\\d+",
+        0
+      ]
+    }
+  ],
+  "category": {
+    "movie": [
+      {
+        "id": "c1",
+        "cat": "Movies",
+        "desc": "电影",
+        "default": true
+      },
+      {
+        "id": "c5",
+        "cat": "Movies/Music",
+        "desc": "演唱会/MV",
+        "default": false
+      },
+      {
+        "id": "c6",
+        "cat": "Movies/Sports",
+        "desc": "体育节目",
+        "default": false
+      },
+      {
+        "id": "c7",
+        "cat": "Movies/Soundtrack",
+        "desc": "电影音轨",
+        "default": false
+      },
+      {
+        "id": "c8",
+        "cat": "Movies/Music",
+        "desc": "无损音乐",
+        "default": false
+      },
+      {
+        "id": "c9",
+        "cat": "Movies/Other",
+        "desc": "其他",
+        "default": false
+      }
+    ],
+    "tv": [
+      {
+        "id": "c2",
+        "cat": "TV/Documentary",
+        "desc": "演示/纪录片",
+        "default": false
+      },
+      {
+        "id": "c3",
+        "cat": "TV",
+        "desc": "连续剧",
+        "default": true
+      },
+      {
+        "id": "c4",
+        "cat": "TV/Anime",
+        "desc": "动画片",
+        "default": true
+      }
+    ]
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        "Connection": "keep-alive"
+      },
+      "fields": {
+        "is_login": {
+          "selector": "//a[contains(@href, 'userdetail.php')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "id": {
+          "selector": "//a[contains(@href, 'userdetail.php')]/@href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "userdetail.php\\?id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "name": {
+          "selector": "//a[contains(@href, 'userdetail.php')]//text()",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "level": {
+          "any": [
+            {
+              "selector": "//div[@class='headerRightInfo']/div[1]/span[2]/text()"
+            },
+            {
+              "selector": "//div[@class='headerRightInfo']//span[contains(text(), '(') and contains(text(), ')')]/text()"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "\\(([^)]+)\\)",
+                1
+              ]
+            }
+          ]
+        },
+        "uploaded": {
+          "selector": "//span[contains(text(), '上传量')]//span[@class='header-user-data']",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "//span[contains(text(), '下载量')]//span[@class='header-user-data']",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "ratio": {
+          "selector": "//span[contains(text(), '分享率')]//span[@class='header-user-data']",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "Inf.",
+                "999999"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "Infinity",
+                "999999"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "∞",
+                "999999"
+              ]
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "^([\\d.]+)",
+                1
+              ]
+            }
+          ]
+        },
+        "bonus": {
+          "selector": "//a[contains(@href, 'bonus') or contains(@href, 'mybonus')]/text()",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "([\\d,.]+)",
+                1
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetail.php",
+      "params": {
+        "id": [
+          "{userId}"
+        ]
+      },
+      "fields": {
+        "level": {
+          "any": [
+            {
+              "selector": "//div[contains(@class, 'userdetail-list-title') and contains(text(), '用户等级')]/following-sibling::div[contains(@class, 'userdetail-list-content')][1]"
+            },
+            {
+              "selector": "//div[contains(@class, 'userdetail-list-title') and (contains(text(), '等级') or contains(text(), '等級'))]/following-sibling::div[contains(@class, 'userdetail-list-content')][1]"
+            },
+            {
+              "selector": "//tr/td[contains(text(), '等級') or contains(text(), '等级')]/following-sibling::td[1]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "^([A-Z]+)",
+                1
+              ]
+            }
+          ]
+        },
+        "level_icon": {
+          "selector": "//tr/td[contains(text(), '等級') or contains(text(), '等级')]/following-sibling::td[1]/img[1]/@src"
+        },
+        "join_at": {
+          "any": [
+            {
+              "selector": "//div[contains(@class, 'userdetail-list-title') and contains(text(), '注册日期')]/following-sibling::div[contains(@class, 'userdetail-list-content')]"
+            },
+            {
+              "selector": "//tr/td[contains(text(), '注册日期') or contains(text(), '加入日期')]/following-sibling::td[1]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "last_accessed": {
+          "any": [
+            {
+              "selector": "//div[contains(@class, 'userdetail-list-title') and contains(text(), '最近访问')]/following-sibling::div[contains(@class, 'userdetail-list-content')]"
+            },
+            {
+              "selector": "//tr/td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '最近活動')]/following-sibling::td[1]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
+    "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/browse.php",
+      "params": {
+        "action": [
+          "s"
+        ],
+        "s": [
+          "{keyword}"
+        ],
+        "or": [
+          "1"
+        ],
+        "dp": [
+          "0"
+        ],
+        "add": [
+          "0"
+        ],
+        "imdb": [
+          "0"
+        ]
+      },
+      "list": {
+        "selector": "#unsticky-torrent-table dl[id^='dl_torrent_'], dl[id^='dl_torrent_']",
+        "next_page": {
+          "selector": "#pager-top a[href*='page='], #pager-bottom a[href*='page='], a[href*='browse.php'][href*='page=']",
+          "attribute": "href"
+        }
+      },
+      "fields": {
+        "id": {
+          "any": [
+            {
+              "selector": "dl[id^='dl_torrent_']",
+              "attribute": "id",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "dl_torrent_(\\d+)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "a[href*='details.php?id=']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "details\\.php\\?id=(\\d+)",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "title": {
+          "any": [
+            {
+              "selector": ".title_chs"
+            },
+            {
+              "selector": "a[href*='details.php?id=']"
+            }
+          ],
+          "remove": "span, small, i, em"
+        },
+        "description": {
+          "selector": ".title_eng",
+          "remove": "span, small, i, em"
+        },
+        "details": {
+          "any": [
+            {
+              "selector": ".torrent_detail_icon a",
+              "attribute": "href"
+            },
+            {
+              "selector": "dl[id^='dl_torrent_']",
+              "attribute": "id",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "dl_torrent_(\\d+)",
+                    1
+                  ]
+                },
+                {
+                  "name": "append_left",
+                  "args": "details.php?id="
+                }
+              ]
+            }
+          ]
+        },
+        "download": {
+          "selector": ".buttonDownloadSection .buttonDownload, .buttonDownload",
+          "attribute": "onclick",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "location\\.href=['\"](download\\.php\\?id=\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "size": {
+          "selector": ".torrent_size",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "date_added": {
+          "any": [
+            {
+              "selector": ".torrent_added"
+            },
+            {
+              "selector": ".torrent-date"
+            },
+            {
+              "selector": ".date-added"
+            },
+            {
+              "selector": "span[title*='-']",
+              "attribute": "title"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2}(?:\\s+\\d{2}:\\d{2}:\\d{2})?)",
+                0
+              ]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "seeders": {
+          "any": [
+            {
+              "selector": ".torrent-content-right > div.torrent_count.strong:nth-of-type(5) span"
+            },
+            {
+              "selector": "dd .torrent-content-right > div.torrent_count.strong:nth-of-type(5) span, dt .torrent-content-right > div.torrent_count.strong:nth-of-type(5) span"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "^\\s*(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "leechers": {
+          "any": [
+            {
+              "selector": ".torrent-content-right > div.torrent_count.strong:nth-of-type(6) span"
+            },
+            {
+              "selector": "dd .torrent-content-right > div.torrent_count.strong:nth-of-type(6) span, dt .torrent-content-right > div.torrent_count.strong:nth-of-type(6) span"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "^\\s*(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "grabs": {
+          "any": [
+            {
+              "selector": ".torrent-content-right .torrent_count.strong:nth-child(3) span"
+            },
+            {
+              "selector": "dd .torrent-content-right .torrent_count.strong:nth-child(3) span, dt .torrent-content-right .torrent_count.strong:nth-child(3) span"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "^\\s*(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "category": {
+          "selector": ".torrent_category figure, figure.torrent_category"
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "dt .torrent_icons figure.sprite_dlp100, .torrent_icons figure.sprite_dlp100"
+            },
+            {
+              "selector": "dt .torrent_icons figure.sprite_dlp050, .torrent_icons figure.sprite_dlp050"
+            },
+            {
+              "selector": "dt .torrent_icons figure.sprite_dlp030, .torrent_icons figure.sprite_dlp030"
+            },
+            {
+              "selector": "dt .torrent_icons figure.sprite_dlp070, .torrent_icons figure.sprite_dlp070"
+            },
+            {
+              "selector": "dt .torrent_icons figure[class*='dlp'], .torrent_icons figure[class*='dlp']"
+            }
+          ],
+          "attribute": "class",
+          "filters": [
+            {
+              "name": "not_blank",
+              "args": [
+                1,
+                ""
+              ]
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "sprite_dlp(\\d+)",
+                1
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "100",
+                "0"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "050",
+                "0.5"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "030",
+                "0.3"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "070",
+                "0.7"
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "dt .torrent_icons figure[class*='2up'], .torrent_icons figure[class*='2up']"
+            }
+          ],
+          "attribute": "class",
+          "filters": [
+            {
+              "name": "not_blank",
+              "args": [
+                2,
+                1
+              ]
+            }
+          ]
+        },
+        "date_elapsed": {
+          "selector": ".torrent_added_hour",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "<br>",
+                " "
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "<br/>",
+                " "
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "<br />",
+                " "
+              ]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "imdb_id": {
+          "selector": ".torrent-imdb a, a[href*='imdb.com']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "tt(\\d+)",
+                1
+              ]
+            },
+            {
+              "name": "pad_zero",
+              "args": 7
+            },
+            {
+              "name": "append_left",
+              "args": "tt"
+            }
+          ]
+        },
+        "douban_id": {
+          "selector": ".torrent-douban a, a[href*='douban.com/subject/']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "subject/(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "labels": {
+          "any": [
+            {
+              "selector": ".torrent_labels span, .torrent-tags span, .torrent-label span, .tag span, .labels span",
+              "array": true
+            },
+            {
+              "selector": "span[class*='tag'], span[class*='label']",
+              "array": true
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        }
+      }
+    },
+    "details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/details.php",
+      "params": {
+        "id": [
+          "{id}"
+        ]
+      },
+      "fields": {
+        "absent": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "没有该ID的种子"
+            }
+          ]
+        },
+        "free": {
+          "any": [
+            {
+              "selector": "//h1[@id='top']/b/font[@class='free']"
+            },
+            {
+              "selector": "//h1[@id='top']/b/font[@class='twoupfree']"
+            }
+          ],
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "2x_free": {
+          "selector": "//h1[@id='top']/b/font[@class='twoupfree']",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "peer_count": {
+          "any": [
+            {
+              "selector": "//div[@id='peercount']/b[1]"
+            },
+            {
+              "selector": "//table//tr[td[contains(text(), '做种人数') or contains(text(), 'Peer Count')]]/td[2]"
+            },
+            {
+              "selector": "//div[contains(@class, 'peer-count')]//text()"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "enclosure": {
+          "selector": "//a[contains(@href, 'download.php?id=')]/@href"
+        },
+        "date_added": {
+          "any": [
+            {
+              "selector": "//table//tr[td[contains(text(), '发布时间') or contains(text(), '添加时间') or contains(text(), '發佈時間') or contains(text(), '添加日期')]]/td[2]"
+            },
+            {
+              "selector": "//div[contains(@class, 'torrent-info')]//span[contains(text(), '发布时间') or contains(text(), '添加时间')]/following-sibling::span[1]"
+            },
+            {
+              "selector": "//div[contains(@class, 'torrent-added')]//text()"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2})",
+                0
+              ]
+            },
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        "Connection": "keep-alive"
+      },
+      "fields": {
+        "count": {
+          "selector": "//a[contains(@href, 'list_seeding.php')]/text()",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//span[@class='peering-size'][1]/text()",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "\u00a0",
+                " "
+              ]
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "\\(([^)]+)\\)",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/messages.php",
+      "chrome": true,
+      "list": {
+        "selector": "//div[@class='message-content']/div[@class='message-top']"
+      },
+      "fields": {
+        "id": {
+          "selector": ".//input[@type='hidden'][1]/@value",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "title": {
+          "selector": ".//div[@class='message-title fl']/text()",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "link": {
+          "selector": ".//input[@type='hidden'][1]/@value",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "messages.php?id="
+            }
+          ]
+        },
+        "date": {
+          "selector": ".//div[@class='message-time fr']/text()",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "content": {
+          "any": [
+            {
+              "selector": ".//div[@class='message-body'][not(contains(text(), '获取中'))], .//div[@id[starts-with(., 'message-body-')]][not(contains(text(), '获取中'))]"
+            },
+            {
+              "selector": ".//div[@class='message-body'], .//div[@id[starts-with(., 'message-body-')]]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "获取中，请稍候...",
+                ""
+              ]
+            },
+            {
+              "name": "strip"
+            }
+          ]
+        }
+      }
+    },
+    "message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "chrome": true,
+      "fields": {
+        "title": {
+          "any": [
+            {
+              "selector": "//div[contains(@class, 'message-title')]//text()"
+            },
+            {
+              "selector": "//h1/text()"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "date": {
+          "any": [
+            {
+              "selector": "//div[contains(@class, 'message-time')]//text()"
+            },
+            {
+              "selector": "//table//tr[td[contains(text(), '时间') or contains(text(), '日期')]]/td[2]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2})",
+                1
+              ]
+            },
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "content": {
+          "any": [
+            {
+              "selector": "//div[@id='message-body-{id}'], //div[@class='message-top'][.//input[@type='hidden'][1][@value='{id}']]//div[@class='message-body']"
+            },
+            {
+              "selector": "//div[@class='message-body'], //div[@id[starts-with(., 'message-body-')]]"
+            },
+            {
+              "selector": "//table//tr[td[contains(text(), '内容')]]/td[2]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "",
+                "获取中，请稍候...",
+                ""
+              ]
+            },
+            {
+              "name": "strip"
+            }
+          ]
+        }
+      }
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/announcements.php",
+      "fields": {
+        "title": {
+          "any": [
+            {
+              "selector": "//h1/text()"
+            },
+            {
+              "selector": "//div[contains(@class, 'announcement-title')]//text()"
+            },
+            {
+              "selector": "//table//tr[1]/td//text()"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "date": {
+          "any": [
+            {
+              "selector": "//div[contains(@class, 'announcement-date')]//text()"
+            },
+            {
+              "selector": "//span[contains(@class, 'date')]//text() | //span[contains(@class, 'date')]/@title"
+            },
+            {
+              "selector": "//table//tr[td[contains(text(), '时间') or contains(text(), '日期')]]/td[2]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "content": {
+          "any": [
+            {
+              "selector": "//div[contains(@class, 'announcement-content')]"
+            },
+            {
+              "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div"
+            },
+            {
+              "selector": "//table//tr[td[contains(text(), '内容')]]/td[2]"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
