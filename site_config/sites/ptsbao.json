@@ -43,17 +43,9 @@
       }
     ]
   },
-  "requests":{
+  "requests": {
     "search": {
       "fields": {
-        "hr_days":{
-          "filters": [
-            {
-              "name": "constant",
-              "args": "1"
-            }
-          ]
-        },
         "labels": {
           "selector": "td.embedded > span[title]",
           "array": true
@@ -63,36 +55,56 @@
           "remove": "span,a,img,font,b,br",
           "contents": -1
         },
-        "date_added": {
-          "selector": "td:nth-child(4):not(.embedded) > span",
-          "attribute": "title",
+        "hr_days": {
           "filters": [
             {
-              "name": "timestamp"
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["(\\d+)", 1]
             }
           ]
         },
         "size": {
-          "selector": "td:nth-child(5)",
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
           "filters": [
+            {
+              "name": "re_search",
+              "args": ["总大小：(.*)", 1]
+            },
+            {
+              "name": "strip"
+            },
             {
               "name": "byte_size"
             }
           ]
-        },
-        "seeders": {
-          "selector": "td:nth-child(6)"
-        },
-        "leechers": {
-          "selector": "td:nth-child(7)"
-        },
-        "grabs": {
-          "selector": "td:nth-child(8)"
         }
       }
     }
   },
   "my_hr": {
-    "path": "/hr.php?hr=1"
+    "path": "/myhr.php?status=1"
   }
 }

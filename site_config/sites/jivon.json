@@ -64,9 +64,263 @@
   "requests": {
     "search": {
       "fields": {
+        "category": {
+          "selector": "a[href*='cat=']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "cat=(.*)",
+                1
+              ]
+            }
+          ]
+        },
+        "date_added": {
+          "selector": "td:nth-child(4)",
+          "remove": "br",
+          "filters": [
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05",
+                "2006-01-0215:04:05"
+              ]
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "font.free,font.twoupfree",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "font.halfdown,font.twouphalfdown",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.5,
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "font.thirtypercent",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    0.3,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "font.twouphalfdown,font.twoupfree,font.twoup",
+              "attribute": "class",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [
+                    2,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "description": {
+          "selector": "td:nth-child(2)",
+          "remove": "a, img, div",
+          "filters": [
+            {
+              "name": "split",
+              "args": [
+                "\n",
+                -1
+              ]
+            }
+          ]
+        },
         "labels": {
-          "selector": "td:nth-child(2) > span[title]",
-          "array": true
+          "array": true,
+          "selector": "td:nth-child(2) > div#tag > span.tag"
+        },
+        "hr_days":{
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "CssSelector",
+      "disabled_extends": {
+        "list": true
+      },
+      "fields": {
+        "size": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "总大小(.*)<br/>",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "count": {
+          "selector": "b"
+        }
+      }
+    },
+    "my_hr": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/hnr_details.php?show=ongoing",
+      "list": {
+        "selector": "table.coltable tr:has(td.rowfollow)"
+      },
+      "fields": {
+        "id": {
+          "selector": "td:nth-child(1)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "考核ID：(.*)",
+                1
+              ]
+            }
+          ]
+        },
+        "name": {
+          "selector": "td:nth-child(2) b"
+        },
+        "uploaded": {
+          "selector": "td:nth-child(3)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(.*)\\(.*\\)",
+                1
+              ]
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "td:nth-child(4)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(.*)\\(.*\\)",
+                1
+              ]
+            }
+          ]
+        },
+        "share_ratio": {
+          "selector": "td:nth-child(3)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\(分享率：(.*)\\)",
+                1
+              ]
+            }
+          ]
+        },
+        "remaining_inspection_time": {
+          "selector": "td:nth-child(7)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "剩余：(.*)",
+                1
+              ]
+            }
+          ]
+        },
+        "download_time": {
+          "selector": "td:nth-child(1)",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})",
+                1
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "details": {
+      "fields": {
+        "free": {
+          "any": [
+            {
+              "selector": "//h1[@id='top']/b/font[@class='free']"
+            },
+            {
+              "selector": "//font[@class='twoup'][text()='2X']"
+            }
+          ],
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "2x_free": {
+          "selector": "//font[@class='twoup'][text()='2X']",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "hr": {
+          "selector": "//font[@color='red'][text()='Hit&Run']",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
         }
       }
     }
