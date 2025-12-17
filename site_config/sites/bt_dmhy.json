@@ -14,58 +14,7 @@
     "has_cover": false
   },
   "first_page_offset": 1,
-  "category": {
-    "tv": [
-      {
-        "id": "動电视剧",
-        "cat": "TV/电视剧",
-        "desc": "电视剧",
-        "default": true
-      },
-      {
-        "id": "動畫",
-        "cat": "TV/動畫",
-        "desc": "動畫",
-        "default": true
-      },
-      {
-        "id": "季度全集",
-        "cat": "TV/動畫",
-        "desc": "季度全集",
-        "default": true
-      },
-      {
-        "id": "漫畫",
-        "cat": "TV/漫畫",
-        "desc": "漫畫",
-        "default": true
-      },
-      {
-        "id": "日文原版",
-        "cat": "TV/漫畫",
-        "desc": "日文原版",
-        "default": true
-      },
-      {
-        "id": "港台原版",
-        "cat": "TV/漫畫",
-        "desc": "港台原版",
-        "default": true
-      },
-      {
-        "id": "日劇",
-        "cat": "TV/日劇",
-        "desc": "日劇",
-        "default": true
-      },
-      {
-        "id": "特攝",
-        "cat": "TV/特攝",
-        "desc": "特攝",
-        "default": true
-      }
-    ]
-  },
+  "category": {},
   "requests": {
     "search": {
       "disabled_extends": {
