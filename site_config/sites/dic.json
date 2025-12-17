@@ -87,15 +87,21 @@
       "method": "GET",
       "path": "/index.php",
       "fields": {
+        "is_login": {
+          "selector": "li#nav_logout a[href*='logout.php']",
+          "filters": [
+            { "name": "not_blank" }
+          ]
+        },
         "id": {
-          "selector": "a.username[href*='user.php?id=']",
+          "selector": "#userinfo a.username",
           "attribute": "href",
           "filters": [
             { "name": "re_search", "args": [ "id=(\\d+)", 1 ] }
           ]
         },
         "name": {
-          "selector": "a.username[href*='user.php?id=']"
+          "selector": "#userinfo a.username"
         },
         "uploaded": {
           "selector": "li#stats_seeding span.stat",

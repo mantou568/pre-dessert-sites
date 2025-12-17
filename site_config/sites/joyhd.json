@@ -58,12 +58,16 @@
   "requests": {
     "search": {
       "fields": {
-        "labels": {
-          "selector": "td.embedded > span",
-          "array": true
+        "hr_days": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "3"
+            }
+          ]
         },
         "description": {
-          "selector": "td.embedded",
+          "selector": "td.embedded:nth-child(1)",
           "remove": "span,a,img,font,b,br",
           "contents": -1
         }
@@ -80,6 +84,9 @@
           ]
         }
       }
+    },
+    "sign_in": {
+      "path": "/added.php?action=qiandao"
     }
   }
 }
