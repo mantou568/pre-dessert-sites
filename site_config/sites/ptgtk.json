@@ -2,6 +2,7 @@
   "id": "ptgtk",
   "name": "ptgtk",
   "domain": "https://pt.gtk.pw",
+  "additional_domain": ["https://pt.gtkpw.xyz"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
