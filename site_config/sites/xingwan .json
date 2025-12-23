@@ -1,7 +1,8 @@
 {
-  "id": "lemonhd_club",
-  "name": "柠檬不酸",
-  "domain": "https://lemonhd.club",
+  "id": "xingwan",
+  "name": "星湾",
+  "domain": "https://xingwan.cc.top",
+  "additional_domain": [],
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -10,7 +11,8 @@
   },
   "meta": {
     "has_free": true,
-    "has_2x_free": true
+    "has_2x_free": true,
+    "has_cover": true
   },
   "category": {
     "movie": [
@@ -18,6 +20,16 @@
         "id": 401,
         "cat": "Movies",
         "desc": "Movies/电影"
+      },
+      {
+        "id": 406,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": 407,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
       }
     ],
     "tv": [
@@ -40,6 +52,11 @@
         "id": 403,
         "cat": "TV",
         "desc": "TV Shows/综艺"
+      },
+      {
+        "id": 412,
+        "cat": "TV",
+        "desc": "Short Play/短剧"
       }
     ]
   },
@@ -68,7 +85,7 @@
     "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
-      "path": "/userdetails.php?id={userId}",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
       "headers": {
         "Referer": "{domain}/userdetails.php?id={userId}"
       },
@@ -78,7 +95,7 @@
       },
       "fields": {
         "count": {
-          "selector": "//img[contains(@title, '当前做种(音乐)')]/following-sibling::text()[1]",
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
           "filters": [
             {
               "name": "re_search",
@@ -87,11 +104,14 @@
           ]
         },
         "size": {
-          "selector": "//td[b[contains(text(), '总体积')]]",
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
           "filters": [
             {
               "name": "re_search",
-              "args": ["总体积[：:]\\s*([\\d\\.]+ ?[ZEPTGMK]?B)", 1]
+              "args": ["总大小：(.*)", 1]
+            },
+            {
+              "name": "strip"
             },
             {
               "name": "byte_size"
