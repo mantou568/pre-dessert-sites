@@ -2,6 +2,7 @@
   "id": "dic",
   "name": "海豚",
   "domain": "https://dicmusic.com",
+  "additional_domain": ["https://tracker.52dic.vip"],
   "public": false,
   "reuse_schema": "NexusPHP",
   "required": {
