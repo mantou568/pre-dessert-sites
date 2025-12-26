@@ -2,7 +2,10 @@
   "id": "agsvpt",
   "name": "末日种子",
   "domain": "https://pt.agsvpt.cn",
-  "additional_domain": ["https://abroad.agsvpt.com","https://www.agsvpt.com"],
+  "additional_domain": [
+    "https://abroad.agsvpt.com",
+    "https://www.agsvpt.com"
+  ],
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -20,58 +23,221 @@
       {
         "id": 401,
         "cat": "Movies",
-        "desc": "Movies/电影"
+        "desc": "Movie(电影)"
       },
       {
         "id": 406,
         "cat": "Movies",
-        "desc": "Music Videos/音乐视频"
-      },
-      {
-        "id": 407,
-        "cat": "Movies/Sports",
-        "desc": "Sports/体育"
+        "desc": "MV(演唱)"
       }
     ],
     "tv": [
       {
         "id": 402,
         "cat": "TV",
-        "desc": "TV Series/连续剧"
+        "desc": "TV Series(电视剧)"
       },
       {
         "id": 403,
         "cat": "TV",
-        "desc": "TV Shows/综艺"
+        "desc": "TV Shows(综艺)"
       },
       {
         "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
+        "cat": "TV",
+        "desc": "Documentaries(纪录片)"
       },
       {
         "id": 405,
         "cat": "TV/Anime",
-        "desc": "Animations/动漫"
+        "desc": "Anime(动漫)"
       },
       {
         "id": 419,
         "cat": "TV",
-        "desc": "Short Play/短剧"
+        "desc": "Playlet（短剧）"
+      }
+    ],
+    "music": [
+      {
+        "id": 411,
+        "cat": "Music",
+        "desc": "Music(音乐)"
+      },
+      {
+        "id": 408,
+        "cat": "Music",
+        "desc": "Audio(音频)"
+      }
+    ],
+    "other": [
+      {
+        "id": 407,
+        "cat": "Sports",
+        "desc": "Sports(体育)"
+      },
+      {
+        "id": 413,
+        "cat": "Game",
+        "desc": "Game(游戏)"
+      },
+      {
+        "id": 415,
+        "cat": "E-Book",
+        "desc": "E-Book(电子书/有声书)"
       }
     ]
   },
   "requests": {
     "search": {
+      "path": "/torrents.php",
+      "method": "GET",
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
+      },
+      "parser": "CssSelector",
+      "list": {
+        "selector": "table.torrents > tbody > tr:has(table.torrentname)"
+      },
       "fields": {
-        "labels": {
-          "selector": "td.embedded > span[title]",
-          "array": true
+        "id": {
+          "selector": "a[href*='details.php?id=']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "category": {
+          "selector": "a[href*='?cat=']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "cat=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "title": {
+          "selector": "a[href*='details.php?id=']",
+          "attribute": "title"
+        },
+        "details": {
+          "selector": "a[href*='details.php?id=']",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*='download.php?id=']",
+          "attribute": "href"
         },
         "description": {
-          "selector": "td.embedded",
-          "remove": "span,a,img,font,b,br",
-          "contents": -1
+          "selector": "div.torrent_title_desc",
+          "remove": "span"
+        },
+        "labels": {
+          "selector": "div.torrent_title_desc > span",
+          "array": true
+        },
+        "cover": {
+          "selector": "img.nexus-lazy-load",
+          "attribute": "data-src",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(https?://[^\\s\\]]+)",
+                1
+              ]
+            }
+          ]
+        },
+        "size": {
+          "selector": "td:nth-child(5)",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "seeders": {
+          "selector": "td:nth-child(6)"
+        },
+        "leechers": {
+          "selector": "td:nth-child(7)"
+        },
+        "grabs": {
+          "selector": "td:nth-child(8)"
+        },
+        "date_added": {
+          "selector": "td:nth-child(4) > span",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "img.pro_free, img.pro_free2up",
+              "filters": [
+                {
+                  "name": "constant",
+                  "args": 0
+                }
+              ]
+            },
+            {
+              "selector": "img.pro_50pctdown, img.pro_50pctdown2up",
+              "filters": [
+                {
+                  "name": "constant",
+                  "args": 0.5
+                }
+              ]
+            },
+            {
+              "selector": "img.pro_30pctdown",
+              "filters": [
+                {
+                  "name": "constant",
+                  "args": 0.3
+                }
+              ]
+            },
+            {
+              "name": "constant",
+              "args": 1
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "img.pro_2up, img.pro_free2up, img.pro_50pctdown2up",
+              "filters": [
+                {
+                  "name": "constant",
+                  "args": 2
+                }
+              ]
+            },
+            {
+              "name": "constant",
+              "args": 1
+            }
+          ]
         },
         "hr_days": {
           "filters": [
@@ -100,7 +266,10 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["(\\d+)", 1]
+              "args": [
+                "(\\d+)",
+                1
+              ]
             }
           ]
         },
@@ -109,7 +278,10 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["总大小：(.*)", 1]
+              "args": [
+                "总大小：(.*)",
+                1
+              ]
             },
             {
               "name": "strip"
@@ -121,8 +293,5 @@
         }
       }
     }
-  },
-  "my_hr": {
-    "path": "/myhr.php?status=1"
   }
 }
