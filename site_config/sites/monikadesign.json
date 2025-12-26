@@ -2,6 +2,7 @@
   "id": "monikadesign",
   "name": "莫妮卡",
   "domain": "https://monikadesign.uk",
+  "additional_domain": ["https://anime-no-index.com"],
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",

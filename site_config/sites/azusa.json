@@ -2,6 +2,7 @@
   "id": "azusa",
   "name": "梓喵",
   "domain": "https://azusa.wiki",
+  "additional_domain": ["https://zimiao.icu"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
