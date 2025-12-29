@@ -10,7 +10,46 @@
   },
   "meta": {
     "has_free": true,
-    "has_2x_free": true
+    "has_2x_free": true,
+    "has_hr": true,
+    "has_cover": true,
+    "shoutbox": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 401,
+        "cat": "Movies",
+        "desc": "Movies/电影"
+      },
+      {
+        "id": 407,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
+      }
+    ],
+    "tv": [
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
+      {
+        "id": 402,
+        "cat": "TV",
+        "desc": "TV Series/连续剧"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "TV Shows/综艺"
+      }
+    ]
   },
   "requests": {
     "search": {
@@ -23,8 +62,57 @@
           "selector": "td.embedded",
           "remove": "span,a,img,font,b,br",
           "contents": -1
+        },
+        "hr_days": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["(\\d+)", 1]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["总大小：(.*)", 1]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
         }
       }
     }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }

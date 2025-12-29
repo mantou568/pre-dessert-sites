@@ -7,7 +7,7 @@
   "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
-    "sign_in": true
+    "sign_in": false
   },
   "meta": {
     "has_free": true
@@ -225,23 +225,47 @@
       }
     },
     "seeding_statistics": {
-      "parser": "JsonPath",
+      "parser": "XPath",
       "method": "GET",
-      "path": "/api/user/listTorrentActivity?id={userId}&type=seeding&page={page}&size=100",
-      "required_headers": [
-        "X-Csrf-Token"
-      ],
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
       "headers": {
-        "Referer": "{domain}/user/info/{userId}"
+        "Referer": "{domain}/userdetails.php?id={userId}"
       },
-      "list": {
-        "selector": "data.torrents",
-        "next_page": {
-          "selector": "/api/user/listTorrentActivity?id={userId}&type=seeding&page={page}&size=100"
-        }
+      "disabled_extends": {
+        "headers": true,
+        "list": true
       },
       "fields": {
-        "size": {}
+        "count": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "总大小：(.*)",
+                1
+              ]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
       }
     },
     "messages": {
@@ -296,6 +320,22 @@
               "args": "200"
             }
           ]
+        }
+      }
+    },
+    "get_genshin_character": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/gaming/listGenshinCharacter",
+      "required_headers": [
+        "X-Csrf-Token"
+      ],
+      "fields": {
+        "bonus": {
+          "selector": "data.bonus"
+        },
+        "characters": {
+          "selector": "data.characters"
         }
       }
     },
@@ -354,6 +394,9 @@
           "selector": "data.torrentKey"
         }
       }
+    },
+    "my_hr": {
+      "path": "/myhr.php?status=1"
     }
   }
 }

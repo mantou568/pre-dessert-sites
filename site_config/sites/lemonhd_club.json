@@ -46,30 +46,62 @@
   "requests": {
     "search": {
       "fields": {
-        "title": {
-          "any": [
-            {
-              "selector": "a[title][href*='details.php?id=']",
-              "attribute": "title"
-            },
-            {
-              "selector": "a[href*='details.php?id='] > b"
-            },
-            {
-              "selector": "a[href*='details.php?id=']"
-            }
-          ]
-        },
         "labels": {
-          "selector": "td.embedded span.tag",
+          "selector": "td.embedded > span[title]",
           "array": true
         },
         "description": {
-          "selector": "td.embedded > .small_descr",
-          "remove": "div.tags_block,span,a,img,font,b,br",
+          "selector": "td.embedded",
+          "remove": "span,a,img,font,b,br",
           "contents": -1
+        },
+        "hr_days": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//img[contains(@title, '当前做种(音乐)')]/following-sibling::text()[1]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["(\\d+)", 1]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//td[b[contains(text(), '总体积')]]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["总体积[：:]\\s*([\\d\\.]+ ?[ZEPTGMK]?B)", 1]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
         }
       }
     }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }

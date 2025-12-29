@@ -21,47 +21,111 @@
         "desc": "Movies/电影"
       },
       {
-        "id": 406,
-        "cat": "Movies",
+        "id": 407,
+        "cat": "Movies/Music Videos",
         "desc": "Music Videos/音乐视频"
       },
       {
-        "id": 407,
-        "cat": "Movies/Sports",
-        "desc": "Sports/体育"
+        "id": 408,
+        "cat": "Movies",
+        "desc": "Concert/演唱会"
       },
       {
-        "id": 410,
-        "cat": "Movies/Opera",
-        "desc": "Opera/戏曲 曲艺"
+        "id": 409,
+        "cat": "Movies",
+        "desc": "Drama/戏剧"
       },
       {
-        "id": 411,
-        "cat": "Movies/Erotic",
-        "desc": "Erotic/18+"
+        "id": 418,
+        "cat": "Movies",
+        "desc": "Concert/演唱会"
       }
     ],
     "tv": [
+      {
+        "id": 403,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 417,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
       {
         "id": 402,
         "cat": "TV",
         "desc": "TV Series/连续剧"
       },
       {
-        "id": 403,
+        "id": 416,
         "cat": "TV",
         "desc": "TV Shows/综艺"
-      },
-      {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
       }
     ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span,a,img,font,b,br",
+          "contents": -1
+        },
+        "hr_days": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["(\\d+)", 1]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["总大小：(.*)", 1]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }

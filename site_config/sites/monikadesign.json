@@ -2,6 +2,7 @@
   "id": "monikadesign",
   "name": "莫妮卡",
   "domain": "https://monikadesign.uk",
+  "additional_domain": ["https://anime-no-index.com"],
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -17,209 +18,88 @@
   },
   "category": {
     "movie": [
-      {
-        "id": 6,
-        "cat": "Movies",
-        "desc": "Anime Movie"
-      },
-      {
-        "id": 1,
-        "cat": "Movies",
-        "desc": "Movie"
-      },
-      {
-        "id": 7,
-        "cat": "TV",
-        "desc": " Anime Live"
-      },
-      {
-        "id": 5,
-        "cat": "TV",
-        "desc": "Action Live"
-      }
+      { "id": 6, "cat": "Movies", "desc": "Anime Movie" },
+      { "id": 1, "cat": "Movies", "desc": "Movie" },
+      { "id": 7, "cat": "TV", "desc": " Anime Live" },
+      { "id": 5, "cat": "TV", "desc": "Action Live" }
     ],
     "tv": [
-      {
-        "id": 8,
-        "cat": "TV",
-        "desc": "Anime TV"
-      },
-      {
-        "id": 2,
-        "cat": "TV",
-        "desc": "TV"
-      }
+      { "id": 8, "cat": "TV", "desc": "Anime TV" },
+      { "id": 2, "cat": "TV", "desc": "Television" },
+      { "id": 3, "cat": "TV", "desc": "EPack" }
+    ],
+    "audio": [
+      { "id": 7, "cat": "Audio", "desc": " Anime Live" },
+      { "id": 11, "cat": "Audio", "desc": "Miscellaneous" }
+    ],
+    "music": [
+      { "id": 9, "cat": "Audio", "desc": "Anime Music Video" },
+      { "id": 4, "cat": "Audio", "desc": "Music" }
+    ],
+    "other": [
+      { "id": 10, "cat": "Other", "desc": "Offline" }
     ]
   },
   "requests": {
     "user_basic_info": {
       "parser": "XPath",
       "method": "GET",
-      "path": "/users/niergouge",
+      "path": "/",
       "fields": {
         "is_login": {
-          "selector": "//button[@class='top-nav--right__link']/text()",
-          "filters": [
-            {
-              "name": "regex",
-              "args": "退出登录"
-            }
-          ]
+          "selector": "//a[contains(@class,'top-nav__username--highresolution')]",
+          "filters": [{ "name": "not_blank" }]
         },
         "id": {
-          "selector": "/html/body/main/article/div[1]/div[6]/div/table/tbody/tr[4]/td[2]/text()"
+          "selector": "//a[contains(@class, 'top-nav__username--highresolution')]/@href",
+          "filters": [{ "name": "re_search", "args": ["/users/([^/]+)", 1] }]
         },
         "name": {
-          "selector": "/html/head/title/text()",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "(.*) - 会员 - MonikaDesign",
-                1
-              ]
-            }
-          ]
+          "selector": "//a[contains(@class, 'top-nav__username--highresolution')]/@href",
+          "filters": [{ "name": "re_search", "args": ["/users/([^/]+)", 1] }]
         },
         "uploaded": {
-          "selector": "/html/body/header/nav[1]/div[2]/ul[2]/li[1]/a/text()",
+          "selector": "//li[contains(@title, '上传量')]/a/text()",
           "filters": [
-            {
-              "name": "byte_size"
-            }
+            { "name": "replace", "args": [",", ""] },
+            { "name": "byte_size" }
           ]
         },
         "downloaded": {
-          "selector": "/html/body/header/nav[1]/div[2]/ul[2]/li[2]/a/text()",
+          "selector": "//li[contains(@title, '下载量')]/a/text()",
           "filters": [
-            {
-              "name": "byte_size"
-            }
+            { "name": "replace", "args": [",", ""] },
+            { "name": "byte_size" }
           ]
         },
         "ratio": {
-          "selector": "/html/body/header/nav[1]/div[2]/ul[2]/li[5]/a/text()"
+          "selector": "//li[contains(@title, '分享率')]/a/text()",
+          "filters": [{ "name": "replace", "args": [",", ""] }]
         },
         "bonus": {
-          "selector": "/html/body/header/nav[1]/div[2]/ul[2]/li[6]/a/text()"
+          "selector": "//li[contains(@title, '魔力')]/a/text()",
+          "filters": [{ "name": "replace", "args": [",", ""] }]
         }
       }
     },
     "user_details": {
       "parser": "XPath",
       "method": "GET",
-      "path": "/users/niergouge",
+      "path": "/users/{userId}",
       "fields": {
-        "level": {
-          "selector": "/html/body/main/article/div[1]/div[1]/div[3]/table/tbody/tr[2]/td[2]/span/text()"
-        },
+        "level": { "selector": "//div[@class='header gradient blue']//h4[1]/span/text()" },
         "join_at": {
-          "selector": "/html/body/main/article/div[1]/div[1]/div[1]/div/div/div[2]/h4[2]/text()",
+          "selector": "//h4[contains(text(),'注册日期')]/text()",
           "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "注册日期 (.*)",
-                1
-              ]
-            },
-            {
-              "name": "timestamp",
-              "args": [
-                "Jan 02 2006"
-              ]
-            }
+            { "name": "re_search", "args": ["([A-Za-z]{3}\\s+\\d{2}\\s+\\d{4})", 1] },
+            { "name": "timestamp", "args": ["Jan 02 2006"] }
           ]
         },
         "last_accessed": {
-          "selector": "/html/body/main/article/div[1]/div[6]/div/table/tbody/tr[6]/td[2]/text()",
+          "selector": "//td[contains(normalize-space(),'上次登录时间')]/following-sibling::td[1]",
           "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "(.*)",
-                0
-              ]
-            },
-            {
-              "name": "timestamp",
-              "args": [
-                "Mon, Jan 02, 2006 03:04 PM"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "rss": {
-      "parser": "Xml",
-      "method": "GET",
-      "list": {
-        "selector": "//item"
-      },
-      "fields": {
-        "id": {
-          "selector": "//link",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
-            }
-          ]
-        },
-        "title": {
-          "selector": "//title"
-        },
-        "description": {
-          "selector": "//description"
-        },
-        "link": {
-          "selector": "//link"
-        },
-        "enclosure": {
-          "selector": "//enclosure/@url"
-        },
-        "size": {
-          "selector": "//enclosure/@length",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        },
-        "pub_date": {
-          "selector": "//pubDate",
-          "filters": [
-            {
-              "name": "timestamp"
-            }
-          ]
-        }
-      }
-    },
-    "seeding_statistics": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
-      "headers": {
-        "Referer": "{domain}/userdetails.php?id={userId}"
-      },
-      "list": {
-        "selector": "//tr[position()>1]",
-        "next_page": {
-          "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
-        }
-      },
-      "fields": {
-        "size": {
-          "selector": "/td[4]",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
+            { "name": "re_search", "args": ["([A-Za-z]{3},\\s+[A-Za-z]{3}\\s+\\d{1,2},\\s+\\d{4}\\s+\\d{1,2}:\\d{2}\\s+[AP]M)", 1] },
+            { "name": "timestamp", "args": ["Mon, Jan 2, 2006 3:04 PM"] }
           ]
         }
       }
@@ -227,297 +107,86 @@
     "messages": {
       "parser": "XPath",
       "method": "GET",
-      "path": "/messages.php?action=viewmailbox&box=1",
-      "list": {
-        "selector": "//form[@action='messages.php']//tr[position() > 1][.//td[a[contains(@href, 'messages.php')]]]"
-      },
-      "params": {
-        "page": [
-          "{page}"
-        ]
-      },
+      "path": "mail/inbox",
+      "list": { "selector": "//table[contains(@class, 'table')]/tbody/tr" },
+      "params": { "page": ["{page}"] },
       "fields": {
-        "title": {
-          "selector": "td[2]/a/text()"
-        },
-        "link": {
-          "selector": "td[2]/a/@href"
-        },
-        "id": {
-          "selector": "td[2]/a/@href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "id=(\\d+)",
-                1
-              ]
-            }
-          ]
-        },
-        "date": {
-          "any": [
-            {
-              "selector": "td[4]/span/text()"
-            },
-            {
-              "selector": "td[4]/text()"
-            }
-          ]
+        "title": { "selector": "./td[2]/a/text()", "filters": [{ "name": "strip" }] },
+        "link": { "selector": "./td[2]/a/@href" },
+        "id": { "selector": "./td[2]/a/@href", "filters": [{ "name": "re_search", "args": ["/mail/message/(\\d+)", 1] }] },
+        "sender": { "selector": "./td[1]//span/text()|./td[1]/a/text()", "filters": [{ "name": "strip" }] },
+        "date": { "selector": "./td[3]/text()", "filters": [{ "name": "strip" }] },
+        "unread": { "selector": "./td[4]//span[contains(@class, 'label-danger') or contains(text(), '未读')]" }
+      }
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "articles",
+      "fields": {
+        "content": {
+          "selector": "//article[contains(@class, 'article-preview')]",
+          "filters": []
         }
       }
     },
     "message_detail": {
       "parser": "XPath",
       "method": "GET",
-      "path": "",
+      "path": "articles",
       "fields": {
-        "title": {
-          "selector": "//h1/text()|//div[@class='layui-card-header']/span[1]/text()"
-        },
-        "date": {
-          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[2]/td[2]|//div[@class='layui-card-header']/span[2]/span[2]"
-        },
-        "content": {
-          "selector": "//h1/following-sibling::table[.//tr/td[@class='colhead']]//tr[3]/td|//div[contains(@class,'layui-card-body')]"
+        "title": { "selector": "//h2[contains(@class,'article-preview__title')]/a/text()" },
+        "date": { "selector": "//time[contains(@class,'article-preview__published-date')]/@title" },
+        "content": { "selector": "//p[contains(@class,'article-preview__content')]", "filters": [{ "name": "strip" }] }
+      }
+    },
+    "rss": {
+      "parser": "XML",
+      "method": "GET",
+      "path": "/rss/torrents/all",
+      "fields": {
+        "list": {
+          "selector": "/rss/channel/item",
+          "element": {
+            "id": { "selector": "./guid", "filters": [{ "name": "re_search", "args": ["/torrents/(\\d+)", 1] }] },
+            "title": { "selector": "./title" },
+            "download": { "selector": "./link" },
+            "pubDate": { "selector": "./pubDate", "filters": [{ "name": "timestamp" }] }
+          }
         }
       }
     },
-    "notice": {
+    "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
-      "path": "",
+      "path": "/users/{userId}",
+      "disabled_extends": { "list": true },
       "fields": {
-        "content": {
-          "selector": "//*[@id='outer']/table/tbody/tr/td/table[1]/tbody/tr/td/div"
-        }
-      }
-    },
-    "sign_in": {
-      "parser": "CssSelector",
-      "method": "GET",
-      "path": "/attendance.php",
-      "success_status_codes": [
-        200,
-        403,
-        500
-      ],
-      "fields": {
-        "signed_in": {
-          "selector": "*",
-          "selection": "html",
-          "filters": [
-            {
-              "name": "regex",
-              "args": "(已签|签到已得)"
-            }
-          ]
-        }
-      }
-    },
-    "details": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "/details.php",
-      "params": {
-        "id": [
-          "{id}"
-        ],
-        "hit": [
-          "1"
-        ]
-      },
-      "fields": {
-        "absent": {
-          "selector": "*",
-          "selection": "html",
-          "filters": [
-            {
-              "name": "regex",
-              "args": "没有该ID的种子"
-            }
-          ]
-        },
-        "free": {
-          "any": [
-            {
-              "selector": "//h1[@id='top']/b/font[@class='free']"
-            },
-            {
-              "selector": "//h1[@id='top']/b/font[@class='twoupfree']"
-            }
-          ],
-          "filters": [
-            {
-              "name": "not_blank"
-            }
-          ]
-        },
-        "2x_free": {
-          "selector": "//h1[@id='top']/b/font[@class='twoupfree']",
-          "filters": [
-            {
-              "name": "not_blank"
-            }
-          ]
-        },
-        "hr_days": {
-          "selector": "//*[@id='outer']/table[1]/tbody/tr[3]/td[2]/text()",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "(\\d+)day",
-                1
-              ]
-            }
-          ]
-        },
-        "peer_count": {
-          "selector": "//div[@id='peercount']/b[1]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "my_hr": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "/myhr.php?hrtype=1",
-      "list": {
-        "selector": "//*[@id='outer']/table/tbody/tr/td/table/tbody/tr[position()>1 and count(td) > 1]"
-      },
-      "fields": {
-        "id": {
-          "selector": "td[1]"
-        },
-        "name": {
-          "selector": "td[2]"
-        },
-        "uploaded": {
-          "selector": "td[3]"
-        },
-        "downloaded": {
-          "selector": "td[4]"
-        },
-        "share_ratio": {
-          "selector": "td[5]"
-        },
-        "need_seed_time": {
-          "selector": "td[6]"
-        },
-        "downloaded_time": {
-          "selector": "td[7]"
-        },
-        "remaining_inspection_time": {
-          "selector": "td[8]"
-        }
-      }
-    },
-    "get_subtitle_url": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "/details.php",
-      "params": {
-        "id": [
-          "{id}"
-        ],
-        "hit": [
-          "1"
-        ]
-      },
-      "fields": {
-        "url": {
-          "selector": "//td[@class='rowhead'][text()='字幕']/following-sibling::td//a/@href"
+        "size": { "selector": "//td[contains(text(),'做种体积')]/following-sibling::td[1]/span/text()", "filters": [{ "name": "byte_size" }] },
+        "count": {
+          "selector": "//div[contains(@class,'button-holder')]//span[contains(text(),'做种数量')]/a/text()",
+          "filters": [{ "name": "replace", "args": [",", ""] }, { "name": "strip" }]
         }
       }
     },
     "search": {
       "path": "torrents?perPage=100&categories[0]=6&categories[1]=7&categories[2]=5&categories[3]=1&categories[4]=8&categories[5]=2",
-      "params": {
-        "name": [
-          "{keyword}"
-        ]
-      },
-      "list": {
-        "selector": "table#torrent-list-table > tbody > tr"
-      },
+      "params": { "name": ["{keyword}"] },
+      "list": { "selector": "table#torrent-list-table > tbody > tr" },
       "fields": {
-        "id": {
-          "selector": "a.view-torrent.torrent-listings-name",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
-            }
-          ]
-        },
-        "title": {
-          "selector": "a.view-torrent.torrent-listings-name"
-        },
-        "description": {
-          "selector": "span.view-torrent.torrent-listings-subhead > b"
-        },
-        "details": {
-          "selector": "a.view-torrent.torrent-listings-name",
-          "attribute": "href"
-        },
-        "download": {
-          "selector": "a[href*=\"/torrents/download/\"]",
-          "attribute": "href"
-        },
-        "date_added": {
-          "selector": "td.torrent-listings-age > span.badge-extra",
-          "attribute": "data-original-title",
-          "filters": [
-            {
-              "name": "timestamp"
-            }
-          ]
-        },
-        "size": {
-          "selector": "td.torrent-listings-size > span",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        },
-        "seeders": {
-          "selector": "td.torrent-listings-seeders > a > span"
-        },
-        "leechers": {
-          "selector": "td.torrent-listings-leechers > a > span"
-        },
-        "grabs": {
-          "selector": "td.torrent-listings-completed > a > span"
-        },
-        "cover": {
-          "selector": "td.torrent-listings-poster > div > a > img",
-          "attribute": "src"
-        },
-        "downloadvolumefactor": {
-          "case": {
-            "span.torrent-listings-freeleech": 0,
-            "*": 1
-          }
-        },
-        "uploadvolumefactor": {
-          "case": {
-            "*": 1
-          }
-        }
+        "id": { "selector": "a.view-torrent.torrent-listings-name", "attribute": "href", "filters": [{ "name": "re_search", "args": ["\\d+", 0] }] },
+        "title": { "selector": "a.view-torrent.torrent-listings-name" },
+        "description": { "selector": "span.view-torrent.torrent-listings-subhead > b" },
+        "details": { "selector": "a.view-torrent.torrent-listings-name", "attribute": "href" },
+        "download": { "selector": "a[href*=\"/torrents/download/\"]", "attribute": "href" },
+        "date_added": { "selector": "td.torrent-listings-age > span.badge-extra", "attribute": "data-original-title", "filters": [{ "name": "timestamp" }] },
+        "size": { "selector": "td.torrent-listings-size > span", "filters": [{ "name": "byte_size" }] },
+        "seeders": { "selector": "td.torrent-listings-seeders > a > span" },
+        "leechers": { "selector": "td.torrent-listings-leechers > a > span" },
+        "grabs": { "selector": "td.torrent-listings-completed > a > span" },
+        "cover": { "selector": "td.torrent-listings-poster > div > a > img", "attribute": "src" },
+        "downloadvolumefactor": { "case": { "span.torrent-listings-freeleech": 0, "*": 1 } },
+        "uploadvolumefactor": { "case": { "*": 1 } }
       }
     }
   }

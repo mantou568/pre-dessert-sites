@@ -2,6 +2,7 @@
   "id": "azusa",
   "name": "梓喵",
   "domain": "https://azusa.wiki",
+  "additional_domain": ["https://zimiao.icu"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -43,5 +44,66 @@
         "desc": "TV Shows/综艺"
       }
     ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span,a,img,font,b,br",
+          "contents": -1
+        },
+        "hr_days": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//img[@class='arrowup']/following-sibling::text()[1]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["(\\d+)", 1]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//a[contains(@class, 'Name')]//i[@class='icon-rank']/@onmouseover",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["做种量:\\s*<b>\\s*([^<]+)</b>", 1]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
   }
 }

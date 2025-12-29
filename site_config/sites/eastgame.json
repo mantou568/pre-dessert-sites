@@ -56,18 +56,51 @@
   "requests": {
     "search": {
       "fields": {
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
+        },
         "description": {
-          "selector": "td.embedded:nth-child(1)",
+          "selector": "td.embedded",
           "remove": "span,a,img,font,b,br",
           "contents": -1
         }
       }
     },
     "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
       "fields": {
-        "size": {
-          "selector": "/td[3]",
+        "count": {
+          "selector": "//b[following-sibling::text()[contains(., '条记录')]]",
           "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//text()[contains(., 'Total')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "Total:\\s*([\\d\\.]+\\s*[KMGTP]B)",
+                1
+              ]
+            },
             {
               "name": "byte_size"
             }

@@ -89,6 +89,33 @@
     ]
   },
   "requests": {
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/index.php",
+      "fields": {
+        "uploaded": {
+          "selector": "//span[@class='uploaded']/text()",
+          "filters": [
+            { "name": "re_search", "args": ["([\\d,.]+\\s+[ZEP TGMK]?i?B)", 1] },
+            { "name": "byte_size" }
+          ]
+        },
+        "downloaded": {
+          "selector": "//span[@class='downloaded']/text()",
+          "filters": [
+            { "name": "re_search", "args": ["([\\d,.]+\\s+[ZEP TGMK]?i?B)", 1] },
+            { "name": "byte_size" }
+          ]
+        },
+        "bonus": {
+          "selector": "//span[@id='totalBonus']/text()",
+          "filters": [
+            { "name": "replace", "args": [",", ""] }
+          ]
+        }
+      }
+    },
     "search": {
       "fields": {
         "description": {
@@ -126,7 +153,7 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["([\\d,.]+\\s+(?:T|G|M|K|P)B)", 1]
+              "args": ["([\\d,.]+\\s+(?:T|G|M|K|P)i?B)", 1]
             },
             {
               "name": "byte_size"
@@ -136,9 +163,9 @@
         "count": {
           "selector": "//td[contains(., 'Tracker')]/following-sibling::td[1]",
           "filters": [
-            { 
-              "name": "re_search", 
-              "args": ["(\\d+)\\s+seeding", 1] 
+            {
+              "name": "re_search",
+              "args": ["(\\d+)\\s+seeding", 1]
             }
           ]
         }

@@ -1,7 +1,8 @@
 {
-  "id": "hdcity",
-  "name": "城市",
-  "domain": "https://hdcity.work",
+  "id": "xingwan",
+  "name": "星湾",
+  "domain": "https://xingwan.cc.top",
+  "additional_domain": [],
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -11,7 +12,7 @@
   "meta": {
     "has_free": true,
     "has_2x_free": true,
-    "has_hr": false
+    "has_cover": true
   },
   "category": {
     "movie": [
@@ -19,6 +20,16 @@
         "id": 401,
         "cat": "Movies",
         "desc": "Movies/电影"
+      },
+      {
+        "id": 406,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": 407,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
       }
     ],
     "tv": [
@@ -41,6 +52,11 @@
         "id": 403,
         "cat": "TV",
         "desc": "TV Shows/综艺"
+      },
+      {
+        "id": 412,
+        "cat": "TV",
+        "desc": "Short Play/短剧"
       }
     ]
   },
