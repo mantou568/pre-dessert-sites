@@ -16,67 +16,112 @@
   },
   "category": {
     "movie": [
-      {
-        "id": 401,
-        "cat": "Movies",
-        "desc": "Movies/电影"
-      },
-      {
-        "id": 407,
-        "cat": "Movies/Sports",
-        "desc": "Sports/体育"
-      }
+      { "id": 401, "cat": "Movies", "desc": "Movies/电影" },
+      { "id": 407, "cat": "Movies/Sports", "desc": "Sports/体育" }
     ],
     "tv": [
-      {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
-      },
-      {
-        "id": 402,
-        "cat": "TV",
-        "desc": "TV Series/连续剧"
-      },
-      {
-        "id": 403,
-        "cat": "TV",
-        "desc": "TV Shows/综艺"
-      },
-      {
-        "id": 440,
-        "cat": "TV",
-        "desc": "frame/短剧"
-      }
+      { "id": 404, "cat": "TV/Documentary", "desc": "Documentaries/纪录片" },
+      { "id": 405, "cat": "TV/Anime", "desc": "Animations/动漫" },
+      { "id": 402, "cat": "TV", "desc": "TV Series/连续剧" },
+      { "id": 403, "cat": "TV", "desc": "TV Shows/综艺" },
+      { "id": 440, "cat": "TV", "desc": "frame/短剧" }
     ]
   },
   "requests": {
-    "message_detail": {
-        "fields": {
-          "content": {
-            "selector": "//*[@id='outer']/font/b/table[2]/tbody/tr[3]/td"
-          }
-        }
-      },
-    "search": {
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
       "fields": {
-        "hr_days":{
+        "is_login": {
+          "any": [
+            { "selector": "//a[contains(@href, 'logout')]/text()" },
+            { "selector": "//a[contains(@href, 'userdetails')]/b/text()" },
+            { "selector": "//div[@class='user-info-side']/text()" }
+          ],
           "filters": [
+            { "name": "not_blank" }
+          ]
+        },
+        "id": {
+          "selector": "//a[contains(@href, 'userdetails.php')]/@href",
+          "filters": [
+            { "name": "re_search", "args": [ "id=(\\d+)", 1 ] }
+          ]
+        },
+        "name": {
+          "selector": "//a[contains(@href, 'userdetails.php')]//text()"
+        },
+        "share_ratio": {
+          "selector": "//div[@id='menu_lists_text']/div[contains(span,'分享率')]/text()[last()]",
+          "filters": [
+            { "name": "replace", "args": [ "无限", "null" ] },
+            { "name": "strip" }
+          ]
+        },
+        "uploaded": {
+          "selector": "//div[@id='menu_lists_text']/div[contains(span,'上传量')]/text()[last()]",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "downloaded": {
+          "selector": "//div[@id='menu_lists_text']/div[contains(span,'下载量')]/text()[last()]",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "bonus": {
+          "any": [
             {
-              "name": "constant",
-              "args": "3"
+              "selector": "//a[contains(@href,'mybonus.php')]/following-sibling::div/p[1]",
+              "filters": [ { "name": "replace", "args": [ ",", "" ] } ]
+            },
+            {
+              "selector": "//div[@id='menu_lists']//p[contains(@style, 'font-size: 24px')]",
+              "filters": [ { "name": "replace", "args": [ ",", "" ] } ]
+            },
+            {
+              "selector": "//*[@id='menu_lists']/div[6]/div/p[1]",
+              "filters": [ { "name": "replace", "args": [ ",", "" ] } ]
             }
+          ]
+        },
+        "join_date": {
+          "selector": "//td[contains(text(), '加入日期')]/following-sibling::td[1]",
+          "filters": [
+            { "name": "re_search", "args": [ "(\\d{4}-\\d{2}-\\d{2})", 1 ] }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            { "name": "re_search", "args": [ "(\\d+)", 1 ] }
+          ]
+        },
+        "size": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            { "name": "re_search", "args": [ "总大小：(.*)", 1 ] },
+            { "name": "strip" },
+            { "name": "byte_size" }
           ]
         }
       }
     }
-  },
-  "my_hr": {
-    "path": "/myhr.php?status=1"
   }
 }
