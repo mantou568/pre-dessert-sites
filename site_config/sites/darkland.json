@@ -77,9 +77,15 @@
           "filters": [{ "name": "strip" }]
         },
         "bonus": {
-          "selector": "//li[contains(@class, 'ratio-bar__points')]/a/text()",
-          "filters": [{ "name": "replace", "args": [",", ""] }, { "name": "strip" }]
+          "selector": "//li[contains(@class,'ratio-bar__points')]/a//text()",
+          "filters": [
+            { "name": "replace", "args": ["\u202f", ""] },
+            { "name": "replace", "args": [" ", ""] },
+            { "name": "replace", "args": [",", ""] },
+            { "name": "strip" }
+          ]
         }
+
       }
     },
     "user_details": {
@@ -96,6 +102,33 @@
             { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2})", 1] },
             { "name": "timestamp", "args": ["2006-01-02"] }
           ]
+        },
+        "last_accessed": {
+          "selector": "//dt[contains(text(),'上次登录时间')]/following-sibling::dd[1]/time/@datetime",
+          "filters": [{ "name": "timestamp" }]
+        }        
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "disabled_extends": { "list": true },
+      "fields": {
+        "count": {
+          "selector": "//dt[contains(.,'总做种数量')]/following-sibling::dd[1]/text()",
+          "filters": [
+            { "name": "replace", "args": [",", ""] },
+            { "name": "strip" }
+          ]
+        },
+        "size": {
+          "selector": "//dt[contains(.,'做种体积')]/following-sibling::dd[1]/text()",
+          "filters": [
+            { "name": "replace", "args": ["\u00a0", " "] },
+            { "name": "strip" },
+            { "name": "byte_size" }
+          ]
         }
       }
     },
@@ -103,16 +136,23 @@
       "parser": "XPath",
       "method": "GET",
       "path": "/users/{userId}/conversations",
-      "list": {
-        "selector": "//table[contains(@class, 'data-table')]/tbody/tr"
-      },
+      "list": { "selector": "//table[contains(@class, 'data-table')]/tbody/tr" },
       "fields": {
         "title": { "selector": "./td[2]/a", "filters": [{ "name": "strip" }] },
         "link": { "selector": "./td[2]/a/@href" },
-        "id": { "selector": "./td[2]/a/@href", "filters": [{ "name": "re_search", "args": ["/conversations/(\\d+)", 1] }] },
-        "sender": { "selector": "./td[1]//span[contains(@class, 'user-tag')]/a", "filters": [{ "name": "strip" }] },
+        "id": {
+          "selector": "./td[2]/a/@href",
+          "filters": [{ "name": "re_search", "args": ["/conversations/(\\d+)", 1] }]
+        },
+        "sender": {
+          "selector": "./td[1]//span[contains(@class, 'user-tag')]/a",
+          "filters": [{ "name": "strip" }]
+        },
         "date": { "selector": "./td[3]/time/@title", "filters": [{ "name": "strip" }] },
-        "unread": { "selector": "./td[5]/i[not(contains(@class, 'text-green'))]", "filters": [{ "name": "not_blank" }] }
+        "unread": {
+          "selector": "./td[5]/i[not(contains(@class, 'text-green'))]",
+          "filters": [{ "name": "not_blank" }]
+        }
       }
     },
     "notice": {
@@ -130,39 +170,77 @@
       "fields": {
         "title": { "selector": "//h2[contains(@class,'article-preview__title')]/a/text()" },
         "date": { "selector": "//time[contains(@class,'article-preview__published-date')]/@title" },
-        "content": { "selector": "//p[contains(@class,'article-preview__content')]", "filters": [{ "name": "strip" }] }
+        "content": {
+          "selector": "//p[contains(@class,'article-preview__content')]",
+          "filters": [{ "name": "strip" }]
+        }
       }
     },
-    "search": {
-      "path": "torrents",
-      "params": {
-        "name": ["{keyword}"],
-        "perPage": ["100"],
-        "view": ["list"],
-        "categories[]": ["1", "2", "4", "7", "8", "12", "13", "16", "30"]
-      },
-      "list": { "selector": "table.data-table > tbody > tr[data-torrent-id]" },
-      "fields": {
-        "id": {
-          "selector": "a.torrent-search--list__name",
-          "attribute": "href",
-          "filters": [{ "name": "re_search", "args": ["/torrents/(\\d+)", 1] }]
-        },
-        "title": { "selector": "a.torrent-search--list__name" },
-        "details": { "selector": "a.torrent-search--list__name", "attribute": "href" },
-        "download": { "selector": "a[href*='/torrents/download/']", "attribute": "href" },
-        "date_added": { "selector": "td.torrent-search--list__age time", "attribute": "datetime" },
-        "size": { "selector": "td.torrent-search--list__size > span", "filters": [{ "name": "byte_size" }] },
-        "seeders": { "selector": "a.torrent__seeder-count" },
-        "leechers": { "selector": "a.torrent__leecher-count" },
-        "grabs": { "selector": "a.torrent__times-completed-count" },
-        "downloadvolumefactor": {
-          "case": { "i.torrent-icons__freeleech": 0, "*": 1 }
-        },
-        "uploadvolumefactor": {
-          "case": { "*": 1 }
-        }
+"search": {
+  "path": "torrents?name={keyword}",
+  "params": {
+    "name": ["{keyword}"],
+    "perPage": ["25"],
+    "view": ["list"],
+    "categories[]": ["1", "2", "4", "7", "8", "12", "13", "16", "30"]
+  },
+  "list": {
+    "selector": "table.data-table > tbody > tr[data-torrent-id]"
+  },
+  "fields": {
+    "id": {
+      "selector": "a.torrent-search--list__name",
+      "attribute": "href",
+      "filters": [
+        { "name": "re_search", "args": ["/torrents/(\\d+)", 1] }
+      ]
+    },
+    "title": {
+      "selector": "a.torrent-search--list__name"
+    },
+    "details": {
+      "selector": "a.torrent-search--list__name",
+      "attribute": "href"
+    },
+    "download": {
+      "selector": "a[href*='/torrents/download/']",
+      "attribute": "href"
+    },
+    "date_added": {
+      "selector": "td.torrent-search--list__age time",
+      "attribute": "datetime",
+      "filters": [
+        { "name": "strip" },
+        { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+      ]
+    },
+    "size": {
+      "selector": "td.torrent-search--list__size > span",
+      "filters": [
+        { "name": "byte_size" }
+      ]
+    },
+    "seeders": {
+      "selector": "a.torrent__seeder-count"
+    },
+    "leechers": {
+      "selector": "a.torrent__leecher-count"
+    },
+    "grabs": {
+      "selector": "a.torrent__times-completed-count"
+    },
+    "downloadvolumefactor": {
+      "case": {
+        "i.torrent-icons__freeleech": 0,
+        "*": 1
+      }
+    },
+    "uploadvolumefactor": {
+      "case": {
+        "*": 1
       }
     }
   }
+}
+}
 }
