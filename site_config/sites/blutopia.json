@@ -29,13 +29,12 @@
       { "id": 9, "cat": "Other", "desc": "Live Concert" }
     ]
   },
- "requests": {
+  "requests": {
     "favicon": {
       "parser": "None",
       "method": "GET",
       "path": "/favicon.ico"
     },
-  "requests": {
     "user_basic_info": {
       "parser": "XPath",
       "method": "GET",
@@ -87,7 +86,7 @@
         "level": {
           "selector": "//span[contains(@class, 'user-tag')]/a/@title",
           "filters": [{ "name": "strip" }]
-        }, 
+        },
         "join_at": {
           "selector": "//time[contains(@class, 'profile__registration')]/@datetime",
           "filters": [{ "name": "timestamp" }]
@@ -102,9 +101,7 @@
       "parser": "XPath",
       "method": "GET",
       "path": "/users/{userId}",
-      "disabled_extends": {
-        "list": true
-      },
+      "disabled_extends": { "list": true },
       "fields": {
         "size": {
           "selector": "(//dt[abbr[contains(@title, '做种体积')]]/following-sibling::dd[1]/text())[1]",
@@ -158,5 +155,4 @@
       }
     }
   }
-}
 }
