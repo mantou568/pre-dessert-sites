@@ -78,6 +78,10 @@
       "method": "GET",
       "path": "/users/{userId}",
       "fields": {
+        "level": {
+          "selector": "//span[contains(@class, 'user-tag')]/a/@title",
+          "filters": [{ "name": "strip" }]
+        }, 
         "join_at": {
           "selector": "//time[contains(@class, 'profile__registration')]/@datetime",
           "filters": [{ "name": "timestamp" }]
