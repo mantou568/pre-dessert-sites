@@ -29,6 +29,12 @@
       { "id": 9, "cat": "Other", "desc": "Live Concert" }
     ]
   },
+ "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
   "requests": {
     "user_basic_info": {
       "parser": "XPath",
@@ -152,4 +158,5 @@
       }
     }
   }
+}
 }
