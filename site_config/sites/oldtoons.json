@@ -47,21 +47,27 @@
       "fields": {
         "is_login": {
           "selector": "//form[contains(@action, 'logout')]",
-          "filters": [{ "name": "not_blank" }]
+          "filters": [
+            { "name": "not_blank" }
+          ]
         },
         "id": {
           "selector": "//a[contains(@class, 'top-nav__username')]/@href",
-          "filters": [{ "name": "re_search", "args": ["/users/([^/]+)", 1] }]
+          "filters": [
+            { "name": "re_search", "args": [ "/users/([^/]+)", 1 ] }
+          ]
         },
         "name": {
           "selector": "//a[contains(@class, 'top-nav__username')]",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            { "name": "strip" }
+          ]
         },
         "uploaded": {
           "selector": "//li[contains(@class, 'ratio-bar__uploaded')]/a/text()",
           "filters": [
-            { "name": "replace", "args": [",", ""] },
-            { "name": "replace", "args": ["\u202f", ""] },
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "strip" },
             { "name": "byte_size" }
           ]
@@ -69,8 +75,8 @@
         "downloaded": {
           "selector": "//li[contains(@class, 'ratio-bar__downloaded')]/a/text()",
           "filters": [
-            { "name": "replace", "args": [",", ""] },
-            { "name": "replace", "args": ["\u202f", ""] },
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "strip" },
             { "name": "byte_size" }
           ]
@@ -78,16 +84,16 @@
         "ratio": {
           "selector": "//li[contains(@class, 'ratio-bar__ratio')]/a/text()",
           "filters": [
-            { "name": "replace", "args": [",", ""] },
-            { "name": "replace", "args": ["\u202f", ""] },
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "strip" }
           ]
         },
         "bonus": {
           "selector": "//li[contains(@class, 'ratio-bar__points')]/a/text()",
           "filters": [
-            { "name": "replace", "args": [",", ""] },
-            { "name": "replace", "args": ["\u202f", ""] },
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "strip" }
           ]
         }
@@ -100,7 +106,12 @@
       "fields": {
         "level": {
           "selector": "//a[contains(@class, 'user-tag__link')]/@title",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            { "name": "strip" }
+          ]
+        },
+        "level_icon": {
+          "selector": "//div/article/img/@src"
         },
         "join_at": {
           "selector": "//time[contains(@class, 'profile__registration')]/@datetime",
@@ -120,28 +131,42 @@
       "parser": "XPath",
       "method": "GET",
       "path": "/users/{userId}/conversations",
-      "list": { "selector": "//table[contains(@class, 'data-table')]/tbody/tr" },
-      "params": { "page": ["{page}"] },
+      "list": {
+        "selector": "//table[contains(@class, 'data-table')]/tbody/tr"
+      },
+      "params": {
+        "page": [ "{page}" ]
+      },
       "fields": {
-        "title": { 
-          "selector": "./td[2]/a/text()", 
-          "filters": [{ "name": "strip" }] 
+        "title": {
+          "selector": "./td[2]/a/text()",
+          "filters": [
+            { "name": "strip" }
+          ]
         },
-        "link": { "selector": "./td[2]/a/@href" },
-        "id": { 
-          "selector": "./td[2]/a/@href", 
-          "filters": [{ "name": "re_search", "args": ["/conversations/(\\d+)", 1] }] 
+        "link": {
+          "selector": "./td[2]/a/@href"
         },
-        "sender": { 
-          "selector": "./td[1]//a/text()", 
-          "filters": [{ "name": "strip" }] 
+        "id": {
+          "selector": "./td[2]/a/@href",
+          "filters": [
+            { "name": "re_search", "args": [ "/conversations/(\\d+)", 1 ] }
+          ]
         },
-        "date": { 
-          "selector": "./td[3]//time/@datetime", 
-          "filters": [{ "name": "strip" }] 
+        "sender": {
+          "selector": "./td[1]//a/text()",
+          "filters": [
+            { "name": "strip" }
+          ]
         },
-        "unread": { 
-          "selector": "./td[5]//*[contains(@title, '未读')]" 
+        "date": {
+          "selector": "./td[3]//time/@datetime",
+          "filters": [
+            { "name": "strip" }
+          ]
+        },
+        "unread": {
+          "selector": "./td[5]//*[contains(@title, '未读')]"
         }
       }
     },
@@ -161,9 +186,18 @@
       "method": "GET",
       "path": "articles",
       "fields": {
-        "title": { "selector": "//h2[contains(@class,'article-preview__title')]/a/text()" },
-        "date": { "selector": "//time[contains(@class,'article-preview__published-date')]/@title" },
-        "content": { "selector": "//p[contains(@class,'article-preview__content')]", "filters": [{ "name": "strip" }] }
+        "title": {
+          "selector": "//h2[contains(@class,'article-preview__title')]/a/text()"
+        },
+        "date": {
+          "selector": "//time[contains(@class,'article-preview__published-date')]/@title"
+        },
+        "content": {
+          "selector": "//p[contains(@class,'article-preview__content')]",
+          "filters": [
+            { "name": "strip" }
+          ]
+        }
       }
     },
     "rss": {
@@ -174,10 +208,24 @@
         "list": {
           "selector": "/rss/channel/item",
           "element": {
-            "id": { "selector": "./guid", "filters": [{ "name": "re_search", "args": ["/torrents/(\\d+)", 1] }] },
-            "title": { "selector": "./title" },
-            "download": { "selector": "./link" },
-            "pubDate": { "selector": "./pubDate", "filters": [{ "name": "timestamp" }] }
+            "id": {
+              "selector": "./guid",
+              "filters": [
+                { "name": "re_search", "args": [ "/torrents/(\\d+)", 1 ] }
+              ]
+            },
+            "title": {
+              "selector": "./title"
+            },
+            "download": {
+              "selector": "./link"
+            },
+            "pubDate": {
+              "selector": "./pubDate",
+              "filters": [
+                { "name": "timestamp" }
+              ]
+            }
           }
         }
       }
@@ -186,81 +234,101 @@
       "parser": "XPath",
       "method": "GET",
       "path": "/users/{userId}",
-      "disabled_extends": { "list": true },
+      "disabled_extends": {
+        "list": true
+      },
       "fields": {
         "size": {
           "selector": "//dt[contains(.,'做种体积')]/following-sibling::dd[1]/text()",
           "filters": [
-             { "name": "replace", "args": [",", ""] },
-             { "name": "replace", "args": ["\u202f", ""] },
-             { "name": "byte_size" }
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
+            { "name": "byte_size" }
           ]
         },
         "count": {
           "selector": "//dt[contains(.,'总做种数量')]/following-sibling::dd[1]/text()",
           "filters": [
-             { "name": "replace", "args": [",", ""] }, 
-             { "name": "replace", "args": ["\u202f", ""] },
-             { "name": "strip" }
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
+            { "name": "strip" }
           ]
         }
       }
     },
     "search": {
       "path": "torrents?perPage=100&view=list&categories[6]=6&categories[1]=7&categories[2]=5&categories[3]=1&categories[4]=8&categories[5]=2",
-      "params": { "name": ["{keyword}"] },
-      "list": { "selector": "table.data-table > tbody > tr" },
+      "params": {
+        "name": [ "{keyword}" ]
+      },
+      "list": {
+        "selector": "table.data-table > tbody > tr"
+      },
       "fields": {
-        "id": { 
-          "selector": "a[href*='/torrents/']", 
-          "attribute": "href", 
-          "filters": [{ "name": "re_search", "args": ["/torrents/(\\d+)", 1] }] 
-        },
-        "title": { 
+        "id": {
           "selector": "a[href*='/torrents/']",
-          "filters": [{ "name": "strip" }]
+          "attribute": "href",
+          "filters": [
+            { "name": "re_search", "args": [ "/torrents/(\\d+)", 1 ] }
+          ]
         },
-        "details": { 
-          "selector": "a[href*='/torrents/']", 
-          "attribute": "href" 
+        "title": {
+          "selector": "a[href*='/torrents/']",
+          "filters": [
+            { "name": "strip" }
+          ]
         },
-        "download": { 
-          "selector": "a[href*='/download/']", 
-          "attribute": "href" 
+        "details": {
+          "selector": "a[href*='/torrents/']",
+          "attribute": "href"
         },
-        "date_added": { 
-          "selector": "time", 
-          "attribute": "datetime", 
-          "filters": [{ "name": "timestamp" }] 
+        "download": {
+          "selector": "a[href*='/download/']",
+          "attribute": "href"
         },
-        "size": { 
-          "selector": ".torrent-search--list__size", 
-          "filters": [{ "name": "byte_size" }] 
+        "date_added": {
+          "selector": "time",
+          "attribute": "datetime",
+          "filters": [
+            { "name": "timestamp" }
+          ]
         },
-        "seeders": { 
+        "size": {
+          "selector": ".torrent-search--list__size",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "seeders": {
           "selector": ".torrent-search--list__seeders a",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            { "name": "strip" }
+          ]
         },
-        "leechers": { 
+        "leechers": {
           "selector": ".torrent-search--list__leechers a",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            { "name": "strip" }
+          ]
         },
-        "grabs": { 
+        "grabs": {
           "selector": ".torrent-search--list__completed a",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            { "name": "strip" }
+          ]
         },
-        "downloadvolumefactor": { 
-          "case": { 
-            "i.fa-star": 0, 
+        "downloadvolumefactor": {
+          "case": {
+            "i.fa-star": 0,
             "i.fa-globe-americas": 0,
-            "*": 1 
-          } 
+            "*": 1
+          }
         },
-        "uploadvolumefactor": { 
-          "case": { 
-            "i.fa-gem": 2, 
-            "*": 1 
-          } 
+        "uploadvolumefactor": {
+          "case": {
+            "i.fa-gem": 2,
+            "*": 1
+          }
         }
       }
     }
