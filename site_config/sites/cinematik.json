@@ -17,16 +17,16 @@
   },
   "category": {
     "movie": [
-      { "id": 1, "cat": "Movies", "desc": "Movie" }
+      { "id": 1, "cat": "Movies", "desc": "Film" },
+      { "id": 3, "cat": "Movies", "desc": "Foreign Film" },
+      { "id": 6, "cat": "Movies", "desc": "Asian Film" }
     ],
     "tv": [
-      { "id": 2, "cat": "TV", "desc": "TV Show" }
+      { "id": 2, "cat": "TV", "desc": "TV" },
+      { "id": 4, "cat": "TV", "desc": "Foreign TV" }
     ],
     "other": [
-      { "id": 3, "cat": "Other", "desc": "FANRES" },
-      { "id": 5, "cat": "Other", "desc": "Trailer" },
-      { "id": 8, "cat": "Other", "desc": "Other" },
-      { "id": 9, "cat": "Other", "desc": "Live Concert" }
+      { "id": 5, "cat": "Other", "desc": "Opera & Musical" }
     ]
   },
   "requests": {
@@ -41,7 +41,7 @@
       "path": "/",
       "fields": {
         "is_login": {
-          "selector": "//form[@action='https://blutopia.cc/logout']//button/text()",
+          "selector": "//form[@action='https://cinematik.net/logout']//button",
           "filters": [
             { "name": "re_search", "args": ["(注销|Logout)", 0] },
             { "name": "replace", "args": ["注销", "true"] },
