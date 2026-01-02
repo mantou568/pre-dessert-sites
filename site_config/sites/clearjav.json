@@ -1,6 +1,6 @@
 {
   "id": "clearjav",
-  "name": "clearjav",
+  "name": "ClearJav",
   "domain": "https://clearjav.com",
   "encoding": "UTF-8",
   "public": false,
@@ -52,13 +52,13 @@
           ]
         },
         "id": {
-          "selector": "//a[contains(@class, 'top-nav__username')]/@href",
+          "selector": "//a[contains(@href, '/users/') and not(contains(@href, 'login')) and not(contains(@href, 'register'))][1]/@href",
           "filters": [
-            { "name": "re_search", "args": [ "/users/([^/]+)", 1 ] }
+            { "name": "re_search", "args": [ "users/([^/]+)", 1 ] }
           ]
         },
         "name": {
-          "selector": "//a[contains(@class, 'top-nav__username')]",
+          "selector": "//a[contains(@href, '/users/') and not(contains(@href, 'login')) and not(contains(@href, 'register'))][1]",
           "filters": [
             { "name": "strip" }
           ]
@@ -142,23 +142,23 @@
         "id": {
           "selector": "./td[2]/a/@href",
           "filters": [
-            { "name": "re_search", "args": [ "/mail/message/(\\d+)", 1 ] }
+            { "name": "re_search", "args": [ "/conversations/(\\d+)", 1 ] }
           ]
         },
         "sender": {
-          "selector": "./td[1]//span/text()|./td[1]/a/text()",
+          "selector": "./td[1]//a/text()",
           "filters": [
             { "name": "strip" }
           ]
         },
         "date": {
-          "selector": "./td[3]/text()",
+          "selector": "./td[3]//time/text()|./td[3]/text()",
           "filters": [
             { "name": "strip" }
           ]
         },
         "unread": {
-          "selector": "./td[4]//span[contains(@class, 'label-danger') or contains(text(), '未读')]"
+          "selector": "./td[2]/a/i[contains(@class, 'text-red')]"
         }
       }
     },
