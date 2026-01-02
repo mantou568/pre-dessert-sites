@@ -1,0 +1,158 @@
+{
+  "id": "cinematik",
+  "name": "Tik",
+  "domain": "https://cinematik.net",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [
+      { "id": 1, "cat": "Movies", "desc": "Film" },
+      { "id": 3, "cat": "Movies", "desc": "Foreign Film" },
+      { "id": 6, "cat": "Movies", "desc": "Asian Film" }
+    ],
+    "tv": [
+      { "id": 2, "cat": "TV", "desc": "TV" },
+      { "id": 4, "cat": "TV", "desc": "Foreign TV" }
+    ],
+    "other": [
+      { "id": 5, "cat": "Other", "desc": "Opera & Musical" }
+    ]
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "is_login": {
+          "selector": "//form[@action='https://cinematik.net/logout']//button",
+          "filters": [
+            { "name": "re_search", "args": ["(注销|Logout)", 0] },
+            { "name": "replace", "args": ["注销", "true"] },
+            { "name": "replace", "args": ["Logout", "true"] }
+          ]
+        },
+        "id": {
+          "selector": "//a[contains(@class, 'top-nav__username--highresolution')]/@href",
+          "filters": [
+            { "name": "re_search", "args": ["/users/([^/]+)", 1] }
+          ]
+        },
+        "name": {
+          "selector": "//a[contains(@class, 'top-nav__username--highresolution')]//span[contains(@class, 'text-bold')]/text()"
+        },
+        "uploaded": {
+          "selector": "//li[contains(@class, 'ratio-bar__uploaded')]/a/text()[not(parent::time)]",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "downloaded": {
+          "selector": "//li[contains(@class, 'ratio-bar__downloaded')]/a/text()[not(parent::time)]",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "ratio": {
+          "selector": "//li[contains(@class, 'ratio-bar__ratio')]/a/text()",
+          "filters": [{ "name": "replace", "args": [",", ""] }]
+        },
+        "bonus": {
+          "selector": "//li[contains(@class, 'ratio-bar__points')]/a/text()",
+          "filters": [
+            { "name": "replace", "args": [" ", ""] },
+            { "name": "replace", "args": [",", ""] }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "fields": {
+        "level": {
+          "selector": "//span[contains(@class, 'user-tag')]/a/@title",
+          "filters": [{ "name": "strip" }]
+        },
+        "join_at": {
+          "selector": "//time[contains(@class, 'profile__registration')]/@datetime",
+          "filters": [{ "name": "timestamp" }]
+        },
+        "last_accessed": {
+          "selector": "//dt[contains(text(),'上次登录时间')]/following-sibling::dd[1]/time/@datetime",
+          "filters": [{ "name": "timestamp" }]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "disabled_extends": { "list": true },
+      "fields": {
+        "size": {
+          "selector": "(//dt[abbr[contains(@title, '做种体积')]]/following-sibling::dd[1]/text())[1]",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "count": {
+          "selector": "/html/body/header/nav[1]/div[2]/ul[1]/li[3]/a/text()",
+          "filters": [
+            { "name": "replace", "args": [",", ""] },
+            { "name": "strip" }
+          ]
+        }
+      }
+    },
+    "search": {
+      "method": "GET",
+      "path": "torrents?perPage=100",
+      "params": {
+        "name": ["{keyword}"]
+      },
+      "list": {
+        "selector": "table.data-table > tbody > tr"
+      },
+      "fields": {
+        "id": {
+          "selector": "a.torrent-search--list__name",
+          "attribute": "href",
+          "filters": [{ "name": "re_search", "args": ["\\d+", 0] }]
+        },
+        "title": { "selector": "a.torrent-search--list__name" },
+        "details": { "selector": "a.torrent-search--list__name", "attribute": "href" },
+        "download": { "selector": "a[href*='/torrents/download/']", "attribute": "href" },
+        "date_added": {
+          "selector": "td.torrent-search--list__age > time",
+          "attribute": "datetime",
+          "filters": [{ "name": "timestamp" }]
+        },
+        "size": {
+          "selector": "td.torrent-search--list__size > span",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "seeders": { "selector": "td.torrent-search--list__seeders > a" },
+        "leechers": { "selector": "td.torrent-search--list__leechers > a" },
+        "grabs": { "selector": "td.torrent-search--list__completed > a" },
+        "downloadvolumefactor": {
+          "case": { "i.torrent-icons__freeleech": 0, "*": 1 }
+        },
+        "uploadvolumefactor": {
+          "case": { "i.torrent-icons__double-upload": 2, "*": 1 }
+        }
+      }
+    }
+  }
+}
