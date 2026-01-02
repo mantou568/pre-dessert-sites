@@ -1,0 +1,261 @@
+{
+  "id": "reelflix",
+  "name": "Ree",
+  "domain": "https://reelflix.cc",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": true,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [{ "id": 1, "cat": "Movies", "desc": "电影" }],
+    "tv": [{ "id": 2, "cat": "TV", "desc": "电视剧/综艺" }],
+    "music": [{ "id": 3, "cat": "Music", "desc": "音乐" }],
+    "game": [{ "id": 4, "cat": "Game", "desc": "游戏" }],
+    "app": [{ "id": 5, "cat": "Application", "desc": "应用软件" }],
+    "xxx": [{ "id": 8, "cat": "XXX", "desc": "成人内容" }],
+    "book": [{ "id": 9, "cat": "Ebook/Manga", "desc": "电子书/漫画" }],
+    "edu": [{ "id": 10, "cat": "Education", "desc": "教育/教程" }],
+    "fanres": [{ "id": 11, "cat": "FANRES", "desc": "粉丝修复/爱好者版本" }]
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/articles",
+      "fields": {
+        "content": {
+          "selector": "//article[contains(@class,'article-preview')]"
+        }
+      }
+    },
+
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "is_login": {
+          "selector": "//form[contains(@action,'/logout')]//button",
+          "filters": [
+            { "name": "re_search", "args": ["(注销|Logout)", 0] },
+            { "name": "replace", "args": ["注销", "true"] },
+            { "name": "replace", "args": ["Logout", "true"] }
+          ]
+        },
+        "id": {
+          "selector": "//nav//a[contains(@href,'/users/') and not(contains(@href,'transactions')) and not(contains(@href,'uploads'))]/@href",
+          "filters": [
+            { "name": "re_search", "args": ["/users/([^/]+)/", 1] }
+          ]
+        },
+        "name": {
+          "selector": "//nav//a[contains(@href,'/users/') and not(contains(@href,'transactions')) and not(contains(@href,'uploads'))]/@href",
+          "filters": [
+            { "name": "re_search", "args": ["/users/([^/]+)/", 1] }
+          ]
+        },
+        "uploaded": {
+          "selector": "//li[contains(@class,'ratio-bar__uploaded')]/a/text()[not(parent::time)]",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "downloaded": {
+          "selector": "//li[contains(@class,'ratio-bar__downloaded')]/a/text()[not(parent::time)]",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "ratio": {
+          "selector": "//li[contains(@class,'ratio-bar__ratio')]/a/text()",
+          "filters": [{ "name": "replace", "args": [",", ""] }]
+        },
+        "bonus": {
+          "selector": "//li[contains(@class,'ratio-bar__points')]/a/text()",
+          "filters": [
+            { "name": "replace", "args": ["\u202f", ""] },
+            { "name": "replace", "args": ["\u00a0", ""] },
+            { "name": "replace", "args": [",", ""] },
+            { "name": "strip" }
+          ]
+        }
+      }
+    },
+
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "fields": {
+        "level": {
+          "selector": "//span[contains(@class,'badge') or contains(@class,'user-class')]/text()",
+          "filters": [{ "name": "strip" }]
+        },
+        "join_at": {
+          "selector": "//time[@datetime][1]/@datetime",
+          "filters": [{ "name": "timestamp" }]
+        },
+        "last_accessed": {
+          "selector": "//time[@datetime][last()]/@datetime",
+          "filters": [{ "name": "timestamp" }]
+        }
+      }
+    },
+
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "disabled_extends": { "list": true },
+      "fields": {
+        "count": {
+          "selector": "//dt[contains(.,'总做种数量')]/following-sibling::dd[1]/text()",
+          "filters": [
+            { "name": "replace", "args": [",", ""] },
+            { "name": "strip" }
+          ]
+        },
+        "size": {
+          "selector": "//dt[contains(.,'做种体积')]/following-sibling::dd[1]/text()",
+          "filters": [
+            { "name": "replace", "args": ["\u00a0", " "] },
+            { "name": "strip" },
+            { "name": "byte_size" }
+          ]
+        }
+      }
+    },
+
+    "messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}/conversations",
+      "list": {
+        "selector": "//table[contains(@class,'table')]/tbody/tr"
+      },
+      "fields": {
+        "id": {
+          "selector": "./td[2]/a/@href",
+          "filters": [
+            { "name": "re_search", "args": ["/conversations/(\\d+)", 1] }
+          ]
+        },
+        "title": {
+          "selector": "./td[2]/a/text()",
+          "filters": [{ "name": "strip" }]
+        },
+        "link": {
+          "selector": "./td[2]/a/@href"
+        },
+        "sender": {
+          "selector": "./td[1]//a/text()",
+          "filters": [{ "name": "strip" }]
+        },
+        "date": {
+          "selector": "./td[3]/time/@datetime"
+        },
+        "unread": {
+          "selector": "./td[5]//i[@title='未读']"
+        }
+      }
+    },
+
+    "message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}/conversations/{id}",
+      "fields": {
+        "sender": {
+          "selector": "//h2[contains(@class,'panel__heading')]//a/text()",
+          "filters": [{ "name": "strip" }]
+        },
+        "date": {
+          "selector": "//header[contains(@class,'panel__header')]//time/@datetime",
+          "filters": [{ "name": "timestamp" }]
+        },
+        "content": {
+          "selector": "//div[contains(@class,'panel__body') and contains(@class,'bbcode-rendered')]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "replace", "args": ["\\s+", " "] },
+            { "name": "replace", "args": ["-\\s*Staff$", ""] },
+            { "name": "strip" }
+          ]
+        }
+      }
+    },
+
+    "search": {
+      "method": "GET",
+      "path": "torrents?perPage=100",
+      "params": {
+        "name": ["{keyword}"]
+      },
+      "list": {
+        "selector": "table.data-table > tbody > tr"
+      },
+      "fields": {
+        "id": {
+          "selector": "a.torrent-search--list__name",
+          "attribute": "href",
+          "filters": [{ "name": "re_search", "args": ["\\d+", 0] }]
+        },
+        "title": {
+          "selector": "a.torrent-search--list__name"
+        },
+        "details": {
+          "selector": "a.torrent-search--list__name",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*='/torrents/download/']",
+          "attribute": "href"
+        },
+        "date_added": {
+          "selector": "td.torrent-search--list__age > time",
+          "attribute": "datetime",
+          "filters": [{ "name": "timestamp" }]
+        },
+        "size": {
+          "selector": "td.torrent-search--list__size",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "seeders": {
+          "selector": "td.torrent-search--list__seeders > a"
+        },
+        "leechers": {
+          "selector": "td.torrent-search--list__leechers > a"
+        },
+        "grabs": {
+          "selector": "td.torrent-search--list__completed > a"
+        },
+        "downloadvolumefactor": {
+          "case": {
+            "i.torrent-icons__freeleech": 0,
+            "i.torrent-icons__25percent": 0.75,
+            "i.torrent-icons__50percent": 0.5,
+            "i.torrent-icons__75percent": 0.25,
+            "*": 1
+          }
+        },
+        "uploadvolumefactor": {
+          "case": {
+            "i.torrent-icons__double-upload": 2,
+            "*": 1
+          }
+        }
+      }
+    }
+  }
+}
