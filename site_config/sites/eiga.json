@@ -1,0 +1,297 @@
+{
+  "id": "eiga",
+  "name": "ACM",
+  "domain": "https://eiga.moi",
+  "additional_domain": [
+    "https://anime-no-index.com"
+  ],
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [
+      { "id": 1, "cat": "Movies", "desc": "Movies" }
+    ],
+    "tv": [
+      { "id": 2, "cat": "TV", "desc": "TV" }
+    ],
+    "music": [
+      { "id": 3, "cat": "Audio", "desc": "Music" }
+    ]
+  },
+  "requests": {
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "is_login": {
+          "selector": "//a[contains(@href,'/logout')]",
+          "filters": [
+            { "name": "not_blank" }
+          ]
+        },
+        "id": {
+          "selector": "//ul[contains(@class, 'left-navbar')]//a[contains(@href, '/users/')][1]/@href",
+          "filters": [
+            { "name": "re_search", "args": [ "/users/([^/]+)", 1 ] }
+          ]
+        },
+        "name": {
+          "selector": "//ul[contains(@class, 'left-navbar')]//a[contains(@href, '/users/')][1]/@href",
+          "filters": [
+            { "name": "re_search", "args": [ "/users/([^/]+)", 1 ] }
+          ]
+        },
+        "uploaded": {
+          "selector": "//li//span[contains(@title, '上传')]/text()[normalize-space()]",
+          "filters": [
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "byte_size" }
+          ]
+        },
+        "downloaded": {
+          "selector": "//li//span[contains(@title, '下载')]/text()[normalize-space()]",
+          "filters": [
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "byte_size" }
+          ]
+        },
+        "ratio": {
+          "selector": "//li//span[contains(@title, '分享率')]/text()[normalize-space()]",
+          "filters": [
+            { "name": "replace", "args": [ ",", "" ] }
+          ]
+        },
+        "bonus": {
+          "selector": "//li//span[contains(@title, '魔力')]//a/text()",
+          "filters": [
+            { "name": "replace", "args": [ "\u2009", "" ] },
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "strip" }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "fields": {
+        "level": {
+          "selector": "//div[contains(@class,'header')]//h4[contains(text(),'组别')]/span/text()"
+        },
+        "level_icon": {
+          "selector": "//div[contains(@class,'header')]//img[@class='img-circle']/@src"
+        },
+        "join_at": {
+          "selector": "//h4[contains(text(),'注册日期')]/text()",
+          "filters": [
+            { "name": "re_search", "args": [ "([A-Za-z]{3}\\s+\\d{2}\\s+\\d{4})", 1 ] },
+            { "name": "timestamp", "args": [ "Jan 02 2006" ] }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//td[contains(text(),'上次登录时间')]/following-sibling::td[1]",
+          "filters": [
+            { "name": "re_search", "args": [ "([A-Za-z]{3},\\s+[A-Za-z]{3}\\s+\\d{1,2},\\s+\\d{4}\\s+\\d{1,2}:\\d{2}\\s+[AP]M)", 1 ] },
+            { "name": "timestamp", "args": [ "Mon, Jan 2, 2006 3:04 PM" ] }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "mail/inbox",
+      "list": {
+        "selector": "//div[@class='table-responsive']/table/tbody/tr"
+      },
+      "params": {
+        "page": [
+          "{page}"
+        ]
+      },
+      "fields": {
+        "title": {
+          "selector": "td[2]/a/text()",
+          "filters": [
+            { "name": "strip" }
+          ]
+        },
+        "link": {
+          "selector": "td[2]/a/@href"
+        },
+        "id": {
+          "selector": "td[2]/a/@href",
+          "filters": [
+            { "name": "re_search", "args": [ "/mail/message/(\\d+)", 1 ] }
+          ]
+        },
+        "sender": {
+          "selector": "td[1]/a/text()",
+          "filters": [
+            { "name": "strip" }
+          ]
+        },
+        "date": {
+          "selector": "td[3]/text()",
+          "filters": [
+            { "name": "strip" },
+            { "name": "replace", "args": [ "\n", "" ] }
+          ]
+        },
+        "unread": {
+          "selector": "td[4]/span[contains(@class, 'label-danger')]"
+        }
+      }
+    },
+    "message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/mail/message/{id}",
+      "fields": {
+        "title": {
+          "selector": "//div[@class='block']/h3/text()",
+          "filters": [
+            { "name": "strip" }
+          ]
+        },
+        "sender": {
+          "selector": "//div[contains(@class,'message-headers')]//strong[contains(.,'发件人')]/following-sibling::a/text()",
+          "filters": [
+            { "name": "strip" }
+          ]
+        },
+        "date": {
+          "selector": "//div[contains(@class,'message-headers')]//strong[contains(.,'已发送')]/parent::div/text()",
+          "filters": [
+            { "name": "re_search", "args": [ "(\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2})", 1 ] },
+            { "name": "timestamp", "args": [ "2006-01-02 15:04:05" ] }
+          ]
+        },
+        "content": {
+          "selector": "//div[contains(@class,'message-body')]//div[contains(@class,'col-sm-12')]",
+          "filters": [
+            { "name": "strip" }
+          ]
+        }
+      }
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "articles",
+      "fields": {
+        "content": {
+          "selector": "//div[@class='well'][1]//p[contains(@style,'margin-top')]",
+          "filters": [
+            { "name": "strip" }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "disabled_extends": {
+        "list": true
+      },
+      "fields": {
+        "size": {
+          "selector": "//td[contains(text(),'做种体积')]/following-sibling::td[1]/span/text()",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "count": {
+          "selector": "//span[contains(text(),'总做种数量')]/span/text()",
+          "filters": [
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "strip" }
+          ]
+        }
+      }
+    },
+    "search": {
+      "path": "torrents",
+      "params": {
+        "name": [
+          "{keyword}"
+        ],
+        "page": [
+          "{page}"
+        ],
+        "perPage": [
+          "100"
+        ]
+      },
+      "list": {
+        "selector": ".torrent-list > tr"
+      },
+      "fields": {
+        "id": {
+          "selector": "a.view-torrent",
+          "attribute": "href",
+          "filters": [
+            { "name": "re_search", "args": [ "/torrents/(\\d+)", 1 ] }
+          ]
+        },
+        "cover": {
+          "selector": "td.torrent-listings-poster > div > a > img",
+          "attribute": "src"
+        },
+        "title": {
+          "selector": "a.view-torrent"
+        },
+        "details": {
+          "selector": "a.view-torrent",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*=\"/torrents/download/\"]",
+          "attribute": "href"
+        },
+        "size": {
+          "selector": "td:nth-child(6)",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "seeders": {
+          "selector": "td:nth-child(7) a"
+        },
+        "leechers": {
+          "selector": "td:nth-child(8) a"
+        },
+        "grabs": {
+          "selector": "td:nth-child(9) a"
+        },
+        "downloadvolumefactor": {
+          "case": {
+            "i.fa-globe": 0,
+            "i.fa-star": 0,
+            "*": 1
+          }
+        },
+        "uploadvolumefactor": {
+          "case": {
+            "i.fa-gem": 2,
+            "*": 1
+          }
+        }
+      }
+    }
+  }
+}
