@@ -1,0 +1,177 @@
+{
+  "id": "aither",
+  "name": "Ait",
+  "domain": "https://aither.cc",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [{ "id": 1, "cat": "Movies", "desc": "Movie" }],
+    "tv": [{ "id": 2, "cat": "TV", "desc": "TV" }],
+    "other": [{ "id": 9, "cat": "Other", "desc": "Sport" }]
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/articles",
+      "fields": {
+        "content": {
+          "selector": "//article[contains(@class, 'article-preview')]"
+        }
+      }
+    },
+    "message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/mail/{id}",
+      "fields": {
+        "content": {
+          "selector": "//div[contains(@class,'message-body')]//div[contains(@class,'col-sm-12')]",
+          "filters": [{ "name": "strip" }]
+        }
+      }
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "is_login": {
+          "selector": "//form[contains(@action, '/logout')]//button",
+          "filters": [
+            { "name": "re_search", "args": ["(注销|Logout)", 0] },
+            { "name": "replace", "args": ["注销", "true"] },
+            { "name": "replace", "args": ["Logout", "true"] }
+          ]
+        },
+        "id": {
+          "selector": "//a[contains(@class, 'top-nav__username')]/@href",
+          "filters": [{ "name": "re_search", "args": ["/users/([^/]+)", 1] }]
+        },
+        "name": {
+          "selector": "//a[contains(@class, 'top-nav__username')]//span[contains(@class, 'text-bold')]/text()"
+        },
+        "message": {
+          "selector": "//a[contains(@href, '/notifications')]//span[contains(@class, 'badge')]/text()",
+          "default": "0",
+          "filters": [{ "name": "replace", "args": [",", ""] }, { "name": "strip" }]
+        },
+        "announcement": {
+          "selector": "//section[contains(@class, 'special-event-alert')]//strong/text() | //h2[contains(@class, 'article-preview__title')]/a/text()",
+          "filters": [{ "name": "strip" }]
+        },
+        "uploaded": {
+          "selector": "//li[contains(@class, 'ratio-bar__uploaded')]/a/text()[not(parent::time)]",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "downloaded": {
+          "selector": "//li[contains(@class, 'ratio-bar__downloaded')]/a/text()[not(parent::time)]",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "ratio": {
+          "selector": "//li[contains(@class, 'ratio-bar__ratio')]/a/text()",
+          "filters": [{ "name": "replace", "args": [",", ""] }]
+        },
+        "bonus": {
+          "selector": "//li[contains(@class, 'ratio-bar__points')]/a/text()",
+          "filters": [{ "name": "replace", "args": [" ", ""] }, { "name": "replace", "args": [",", ""] }]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "fields": {
+        "level": {
+          "selector": "//span[contains(@class, 'user-tag')]/a/@title",
+          "filters": [{ "name": "strip" }]
+        },
+        "join_at": {
+          "selector": "//time[contains(@class, 'profile__registration')]/@datetime",
+          "filters": [{ "name": "timestamp" }]
+        },
+        "last_accessed": {
+          "selector": "//dt[contains(.,'Last Activity') or contains(.,'上次登录')]/following-sibling::dd[1]/time/@datetime",
+          "filters": [{ "name": "timestamp" }]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "disabled_extends": { "list": true },
+      "fields": {
+        "size": {
+          "selector": "//dt[abbr[contains(@title, '做种体积') or contains(@title, 'Seeding Size')]]/following-sibling::dd[1]/text()",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "count": {
+          "selector": "//nav[contains(@class, 'user-navigation')]//li[contains(., 'Seeding') or contains(., '做种')]//span/text()",
+          "filters": [{ "name": "replace", "args": [",", ""] }, { "name": "strip" }]
+        }
+      }
+    },
+    "search": {
+      "method": "GET",
+      "path": "torrents?perPage=100",
+      "params": {
+        "search": ["{keyword}"]
+      },
+      "list": {
+        "selector": "table.data-table > tbody > tr"
+      },
+      "fields": {
+        "id": {
+          "selector": "a.torrent-search--list__name",
+          "attribute": "href",
+          "filters": [{ "name": "re_search", "args": ["\\d+", 0] }]
+        },
+        "title": { "selector": "a.torrent-search--list__name" },
+        "details": { "selector": "a.torrent-search--list__name", "attribute": "href" },
+        "download": { "selector": "a[href*='/torrents/download/']", "attribute": "href" },
+        "date_added": {
+          "selector": "td.torrent-search--list__age > time",
+          "attribute": "datetime",
+          "filters": [{ "name": "timestamp" }]
+        },
+        "size": {
+          "selector": "td.torrent-search--list__size",
+          "filters": [{ "name": "byte_size" }]
+        },
+        "seeders": { "selector": "td.torrent-search--list__seeders > a" },
+        "leechers": { "selector": "td.torrent-search--list__leechers > a" },
+        "grabs": { "selector": "td.torrent-search--list__completed > a" },
+        "downloadvolumefactor": {
+          "case": {
+            "i.torrent-icons__freeleech": 0,
+            "i.torrent-icons__25percent": 0.75,
+            "i.torrent-icons__50percent": 0.5,
+            "i.torrent-icons__75percent": 0.25,
+            "*": 1
+          }
+        },
+        "uploadvolumefactor": {
+          "case": { "i.torrent-icons__double-upload": 2, "*": 1 }
+        }
+      }
+    }
+  }
+}
