@@ -67,6 +67,7 @@
           "selector": "//li[contains(@class, 'ratio-bar__uploaded')]/a",
           "filters": [
             { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "byte_size" }
           ]
         },
@@ -74,19 +75,23 @@
           "selector": "//li[contains(@class, 'ratio-bar__downloaded')]/a",
           "filters": [
             { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "byte_size" }
           ]
         },
         "ratio": {
           "selector": "//li[contains(@class, 'ratio-bar__ratio')]/a",
           "filters": [
-            { "name": "replace", "args": [ ",", "" ] }
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] }
           ]
         },
         "bonus": {
           "selector": "//li[contains(@class, 'ratio-bar__points')]/a",
           "filters": [
-            { "name": "replace", "args": [ ",", "" ] }
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
+            { "name": "replace", "args": [ " ", "" ] }
           ]
         }
       }
@@ -240,6 +245,7 @@
           "selector": "//dt[contains(.,'总做种数量')]/following-sibling::dd[1]/text()",
           "filters": [
             { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "strip" }
           ]
         }
