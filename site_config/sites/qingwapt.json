@@ -2,7 +2,10 @@
   "id": "qingwapt",
   "name": "青蛙",
   "domain": "https://qingwapt.com",
-  "additional_domain": ["https://www.qingwapt.com", "https://new.qingwa.pro"],
+  "additional_domain": [
+    "https://www.qingwapt.com",
+    "https://new.qingwa.pro"
+  ],
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -17,48 +20,16 @@
   },
   "category": {
     "movie": [
-      {
-        "id": 401,
-        "cat": "Movies",
-        "desc": "Movies/电影"
-      },
-      {
-        "id": 406,
-        "cat": "Movies",
-        "desc": "Music Videos/音乐视频"
-      },
-      {
-        "id": 407,
-        "cat": "Movies/Sports",
-        "desc": "Sports/体育"
-      }
+      { "id": 401, "cat": "Movies", "desc": "Movies/电影" },
+      { "id": 406, "cat": "Movies", "desc": "Music Videos/音乐视频" },
+      { "id": 407, "cat": "Movies/Sports", "desc": "Sports/体育" }
     ],
     "tv": [
-      {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
-      },
-      {
-        "id": 402,
-        "cat": "TV",
-        "desc": "TV Series/连续剧"
-      },
-      {
-        "id": 403,
-        "cat": "TV",
-        "desc": "TV Shows/综艺"
-      },
-      {
-        "id": 412,
-        "cat": "TV",
-        "desc": "Short Play/短剧"
-      }
+      { "id": 404, "cat": "TV/Documentary", "desc": "Documentaries/纪录片" },
+      { "id": 405, "cat": "TV/Anime", "desc": "Animations/动漫" },
+      { "id": 402, "cat": "TV", "desc": "TV Series/连续剧" },
+      { "id": 403, "cat": "TV", "desc": "TV Shows/综艺" },
+      { "id": 412, "cat": "TV", "desc": "Short Play/短剧" }
     ]
   },
   "requests": {
@@ -74,12 +45,7 @@
           "contents": -1
         },
         "hr_days": {
-          "filters": [
-            {
-              "name": "constant",
-              "args": "1"
-            }
-          ]
+          "filters": [{ "name": "constant", "args": "1" }]
         }
       }
     },
@@ -96,28 +62,18 @@
       },
       "fields": {
         "count": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": ["(\\d+)", 1]
-            }
-          ]
+          "selector": "//span[@id='total_count']",
+          "filters": [{ "name": "re_search", "args": ["(\\d+)", 1] }]
         },
         "size": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": ["总大小：(.*)", 1]
-            },
-            {
-              "name": "strip"
-            },
-            {
-              "name": "byte_size"
-            }
-          ]
+          "selector": "//span[@id='total_size']/@data-data"
+        },
+        "official_count": {
+          "selector": "//span[@id='official_count']",
+          "filters": [{ "name": "re_search", "args": ["(\\d+)", 1] }]
+        },
+        "official_size": {
+          "selector": "//span[@id='official_size']/@data-data"
         }
       }
     }

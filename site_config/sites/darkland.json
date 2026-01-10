@@ -1,0 +1,246 @@
+{
+  "id": "darkland",
+  "name": "Darkland",
+  "domain": "https://darkland.top",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [
+      { "id": 1, "cat": "Movies", "desc": "戈尔 Gore" },
+      { "id": 2, "cat": "Movies", "desc": "动作 Action" },
+      { "id": 4, "cat": "Movies", "desc": "惊悚 Thriller" },
+      { "id": 7, "cat": "Movies", "desc": "文艺 Literary" },
+      { "id": 8, "cat": "Movies", "desc": "悬疑 Suspense" },
+      { "id": 13, "cat": "Movies", "desc": "犯罪 Crime" },
+      { "id": 16, "cat": "Movies", "desc": "剧情 Drama" },
+      { "id": 18, "cat": "Movies", "desc": "恐怖 Horror" },
+      { "id": 21, "cat": "Movies", "desc": "情色 Erotic" },
+      { "id": 24, "cat": "Movies", "desc": "科幻 Sci-Fi" }
+    ],
+    "tv": [
+      { "id": 30, "cat": "TV", "desc": "剧集TV" }
+    ],
+    "anime": [
+      { "id": 12, "cat": "Movies", "desc": "动画 Animation" }
+    ],
+    "other": [
+      { "id": 15, "cat": "Other", "desc": "纪录 Documentary" },
+      { "id": 20, "cat": "Other", "desc": "短片 Short" },
+      { "id": 29, "cat": "Other", "desc": "其它 Other" }
+    ]
+  },
+  "requests": {
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "is_login": {
+          "selector": "//a[contains(@class,'top-nav__username--highresolution')]",
+          "filters": [{ "name": "not_blank" }]
+        },
+        "id": {
+          "selector": "//a[contains(@class, 'top-nav__username--highresolution')]/@href",
+          "filters": [{ "name": "re_search", "args": ["/users/([^/]+)", 1] }]
+        },
+        "name": {
+          "selector": "//a[contains(@class, 'top-nav__username--highresolution')]/span/text()",
+          "filters": [{ "name": "strip" }]
+        },
+        "uploaded": {
+          "selector": "//li[contains(@class, 'ratio-bar__uploaded')]/a/text()",
+          "filters": [
+            { "name": "replace", "args": ["\u00a0", " "] },
+            { "name": "byte_size" }
+          ]
+        },
+        "downloaded": {
+          "selector": "//li[contains(@class, 'ratio-bar__downloaded')]/a/text()",
+          "filters": [
+            { "name": "replace", "args": ["\u00a0", " "] },
+            { "name": "byte_size" }
+          ]
+        },
+        "ratio": {
+          "selector": "//li[contains(@class, 'ratio-bar__ratio')]/a/text()",
+          "filters": [{ "name": "strip" }]
+        },
+        "bonus": {
+          "selector": "//li[contains(@class,'ratio-bar__points')]/a//text()",
+          "filters": [
+            { "name": "replace", "args": ["\u202f", ""] },
+            { "name": "replace", "args": [" ", ""] },
+            { "name": "replace", "args": [",", ""] },
+            { "name": "strip" }
+          ]
+        }
+
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "fields": {
+        "level": {
+          "selector": "//a[contains(@href, '/users/') and contains(@class, 'user-tag__link')]/@title"
+        },
+        "join_at": {
+          "selector": "//time[contains(@class, 'profile__registration')]/@title",
+          "filters": [
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2})", 1] },
+            { "name": "timestamp", "args": ["2006-01-02"] }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//dt[contains(text(),'上次登录时间')]/following-sibling::dd[1]/time/@datetime",
+          "filters": [{ "name": "timestamp" }]
+        }        
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}",
+      "disabled_extends": { "list": true },
+      "fields": {
+        "count": {
+          "selector": "//dt[contains(.,'总做种数量')]/following-sibling::dd[1]/text()",
+          "filters": [
+            { "name": "replace", "args": [",", ""] },
+            { "name": "strip" }
+          ]
+        },
+        "size": {
+          "selector": "//dt[contains(.,'做种体积')]/following-sibling::dd[1]/text()",
+          "filters": [
+            { "name": "replace", "args": ["\u00a0", " "] },
+            { "name": "strip" },
+            { "name": "byte_size" }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/users/{userId}/conversations",
+      "list": { "selector": "//table[contains(@class, 'data-table')]/tbody/tr" },
+      "fields": {
+        "title": { "selector": "./td[2]/a", "filters": [{ "name": "strip" }] },
+        "link": { "selector": "./td[2]/a/@href" },
+        "id": {
+          "selector": "./td[2]/a/@href",
+          "filters": [{ "name": "re_search", "args": ["/conversations/(\\d+)", 1] }]
+        },
+        "sender": {
+          "selector": "./td[1]//span[contains(@class, 'user-tag')]/a",
+          "filters": [{ "name": "strip" }]
+        },
+        "date": { "selector": "./td[3]/time/@title", "filters": [{ "name": "strip" }] },
+        "unread": {
+          "selector": "./td[5]/i[not(contains(@class, 'text-green'))]",
+          "filters": [{ "name": "not_blank" }]
+        }
+      }
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "articles",
+      "fields": {
+        "content": { "selector": "//article[contains(@class, 'article-preview')]" }
+      }
+    },
+    "message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "articles",
+      "fields": {
+        "title": { "selector": "//h2[contains(@class,'article-preview__title')]/a/text()" },
+        "date": { "selector": "//time[contains(@class,'article-preview__published-date')]/@title" },
+        "content": {
+          "selector": "//p[contains(@class,'article-preview__content')]",
+          "filters": [{ "name": "strip" }]
+        }
+      }
+    },
+"search": {
+  "path": "torrents?name={keyword}",
+  "params": {
+    "name": ["{keyword}"],
+    "perPage": ["25"],
+    "view": ["list"],
+    "categories[]": ["1", "2", "4", "7", "8", "12", "13", "16", "30"]
+  },
+  "list": {
+    "selector": "table.data-table > tbody > tr[data-torrent-id]"
+  },
+  "fields": {
+    "id": {
+      "selector": "a.torrent-search--list__name",
+      "attribute": "href",
+      "filters": [
+        { "name": "re_search", "args": ["/torrents/(\\d+)", 1] }
+      ]
+    },
+    "title": {
+      "selector": "a.torrent-search--list__name"
+    },
+    "details": {
+      "selector": "a.torrent-search--list__name",
+      "attribute": "href"
+    },
+    "download": {
+      "selector": "a[href*='/torrents/download/']",
+      "attribute": "href"
+    },
+    "date_added": {
+      "selector": "td.torrent-search--list__age time",
+      "attribute": "datetime",
+      "filters": [
+        { "name": "strip" },
+        { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+      ]
+    },
+    "size": {
+      "selector": "td.torrent-search--list__size > span",
+      "filters": [
+        { "name": "byte_size" }
+      ]
+    },
+    "seeders": {
+      "selector": "a.torrent__seeder-count"
+    },
+    "leechers": {
+      "selector": "a.torrent__leecher-count"
+    },
+    "grabs": {
+      "selector": "a.torrent__times-completed-count"
+    },
+    "downloadvolumefactor": {
+      "case": {
+        "i.torrent-icons__freeleech": 0,
+        "*": 1
+      }
+    },
+    "uploadvolumefactor": {
+      "case": {
+        "*": 1
+      }
+    }
+  }
+}
+}
+}

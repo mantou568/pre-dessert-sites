@@ -49,13 +49,13 @@
       }
     ]
   },
-  "requests":{
+  "requests": {
     "sign_in": {
       "path": "/index.php?action=addbonus"
     },
     "search": {
       "fields": {
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",
@@ -91,10 +91,39 @@
       }
     },
     "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
       "fields": {
-        "size": {
-          "selector": "/td[3]",
+        "count": {
+          "selector": "//td[contains(text(), '当前做种')]/following-sibling::td[1]/text()",
           "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)个种子",
+                1
+              ]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//td[contains(text(), '当前做种')]/following-sibling::td[1]/text()",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "共计\\s*([0-9.]+ [KMGT]B)",
+                1
+              ]
+            },
             {
               "name": "byte_size"
             }
@@ -103,7 +132,6 @@
       }
     }
   },
-
   "my_hr": {
     "path": "/myhr.php?hrtype=A"
   }

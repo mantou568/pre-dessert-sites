@@ -64,14 +64,6 @@
           "selector": "td.embedded",
           "remove": "span,a,img,font,b,br",
           "contents": -1
-        },
-        "hr_days": {
-          "filters": [
-            {
-              "name": "constant",
-              "args": "1"
-            }
-          ]
         }
       }
     },
@@ -88,23 +80,26 @@
       },
       "fields": {
         "count": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "selector": "//b[following-sibling::text()[contains(., '条记录')]]",
           "filters": [
             {
               "name": "re_search",
-              "args": ["(\\d+)", 1]
+              "args": [
+                "(\\d+)",
+                1
+              ]
             }
           ]
         },
         "size": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "selector": "//text()[contains(., 'Total')]",
           "filters": [
             {
               "name": "re_search",
-              "args": ["总大小：(.*)", 1]
-            },
-            {
-              "name": "strip"
+              "args": [
+                "Total:\\s*([\\d\\.]+\\s*[KMGTP]B)",
+                1
+              ]
             },
             {
               "name": "byte_size"
@@ -113,8 +108,5 @@
         }
       }
     }
-  },
-  "my_hr": {
-    "path": "/myhr.php?status=1"
   }
 }

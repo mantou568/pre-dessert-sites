@@ -15,33 +15,13 @@
   },
   "category": {
     "movie": [
-      {
-        "id": 401,
-        "cat": "Movies",
-        "desc": "Movies/电影"
-      }
+      { "id": 401, "cat": "Movies", "desc": "Movies/电影" }
     ],
     "tv": [
-      {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
-      },
-      {
-        "id": 402,
-        "cat": "TV",
-        "desc": "TV Series/连续剧"
-      },
-      {
-        "id": 403,
-        "cat": "TV",
-        "desc": "TV Shows/综艺"
-      }
+      { "id": 404, "cat": "TV/Documentary", "desc": "Documentaries/纪录片" },
+      { "id": 405, "cat": "TV/Anime", "desc": "Animations/动漫" },
+      { "id": 402, "cat": "TV", "desc": "TV Series/连续剧" },
+      { "id": 403, "cat": "TV", "desc": "TV Shows/综艺" }
     ]
   },
   "requests": {
@@ -58,10 +38,89 @@
         },
         "hr_days": {
           "filters": [
+            { "name": "constant", "args": "1" }
+          ]
+        }
+      }
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "is_login": {
+          "selector": "//a[contains(@href, 'logout')]",
+          "filters": [
+            { "name": "not_blank" }
+          ]
+        },
+        "id": {
+          "selector": "//*[@id='fh5co-page']/center/div[1]/div[1]/table//tr/td[2]/div[1]/text()",
+          "filters": [
+            { "name": "re_search", "args": [ "(\\d+)", 1 ] }
+          ]
+        },
+        "name": {
+          "selector": "//div[@id='bottomnav']//a[contains(@href, 'userdetails')]/strong/text()"
+        },
+        "level": {
+          "selector": "//div[@id='bottomnav']//a[contains(@href, 'userdetails')]/text()[normalize-space()]",
+          "filters": [
+            { "name": "re_search", "args": [ "\\[(.*?)\\]", 1 ] }
+          ]
+        },
+        "share_ratio": {
+          "any": [
             {
-              "name": "constant",
-              "args": "1"
+              "selector": "//i[@title='分享率：']/following-sibling::text()[1]",
+              "filters": [ { "name": "replace", "args": [ "---", "null" ] }, { "name": "strip" } ]
+            },
+            {
+              "selector": "//div[@class='text']/strong[contains(text(), '分享率')]/following-sibling::text()[1]",
+              "filters": [ { "name": "replace", "args": [ "---", "null" ] }, { "name": "replace", "args": [ ":", "" ] }, { "name": "strip" } ]
             }
+          ]
+        },
+        "uploaded": {
+          "any": [
+            {
+              "selector": "//div[@class='text']/strong[contains(text(), '上传量')]/following-sibling::text()[1]",
+              "filters": [ { "name": "replace", "args": [ ":", "" ] }, { "name": "strip" }, { "name": "byte_size" } ]
+            },
+            {
+              "selector": "//i[contains(@title, '上传')]/following-sibling::text()[1]",
+              "filters": [ { "name": "byte_size" } ]
+            }
+          ]
+        },
+        "downloaded": {
+          "any": [
+            {
+              "selector": "//div[@class='text']/strong[contains(text(), '下载量')]/following-sibling::text()[1]",
+              "filters": [ { "name": "replace", "args": [ ":", "" ] }, { "name": "strip" }, { "name": "byte_size" } ]
+            },
+            {
+              "selector": "//i[contains(@title, '下载')]/following-sibling::text()[1]",
+              "filters": [ { "name": "byte_size" } ]
+            }
+          ]
+        },
+        "bonus": {
+          "any": [
+            {
+              "selector": "//div[@class='text']/b[contains(text(), '魅力值')]/following-sibling::text()[1]",
+              "filters": [ { "name": "strip" } ]
+            },
+            {
+              "selector": "//a[contains(@href,'mybonus')]/text()",
+              "filters": [ { "name": "re_search", "args": [ "([\\d\\.]+)", 1 ] } ]
+            }
+          ]
+        },
+        "join_date": {
+          "selector": "//div[@class='text']/b[contains(text(), '加入日期')]/following-sibling::text()[1]",
+          "filters": [
+            { "name": "re_search", "args": [ "(\\d{4}-\\d{2}-\\d{2})", 1 ] }
           ]
         }
       }
@@ -69,7 +128,7 @@
     "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
-      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "path": "/userdetails.php?id={userId}",
       "headers": {
         "Referer": "{domain}/userdetails.php?id={userId}"
       },
@@ -79,33 +138,56 @@
       },
       "fields": {
         "count": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
+          "any": [
             {
-              "name": "re_search",
-              "args": ["(\\d+)", 1]
+              "comment": "方法1：在任何文本中寻找 'x条记录' ",
+              "selector": "//*[contains(text(), '条记录')]/text()",
+              "filters": [
+                { "name": "re_search", "args": ["(\\d+)", 1] }
+              ]
+            },
+            {
+              "comment": "方法2：备用，寻找 '共x条'",
+              "selector": "//*[contains(text(), '共') and contains(text(), '条')]/text()",
+              "filters": [
+                { "name": "re_search", "args": ["(\\d+)", 1] }
+              ]
             }
           ]
         },
         "size": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": ["总大小：(.*)", 1]
-            },
-            {
-              "name": "strip"
-            },
-            {
-              "name": "byte_size"
-            }
+          "any": [
+             {
+               "comment": "方法1：直接找 '总大小' 粗体字后面的内容",
+               "selector": "//b[contains(text(), '总大小')]/following-sibling::text()[1]",
+               "filters": [
+                 { "name": "replace", "args": [ ":", "" ] },
+                 { "name": "replace", "args": [ "：", "" ] },
+                 { "name": "strip" },
+                 { "name": "byte_size" }
+               ]
+             },
+             {
+               "comment": "方法2：全页搜索 '总大小：xxx' 格式的文本",
+               "selector": "//*[contains(text(), '总大小')]/text()",
+               "filters": [
+                 { "name": "re_search", "args": ["总大小[：:]\\s*(.*)", 1] },
+                 { "name": "strip" },
+                 { "name": "byte_size" }
+               ]
+             }
           ]
         }
       }
+    },
+    "sign_in": {
+      "path": "/sign",
+      "method": "GET",
+      "form_data": {
+        "action": [
+          "sign_in"
+        ]
+      }
     }
-  },
-  "my_hr": {
-    "path": "/myhr.php?status=1"
   }
 }

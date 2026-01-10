@@ -1,7 +1,8 @@
 {
   "id": "ilolicon",
   "name": "萝莉",
-  "domain": "https://share.ilolicon.com",
+  "domain": "https://mua.xloli.cc",
+  "additional_domain": ["https://share.ilolicon.com"],
   "public": false,
   "schema": "NexusPHP",
   "required": {
