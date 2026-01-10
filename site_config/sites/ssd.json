@@ -73,7 +73,7 @@
         }
       }
     },
-    "search":{
+    "search": {
       "fields": {
         "labels": {
           "selector": "td.embedded > div.torrent-smalldescr > a > span",
@@ -152,16 +152,29 @@
       "headers": {
         "Referer": "{domain}/userdetails.php?id={userId}"
       },
-      "list": {
-        "selector": "//tr[position()>1]",
-        "next_page": {
-          "selector": "//a[contains(text(), '下一页') or contains(text(), '下一頁')]/@href"
-        }
+      "disabled_extends": {
+        "headers": true,
+        "list": true
       },
       "fields": {
-        "size": {
-          "selector": "/td[3]",
+        "count": {
+          "selector": "//b[1]",
           "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//b[2]",
+          "filters": [
+            {
+              "name": "strip"
+            },
             {
               "name": "byte_size"
             }
@@ -181,13 +194,27 @@
       "method": "POST",
       "path": "/getrss.php",
       "form_data": {
-        "inclbookmarked": ["0"],
-        "paid": ["0"],
-        "itemcategory": ["1"],
-        "itemsmalldescr": ["1"],
-        "itemsize": ["1"],
-        "showrows": ["10"],
-        "search_mode": ["0"]
+        "inclbookmarked": [
+          "0"
+        ],
+        "paid": [
+          "0"
+        ],
+        "itemcategory": [
+          "1"
+        ],
+        "itemsmalldescr": [
+          "1"
+        ],
+        "itemsize": [
+          "1"
+        ],
+        "showrows": [
+          "10"
+        ],
+        "search_mode": [
+          "0"
+        ]
       },
       "fields": {
         "content": {
