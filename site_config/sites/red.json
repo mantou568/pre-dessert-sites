@@ -51,8 +51,21 @@
         }
       },
       "fields": {
-        "title": {
+        "group_name": {
           "selector": "groupName"
+        },
+        "title": {
+          "selector": "artist",
+          "filters": [
+            {
+              "name": "append_right",
+              "args": " - "
+            },
+            {
+              "name": "append_field_right",
+              "args": "group_name"
+            }
+          ]
         },
         "cover": {
           "selector": "cover"
