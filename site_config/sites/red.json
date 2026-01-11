@@ -21,6 +21,10 @@
           "{keyword}"
         ]
       },
+      "disabled_extends": {
+        "fields": true,
+        "field": true
+      },
       "list": {
         "selector": "response.results"
       },
