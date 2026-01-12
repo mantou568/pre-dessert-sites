@@ -1,0 +1,235 @@
+{
+  "id": "dabaojian",
+  "name": "大宝剑",
+  "domain": "https://pt.525968.xyz",
+  "additional_domain": [],
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_cover": false
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 401,
+        "cat": "Movies",
+        "desc": "Movies/电影"
+      },
+      {
+        "id": 406,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": 407,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
+      }
+    ],
+    "tv": [
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动漫"
+      },
+      {
+        "id": 402,
+        "cat": "TV",
+        "desc": "TV Series/连续剧"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "TV Shows/综艺"
+      },
+      {
+        "id": 412,
+        "cat": "TV",
+        "desc": "Short Play/短剧"
+      }
+    ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span,a,img,font,b,br",
+          "contents": -1
+        },
+        "hr_days": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["(\\d+)", 1]
+            }
+          ]
+        },
+        "size": {
+          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["总大小：(.*)", 1]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/messages.php?action=viewmailbox&box=1",
+      "list": {
+        "selector": "//form[@action='messages.php']//tr[.//td[a[contains(@href, 'messages.php?action=viewmessage')]]]"
+      },
+      "params": {
+        "page": [
+          "{page}"
+        ]
+      },
+      "fields": {
+        "title": {
+          "selector": "td[2]/a/text()"
+        },
+        "link": {
+          "selector": "td[2]/a/@href"
+        },
+        "id": {
+          "selector": "td[2]/a/@href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "sender": {
+          "selector": "td[3]/text()",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "date": {
+          "any": [
+            {
+              "selector": "td[4]/span/text()"
+            },
+            {
+              "selector": "td[4]/text()"
+            },
+            {
+              "selector": "td[4]/span/@title",
+              "filters": [
+                {
+                  "name": "timestamp"
+                }
+              ]
+            }
+          ]
+        },
+        "unread": {
+          "selector": "td[1]//img[contains(@class, 'unreadpm')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        }
+      }
+    },
+    "message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "title": {
+          "selector": "//h1/text()"
+        },
+        "sender": {
+          "selector": "//table[.//tr/td[@class='colhead']]//tr[2]/td[1]/text()",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "date": {
+          "any": [
+            {
+              "selector": "//table[.//tr/td[@class='colhead']]//tr[2]/td[2]/span/text()"
+            },
+            {
+              "selector": "//table[.//tr/td[@class='colhead']]//tr[2]/td[2]/span/@title",
+              "filters": [
+                {
+                  "name": "timestamp"
+                }
+              ]
+            }
+          ]
+        },
+        "content": {
+          "selector": "//table[.//tr/td[@class='colhead']]//tr[3]/td",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
+  }
+}
