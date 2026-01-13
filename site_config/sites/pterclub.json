@@ -143,14 +143,6 @@
             }
           ]
         },
-        "hr_days": {
-          "filters": [
-            {
-              "name": "constant",
-              "args": "1"
-            }
-          ]
-        },
         "id": {
           "selector": "a[href*='details.php?id=']",
           "attribute": "href",
