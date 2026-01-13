@@ -183,20 +183,25 @@
         "size": {
           "any": [
             {
-              "selector": "td.rowfollow:nth-last-child(6)",
-              "filters": [
-                {
-                  "name": "byte_size"
-                }
+              "selector": "td.rowfollow:nth-last-child(5)"
+            },
+            {
+              "selector": "td:nth-child(5):not(.embedded)"
+            },
+            {
+              "selector": "td.rowfollow"
+            }
+          ],
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "([\\d.,]+\\s*[KMGTPEZY]?i?B)",
+                1
               ]
             },
             {
-              "selector": "td:nth-child(5):not(.embedded)",
-              "filters": [
-                {
-                  "name": "byte_size"
-                }
-              ]
+              "name": "byte_size"
             }
           ]
         },
