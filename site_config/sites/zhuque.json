@@ -62,9 +62,15 @@
         "params": true
       },
       "fields": {
-        "id": {},
-        "category": {},
-        "title": {},
+        "id": {
+          "selector": "id"
+        },
+        "category": {
+          "selector": "category"
+        },
+        "title": {
+          "selector": "title"
+        },
         "details": {
           "selector": "id",
           "filters": [
@@ -90,7 +96,9 @@
             }
           ]
         },
-        "size": {},
+        "size": {
+          "selector": "size"
+        },
         "grabs": {
           "selector": "complete"
         },

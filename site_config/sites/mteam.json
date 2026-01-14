@@ -159,8 +159,12 @@
         "selector": "data.data"
       },
       "fields": {
-        "id": {},
-        "category": {},
+        "id": {
+          "selector": "id"
+        },
+        "category": {
+          "selector": "category"
+        },
         "title": {
           "selector": "name"
         },
@@ -176,7 +180,9 @@
             }
           ]
         },
-        "size": {},
+        "size": {
+          "selector": "size"
+        },
         "grabs": {
           "selector": "status.timesCompleted"
         },
