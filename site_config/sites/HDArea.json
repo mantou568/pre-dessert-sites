@@ -105,12 +105,85 @@
       }
     },
     "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/mybonus.php",
+      "disabled_extends": {
+        "list": true
+      },
       "fields": {
-        "size": {
-          "selector": "/td[3]",
-          "filters": [
+        "count": {
+          "any": [
             {
-              "name": "byte_size"
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "当前状态：正在做种\\s*<b>(\\d+)</b>\\s*个有效资源",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "//div[contains(., '当前状态：正在做种') and contains(., '个有效资源')]//b[last()]",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            },
+            {
+              "selector": "//div[contains(., '基础数量分')]//b[contains(following-sibling::text()[1], '个有效资源')]",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            }
+          ]
+        },
+        "size": {
+          "any": [
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "当前状态：做种总积\\s*<b>([\\d.]+\\s*GB)</b>",
+                    1
+                  ]
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            },
+            {
+              "selector": "//div[contains(., '当前状态：做种总积')]//b[1]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            },
+            {
+              "selector": "//div[contains(., '体积与稀缺分')]//b[contains(following-sibling::text()[1], 'GB')]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
             }
           ]
         }
