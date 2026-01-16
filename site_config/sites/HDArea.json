@@ -90,6 +90,12 @@
   },
   "requests": {
     "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/torrents.php",
+      "params": {
+        "search": ["{keyword}"]
+      },
       "fields": {
         "description": {
           "selector": "td.embedded",
@@ -101,6 +107,10 @@
               "args": ["()", ""]
             }
           ]
+        },
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
         }
       }
     },
