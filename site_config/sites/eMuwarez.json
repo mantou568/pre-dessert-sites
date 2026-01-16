@@ -1,7 +1,7 @@
 {
-  "id": "bitporn",
-  "name": "BitPor",
-  "domain": "https://bitporn.eu",
+  "id": "eMuwarez",
+  "name": "eMz",
+  "domain": "https://emuwarez.com",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -32,6 +32,7 @@
       "method": "GET",
       "path": "/favicon.ico"
     },
+
     "notice": {
       "parser": "XPath",
       "method": "GET",
@@ -42,6 +43,7 @@
         }
       }
     },
+
     "user_basic_info": {
       "parser": "XPath",
       "method": "GET",
@@ -77,11 +79,7 @@
         },
         "ratio": {
           "selector": "//li[contains(@class,'ratio-bar__ratio')]/a/text()",
-          "filters": [
-            { "name": "replace", "args": ["∞", "0"] },
-            { "name": "replace", "args": [",", ""] },
-            { "name": "strip" }
-          ]
+          "filters": [{ "name": "replace", "args": [",", ""] }]
         },
         "bonus": {
           "selector": "//li[contains(@class,'ratio-bar__points')]/a/text()",
@@ -94,19 +92,15 @@
         }
       }
     },
+
     "user_details": {
       "parser": "XPath",
       "method": "GET",
       "path": "/users/{userId}",
       "fields": {
         "level": {
-          "selector": "//a[contains(@class, 'user-tag__link')]/@title",
-          "filters": [
-            { "name": "strip" }
-          ]
-        },
-        "level_icon": {
-          "selector": "//div/article/img/@src"
+          "selector": "//span[contains(@class,'badge') or contains(@class,'user-class')]/text()",
+          "filters": [{ "name": "strip" }]
         },
         "join_at": {
           "selector": "//time[@datetime][1]/@datetime",
@@ -118,6 +112,7 @@
         }
       }
     },
+
     "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
@@ -141,6 +136,7 @@
         }
       }
     },
+
     "messages": {
       "parser": "XPath",
       "method": "GET",
@@ -174,6 +170,7 @@
         }
       }
     },
+
     "message_detail": {
       "parser": "XPath",
       "method": "GET",
@@ -198,6 +195,7 @@
         }
       }
     },
+
     "search": {
       "method": "GET",
       "path": "torrents?perPage=100",

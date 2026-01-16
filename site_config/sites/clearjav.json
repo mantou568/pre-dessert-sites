@@ -67,6 +67,7 @@
           "selector": "//li[contains(@class, 'ratio-bar__uploaded')]/a",
           "filters": [
             { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "byte_size" }
           ]
         },
@@ -74,13 +75,15 @@
           "selector": "//li[contains(@class, 'ratio-bar__downloaded')]/a",
           "filters": [
             { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "byte_size" }
           ]
         },
         "ratio": {
           "selector": "//li[contains(@class, 'ratio-bar__ratio')]/a",
           "filters": [
-            { "name": "replace", "args": [ ",", "" ] }
+            { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] }
           ]
         },
         "bonus": {
@@ -243,12 +246,15 @@
           "selector": "//dt[contains(.,'总做种数量')]/following-sibling::dd[1]/text()",
           "filters": [
             { "name": "replace", "args": [ ",", "" ] },
+            { "name": "replace", "args": [ "\u202f", "" ] },
             { "name": "strip" }
           ]
         }
       }
     },
     "search": {
+      "parser": "CssSelector",
+      "method": "GET",
       "path": "torrents?perPage=100&categories[6]=6&categories[1]=7&categories[2]=5&categories[3]=1&categories[4]=8&categories[5]=2",
       "params": {
         "name": [ "{keyword}" ]

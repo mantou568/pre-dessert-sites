@@ -1,0 +1,442 @@
+{
+  "id": "ncore",
+  "name": "nCore",
+  "domain": "https://ncore.pro",
+  "additional_domain": [],
+  "public": false,
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": false,
+    "has_2x_free": false,
+    "has_cover": false
+  },
+  "first_page_offset": 1,
+  "category": {
+    "movie": [],
+    "tv": [],
+    "music": [],
+    "other": []
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/styles/ncore.ico"
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/index.php",
+      "chrome": true,
+      "fields": {
+        "is_login": {
+          "any": [
+            {
+              "selector": "//input[@id='confg']/@data-uid",
+              "filters": [
+                {
+                  "name": "not_blank"
+                }
+              ]
+            },
+            {
+              "selector": "//a[contains(@href, 'exit.php') or contains(@id, 'menu_11')]/text()",
+              "filters": [
+                {
+                  "name": "not_blank"
+                }
+              ]
+            },
+            {
+              "selector": "//a[@href='profile.php']/text()",
+              "filters": [
+                {
+                  "name": "not_blank"
+                }
+              ]
+            }
+          ]
+        },
+        "id": {
+          "any": [
+            {
+              "selector": "//input[@id='confg']/@data-uid"
+            },
+            {
+              "selector": "//a[@href='profile.php']/@href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "[?&]id=(\\d+)",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": {
+          "selector": "//a[@href='profile.php']/text()",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "level": {
+          "any": [
+            {
+              "selector": "//div[@id='infosav_adatok']/a[@href='profile.php']/following-sibling::text()[1]"
+            },
+            {
+              "selector": "//div[@id='infosav_adatok']"
+            }
+          ],
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\(([^)]+)\\)",
+                1
+              ]
+            },
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "bonus": {
+          "selector": "//div[@id='infosav_adatok']/a[contains(@href, 'wiki.php?action=read&id=33')]/text()",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "uploaded": {
+          "any": [
+            {
+              "selector": "//div[@id='infosav_adatok']/text()[contains(., 'Fel:')]/following-sibling::span[@class='list_alert'][1]"
+            },
+            {
+              "selector": "//div[@id='infosav_adatok']/span[@class='list_alert'][1]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "infos": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/index.php",
+      "tags": [
+        "user_profile"
+      ],
+      "fields": {
+        "passkey": {
+          "selector": "//input[@id='confg']/@data-unique"
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/profile.php",
+      "params": {
+        "id": [
+          "{userId}"
+        ],
+        "action": [
+          "other"
+        ]
+      },
+      "fields": {
+        "join_at": {
+          "any": [
+            {
+              "selector": "//div[contains(@class, 'profil_jobb_elso2') and contains(text(), 'Regisztrált')]/following-sibling::div[contains(@class, 'profil_jobb_masodik2')]/span/@title"
+            },
+            {
+              "selector": "//div[contains(@class, 'profil_jobb_masodik2')]/span[@title][1]/@title"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/profile.php",
+      "params": {
+        "id": [
+          "{userId}"
+        ],
+        "action": [
+          "box"
+        ]
+      },
+      "chrome": true,
+      "disabled_extends": {
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//div[contains(@class, 'lista_mini_fej') and contains(text(), 'által futtatott torrentek')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\((\\d+)\\)",
+                1
+              ]
+            },
+            {
+              "name": "strip"
+            }
+          ]
+        }
+      }
+    },
+    "search": {
+      "parser": "CssSelector",
+      "method": "POST",
+      "path": "/torrents.php",
+      "params": {
+        "mire": [
+          "{keyword}"
+        ],
+        "miben": [
+          "name"
+        ],
+        "oldal": [
+          "{page}"
+        ]
+      },
+      "list": {
+        "selector": "div.box_torrent"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href*='torrents.php?action=details&id=']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "title": {
+          "selector": "a[href*='torrents.php?action=details&id=']",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "details": {
+          "selector": "a[href*='torrents.php?action=details&id=']",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/torrents.php?action=download&id="
+            },
+            {
+              "name": "append_right",
+              "args": "&key={passkey}"
+            },
+            {
+              "name": "user_profile_holder"
+            }
+          ]
+        },
+        "size": {
+          "selector": "div.box_meret2",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "seeders": {
+          "selector": "div.box_s2 a",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "leechers": {
+          "selector": "div.box_l2 a",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "date_added": {
+          "selector": "div.box_feltoltve2",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2})",
+                1
+              ]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/index.php",
+      "chrome": true,
+      "list": {
+        "selector": "//div[@class='news_extra']"
+      },
+      "fields": {
+        "id": {
+          "selector": "./@id",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "new_(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "title": {
+          "any": [
+            {
+              "selector": ".//div[@class='news_right_txt']//span[@style='font-weight:bold']",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            },
+            {
+              "selector": "./div[@class='news_right2']/div[@class='news_right_txt']//span[@style='font-weight:bold']",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            },
+            {
+              "selector": ".//div[@class='news_right_txt']//span[contains(@style, 'font-weight:bold')]",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            }
+          ]
+        },
+        "date": {
+          "any": [
+            {
+              "selector": ".//div[@class='news_right_top']/span[@class='comment'][1]",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            },
+            {
+              "selector": "./div[@class='news_right2']/div[@class='news_right_top']/span[@class='comment'][1]",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            }
+          ]
+        },
+        "content": {
+          "any": [
+            {
+              "selector": ".//div[@class='news_right_txt']",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            },
+            {
+              "selector": "./div[@class='news_right2']/div[@class='news_right_txt']",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

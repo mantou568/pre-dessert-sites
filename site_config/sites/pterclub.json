@@ -47,15 +47,56 @@
   },
   "requests": {
     "user_basic_info": {
+      "parser": "XPath",
       "fields": {
         "bonus": {
-          "selector": "//*[@id='info_block']/tbody/tr/td/table/tbody/tr/td[1]/span/text()[9]",
-          "filters": [
+          "any": [
             {
-              "name": "re_search",
-              "args": [
-                "\\s*([\\d,]+\\.\\d+)",
-                1
+              "selector": "//span[@id='attendance-wrap']/preceding-sibling::text()[1]",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "([\\d,]+\\.?\\d*)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "//a[contains(@href,'sitefreepool.php')]/following-sibling::text()[1]",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "[:：]\\s*([\\d,]+\\.?\\d*)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "//span[@class='color_bonus'][contains(text(),'猫粮')]/ancestor::a/following-sibling::text()[contains(.,':')]",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "[:：]\\s*([\\d,]+\\.?\\d*)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "//*[@id='info_block']/tbody/tr/td/table/tbody/tr/td[1]/span/text()[9]",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "\\s*([\\d,]+\\.\\d+)",
+                    1
+                  ]
+                }
               ]
             }
           ]
@@ -73,21 +114,229 @@
       }
     },
     "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/torrents.php",
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
+      },
+      "disabled_extends": {
+        "fields": true,
+        "field": true
+      },
       "fields": {
-        "title": {
-          "selector": "td:nth-child(2) > div > div:nth-child(1) > a > b"
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
         },
         "description": {
-          "selector": "td:nth-child(2) > div > div:nth-child(2) > span"
+          "any": [
+            {
+              "selector": "td:nth-child(2) > div > div:nth-child(2) > span"
+            },
+            {
+              "selector": "td.embedded",
+              "remove": "span,a,img,font,b,br",
+              "contents": -1
+            }
+          ]
         },
-        "labels": {
-          "array": true,
-          "selector": "td:nth-child(2) > div > div:nth-child(2) > a.torrents-tag"
+        "id": {
+          "selector": "a[href*='details.php?id=']",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "id=(\\d+)",
+                1
+              ]
+            }
+          ]
         },
         "cover": {
-          "selector": "td:nth-child(1) > img",
-          "attribute": "data-orig"
-        }
+          "any": [
+            {
+              "selector": "td:nth-child(1) > img",
+              "attribute": "data-orig"
+            },
+            {
+              "selector": "td:nth-child(1) > img",
+              "attribute": "data-src"
+            },
+            {
+              "selector": "td:nth-child(1) > img",
+              "attribute": "src"
+            }
+          ]
+        },
+        "size": {
+          "any": [
+            {
+              "selector": "td.rowfollow:nth-last-child(5)"
+            },
+            {
+              "selector": "td:nth-child(5):not(.embedded)"
+            },
+            {
+              "selector": "td.rowfollow"
+            }
+          ],
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "([\\d.,]+\\s*[KMGTPEZY]?i?B)",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "seeders": {
+          "any": [
+            {
+              "selector": "a[href*='dllist=1#seeders']"
+            },
+            {
+              "selector": "td.rowfollow:nth-last-child(4) b"
+            },
+            {
+              "selector": "td:nth-child(6):not(.embedded) b"
+            }
+          ],
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "leechers": {
+          "any": [
+            {
+              "selector": "a[href*='dllist=1#leechers']"
+            },
+            {
+              "selector": "td.rowfollow:nth-last-child(3) b"
+            },
+            {
+              "selector": "td:nth-child(7):not(.embedded) b"
+            }
+          ],
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "grabs": {
+          "any": [
+            {
+              "selector": "a[href*='viewsnatches.php?id='] b",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "(\\d+)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "td.rowfollow:nth-last-child(2) a b",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "(\\d+)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "td:nth-child(8):not(.embedded)",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "(\\d+)",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "date_added": {
+          "any": [
+            {
+              "selector": "td.rowfollow.nowrap > span",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "timestamp"
+                }
+              ]
+            },
+            {
+              "selector": "td:nth-child(4):not(.embedded) > span",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "timestamp"
+                }
+              ]
+            }
+          ]
+        },
+        "downloadvolumefactor": {},
+        "uploadvolumefactor": {},
+        "title": {
+          "any": [
+            {
+              "selector": "a[title][href*='details.php?id=']",
+              "attribute": "title"
+            },
+            {
+              "selector": "table.torrentname a[href*='details.php?id='] b"
+            },
+            {
+              "selector": "table.torrentname td.embedded a[href*='details.php?id='] b"
+            },
+            {
+              "selector": "a[href*='details.php?id='] b"
+            },
+            {
+              "selector": "td:nth-child(2) > div > div:nth-child(1) > a > b"
+            },
+            {
+              "selector": "a[href*='details.php?id=']"
+            }
+          ]
+        },
+        "details": {
+          "selector": "a[href*='details.php?id=']",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*='download.php?id=']",
+          "attribute": "href"
+        },
+        "category": {}
       }
     },
     "details": {
@@ -110,7 +359,7 @@
       "parser": "CssSelector",
       "path": "/userdetails.php?id={userId}",
       "headers": {
-        "Referer": "https://pterclub.com/userdetails.php"
+        "Referer": "{domain}/userdetails.php?id={userId}"
       },
       "disabled_extends": {
         "headers": true,

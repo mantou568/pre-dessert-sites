@@ -62,9 +62,15 @@
         "params": true
       },
       "fields": {
-        "id": {},
-        "category": {},
-        "title": {},
+        "id": {
+          "selector": "id"
+        },
+        "category": {
+          "selector": "category"
+        },
+        "title": {
+          "selector": "title"
+        },
         "details": {
           "selector": "id",
           "filters": [
@@ -90,7 +96,9 @@
             }
           ]
         },
-        "size": {},
+        "size": {
+          "selector": "size"
+        },
         "grabs": {
           "selector": "complete"
         },
@@ -195,13 +203,48 @@
           "selector": "data.username"
         },
         "uploaded": {
-          "selector": "data.upload"
+          "selector": "data.upload",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "uploaded_real": {
+          "selector": "data.realUpload",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         },
         "downloaded": {
-          "selector": "data.download"
+          "selector": "data.download",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded_real": {
+          "selector": "data.realDownload",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         },
         "bonus": {
           "selector": "data.bonus"
+        },
+        "seeding_count": {
+          "selector": "data.seeding"
+        },
+        "leeching_count": {
+          "selector": "data.leeching"
+        },
+        "seed_time": {
+          "selector": "data.seedTime"
         }
       }
     },
@@ -216,55 +259,77 @@
         "level": {
           "selector": "data.class.name"
         },
+        "level_id": {
+          "selector": "data.class.id"
+        },
+        "level_require_upload": {
+          "selector": "data.class.need_upload",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "level_require_ratio": {
+          "selector": "data.class.need_ratio"
+        },
         "join_at": {
           "selector": "data.regTime"
         },
         "last_accessed": {
           "selector": "data.lastActivity"
+        },
+        "seeding_count": {
+          "selector": "data.seeding"
+        },
+        "uploaded_total": {
+          "selector": "data.upload",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "uploaded_real": {
+          "selector": "data.realUpload",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         }
       }
     },
-    "seeding_statistics": {
-      "parser": "XPath",
+    "seeding_size": {
+      "parser": "JsonPath",
       "method": "GET",
-      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
-      "headers": {
-        "Referer": "{domain}/userdetails.php?id={userId}"
+      "path": "/api/user/getInfo?id={userId}",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
       },
+      "fields": {
+        "size": {
+          "selector": "data.seedSize",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_count": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/user/getInfo?id={userId}",
       "disabled_extends": {
         "headers": true,
         "list": true
       },
       "fields": {
         "count": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "(\\d+)",
-                1
-              ]
-            }
-          ]
-        },
-        "size": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "总大小：(.*)",
-                1
-              ]
-            },
-            {
-              "name": "strip"
-            },
-            {
-              "name": "byte_size"
-            }
-          ]
+          "selector": "data.seeding"
         }
       }
     },
@@ -297,7 +362,9 @@
       "fields": {
         "title": {},
         "content": {},
-        "create_time": {}
+        "create_time": {
+          "selector": "create_time"
+        }
       }
     },
     "sign_in": {
