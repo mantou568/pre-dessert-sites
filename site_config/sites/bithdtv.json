@@ -1,0 +1,628 @@
+{
+  "id": "bithdtv",
+  "name": "Bit-HDTV",
+  "domain": "https://www.bit-hdtv.com",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": true,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [
+      { "id": 1, "cat": "Movies", "desc": "Movies" }
+    ],
+    "tv": [
+      { "id": 2, "cat": "TV", "desc": "TV Shows" }
+    ],
+    "music": [
+      { "id": 3, "cat": "Music", "desc": "Music" }
+    ],
+    "other": []
+  },
+  "requests": {
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/torrents.php",
+      "fields": {
+        "name": {
+          "any": [
+            {
+              "selector": "//table[@id='statusbar']//b//a[contains(@href, 'userdetails.php?id=')]/text()"
+            },
+            {
+              "selector": "//td[contains(text(), 'Welcome')]//a[contains(@href, 'userdetails.php?id=')]/text()"
+            },
+            {
+              "selector": "//a[contains(@href, 'userdetails.php?id=') and not(contains(text(), 'BHDTv')) and not(contains(text(), 'Bit-HDTV'))]/text()[normalize-space()]",
+              "filters": [
+                { "name": "strip" },
+                { "name": "not_blank" }
+              ]
+            }
+          ]
+        },
+        "uploaded": {
+          "selector": "//b[text()='Uploaded:']/following-sibling::text()[1]|//font[contains(text(), 'UL:')]/following-sibling::font[1]/text()",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["^([\\d,.]+\\s+[KMGTPI]*B)", 1] },
+            { "name": "byte_size" }
+          ]
+        },
+        "downloaded": {
+          "selector": "//b[text()='Downloaded:']/following-sibling::text()[1]|//font[contains(text(), 'DL:')]/following-sibling::font[1]/text()",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["^([\\d,.]+\\s+[KMGTPI]*B)", 1] },
+            { "name": "byte_size" }
+          ]
+        },
+        "ratio": {
+          "selector": "//b[text()='Share ratio:']/following-sibling::text()[1]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["^([\\d.]+)", 1] },
+            { "name": "replace", "args": ["∞", "0"] },
+            { "name": "replace", "args": ["Inf", "0"] }
+          ]
+        },
+        "bonus": {
+          "selector": "//font[contains(text(), 'Bonus:')]/text()|//td[contains(., 'Bonus:')]//font/text()",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["Bonus:\\s*(.+)", 1] },
+            { "name": "replace", "args": ["&nbsp;", ""] },
+            { "name": "replace", "args": ["\u00a0", ""] },
+            { "name": "replace", "args": ["[^0-9]", ""] }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "fields": {
+        "level": {
+          "selector": "//a[contains(@href, 'userdetails')]/parent::b/following-sibling::text()[1]|//b[contains(., 'User')]/text()[contains(., '(')]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["\\(([^)]+)\\)", 1] }
+          ]
+        },
+        "join_at": {
+          "selector": "//b[contains(text(), 'Join date')]/following-sibling::text()[1]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp" }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//b[contains(text(), 'Last seen')]/following-sibling::text()[1]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp" },
+            { "name": "timezone", "args": ["+8"] }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php",
+      "params": {
+        "id": ["{userId}"]
+      },
+      "disabled_extends": {
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//b[contains(text(), 'Seeding torrents')]/following-sibling::text()[1]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d+)", 1] }
+          ]
+        },
+        "size": {
+          "selector": "//b[contains(text(), 'Seeding size')]/following-sibling::text()[1]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["^([\\d,.]+\\s+[KMGTPI]*B)", 1] },
+            { "name": "byte_size" }
+          ]
+        }
+      }
+    },
+    "search": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/torrents.php",
+      "params": {
+        "search": ["{keyword}"],
+        "options": ["0"],
+        "cat": ["0"],
+        "subcat": ["0"],
+        "resolution": ["0"],
+        "free": ["0"]
+      },
+      "list": {
+        "selector": "//tbody[@id='torrents-index-table-body']/tr"
+      },
+      "fields": {
+        "id": {
+          "selector": ".//a[contains(@href, 'details.php?id=')]/@href",
+          "filters": [
+            { "name": "re_search", "args": ["\\d+", 0] }
+          ]
+        },
+        "category": {
+          "selector": ".//a[contains(@href, '?cat=')]/@href",
+          "filters": [
+            { "name": "re_search", "args": ["cat=(.*)", 1] }
+          ]
+        },
+        "cover": {
+          "selector": ".//td[1]//img/@data-src|.//td[1]//img/@src"
+        },
+        "title": {
+          "any": [
+            {
+              "selector": ".//a[contains(@href, 'details.php?id=')]/@title"
+            },
+            {
+              "selector": ".//a[contains(@href, 'details.php?id=')]/b/text()"
+            },
+            {
+              "selector": ".//a[contains(@href, 'details.php?id=')]//text()[normalize-space()]",
+              "filters": [
+                { "name": "strip" },
+                { "name": "replace", "args": ["\n", " "] },
+                { "name": "replace", "args": ["\r", ""] },
+                { "name": "re_search", "args": ["^(.+)$", 1] }
+              ]
+            },
+            {
+              "selector": ".//td[@class='detail']//a[contains(@href, 'details.php?id=')]/b/text()|.//td[@class='detail']//a[contains(@href, 'details.php?id=')]/text()"
+            },
+            {
+              "selector": ".//table[@class='torrentname']//a[contains(@href, 'details.php?id=')]/b/text()|.//table[@class='torrentname']//a[contains(@href, 'details.php?id=')]/text()"
+            },
+            {
+              "selector": ".//a[contains(@href, 'details.php?id=')]/text()"
+            }
+          ]
+        },
+        "details": {
+          "selector": ".//a[contains(@href, 'details.php?id=')]/@href"
+        },
+        "download": {
+          "selector": ".//a[contains(@href, 'download.php?id=')]/@href"
+        },
+        "size": {
+          "selector": ".//td[7]",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "grabs": {
+          "selector": ".//td[8][not(@class='embedded')]"
+        },
+        "seeders": {
+          "selector": ".//td[9]",
+          "filters": [
+            { "name": "re_search", "args": ["(\\d+)", 1] }
+          ]
+        },
+        "leechers": {
+          "selector": ".//td[10]",
+          "filters": [
+            { "name": "re_search", "args": ["(\\d+)", 1] }
+          ]
+        },
+        "date_added": {
+          "selector": ".//td[6]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2})", 1] },
+            { "name": "timestamp" },
+            { "name": "timezone", "args": ["+8"] }
+          ]
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "./@bgcolor",
+              "filters": [
+                { "name": "re_search", "args": ["#FFFF99|#CCFF99", 0] },
+                { "name": "not_blank", "args": [0, ""] }
+              ]
+            },
+            {
+              "selector": ".//td[@class='embedded']",
+              "filters": [
+                { "name": "re_search", "args": ["Free", 0] },
+                { "name": "not_blank", "args": [0, ""] }
+              ]
+            },
+            {
+              "selector": ".//img[contains(@class, 'pro_free') or contains(@class, 'pro_free2up')]/@class",
+              "filters": [
+                { "name": "not_blank", "args": [0, ""] }
+              ]
+            },
+            {
+              "selector": ".//img[contains(@class, 'pro_50pctdown') or contains(@class, 'pro_50pctdown2up')]/@class",
+              "filters": [
+                { "name": "not_blank", "args": [0.5, ""] }
+              ]
+            },
+            {
+              "selector": ".//img[contains(@class, 'pro_30pctdown')]/@class",
+              "filters": [
+                { "name": "not_blank", "args": [0.3, 1] }
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "./@bgcolor",
+              "filters": [
+                { "name": "re_search", "args": ["#CCFF99", 0] },
+                { "name": "not_blank", "args": [2, 1] }
+              ]
+            },
+            {
+              "selector": ".//td[@class='embedded']",
+              "filters": [
+                { "name": "re_search", "args": ["2x?\\s*up", 0] },
+                { "name": "not_blank", "args": [2, 1] }
+              ]
+            },
+            {
+              "selector": ".//img[contains(@class, 'pro_50pctdown2up') or contains(@class, 'pro_free2up') or contains(@class, 'pro_2up')]/@class",
+              "filters": [
+                { "name": "not_blank", "args": [2, 1] }
+              ]
+            }
+          ]
+        },
+        "description": {
+          "selector": ".//td[2]//table//tr//td[2]",
+          "filters": [
+            { "name": "split", "args": ["\n", -1] }
+          ]
+        },
+        "labels": {
+          "any": [
+            {
+              "selector": ".//td[@class='embedded']//span[@title]/@title"
+            },
+            {
+              "selector": ".//td[@class='embedded']//text()[contains(., 'Internal')]",
+              "filters": [
+                { "name": "re_search", "args": ["Internal", 0] }
+              ]
+            }
+          ],
+          "array": true
+        },
+        "imdb_id": {
+          "any": [
+            {
+              "selector": ".//a[contains(@href, 'imdb.com/title/tt')]/@href",
+              "filters": [
+                { "name": "re_search", "args": ["(tt\\d+)", 1] }
+              ]
+            },
+            {
+              "selector": ".//span[@data-imdbid]/@data-imdbid|.//label[@data-imdbid]/@data-imdbid",
+              "filters": [
+                { "name": "pad_zero", "args": 7 },
+                { "name": "append_left", "args": "tt" }
+              ]
+            },
+            {
+              "selector": ".//a[contains(@href, 'search_area=4')]/@href",
+              "filters": [
+                { "name": "re_search", "args": ["search=(\\d+)", 1] },
+                { "name": "pad_zero", "args": 7 },
+                { "name": "append_left", "args": "tt" }
+              ]
+            }
+          ]
+        },
+        "douban_id": {
+          "any": [
+            {
+              "selector": ".//a[contains(@href, 'movie.douban.com/subject/')]/@href",
+              "filters": [
+                { "name": "re_search", "args": ["(\\d+)", 0] }
+              ]
+            },
+            {
+              "selector": ".//span[@data-doubanid]/@data-doubanid|.//label[@data-doubanid]/@data-doubanid"
+            },
+            {
+              "selector": ".//a[contains(@href, 'search_area=5')]/@href",
+              "filters": [
+                { "name": "re_search", "args": ["search=(\\d+)", 1] }
+              ]
+            }
+          ]
+        },
+        "free": {
+          "any": [
+            {
+              "selector": "./@bgcolor",
+              "filters": [
+                { "name": "re_search", "args": ["#FFFF99|#CCFF99", 0] },
+                { "name": "not_blank" }
+              ]
+            },
+            {
+              "selector": ".//td[@class='embedded']",
+              "filters": [
+                { "name": "re_search", "args": ["Free", 0] },
+                { "name": "not_blank" }
+              ]
+            },
+            {
+              "selector": ".//img[contains(@class, 'pro_free') or contains(@class, 'pro_free2up')]/@class",
+              "filters": [
+                { "name": "not_blank" }
+              ]
+            }
+          ]
+        },
+        "2x_free": {
+          "any": [
+            {
+              "selector": "./@bgcolor",
+              "filters": [
+                { "name": "re_search", "args": ["#CCFF99", 0] },
+                { "name": "not_blank" }
+              ]
+            },
+            {
+              "selector": ".//td[@class='embedded']",
+              "filters": [
+                { "name": "re_search", "args": ["Free.*2x?\\s*up|2x?\\s*up.*Free", 0] },
+                { "name": "not_blank" }
+              ]
+            },
+            {
+              "selector": ".//img[contains(@class, 'pro_free2up')]/@class",
+              "filters": [
+                { "name": "not_blank" }
+              ]
+            }
+          ]
+        },
+        "hr": {
+          "any": [
+            {
+              "selector": ".//td[@class='embedded']",
+              "filters": [
+                { "name": "re_search", "args": ["H&R|Hit.*Run|Hit.*&.*Run", 0] },
+                { "name": "not_blank" }
+              ]
+            },
+            {
+              "selector": ".//img[contains(@class, 'hr') or contains(@class, 'hitrun')]/@class",
+              "filters": [
+                { "name": "not_blank" }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/details.php",
+      "params": {
+        "id": ["{id}"]
+      },
+      "fields": {
+        "labels": {
+          "any": [
+            {
+              "selector": "//tr[td[@class='detail']/b[text()='Internal']]//td[@class='detail']/b[text()='Internal']/text()"
+            },
+            {
+              "selector": "//tr[contains(@style, '#FFFF99')]//td[@class='detail']/b[text()='Internal']/text()"
+            },
+            {
+              "selector": "//td[@class='detail']//text()[contains(., 'Internal')]",
+              "filters": [
+                { "name": "re_search", "args": ["Internal", 0] }
+              ]
+            }
+          ],
+          "array": true
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "//td[@class='detail']",
+              "filters": [
+                { "name": "re_search", "args": ["Free", 0] },
+                { "name": "not_blank", "args": [0, ""] }
+              ]
+            },
+            {
+              "selector": "//img[contains(@class, 'pro_free') or contains(@class, 'pro_free2up')]/@class",
+              "filters": [
+                { "name": "not_blank", "args": [0, ""] }
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "//td[@class='detail']",
+              "filters": [
+                { "name": "re_search", "args": ["2x?\\s*up", 0] },
+                { "name": "not_blank", "args": [2, 1] }
+              ]
+            },
+            {
+              "selector": "//img[contains(@class, 'pro_50pctdown2up') or contains(@class, 'pro_free2up') or contains(@class, 'pro_2up')]/@class",
+              "filters": [
+                { "name": "not_blank", "args": [2, 1] }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "get_rss": {
+      "parser": "XPath",
+      "method": "POST",
+      "path": "/getrss.php",
+      "form_data": {
+        "inclbookmarked": ["0"],
+        "paid": ["0"],
+        "itemcategory": ["1"],
+        "itemsmalldescr": ["1"],
+        "itemsize": ["1"],
+        "showrows": ["10"],
+        "search_mode": ["0"]
+      },
+      "fields": {
+        "content": {
+          "selector": "(//a[@class='faqlink'])[2]/@href"
+        }
+      }
+    },
+    "rss": {
+      "parser": "Xml",
+      "method": "GET",
+      "list": {
+        "selector": "//item"
+      },
+      "fields": {
+        "id": {
+          "selector": "//link",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["\\d+", 0]
+            }
+          ]
+        },
+        "title": {
+          "selector": "//title"
+        },
+        "description": {
+          "selector": "//description"
+        },
+        "link": {
+          "selector": "//link"
+        },
+        "enclosure": {
+          "selector": "//enclosure/@url"
+        },
+        "size": {
+          "selector": "//enclosure/@length",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "pub_date": {
+          "selector": "//pubDate",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "//description",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": ["Free", 0]
+                },
+                {
+                  "name": "not_blank",
+                  "args": [0, ""]
+                }
+              ]
+            },
+            {
+              "selector": "//title",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": ["\\[Free\\]", 0]
+                },
+                {
+                  "name": "not_blank",
+                  "args": [0, ""]
+                }
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "//description",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": ["2x?\\s*up", 0]
+                },
+                {
+                  "name": "not_blank",
+                  "args": [2, 1]
+                }
+              ]
+            },
+            {
+              "selector": "//title",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": ["\\[2x?\\s*up\\]", 0]
+                },
+                {
+                  "name": "not_blank",
+                  "args": [2, 1]
+                }
+              ]
+            }
+          ]
+        },
+        "imdb_id": {
+          "selector": "//description",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": ["(tt\\d+)", 1]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
