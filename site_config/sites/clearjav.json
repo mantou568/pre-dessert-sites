@@ -249,6 +249,8 @@
       }
     },
     "search": {
+      "parser": "CssSelector",
+      "method": "GET",
       "path": "torrents?perPage=100&categories[6]=6&categories[1]=7&categories[2]=5&categories[3]=1&categories[4]=8&categories[5]=2",
       "params": {
         "name": [ "{keyword}" ]
