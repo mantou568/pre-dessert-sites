@@ -299,6 +299,9 @@
         },
         "role": {
           "selector": "data.role"
+        },
+        "level": {
+          "selector": "data.role"
         }
       }
     },
@@ -351,7 +354,9 @@
         "selector": "data"
       },
       "fields": {
-        "id": {},
+        "id": {
+          "selector": "id"
+        },
         "name_chs": {
           "selector": "nameChs"
         },
@@ -359,6 +364,7 @@
           "selector": "nameEng"
         },
         "image": {
+          "selector": "image",
           "filters": [
             {
               "name": "append_left",
