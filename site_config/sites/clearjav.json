@@ -89,9 +89,10 @@
         "bonus": {
           "selector": "//li[contains(@class, 'ratio-bar__points')]/a",
           "filters": [
-            { "name": "replace", "args": [ ",", "" ] },
-            { "name": "replace", "args": [ "\u202f", "" ] },
-            { "name": "replace", "args": [ " ", "" ] }
+         { "name": "replace", "args": ["\u2009", ""] },
+         { "name": "replace", "args": ["\u202f", ""] },
+         { "name": "replace", "args": [",", ""] },
+         { "name": "strip" }            
           ]
         }
       }
