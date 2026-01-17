@@ -99,16 +99,22 @@
       "path": "/users/{userId}",
       "fields": {
         "level": {
-          "selector": "//span[contains(@class,'badge') or contains(@class,'user-class')]/text()",
+          "selector": "//a[contains(@class,'user-tag__link')]/@title",
           "filters": [{ "name": "strip" }]
         },
         "join_at": {
           "selector": "//time[@datetime][1]/@datetime",
-          "filters": [{ "name": "timestamp" }]
+          "filters": [
+            { "name": "timestamp" },
+            { "name": "timezone", "args": ["+7"] }
+          ]
         },
         "last_accessed": {
           "selector": "//time[@datetime][last()]/@datetime",
-          "filters": [{ "name": "timestamp" }]
+          "filters": [
+            { "name": "timestamp" },
+            { "name": "timezone", "args": ["+7"] }
+          ]
         }
       }
     },
@@ -182,7 +188,10 @@
         },
         "date": {
           "selector": "//header[contains(@class,'panel__header')]//time/@datetime",
-          "filters": [{ "name": "timestamp" }]
+          "filters": [
+            { "name": "timestamp" },
+            { "name": "timezone", "args": ["+7"] }
+          ]
         },
         "content": {
           "selector": "//div[contains(@class,'panel__body') and contains(@class,'bbcode-rendered')]",
@@ -225,7 +234,10 @@
         "date_added": {
           "selector": "td.torrent-search--list__age > time",
           "attribute": "datetime",
-          "filters": [{ "name": "timestamp" }]
+          "filters": [
+            { "name": "timestamp" },
+            { "name": "timezone", "args": ["+7"] }
+          ]
         },
         "size": {
           "selector": "td.torrent-search--list__size",
