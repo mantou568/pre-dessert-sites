@@ -1,0 +1,265 @@
+{
+  "id": "jpop",
+  "name": "JPopsuki",
+  "domain": "https://jpopsuki.eu",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": false,
+    "has_hr": false,
+    "has_cover": true
+  },
+  "category": {
+    "music": [
+      { "id": 1, "cat": "Album", "desc": "专辑" },
+      { "id": 2, "cat": "Single", "desc": "单曲" }
+    ],
+    "video": [
+      { "id": 3, "cat": "PV", "desc": "PV/MV" },
+      { "id": 4, "cat": "DVD", "desc": "DVD/ISO" },
+      { "id": 8, "cat": "Fansubs", "desc": "字幕组" }
+    ],
+    "tv": [
+      { "id": 5, "cat": "TV-Music", "desc": "音乐节目" },
+      { "id": 6, "cat": "TV-Variety", "desc": "综艺节目" },
+      { "id": 7, "cat": "TV-Drama", "desc": "日剧" }
+    ],
+    "other": [
+      { "id": 9, "cat": "Pictures", "desc": "图片" },
+      { "id": 10, "cat": "Misc", "desc": "杂项" }
+    ]
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "content": {
+          "selector": "//div[@id='news']//div[@class='pad']"
+        }
+      }
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/user.php?id={userId}",
+      "fields": {
+        "is_login": {
+          "selector": "//a[contains(@href,'logout.php')]",
+          "attribute": "href",
+          "filters": [
+            { "name": "re_search", "args": ["logout", 0] },
+            { "name": "replace", "args": ["logout", "true"] }
+          ]
+        },
+        "id": {
+          "selector": "//div[@id='userinfo']//a[@class='username']/@href",
+          "filters": [
+            { "name": "re_search", "args": ["id=(\\d+)", 1] }
+          ]
+        },
+        "name": {
+          "selector": "//div[@id='userinfo']//a[@class='username']/text()"
+        },
+        "uploaded": {
+          "selector": "//ul[@id='userinfo_stats']//li[contains(.,'Up:')]/span[@class='stat']/text()",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "downloaded": {
+          "selector": "//ul[@id='userinfo_stats']//li[contains(.,'Down:')]/span[@class='stat']/text()",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "ratio": {
+          "selector": "//ul[@id='userinfo_stats']//li[contains(.,'Ratio:')]/span[@class='stat']/span/text()",
+          "filters": [
+            { "name": "replace", "args": [",", ""] }
+          ]
+        },
+        "bonus": {
+          "selector": "//ul[@id='userinfo_stats']//li[contains(.,'Bonus:')]//span[@class='stat']/text()",
+          "filters": [
+            { "name": "replace", "args": [",", ""] },
+            { "name": "strip" }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/user.php?id={userId}",
+      "fields": {
+        "level": {
+          "selector": "//li[contains(.,'Class:')]/text()",
+          "filters": [
+            { "name": "replace", "args": ["Class:", ""] },
+            { "name": "strip" }
+          ]
+        },
+        "join_at": {
+          "selector": "//ul[@class='stats nobullet']/li[contains(.,'Joined')]/span/@title",
+          "filters": [
+            { "name": "strip" },
+            { "name": "timestamp", "args": ["Jan 02 2006, 15:04"] }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//ul[@class='stats nobullet']/li[contains(.,'Last Seen')]/span/@title",
+          "filters": [
+            { "name": "strip" },
+            { "name": "timestamp", "args": ["Jan 02 2006, 15:04"] }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/user.php?id={userId}",
+      "fields": {
+        "count": {
+          "selector": "//div[contains(text(),'Community')]/following-sibling::ul/li[6]/text()[1]",
+          "filters": [
+            { "name": "re_search", "args": ["(\\d+)", 1] }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/inbox.php",
+      "list": {
+        "selector": "//table[@id='messageformtable']/tbody/tr"
+      },
+      "fields": {
+        "id": {
+          "selector": "./td[2]/a/@href",
+          "filters": [
+            { "name": "re_search", "args": ["id=(\\d+)", 1] }
+          ]
+        },
+        "title": {
+          "selector": "./td[2]/a/text()"
+        },
+        "link": {
+          "selector": "./td[2]/a/@href"
+        },
+        "sender": {
+          "selector": "./td[3]//a/text()"
+        },
+        "date": {
+          "selector": "./td[4]/span/@title",
+          "filters": [
+            { "name": "timestamp" }
+          ]
+        },
+        "unread": {
+          "selector": "./td[1]/img[@alt='Unread']"
+        }
+      }
+    },
+    "search": {
+      "path": "torrents.php?perPage=100&disablegrouping=1",
+      "params": {
+        "searchstr": [ "{keyword}" ]
+      },
+      "list": {
+        "selector": "table#torrent_table > tbody > tr:has(a[href*='action=download'])"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href*='action=download']",
+          "attribute": "href",
+          "filters": [
+            { "name": "querystring", "args": "id" }
+          ]
+        },
+        "category": {
+          "selector": "td:nth-child(2) a",
+          "attribute": "href",
+          "filters": [
+            { "name": "querystring", "args": "filter_cat[1]" }
+          ]
+        },
+        "title": {
+          "selector": "td:nth-child(4) a[href*='torrents.php?id=']:not([href*='#'])",
+          "optional": true
+        },
+        "details": {
+          "selector": "td:nth-child(4) a[href*='torrents.php?id=']",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*='action=download']",
+          "attribute": "href"
+        },
+        "poster": {
+          "selector": "td:nth-child(3) img",
+          "attribute": "src"
+        },
+        "date_added": {
+          "selector": "td:nth-child(6)",
+          "attribute": "title",
+          "filters": [
+            { "name": "timestamp", "args": ["Jan 02 2006, 15:04"] }
+          ]
+        },
+        "size": {
+          "selector": "td:nth-child(7)",
+          "filters": [
+            { "name": "byte_size" }
+          ]
+        },
+        "grabs": {
+          "selector": "td:nth-child(8)",
+          "filters": [
+            { "name": "replace", "args": [",", ""] }
+          ]
+        },
+        "seeders": {
+          "selector": "td:nth-child(9)",
+          "filters": [
+            { "name": "replace", "args": [",", ""] }
+          ]
+        },
+        "leechers": {
+          "selector": "td:nth-child(10)",
+          "filters": [
+            { "name": "replace", "args": [",", ""] }
+          ]
+        },
+        "downloadvolumefactor": {
+          "case": {
+            "strong:contains('Freeleech')": 0,
+            "*": 1
+          }
+        },
+        "uploadvolumefactor": {
+          "text": 1
+        },
+        "labels": {
+          "selector": "div.tags a",
+          "array": true,
+          "optional": true
+        }
+      }
+    }
+  }
+}
