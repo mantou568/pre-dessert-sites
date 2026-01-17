@@ -99,7 +99,7 @@
       "path": "/users/{userId}",
       "fields": {
         "level": {
-          "selector": "//span[contains(@class,'badge') or contains(@class,'user-class')]/text()",
+          "selector": "//a[contains(@class,'user-tag__link')]/@title",
           "filters": [{ "name": "strip" }]
         },
         "join_at": {
