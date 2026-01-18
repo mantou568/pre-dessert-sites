@@ -119,43 +119,6 @@
         }
       }
     },
-    "notice": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "/",
-      "list": {
-        "selector": "//div[@id='news']//h1"
-      },
-      "fields": {
-        "id": {
-          "selector": "./following-sibling::p[1]/@id",
-          "filters": [
-            { "name": "re_search", "args": ["news(\\d+)", 1] }
-          ]
-        },
-        "title": {
-          "selector": "./text()",
-          "filters": [
-            { "name": "re_search", "args": ["^(.+?)\\s*-\\s*\\d{4}-\\d{2}-\\d{2}$", 1] },
-            { "name": "strip" }
-          ]
-        },
-        "date": {
-          "selector": "./text()",
-          "filters": [
-            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2})", 1] },
-            { "name": "timestamp", "args": ["2006-01-02"] },
-            { "name": "timezone", "args": ["+8"] }
-          ]
-        },
-        "content": {
-          "selector": "./following-sibling::p[1]",
-          "filters": [
-            { "name": "strip" }
-          ]
-        }
-      }
-    },
     "search": {
       "parser": "CssSelector",
       "method": "GET",
@@ -178,19 +141,54 @@
           "attribute": "src"
         },
         "title": {
-          "selector": "td.browse_td_name_cell > b > a, td:not(.browse_td_name_cell) > b > a[href*='details.php?id=']",
+          "any": [
+            {
+              "selector": "td.browse_td_name_cell > b > a"
+            },
+            {
+              "selector": "b > a[href*='details.php?id=']"
+            }
+          ],
           "filters": [{ "name": "strip" }]
+        },
+        "team": {
+          "any": [
+            {
+              "selector": "td.browse_td_name_cell > b > a"
+            },
+            {
+              "selector": "b > a[href*='details.php?id=']"
+            }
+          ],
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["-([A-Za-z0-9]+)$", 1] }
+          ]
         },
         "details": {
           "selector": "a[href*='details.php?id=']",
           "attribute": "href",
           "filters": [{ "name": "re_search", "args": ["(details\\.php\\?id=\\d+)", 1] }]
         },
-        "imdb": {
+        "imdb_id": {
           "any": [
             {
               "selector": "a[data-imdb-link]",
-              "attribute": "data-imdb-link"
+              "attribute": "data-imdb-link",
+              "filters": [
+                { "name": "re_search", "args": ["tt(\\d+)", 1] },
+                { "name": "pad_zero", "args": 7 },
+                { "name": "append_left", "args": "tt" }
+              ]
+            },
+            {
+              "selector": "a[href*='imdb.com/title/tt']",
+              "attribute": "href",
+              "filters": [
+                { "name": "re_search", "args": ["tt(\\d+)", 1] },
+                { "name": "pad_zero", "args": 7 },
+                { "name": "append_left", "args": "tt" }
+              ]
             },
             {
               "selector": "a[href*='/film/info']",
@@ -198,11 +196,15 @@
               "filters": [
                 { "name": "re_search", "args": ["/film/info\\?id=(\\d+)", 1] },
                 { "name": "pad_zero", "args": 7 },
-                { "name": "append_left", "args": "https://www.imdb.com/title/tt" },
-                { "name": "append_right", "args": "/" }
+                { "name": "append_left", "args": "tt" }
               ]
             }
           ]
+        },
+        "labels": {
+          "selector": "td.browse_td_name_cell span.tag, span.tag",
+          "array": true,
+          "filters": [{ "name": "strip" }]
         },
         "download": {
           "selector": "a.js-download",
@@ -239,17 +241,42 @@
           ]
         },
         "downloadvolumefactor": {
-          "case": {
-            "a[title*='100% FL']": 0,
-            "a[title*='50% Free Leech']": 0.5,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "a[title*='100% FL']",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [0, ""]
+                }
+              ]
+            },
+            {
+              "selector": "a[title*='50% Free Leech']",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [0.5, 1]
+                }
+              ]
+            }
+          ]
         },
         "uploadvolumefactor": {
-          "case": {
-            "a[title*='100% FL']": 0.5,
-            "*": 1
-          }
+          "any": [
+            {
+              "selector": "a[title*='100% FL']",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "not_blank",
+                  "args": [0.5, 1]
+                }
+              ]
+            }
+          ]
         }
       }
     }
