@@ -1,5 +1,5 @@
 {
-  "id": "RED",
+  "id": "red",
   "name": "RED",
   "domain": "https://redacted.sh",
   "public": false,
@@ -9,6 +9,11 @@
     "sign_in": true
   },
   "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
     "search": {
       "parser": "JsonPath",
       "method": "GET",
@@ -117,7 +122,7 @@
     "user_basic_info": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "http://192.168.2.5:3000/ajax.php?action=index",
+      "path": "/ajax.php?action=index",
       "fields": {
         "is_login": {
           "selector": "response.username",
@@ -157,7 +162,7 @@
     "user_details": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "http://192.168.2.5:3000/ajax.php?action=user&id={userId}",
+      "path": "/ajax.php?action=user&id={userId}",
       "fields": {
         "level": {
           "selector": "response.personal.class"
@@ -171,7 +176,8 @@
         "last_accessed": {
           "selector": "response.stats.lastAccess",
           "filters": [
-            { "name": "timestamp" }
+            { "name": "timestamp" },
+            { "name": "timezone", "args": ["+8"] }
           ]
         }
       }
@@ -179,7 +185,7 @@
     "seeding_statistics": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "http://192.168.2.5:3000/ajax.php?action=user&id={userId}",
+      "path": "/ajax.php?action=user&id={userId}",
       "disabled_extends": {
         "list": true
       },
