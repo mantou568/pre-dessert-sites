@@ -336,7 +336,111 @@
           "selector": "a[href*='download.php?id=']",
           "attribute": "href"
         },
-        "category": {}
+        "category": {},
+        "imdb_id": {
+          "any": [
+            {
+              "selector": "a[href*='imdb.com/title/tt']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "(tt\\d+)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "span[data-imdbid]",
+              "attribute": "data-imdbid",
+              "filters": [
+                {
+                  "name": "pad_zero",
+                  "args": 7
+                },
+                {
+                  "name": "append_left",
+                  "args": "tt"
+                }
+              ]
+            },
+            {
+              "selector": "label[data-imdbid]",
+              "attribute": "data-imdbid",
+              "filters": [
+                {
+                  "name": "pad_zero",
+                  "args": 7
+                },
+                {
+                  "name": "append_left",
+                  "args": "tt"
+                }
+              ]
+            },
+            {
+              "selector": "a[href*='search_area=4']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "search=(\\d+)",
+                    1
+                  ]
+                },
+                {
+                  "name": "pad_zero",
+                  "args": 7
+                },
+                {
+                  "name": "append_left",
+                  "args": "tt"
+                }
+              ]
+            }
+          ]
+        },
+        "douban_id": {
+          "any": [
+            {
+              "selector": "a[href*='movie.douban.com/subject/']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "(\\d+)",
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "span[data-doubanid]",
+              "attribute": "data-doubanid"
+            },
+            {
+              "selector": "label[data-doubanid]",
+              "attribute": "data-doubanid"
+            },
+            {
+              "selector": "a[href*='search_area=5']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "search=(\\d+)",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       }
     },
     "details": {
