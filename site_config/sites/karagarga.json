@@ -1,0 +1,289 @@
+{
+  "id": "karagarga",
+  "name": "KG",
+  "domain": "https://karagarga.in",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [
+      { "id": 4, "cat": "Action", "desc": "动作片" },
+      { "id": 55, "cat": "Adventure", "desc": "冒险片" },
+      { "id": 5, "cat": "Animation", "desc": "动画片" },
+      { "id": 6, "cat": "Arthouse", "desc": "艺术片" },
+      { "id": 43, "cat": "Camp", "desc": "坎普片" },
+      { "id": 8, "cat": "Classics", "desc": "经典片" },
+      { "id": 9, "cat": "Comedy", "desc": "喜剧片" },
+      { "id": 10, "cat": "Crime", "desc": "犯罪片" },
+      { "id": 11, "cat": "Cult", "desc": "邪典片" },
+      { "id": 20, "cat": "Documentary", "desc": "纪录片" },
+      { "id": 12, "cat": "Drama", "desc": "剧情片" },
+      { "id": 44, "cat": "Epic", "desc": "史诗片" },
+      { "id": 13, "cat": "Erotica", "desc": "情色片" },
+      { "id": 51, "cat": "Experimental", "desc": "实验片" },
+      { "id": 47, "cat": "Exploitation", "desc": "剥削片" },
+      { "id": 14, "cat": "Fantasy", "desc": "奇幻片" },
+      { "id": 15, "cat": "Film Noir", "desc": "黑色电影" },
+      { "id": 53, "cat": "Giallo", "desc": "铅黄电影" },
+      { "id": 17, "cat": "Horror", "desc": "恐怖片" },
+      { "id": 18, "cat": "Martial Arts", "desc": "武侠片" },
+      { "id": 19, "cat": "Musical", "desc": "歌舞片" },
+      { "id": 54, "cat": "Mystery", "desc": "悬疑片" },
+      { "id": 60, "cat": "Performance", "desc": "表演艺术" },
+      { "id": 48, "cat": "Philosophy", "desc": "哲学片" },
+      { "id": 49, "cat": "Politics", "desc": "政治片" },
+      { "id": 50, "cat": "Romance", "desc": "爱情片" },
+      { "id": 21, "cat": "Sci-Fi", "desc": "科幻片" },
+      { "id": 22, "cat": "Short", "desc": "短片" },
+      { "id": 23, "cat": "Silent", "desc": "默片" },
+      { "id": 24, "cat": "Thriller", "desc": "惊悚片" },
+      { "id": 25, "cat": "TV", "desc": "电视剧" },
+      { "id": 56, "cat": "Video Art", "desc": "影像艺术" },
+      { "id": 26, "cat": "War", "desc": "战争片" },
+      { "id": 27, "cat": "Western", "desc": "西部片" }
+    ]
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "is_login": {
+          "any": [
+            {
+              "selector": "//a[contains(@href, 'logout')]",
+              "filters": [{ "name": "not_blank" }]
+            },
+            {
+              "selector": "//a[contains(@href, 'logout.php')]",
+              "filters": [{ "name": "not_blank" }]
+            },
+            {
+              "selector": "//a[contains(@title, 'click to see your details page')]",
+              "filters": [{ "name": "not_blank" }]
+            },
+            {
+              "selector": "//a[contains(@href, 'userdetails.php?id=')]",
+              "filters": [{ "name": "not_blank" }]
+            }
+          ]
+        },
+        "id": {
+          "any": [
+            {
+              "selector": "//a[contains(@href, 'userdetails.php?id=')]/@href",
+              "filters": [{ "name": "re_search", "args": ["userdetails\\.php\\?id=(\\d+)", 1] }]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                { "name": "re_search", "args": ["userdetails\\.php\\?id=(\\d+)", 1] }
+              ]
+            }
+          ]
+        },
+        "name": {
+          "any": [
+            {
+              "selector": "//a[contains(@title, 'click to see your details page')]//u/text()",
+              "filters": [{ "name": "strip" }]
+            },
+            {
+              "selector": "//a[contains(@href, 'userdetails.php?id=')]//b/text()",
+              "filters": [{ "name": "strip" }]
+            },
+            {
+              "selector": "//a[contains(@href, 'userdetails.php?id=')]//text()",
+              "filters": [{ "name": "strip" }]
+            }
+          ]
+        },
+        "uploaded": {
+          "selector": "//font[@color='green']/text()",
+          "filters": [
+            { "name": "re_search", "args": ["([\\d.]+\\s*GB)", 1] },
+            { "name": "byte_size" }
+          ]
+        },
+        "downloaded": {
+          "selector": "//font[@color='red']/text()",
+          "filters": [
+            { "name": "re_search", "args": ["([\\d.]+\\s*GB)", 1] },
+            { "name": "byte_size" }
+          ]
+        },
+        "ratio": {
+          "selector": "//b[contains(text(), 'Ratio:')]/following-sibling::font[1]/text()",
+          "filters": [
+            { "name": "strip" },
+            { "name": "replace", "args": ["∞", "0"] },
+            { "name": "replace", "args": ["Inf", "0"] }
+          ]
+        },
+        "bonus": {
+          "selector": "//a[contains(@href, 'bonus.php?id=')]/preceding-sibling::text()[1]",
+          "filters": [
+            { "name": "re_search", "args": ["([\\d.]+)\\s*GB", 1] },
+            { "name": "strip" }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php",
+      "params": {
+        "id": ["{userId}"]
+      },
+      "fields": {
+        "level": {
+          "selector": "//td[@class='rowhead' and contains(text(), 'Class')]/following-sibling::td[1]",
+          "filters": [{ "name": "strip" }]
+        },
+        "join_at": {
+          "selector": "//td[@class='rowhead' and contains(text(), 'Join')]/following-sibling::td[1]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//td[@class='rowhead' and contains(text(), 'Last') and contains(text(), 'seen')]/following-sibling::td[1]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] },
+            { "name": "timezone", "args": ["+8"] }
+          ]
+        }
+      }
+    },
+    "search": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/browse.php",
+      "params": {
+        "search": ["{keyword}"],
+        "search_type": ["title"]
+      },
+      "disabled_extends": {
+        "fields": true,
+        "field": true
+      },
+      "list": {
+        "selector": "//table[@id='browse']//tr[.//a[contains(@href, 'details.php?id=')] and not(@style[contains(., 'display:none')]) and not(@id[starts-with(., 'hidethis')])]"
+      },
+      "fields": {
+        "id": {
+          "selector": ".//a[contains(@href, 'details.php?id=')]/@href",
+          "filters": [{ "name": "re_search", "args": ["id=(\\d+)", 1] }]
+        },
+        "title": {
+          "any": [
+            {
+              "selector": ".//a[contains(@href, 'details.php?id=')]//b/text()",
+              "filters": [{ "name": "strip" }]
+            },
+            {
+              "selector": ".//a[contains(@href, 'details.php?id=')]/text()",
+              "filters": [{ "name": "strip" }]
+            }
+          ]
+        },
+        "details": {
+          "selector": ".//a[contains(@href, 'details.php?id=')]/@href",
+          "filters": [{ "name": "re_search", "args": ["(details\\.php\\?id=\\d+)", 1] }]
+        },
+        "download": {
+          "selector": ".//a[contains(@href, '/down.php/')]/@href"
+        },
+        "size": {
+          "selector": ".//td[11]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["([\\d,.]+\\s*[KMGTPEZY]?i?B)", 1] },
+            { "name": "byte_size" }
+          ]
+        },
+        "seeders": {
+          "selector": ".//td[13]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d+)", 1] }
+          ]
+        },
+        "leechers": {
+          "selector": ".//td[14]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d+)", 1] }
+          ]
+        },
+        "grabs": {
+          "selector": ".//td[12]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d+)", 1] }
+          ]
+        },
+        "category": {
+          "selector": "normalize-space(.//td[.//a[contains(@href, 'browse.php?genre=')]][1])",
+          "filters": [
+            { "name": "strip" }
+          ]
+        },
+        "date_added": {
+          "selector": ".//td[contains(text(), 'Jan') or contains(text(), 'Feb') or contains(text(), 'Mar') or contains(text(), 'Apr') or contains(text(), 'May') or contains(text(), 'Jun') or contains(text(), 'Jul') or contains(text(), 'Aug') or contains(text(), 'Sep') or contains(text(), 'Oct') or contains(text(), 'Nov') or contains(text(), 'Dec')]/text()",
+          "filters": [
+            { "name": "strip" },
+            { "name": "replace", "args": ["&nbsp;", " "] },
+            { "name": "re_search", "args": ["([A-Za-z]{3})\\s+(\\d{1,2})\\s+'?(\\d{2})", 0] },
+            { "name": "timestamp", "args": ["Jan 02 '06"] },
+            { "name": "timezone", "args": ["+8"] }
+          ]
+        },
+        "imdb_id": {
+          "selector": ".//a[contains(@href, 'imdb.com/title/tt')]/@href",
+          "filters": [
+            { "name": "re_search", "args": ["tt(\\d+)", 1] },
+            { "name": "pad_zero", "args": 7 },
+            { "name": "append_left", "args": "tt" }
+          ]
+        },
+        "description": {
+          "selector": ".//span[contains(text(), 'Subs:') or contains(text(), 'Freeleech') or contains(text(), 'Trumpable') or contains(text(), 'Upgraded')]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "replace", "args": ["&nbsp;", " "] }
+          ]
+        },
+        "labels": {
+          "selector": ".//font[contains(., 'BUMPED!') or contains(., 'NEW!')] | .//span[contains(@style, 'purple') and contains(., 'Freeleech')]",
+          "array": true,
+          "filters": [
+            { "name": "strip" },
+            { "name": "replace", "args": ["&nbsp;", ""] }
+          ]
+        }
+      }
+    }
+  }
+}
