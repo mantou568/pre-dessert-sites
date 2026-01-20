@@ -65,17 +65,30 @@
     "user_details": {
       "fields": {
         "last_accessed": {
-          "selector": "//*[@id='outer']/table/tbody/tr/td/table/tbody/tr[4]/td[2]/text()[1]",
-          "filters": [
+          "any": [
             {
-              "name": "re_search",
-              "args": [
-                "^网站访问: (\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) \\($",
-                1
+              "selector": "//td[contains(@class, 'rowhead') and contains(text(), '最近动向')]/following-sibling::td[1]",
+              "filters": [
+                { "name": "strip" },
+                { "name": "re_search", "args": ["网站访问:\\s*(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+                { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
               ]
             },
             {
-              "name": "timestamp"
+              "selector": "//td[contains(@class, 'rowhead') and contains(text(), '最近动向')]/following-sibling::td[1]//text()[contains(., '网站访问')]",
+              "filters": [
+                { "name": "strip" },
+                { "name": "re_search", "args": ["网站访问:\\s*(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+                { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+              ]
+            },
+            {
+              "selector": "//*[@id='outer']/table/tbody/tr/td/table/tbody/tr[td[contains(text(), '最近动向')]]/td[2]",
+              "filters": [
+                { "name": "strip" },
+                { "name": "re_search", "args": ["网站访问:\\s*(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+                { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+              ]
             }
           ]
         }
