@@ -105,7 +105,10 @@
         },
         "last_accessed": {
           "selector": "//dt[contains(text(),'上次登录时间')]/following-sibling::dd[1]/time/@datetime",
-          "filters": [{ "name": "timestamp" }]
+          "filters": [
+            { "name": "timestamp" },
+            { "name": "timezone", "args": ["+8"] }
+          ]
         }        
       }
     },
