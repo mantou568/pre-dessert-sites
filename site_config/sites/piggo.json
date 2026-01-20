@@ -96,6 +96,32 @@
         }
       }
     },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php",
+      "params": {
+        "id": ["{userId}"]
+      },
+      "fields": {
+        "join_at": {
+          "selector": "//td[contains(text(), '加入日期') or contains(text(), '注册日期')]/following-sibling::td[1]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问') or contains(text(), '最近動向')]/following-sibling::td[1]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+          ]
+        }
+      }
+    },
     "seeding_statistics": {
       "parser": "XPath",
       "method": "GET",
