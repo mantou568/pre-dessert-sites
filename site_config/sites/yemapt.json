@@ -2,18 +2,49 @@
   "id": "yemapt",
   "name": "野马",
   "domain": "https://www.yemapt.org",
-  "api": "https://www.yemapt.org",
   "encoding": "UTF-8",
-  "public": false,
   "schema": "NexusPHP",
   "reuse_schema": "NexusPHP",
   "required": {
-    "cookie": true
+    "cookie": true,
+    "sign_in": false
   },
-  "price": {
+  "meta": {
     "has_free": true
   },
+  "public": false,
+  "category": {
+    "movie": [
+      {
+        "id": 4,
+        "cat": "Movies",
+        "desc": "电影"
+      }
+    ],
+    "tv": [
+      {
+        "id": 5,
+        "cat": "TV",
+        "desc": "剧集"
+      },
+      {
+        "id": 14,
+        "cat": "TV/Anime",
+        "desc": "动漫"
+      },
+      {
+        "id": 21,
+        "cat": "TV/Other",
+        "desc": "教育视频"
+      }
+    ]
+  },
   "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
     "search": {
       "parser": "JsonPath",
       "method": "POST",
@@ -38,6 +69,9 @@
       "list": {
         "selector": "data"
       },
+      "disabled_extends": {
+        "params": true
+      },
       "fields": {
         "id": {
           "selector": "id"
@@ -51,6 +85,15 @@
             {
               "name": "append_left",
               "args": "/#/torrent/detail/"
+            }
+          ]
+        },
+        "download": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/api/torrent/download/"
             }
           ]
         },
@@ -80,16 +123,22 @@
                 "free": 0,
                 "half": 0.5,
                 "percent_70": 0.3,
-                "normal": 1
+                "normal": 1,
+                "none": 1
               }
             }
           ]
         },
         "uploadvolumefactor": {
+          "selector": "uploadPromotion",
           "filters": [
             {
-              "name": "constant",
-              "args": "1"
+              "name": "case",
+              "args": {
+                "2x": 2,
+                "normal": 1,
+                "none": 1
+              }
             }
           ]
         },
@@ -111,6 +160,7 @@
                 "6": "中字",
                 "7": "粤语",
                 "8": "英字",
+                "9": "DIY",
                 "10": "杜比视界",
                 "11": "分集",
                 "12": "完结"
@@ -125,22 +175,14 @@
       "method": "GET",
       "path": "/api/consumer/fetchSelfDetail",
       "headers": {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Referer": "https://www.yemapt.org/"
       },
       "fields": {
-        "created_date": {
-          "selector": "data.registerTime",
-          "filters": [
-            {
-              "name": "timestamp",
-              "args": [
-                "2006-01-02 15:04:05",
-                "2024-05-13T01:51:53.000+00:00"
-              ]
-            }
-          ]
+        "id": {
+          "selector": "data.id"
         },
-        "username": {
+        "name": {
           "selector": "data.name"
         },
         "uploaded": {
@@ -154,24 +196,61 @@
         }
       }
     },
-    "seeding_statistics": {
+    "user_details": {
       "parser": "JsonPath",
-      "method": "POST",
-      "path": "/api/torrent/fetchUserTorrentList",
+      "method": "GET",
+      "path": "/api/consumer/fetchSelfDetail",
       "headers": {
-        "Content-Type": "application/json"
-      },
-      "list": {
-        "selector": "data"
+        "Content-Type": "application/json",
+        "Referer": "https://www.yemapt.org/"
       },
       "fields": {
+        "level": {
+          "selector": "data.level"
+        },
+        "level_id": {
+          "selector": "data.level"
+        },
+        "join_at": {
+          "selector": "data.registerTime",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "last_accessed": {
+          "selector": "data.lastLoginInfo.date",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_size": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/userTorrent/fetchSeedTorrentInfo",
+      "fields": {
         "size": {
-          "selector": "fileSize",
+          "selector": "data.fileSize",
           "filters": [
             {
               "name": "byte_size"
             }
           ]
+        }
+      }
+    },
+    "seeding_count": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/userTorrent/fetchSeedTorrentInfo",
+      "fields": {
+        "count": {
+          "selector": "data.num"
         }
       }
     }
