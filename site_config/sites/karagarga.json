@@ -176,6 +176,33 @@
         }
       }
     },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/current.php",
+      "params": {
+        "id": ["{userId}"]
+      },
+      "disabled_extends": { "list": true },
+      "fields": {
+        "count": {
+          "selector": "//table[@id='browse']//tr[.//a[contains(@href, 'details.php?id=')] and not(.//td[@class='colhead']) and not(@id[starts-with(., 'hidethis')])]",
+          "filters": [
+            { "name": "count" }
+          ]
+        },
+        "size": {
+          "selector": "//table[@id='browse']//tr[.//a[contains(@href, 'details.php?id=')] and not(.//td[@class='colhead']) and not(@id[starts-with(., 'hidethis')])]//td[10]",
+          "array": true,
+          "filters": [
+            { "name": "strip" },
+            { "name": "replace", "args": ["&nbsp;", " "] },
+            { "name": "re_search", "args": ["([\\d,.]+\\s*[KMGTPE]?i?B)", 1] },
+            { "name": "byte_size" }
+          ]
+        }
+      }
+    },
     "search": {
       "parser": "XPath",
       "method": "GET",
