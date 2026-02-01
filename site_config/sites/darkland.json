@@ -96,6 +96,25 @@
         "level": {
           "selector": "//a[contains(@href, '/users/') and contains(@class, 'user-tag__link')]/@title"
         },
+        "level_icon": {
+          "any": [
+            {
+              "selector": "//div/article/img/@src"
+            },
+            {
+              "selector": "//a[contains(@class,'user-tag__link')]//img/@src"
+            },
+            {
+              "selector": "//div[1]/img/@src"
+            },
+            {
+              "selector": "//article//img[contains(@class,'profile')]/@src"
+            },
+            {
+              "selector": "//img[contains(@class,'profile__avatar')]/@src"
+            }
+          ]
+        },
         "join_at": {
           "selector": "//time[contains(@class, 'profile__registration')]/@title",
           "filters": [
