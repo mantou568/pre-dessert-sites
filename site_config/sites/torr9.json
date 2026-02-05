@@ -1,11 +1,10 @@
 {
-  "id": "shareIsland",
-  "name": "ShareIsland",
-  "domain": "https://shareisland.org",
+  "id": "torr9",
+  "name": "Torr9",
+  "domain": "https://torr9.com",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
-  "timezone": "+7",
   "required": {
     "cookie": true,
     "sign_in": false
@@ -17,19 +16,65 @@
     "has_cover": true
   },
   "category": {
-    "movie": [{ "id": 1, "cat": "Movie", "desc": "电影" }, { "id": 28, "cat": "Foreign Movie", "desc": "外国电影" }],
-    "tv": [{ "id": 2, "cat": "Serie TV", "desc": "电视剧" }],
-    "music": [{ "id": 3, "cat": "Music", "desc": "音乐" }],
-    "game": [{ "id": 7, "cat": "Games", "desc": "游戏" }],
-    "app": [{ "id": 23, "cat": "Software", "desc": "软件" }],
-    "book": [{ "id": 15, "cat": "Ebook", "desc": "电子书" }, { "id": 17, "cat": "Riviste Giornali Comics", "desc": "杂志期刊漫画" }],
-    "other": [{ "id": 26, "cat": "Audio Book", "desc": "有声书" }, { "id": 24, "cat": "Eventi Sportivi", "desc": "体育赛事" }, { "id": 25, "cat": "Misc", "desc": "其他" }]
+    "movie": [{ "id": 1, "cat": "Movies", "desc": "Movies" }],
+    "tv": [{ "id": 2, "cat": "TV", "desc": "TV" }]
   },
   "requests": {
     "favicon": {
       "parser": "None",
       "method": "GET",
       "path": "/favicon.ico"
+    },
+
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/articles",
+      "list": {
+        "selector": "//article[contains(@class, 'article-preview')]"
+      },
+      "fields": {
+        "id": {
+          "selector": ".//a[contains(@class, 'article-preview__link')]/@href",
+          "filters": [
+            { "name": "re_search", "args": ["/articles/(\\d+)", 1] }
+          ]
+        },
+        "title": {
+          "selector": ".//h2[contains(@class, 'article-preview__title')]/a",
+          "filters": [{ "name": "strip" }]
+        },
+        "link": {
+          "selector": ".//a[contains(@class, 'article-preview__link')]/@href"
+        },
+        "date": {
+          "any": [
+            {
+              "selector": ".//time[contains(@class, 'article-preview__published-date')]/@datetime",
+              "filters": [
+                { "name": "strip" },
+                { "name": "timestamp", "args": ["2006-01-02 15:04:05"] },
+                { "name": "timezone", "args": ["+0"] }
+              ]
+            },
+            {
+              "selector": ".//time[contains(@class, 'article-preview__published-date')]/@title",
+              "filters": [
+                { "name": "strip" },
+                { "name": "timestamp", "args": ["2006-01-02 15:04:05"] },
+                { "name": "timezone", "args": ["+0"] }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "selector": ".//img[contains(@class, 'article-preview__image')]/@src"
+        },
+        "content": {
+          "selector": ".//p[contains(@class, 'article-preview__content')]",
+          "filters": [{ "name": "strip" }]
+        }
+      }
     },
 
     "user_basic_info": {
@@ -75,7 +120,7 @@
             },
             {
               "selector": "//a[contains(@href,'/users/') and not(contains(@href,'/uploads')) and not(contains(@href,'/downloads'))]/text()",
-          "filters": [{ "name": "strip" }]
+              "filters": [{ "name": "strip" }]
             }
           ]
         },
@@ -137,7 +182,7 @@
             },
             {
               "selector": "//li[contains(@class,'bonus')]/a/text()[normalize-space()]",
-          "filters": [
+              "filters": [
                 { "name": "strip" },
                 { "name": "replace", "args": [",", ""] }
               ]
@@ -159,8 +204,12 @@
               "filters": [{ "name": "strip" }]
             },
             {
-              "selector": "//span[contains(@class,'user-tag') and contains(@class,'profile__username')]//a[contains(@class,'user-tag__link')]/@title",
-          "filters": [{ "name": "strip" }]
+              "selector": "//span[contains(@class,'badge') or contains(@class,'user-class')]/text()",
+              "filters": [{ "name": "strip" }]
+            },
+            {
+              "selector": "//span[contains(@class,'badge-user')]//strong/text()",
+              "filters": [{ "name": "strip" }]
             }
           ]
         },
@@ -178,32 +227,12 @@
           ]
         },
         "join_at": {
-          "any": [
-            {
-              "selector": "//time[contains(@class,'profile__registration')]/@datetime",
-              "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+7"] }]
-            },
-            {
           "selector": "//time[@datetime][1]/@datetime",
-              "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+7"] }]
-            }
-          ]
+          "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+0"] }]
         },
         "last_accessed": {
-          "any": [
-            {
-              "selector": "//dt[contains(text(),'Last Action')]/following-sibling::dd[1]//time/@datetime",
-              "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+7"] }]
-            },
-            {
-              "selector": "//dt[contains(text(),'上次登录时间')]/following-sibling::dd[1]//time/@datetime",
-              "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+7"] }]
-            },
-            {
           "selector": "//time[@datetime][last()]/@datetime",
-              "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+7"] }]
-            }
-          ]
+          "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+0"] }]
         }
       }
     },
@@ -217,14 +246,7 @@
         "count": {
           "any": [
             {
-              "selector": "//dt[contains(.,'总做种数量')]/following-sibling::dd[1]",
-              "filters": [
-                { "name": "strip" },
-                { "name": "replace", "args": [",", ""] }
-              ]
-            },
-            {
-              "selector": "//dt[contains(.,'总做种')]/following-sibling::dd[1]",
+              "selector": "//dt[contains(.,'Total Seeding') or contains(.,'总做种数量')]/following-sibling::dd[1]",
               "filters": [
                 { "name": "strip" },
                 { "name": "replace", "args": [",", ""] }
@@ -235,13 +257,20 @@
               "filters": [
                 { "name": "strip" }
               ]
+            },
+            {
+              "selector": "//dt[contains(.,'Seeding')]/following-sibling::dd[1]",
+              "filters": [
+                { "name": "strip" },
+                { "name": "replace", "args": [",", ""] }
+              ]
             }
           ]
         },
         "size": {
           "any": [
             {
-              "selector": "//dt[contains(.,'做种体积')]/following-sibling::dd[1]",
+              "selector": "//dt[contains(.,'Seeding Size') or contains(.,'做种体积')]/following-sibling::dd[1]",
               "filters": [
                 { "name": "strip" },
                 { "name": "replace", "args": ["\u00a0", " "] },
@@ -249,72 +278,22 @@
               ]
             },
             {
-              "selector": "//abbr[contains(@title,'做种体积')]/parent::dt/following-sibling::dd[1]",
+              "selector": "//abbr[contains(@title,'Seeding') or contains(@title,'做种')]/parent::dt/following-sibling::dd[1]",
               "filters": [
                 { "name": "strip" },
                 { "name": "replace", "args": ["\u00a0", " "] },
                 { "name": "byte_size" }
               ]
+            },
+            {
+              "selector": "//dt[contains(.,'Seeding')]/following-sibling::dd[1]",
+              "filters": [
+                { "name": "strip" },
+                { "name": "replace", "args": ["\u00a0", " "] },
+                { "name": "re_search", "args": ["([\\d,.]+\\s*[KMGTPE]?i?B)", 1] },
+                { "name": "byte_size" }
+              ]
             }
-          ]
-        }
-      }
-    },
-
-    "messages": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "/users/{userId}/conversations",
-      "list": { "selector": "//table[contains(@class, 'data-table')]/tbody/tr" },
-      "fields": {
-        "title": { "selector": "./td[2]/a", "filters": [{ "name": "strip" }] },
-        "link": { "selector": "./td[2]/a/@href" },
-        "id": {
-          "selector": "./td[2]/a/@href",
-          "filters": [{ "name": "re_search", "args": ["/conversations/(\\d+)", 1] }]
-        },
-        "sender": {
-          "selector": "./td[1]//span[contains(@class, 'user-tag')]/a",
-          "filters": [{ "name": "strip" }]
-        },
-        "date": { "selector": "./td[3]/time/@title", "filters": [{ "name": "strip" }] },
-        "unread": {
-          "selector": "./td[5]/i[not(contains(@class, 'text-green'))]",
-          "filters": [{ "name": "not_blank" }]
-        }
-      }
-    },
-    "notice": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "articles",
-      "fields": {
-        "content": {
-          "selector": "//article[contains(@class, 'article-preview')]",
-          "filters": []
-        }
-      }
-    },
-    "message_detail": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "/users/{userId}/conversations/{id}",
-      "fields": {
-        "sender": {
-          "selector": "//h2[contains(@class,'panel__heading')]//a/text()",
-          "filters": [{ "name": "strip" }]
-        },
-        "date": {
-          "selector": "//header[contains(@class,'panel__header')]//time/@datetime",
-          "filters": [{ "name": "timestamp" }]
-        },
-        "content": {
-          "selector": "//div[contains(@class,'panel__body') and contains(@class,'bbcode-rendered')]",
-          "filters": [
-            { "name": "strip" },
-            { "name": "replace", "args": ["\\s+", " "] },
-            { "name": "replace", "args": ["-\\s*Staff$", ""] },
-            { "name": "strip" }
           ]
         }
       }
@@ -339,7 +318,7 @@
             },
             {
               "selector": "a[href*='/torrents/']",
-          "attribute": "href",
+              "attribute": "href",
               "filters": [{ "name": "re_search", "args": ["/torrents/(\\d+)", 1] }]
             }
           ]
@@ -362,7 +341,7 @@
             },
             {
               "selector": "a[href*='/torrents/']",
-          "attribute": "href"
+              "attribute": "href"
             }
           ]
         },
@@ -374,7 +353,7 @@
             },
             {
               "selector": "a[href*='/download/']",
-          "attribute": "href"
+              "attribute": "href"
             }
           ]
         },
@@ -383,12 +362,12 @@
             {
               "selector": "td.torrent-search--list__age > time",
               "attribute": "datetime",
-              "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+7"] }]
+              "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+0"] }]
             },
             {
               "selector": "time[datetime]",
               "attribute": "datetime",
-              "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+7"] }]
+              "filters": [{ "name": "timestamp" }, { "name": "timezone", "args": ["+0"] }]
             }
           ]
         },
@@ -400,7 +379,7 @@
             },
             {
               "selector": "td[class*='size']",
-          "filters": [{ "name": "byte_size" }]
+              "filters": [{ "name": "byte_size" }]
             }
           ]
         },
@@ -435,66 +414,21 @@
           ]
         },
         "downloadvolumefactor": {
-          "any": [
-            {
-              "selector": "span.torrent-icons i.torrent-icons__freeleech",
-              "attribute": "title",
-              "filters": [
-                { "name": "not_blank", "args": [0, ""] }
-              ]
-            },
-            {
-              "selector": "span.torrent-icons i[title*='100%'][title*='免费']",
-              "attribute": "title",
-              "filters": [
-                { "name": "not_blank", "args": [0, ""] }
-              ]
-            },
-            {
-              "selector": "span.torrent-icons i[title*='100%'][title*='Free']",
-              "attribute": "title",
-              "filters": [
-                { "name": "not_blank", "args": [0, ""] }
-              ]
-            },
-            {
-              "selector": "span.torrent-icons i.torrent-icons__featured[title*='100%']",
-              "attribute": "title",
-              "filters": [
-                { "name": "not_blank", "args": [0, ""] }
-              ]
-            },
-            {
-              "selector": "a.torrent-search--list__name",
-              "filters": [
-                { "name": "not_blank", "args": [1, ""] }
-              ]
-            }
-          ]
+          "case": {
+            "i.torrent-icons__freeleech": 0,
+            "i.torrent-icons__25percent": 0.75,
+            "i.torrent-icons__50percent": 0.5,
+            "i.torrent-icons__75percent": 0.25,
+            "i[class*='freeleech']": 0,
+            "*": 1
+          }
         },
         "uploadvolumefactor": {
-          "any": [
-            {
-              "selector": "span.torrent-icons i.torrent-icons__featured[title*='双倍上传']",
-              "attribute": "title",
-              "filters": [
-                { "name": "not_blank", "args": [2, ""] }
-              ]
-            },
-            {
-              "selector": "span.torrent-icons i[title*='双倍上传']",
-              "attribute": "title",
-              "filters": [
-                { "name": "not_blank", "args": [2, ""] }
-              ]
-            },
-            {
-              "selector": "a.torrent-search--list__name",
-              "filters": [
-                { "name": "not_blank", "args": [1, ""] }
-              ]
-            }
-          ]
+          "case": {
+            "i.torrent-icons__double-upload": 2,
+            "i[class*='double-upload']": 2,
+            "*": 1
+          }
         }
       }
     }
