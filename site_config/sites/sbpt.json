@@ -1,0 +1,69 @@
+{
+  "id": "sbpt",
+  "name": "SBPT",
+  "domain": "https://sbpt.link",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": true,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [
+      { "id": 401, "cat": "Movies", "desc": "電影" },
+      { "id": 404, "cat": "Movies/Sports", "desc": "體育" },
+      { "id": 406, "cat": "Movies", "desc": "MV" }
+    ],
+    "tv": [
+      { "id": 402, "cat": "Music", "desc": "音軌" },
+      { "id": 403, "cat": "Other", "desc": "其它" },
+      { "id": 405, "cat": "TV", "desc": "綜藝" },
+      { "id": 407, "cat": "TV", "desc": "電視劇" },
+      { "id": 408, "cat": "TV/Anime", "desc": "動漫" },
+      { "id": 409, "cat": "TV/Documentary", "desc": "紀錄片" }
+    ]
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "search": {
+      "fields": {
+        "labels": { "selector": "td.embedded > span[title]", "array": true },
+        "description": { "selector": "td.embedded", "remove": "span,a,img,font,b,br", "contents": -1 },
+        "hr_days": { "filters": [{ "name": "constant", "args": ["1"] }] }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "headers": { "Referer": "{domain}/userdetails.php?id={userId}" },
+      "disabled_extends": { "headers": true, "list": true },
+      "fields": {
+        "count": {
+          "selector": "//div[contains(., '條記錄') or contains(., '条记录') or contains(., 'records') or contains(., 'Records') or contains(., 'entries') or contains(., 'Entries')]//b",
+          "filters": [{ "name": "strip" }]
+        },
+        "size": {
+          "selector": "//div[contains(., '總大小') or contains(., '总大小') or contains(., 'Total size') or contains(., 'total size')]",
+          "filters": [
+            { "name": "re_search", "args": ["(?:[总總]大小|Total size)[：:]?\\s*([\\d.]+\\s*[KMGTP]?i?B)", 1] },
+            { "name": "strip" },
+            { "name": "byte_size" }
+          ]
+        }
+      }
+    },
+    "my_hr": { "path": "/myhr.php?status=1" }
+  }
+}

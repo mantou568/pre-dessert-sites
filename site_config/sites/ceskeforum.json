@@ -1,0 +1,136 @@
+{
+  "id": "ceskeforum",
+  "name": "CeskeForum",
+  "domain": "https://t.ceskeforum.com",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": { "cookie": true, "sign_in": false },
+  "meta": { "has_free": true, "has_2x_free": true, "has_hr": true, "has_cover": true },
+  "category": {
+    "movie": [
+      { "id": 1, "cat": "Movies", "desc": "MOVIES" },
+      { "id": 5, "cat": "Movies/Sports", "desc": "SPORT" },
+      { "id": 7, "cat": "Music", "desc": "HQ AUDIO" },
+      { "id": 8, "cat": "PC", "desc": "APPZ" },
+      { "id": 9, "cat": "PC", "desc": "PC GAMES" },
+      { "id": 10, "cat": "Other", "desc": "MISC" }
+    ],
+    "tv": [
+      { "id": 2, "cat": "TV", "desc": "TV SHOWS" },
+      { "id": 3, "cat": "TV/Documentary", "desc": "DOC." },
+      { "id": 4, "cat": "TV", "desc": "TV SERIES" },
+      { "id": 6, "cat": "TV/Documentary", "desc": "DOX" }
+    ]
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "fields": {
+        "id": {
+          "selector": "//a[contains(@href,'userdetails.php?id=')]/@href",
+          "filters": [ { "name": "re_search", "args": ["id=(\\d+)", 1] } ]
+        },
+        "name": {
+          "any": [
+            { "selector": "//a[contains(@href,'userdetails') and contains(@class,'User_Name')]//b" },
+            { "selector": "//a[contains(@href,'userdetails')]//b" },
+            { "selector": "//h1//b" }
+          ]
+        },
+        "uploaded": {
+          "any": [
+            { "selector": "//td[contains(@class,'embedded') and contains(.,'Nahráno')]" },
+            { "selector": "//table[@id='info_block']//span[contains(@class,'medium')]" },
+            { "selector": "//td[contains(.,'Nahráno') and (contains(.,'GB') or contains(.,'MB') or contains(.,'KB'))]" }
+          ],
+          "filters": [
+            { "name": "re_search", "args": ["Nahráno[^\\d]*([\\d.,]+\\s*[KMGTP]?i?B)", 1] },
+            { "name": "byte_size" }
+          ]
+        },
+        "downloaded": {
+          "any": [
+            { "selector": "//td[contains(@class,'embedded') and contains(.,'Staženo')]" },
+            { "selector": "//table[@id='info_block']//span[contains(@class,'medium')]" },
+            { "selector": "//td[contains(.,'Staženo') and (contains(.,'GB') or contains(.,'MB') or contains(.,'KB'))]" }
+          ],
+          "filters": [
+            { "name": "re_search", "args": ["Staženo[^\\d]*([\\d.,]+\\s*[KMGTP]?i?B)", 1] },
+            { "name": "byte_size" }
+          ]
+        },
+        "ratio": {
+          "any": [
+            { "selector": "//td[contains(.,'ratio')]//font" },
+            { "selector": "//td[contains(.,'Nahráno/Staženo') and contains(.,'ratio')]" }
+          ],
+          "filters": [
+            { "name": "re_search", "args": ["([\\d.]+)", 1] },
+            { "name": "strip" }
+          ]
+        },
+        "bonus": {
+          "selector": "//td[contains(@class,'rowhead') and contains(.,'Karma')]/following-sibling::td[1]",
+          "filters": [ { "name": "strip" }, { "name": "replace", "args": [",", ""] } ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "fields": {
+        "level": {
+          "selector": "//td[contains(@class,'rowhead') and contains(.,'Hodnost')]/following-sibling::td[1]/img/@title",
+          "filters": [ { "name": "strip" } ]
+        },
+        "level_icon": {
+          "selector": "//td[contains(@class,'rowhead') and contains(.,'Hodnost')]/following-sibling::td[1]/img/@src"
+        },
+        "join_at": {
+          "selector": "//td[contains(@class,'rowhead') and contains(.,'Datum') and contains(.,'registrace')]/following-sibling::td[1]//span/@title",
+          "filters": [ { "name": "timestamp" }, { "name": "timezone", "args": ["+7"] } ]
+        },
+        "last_accessed": {
+          "selector": "//td[contains(@class,'rowhead') and contains(.,'Naposledy') and contains(.,'aktivn')]/following-sibling::td[1]//span/@title",
+          "filters": [ { "name": "timestamp" }, { "name": "timezone", "args": ["+7"] } ]
+        }
+      }
+    },
+    "search": {
+      "fields": {
+        "labels": { "selector": "td.embedded > span[title]", "array": true },
+        "description": { "selector": "td.embedded", "remove": "span,a,img,font,b,br", "contents": -1 },
+        "hr_days": { "filters": [{ "name": "constant", "args": ["1"] }] }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "disabled_extends": { "list": true },
+      "fields": {
+        "count": {
+          "selector": "//img[contains(@alt,'seeding') or contains(@title,'Seed')]/following-sibling::text()",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d+)", 1] }
+          ]
+        },
+        "size": {
+          "selector": "//td[contains(@class,'rowhead') and contains(.,'Aktuální') and contains(.,'seeding')]/following-sibling::td[1]",
+          "filters": [ { "name": "strip" }, { "name": "byte_size" } ]
+        }
+      }
+    },
+    "my_hr": { "path": "/myhr.php?status=1" }
+  }
+}

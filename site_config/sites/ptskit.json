@@ -2,6 +2,7 @@
   "id": "ptskit",
   "name": "葫芦娃",
   "domain": "https://www.ptskit.com",
+  "additional_domain": ["https://www.ptskit.org"],
   "public": false,
   "schema": "NexusPHP",
   "required": {

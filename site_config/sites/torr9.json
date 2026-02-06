@@ -1,15 +1,20 @@
 {
   "id": "torr9",
   "name": "Torr9",
-  "domain": "https://torr9.com",
+  "domain": "https://torr9.xyz",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
   "required": {
-    "cookie": true,
+    "cookie": false,
     "sign_in": false
   },
+  "required_headers": [
+    "Authorization"
+  ],
   "meta": {
+    "auth_type": "bearer",
+    "api_host": "https://api.torr9.xyz",
     "has_free": true,
     "has_2x_free": true,
     "has_hr": true,
