@@ -1,7 +1,7 @@
 {
   "id": "hhanclub",
   "name": "憨憨",
-  "domain": "https://hhanclub.top",
+  "domain": "https://hhanclub.net",
   "public": false,
   "schema": "NexusPHP",
   "count_message": true,
@@ -130,7 +130,7 @@
             {
               "name": "re_search",
               "args": [
-                  "cat\\[\\]=(.*)",
+                "cat\\[\\]=(.*)",
                 1
               ]
             }
