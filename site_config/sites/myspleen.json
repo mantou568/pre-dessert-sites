@@ -1,0 +1,286 @@
+{
+  "id": "myspleen",
+  "name": "MySpleen",
+  "domain": "https://www.myspleen.org",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": false,
+    "has_hr": false,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [],
+    "tv": []
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "",
+      "fields": {
+        "is_login": {
+          "selector": "//div[@id='user-stats']//a[contains(@href,'userdetails.php?id=')]",
+          "filters": [{ "name": "not_blank" }]
+        },
+        "id": {
+          "selector": "//div[@id='user-stats']//a[contains(@href,'userdetails.php?id=')]/@href",
+          "filters": [
+            { "name": "re_search", "args": ["userdetails\\.php\\?id=(\\d+)", 1] }
+          ]
+        },
+        "name": {
+          "selector": "//div[@id='user-stats']//a[contains(@href,'userdetails.php?id=')]",
+          "filters": [{ "name": "strip" }]
+        },
+        "uploaded": {
+          "selector": "//div[@id='user-stats']//div[.//span[@class='key' and contains(.,'Uploaded')]]/span[@class='value']",
+          "filters": [
+            { "name": "strip" },
+            { "name": "byte_size" }
+          ]
+        },
+        "downloaded": {
+          "selector": "//div[@id='user-stats']//div[.//span[@class='key' and contains(.,'Downloaded')]]/span[@class='value']",
+          "filters": [
+            { "name": "strip" },
+            { "name": "byte_size" }
+          ]
+        },
+        "ratio": {
+          "selector": "//div[@id='user-stats']//div[.//span[@class='key' and contains(.,'Ratio')]]/span[@class='value']",
+          "filters": [
+            { "name": "strip" },
+            { "name": "replace", "args": ["Inf.", "0"] },
+            { "name": "replace", "args": ["Inf", "0"] }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "fields": {
+        "level": {
+          "selector": "//div[@id='userdetails-frame']//div[.//span[@class='key' and contains(.,'Class')]]/span[@class='value']",
+          "filters": [{ "name": "strip" }]
+        },
+        "join_at": {
+          "selector": "//div[@id='userdetails-frame']//div[.//span[@class='key' and contains(.,'Join date')]]/span[@class='value']",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] },
+            { "name": "timezone", "args": ["+8"] }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//div[@id='userdetails-frame']//div[.//span[@class='key' and contains(.,'Last seen')]]/span[@class='value']",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] },
+            { "name": "timezone", "args": ["+8"] }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}&showlist=3",
+      "list": {
+        "selector": "//div[@id='userdetails-frame']//div[.//span[@class='key' and contains(.,'Currently seeding')]]/following-sibling::table[1]//tbody/tr"
+      },
+      "fields": {
+        "count": {
+          "selector": "//div[@id='user-stats']//div[.//a[contains(@href,'showlist=3')]]/span[@class='value']",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["Seed-(\\d+)", 1] }
+          ]
+        },
+        "size": {
+          "selector": "./td[2]",
+          "filters": [
+            { "name": "strip" },
+            { "name": "byte_size" }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/inbox.php",
+      "list": { "selector": "//form[contains(@action,'inbox.php')]//tr[position()>1][.//td[a[contains(@href,'inbox.php')]]] | //table//tr[position()>1][.//td/a[contains(@href,'inbox.php')]]" },
+      "fields": {
+        "title": { "selector": "./td[2]/a", "filters": [{ "name": "strip" }] },
+        "link": { "selector": "./td[2]/a/@href" },
+        "id": {
+          "selector": "./td[2]/a/@href",
+          "filters": [{ "name": "re_search", "args": ["[?&]id=(\\d+)", 1] }]
+        },
+        "sender": {
+          "selector": "./td[1]//a",
+          "filters": [{ "name": "strip" }]
+        },
+        "date": { "selector": "./td[4] | ./td[3]", "filters": [{ "name": "strip" }] },
+        "unread": {
+          "selector": "./td[5][contains(@class,'unread')] | .//*[contains(@class,'unread') or contains(@title,'Unread')]",
+          "filters": [{ "name": "not_blank" }]
+        }
+      }
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/notices.php",
+      "fields": {
+        "id": {
+          "selector": "(//div[@id='content']//div[contains(@class,'frame')]/div[contains(@class,'message')])[1]//span[@class='sender']",
+          "filters": [{ "name": "re_search", "args": ["Notice (\\d+)", 1] }]
+        },
+        "title": {
+          "selector": "(//div[@id='content']//div[contains(@class,'frame')]/div[contains(@class,'message')])[1]//span[@class='sender']",
+          "filters": [{ "name": "re_search", "args": ["(Notice \\d+)", 1] }, { "name": "strip" }]
+        },
+        "sender": {
+          "selector": "(//div[@id='content']//div[contains(@class,'frame')]/div[contains(@class,'message')])[1]//span[@class='sender']//a",
+          "filters": [{ "name": "strip" }]
+        },
+        "date": {
+          "selector": "(//div[@id='content']//div[contains(@class,'frame')]/div[contains(@class,'message')])[1]//span[@class='comment-time']",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] },
+            { "name": "timezone", "args": ["+8"] }
+          ]
+        },
+        "content": {
+          "selector": "(//div[@id='content']//div[contains(@class,'frame')]/div[contains(@class,'message')])[1]//div[@class='message-text']",
+          "filters": [{ "name": "strip" }]
+        }
+      }
+    },
+    "message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/inbox.php?action=viewmessage&id={id}",
+      "fields": {
+        "title": {
+          "selector": "//h1 | //div[contains(@class,'frame')]//h2",
+          "filters": [{ "name": "strip" }]
+        },
+        "date": {
+          "selector": "//div[contains(@class,'keyvalue-pairs')]//div[.//span[@class='key' and contains(.,'Date')]]/span[@class='value'] | //table//tr[.//td[contains(.,'Date')]]/td[2]",
+          "filters": [{ "name": "strip" }]
+        },
+        "content": {
+          "selector": "//div[@id='content']//div[contains(@class,'frame')]//div[contains(@class,'body')] | //div[contains(@class,'frame')]//table//tr[last()]/td",
+          "filters": [{ "name": "strip" }]
+        }
+      }
+    },
+    "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/browse.php",
+      "params": {
+        "search": ["{keyword}"],
+        "title": ["0"],
+        "cat": ["0"]
+      },
+      "list": { "selector": "table#main-torrents tr.plain, table#main-torrents tr.special" },
+      "fields": {
+        "id": {
+          "selector": "td.tor-name a[href*='details.php?id=']",
+          "attribute": "href",
+          "filters": [{ "name": "re_search", "args": ["id=(\\d+)", 1] }]
+        },
+        "title": {
+          "any": [
+            { "selector": "td.tor-name a[href*='details.php'][title]", "attribute": "title", "filters": [{ "name": "strip" }] },
+            { "selector": "td.tor-name a[href*='details.php']", "filters": [{ "name": "strip" }] }
+          ]
+        },
+        "details": {
+          "selector": "td.tor-name a[href*='details.php']",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "td.tor-down a",
+          "attribute": "href"
+        },
+        "category": {
+          "selector": "td[class*='cat-'] a",
+          "filters": [{ "name": "strip" }]
+        },
+        "size": {
+          "selector": "td:nth-child(8)",
+          "filters": [{ "name": "strip" }, { "name": "byte_size" }]
+        },
+        "date_added": {
+          "selector": "td:nth-child(7) span",
+          "attribute": "title",
+          "filters": [
+            { "name": "strip" },
+            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
+            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] },
+            { "name": "timezone", "args": ["+8"] }
+          ]
+        },
+        "seeders": {
+          "any": [
+            { "selector": "td:nth-child(10) a", "filters": [{ "name": "strip" }, { "name": "re_search", "args": ["(\\d+)", 1] }] },
+            { "selector": "td:nth-child(10)", "filters": [{ "name": "strip" }, { "name": "re_search", "args": ["(\\d+)", 1] }] }
+          ]
+        },
+        "leechers": {
+          "any": [
+            { "selector": "td:nth-child(11) a", "filters": [{ "name": "strip" }, { "name": "re_search", "args": ["(\\d+)", 1] }] },
+            { "selector": "td:nth-child(11)", "filters": [{ "name": "strip" }, { "name": "re_search", "args": ["(\\d+)", 1] }] }
+          ]
+        },
+        "grabs": {
+          "selector": "td:nth-child(9)",
+          "filters": [{ "name": "strip" }, { "name": "re_search", "args": ["(\\d+)", 1] }]
+        },
+        "labels": {
+          "selector": "td.tor-name span.star, td.tor-name a[title='Free Leech forever!']",
+          "array": true,
+          "filters": [{ "name": "strip" }]
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "td.tor-name a[title='Free Leech forever!'], td.tor-name span.star",
+              "filters": [{ "name": "not_blank", "args": [0, ""] }]
+            },
+            {
+              "selector": "td.tor-name",
+              "filters": [{ "name": "not_blank", "args": [1, ""] }]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "selector": "td.tor-name",
+          "filters": [{ "name": "constant", "args": "1" }]
+        }
+      }
+    }
+  }
+}

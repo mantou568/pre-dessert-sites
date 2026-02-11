@@ -1,0 +1,707 @@
+{
+  "id": "femdomcult",
+  "name": "FEM",
+  "domain": "https://femdomcult.org",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": false,
+    "has_hr": false,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [],
+    "tv": []
+  },
+  "requests": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "is_login": {
+          "selector": "//a[@class='username'][contains(@href,'user.php?id=')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "id": {
+          "selector": "//a[@class='username'][contains(@href,'user.php?id=')]/@href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "user\\.php\\?id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "name": {
+          "selector": "//a[@class='username'][contains(@href,'user.php?id=')]",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "uploaded": {
+          "selector": "//table[contains(@class,'userinfo_stats')]//td[a[contains(@href,'type=seeding')]]/following-sibling::td[1]//span[@class='stat']",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "//table[contains(@class,'userinfo_stats')]//td[a[contains(@href,'type=leeching')]]/following-sibling::td[1]//span[@class='stat']",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "ratio": {
+          "selector": "//table[contains(@class,'userinfo_stats')]//td[a[contains(@href,'ratio') and contains(.,'Ratio')]]/following-sibling::td[1]//span[@class='stat']",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "Inf.",
+                "0"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "Inf",
+                "0"
+              ]
+            }
+          ]
+        },
+        "bonus": {
+          "selector": "//span[@id='stats_credits']",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/user.php?id={userId}",
+      "fields": {
+        "level": {
+          "any": [
+            {
+              "selector": "//div[contains(@class,'sidebar')]//li[contains(.,'Class') or contains(.,'Rank') or contains(.,'Level')]",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "(?:Class|Rank|Level):\\s*([^<]+)",
+                    1
+                  ]
+                },
+                {
+                  "name": "strip"
+                }
+              ]
+            },
+            {
+              "selector": "//span[contains(@class,'rank') or contains(@class,'user_class')]",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            }
+          ]
+        },
+        "join_at": {
+          "selector": "//ul[@class='stats nobullet']/li[contains(.,'Joined')]/span/@title",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "timestamp",
+              "args": [
+                "Jan 02 2006, 15:04"
+              ]
+            },
+            {
+              "name": "timezone",
+              "args": [
+                "+19"
+              ]
+            }
+          ]
+        },
+        "last_accessed": {
+          "selector": "//ul[@class='stats nobullet']/li[contains(.,'Last Seen')]/span/@title",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "timestamp",
+              "args": [
+                "Jan 02 2006, 15:04"
+              ]
+            },
+            {
+              "name": "timezone",
+              "args": [
+                "+19"
+              ]
+            }
+          ]
+        },
+        "seeding_size": {
+          "selector": "//li[contains(.,'Seeding Size:')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "Seeding Size:\\s*([\\d.,]+\\s*[KMGTP]?i?B)",
+                1
+              ]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "seeding_count": {
+          "selector": "//li[contains(.,'Seeding:') and contains(.,'View')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "Seeding:\\s*(\\d+)",
+                1
+              ]
+            },
+            {
+              "name": "strip"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/user.php",
+      "params": {
+        "id": [
+          "{userId}"
+        ]
+      },
+      "disabled_extends": {
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "//li[contains(.,'Seeding:') and contains(.,'View')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "Seeding:\\s*(\\d+)",
+                1
+              ]
+            },
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "size": {
+          "selector": "//li[contains(.,'Seeding Size:')]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "Seeding Size:\\s*([\\d.,]+\\s*[KMGTP]?i?B)",
+                1
+              ]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/user/inbox/received",
+      "list": {
+        "selector": "//table//tbody/tr[.//a[contains(@href,'inbox')]] | //div[contains(@class,'box')]//tr[.//a[contains(@href,'inbox') or contains(@href,'conversation')]]"
+      },
+      "fields": {
+        "id": {
+          "selector": ".//a[contains(@href,'inbox') or contains(@href,'conversation')]/@href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(?:inbox|conversation)[^/]*/(\\d+)|[?&]id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "title": {
+          "selector": ".//a[contains(@href,'inbox') or contains(@href,'conversation')]",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "link": {
+          "selector": ".//a[contains(@href,'inbox') or contains(@href,'conversation')]/@href"
+        },
+        "sender": {
+          "selector": ".//td[1]//a | .//*[contains(@class,'sender')]//a",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "date": {
+          "selector": ".//td[last()] | .//*[contains(@class,'time')]",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "unread": {
+          "selector": ".//*[contains(@class,'unread')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        }
+      }
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/index.php",
+      "list": {
+        "selector": "//div[starts-with(@id,'news')]"
+      },
+      "fields": {
+        "id": {
+          "selector": "./@id",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "news(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "title": {
+          "selector": "./preceding-sibling::div[1]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "^\\s*(.+?)\\s+\\d+\\s+(?:mins?|hours?|days?|weeks?|months?)",
+                1
+              ]
+            },
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "date": {
+          "any": [
+            {
+              "selector": "./preceding-sibling::div[1]//span[@class='time']/@title",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "timestamp",
+                  "args": [
+                    "Jan 02 2006, 15:04"
+                  ]
+                },
+                {
+                  "name": "timezone",
+                  "args": [
+                    "+19"
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "./preceding-sibling::div[1]//span[@class='time']/@alt",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "timestamp",
+                  "args": [
+                    "Jan 02 2006, 15:04"
+                  ]
+                },
+                {
+                  "name": "timezone",
+                  "args": [
+                    "+19"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "content": {
+          "selector": ".//div[@class='pad']",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "link": {
+          "selector": "./@id",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "^",
+                "/#"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "message_detail": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/user/inbox/received/{id}",
+      "fields": {
+        "title": {
+          "selector": "//h1 | //div[contains(@class,'head')]//h2 | //div[contains(@class,'box')]//div[contains(@class,'head')]",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "date": {
+          "selector": "//*[contains(.,'Date') or contains(.,'Sent')]/following-sibling::*[1] | //span[@class='time']/@title",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "content": {
+          "selector": "//div[contains(@class,'pad')] | //div[contains(@class,'body')] | //div[contains(@class,'message')]//div[contains(@class,'text')]",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        }
+      }
+    },
+    "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/torrents.php",
+      "params": {
+        "action": [
+          "advanced"
+        ],
+        "searchtext": [
+          "{keyword}"
+        ],
+        "order_by": [
+          "time"
+        ],
+        "order_way": [
+          "desc"
+        ],
+        "title": [
+          ""
+        ],
+        "sizeall": [
+          ""
+        ],
+        "sizetype": [
+          "gb"
+        ],
+        "sizerange": [
+          "0.01"
+        ],
+        "filelist": [
+          ""
+        ],
+        "taglist": [
+          ""
+        ],
+        "autocomplete_toggle": [
+          "on"
+        ]
+      },
+      "list": {
+        "selector": "table.torrent_table tr.torrent, table#torrent_table tr.torrent"
+      },
+      "fields": {
+        "id": {
+          "selector": "a[href*='torrents.php?id=']:not([href*='action=download'])",
+          "attribute": "href",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "[?&]id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "title": {
+          "selector": "a[href*='torrents.php?id=']:not([href*='action=download'])",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "details": {
+          "selector": "a[href*='torrents.php?id=']:not([href*='action=download'])",
+          "attribute": "href"
+        },
+        "download": {
+          "selector": "a[href*='torrents.php?action=download']",
+          "attribute": "href"
+        },
+        "size": {
+          "selector": "td:nth-child(6)",
+          "filters": [
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "seeders": {
+          "selector": "td:nth-child(8)",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "leechers": {
+          "selector": "td:nth-child(9)",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "grabs": {
+          "selector": "td:nth-child(7)",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "time": {
+          "any": [
+            {
+              "selector": "td:nth-child(5) span.time",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "timestamp",
+                  "args": [
+                    "Jan 02 2006, 15:04",
+                    "2006-01-02 15:04:05"
+                  ]
+                },
+                {
+                  "name": "timezone",
+                  "args": [
+                    "+19"
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "td:nth-child(5) span.time",
+              "attribute": "alt",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "timestamp",
+                  "args": [
+                    "Jan 02 2006, 15:04",
+                    "2006-01-02 15:04:05"
+                  ]
+                },
+                {
+                  "name": "timezone",
+                  "args": [
+                    "+19"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "files": {
+          "selector": "td:nth-child(3)",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "uploader": {
+          "selector": "td.user a",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "any": [
+            {
+              "selector": "[title*='Unlimited Freeleech']",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "replace",
+                  "args": [
+                    "Unlimited Freeleech",
+                    "0"
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "[title*='This torrent has no active bonus']",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "replace",
+                  "args": [
+                    "This torrent has no active bonus",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "any": [
+            {
+              "selector": "[title*='Unlimited Freeleech']",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "replace",
+                  "args": [
+                    "Unlimited Freeleech",
+                    "1"
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "[title*='This torrent has no active bonus']",
+              "attribute": "title",
+              "filters": [
+                {
+                  "name": "replace",
+                  "args": [
+                    "This torrent has no active bonus",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

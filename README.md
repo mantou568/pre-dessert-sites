@@ -18,6 +18,22 @@ pre-dessert-sites/
 
 本配置文件可与相关媒体管理工具配合使用，实现自动站点适配和数据获取。
 
+### 配合 Media Saber 使用
+
+若出现 **「您还未添加任何站点配置」** 的提示，通常与「是否在应用里添加了站点」或「站点配置是否放对位置」有关，可按下面排查：
+
+1. **不要只复制少数几个站点**  
+   请使用完整的 `site_config` 目录（或官方发布的 `site_config.tar.gz`），不要只把 4 个新站点的 json 复制进去、导致其它站点配置缺失。应用需要至少能识别到一批有效站点配置才会正常。
+
+2. **在 Media Saber 里添加站点**  
+   本仓库只提供「站点配置模板」。在 Media Saber 中仍需在 **站点管理 / 添加站点** 里选择或添加要使用的站点（如勾选 homeporntorrents、kufirc、femdomcult、happyfappy 等），并填写 Cookie 等必要信息，应用才会认为「已添加站点配置」。
+
+3. **确认配置放置路径**  
+   将 `site_config` 放到 Media Saber 文档中要求的数据目录下（或通过应用内的「导入站点配置」选择本仓库的 `site_config` 目录 / 解压后的目录），确保应用能读到该目录下的 `sites/*.json`。
+
+4. **详细步骤**  
+   以官方说明为准：[Media Saber Wiki - 站点配置](https://wiki.msaber.fun/guide/init/sites.html)
+
 ## ⚡ 反馈与交流
 
 - **提交问题**：在 [Issues](https://github.com/mantou568/pre-dessert-sites/issues) 中报告问题或申请新站点
