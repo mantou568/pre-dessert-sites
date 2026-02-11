@@ -34,30 +34,6 @@ pre-dessert-sites/
 
 请参考 [Issue 模板](https://github.com/mantou568/pre-dessert-sites/issues/new/choose) 提交规范化的问题报告。
 
-### 提交信息使用中文（避免乱码）
-
-在 Windows 下若使用 `git commit -m "中文"` 出现乱码，请先设置 Git 使用 UTF-8（仅需一次）：
-
-```bash
-git config --global i18n.commitEncoding utf-8
-git config --global i18n.logOutputEncoding utf-8
-git config --global core.quotepath false
-```
-
-**推荐**：使用仓库内脚本，保证提交信息始终为 UTF-8：
-
-```powershell
-# PowerShell：先 stage 再执行
-git add -A
-.\scripts\commit-utf8.ps1 "sync: 站点配置与图标更新"
-```
-
-或用消息文件提交（文件请保存为 UTF-8）：
-
-```bash
-git commit -F 消息.txt
-```
-
 ## 📜 许可证
 
 本项目采用 **AGPL-3.0 WITH NON-COMMERCIAL CLAUSE** 许可证，详见 [LICENSE](LICENSE) 文件。
