@@ -43,9 +43,6 @@
           "selector": "td.embedded",
           "remove": "span,a,img,font,b,br",
           "contents": -1
-        },
-        "hr_days": {
-          "filters": [{ "name": "constant", "args": "1" }]
         }
       }
     },
@@ -77,8 +74,5 @@
         }
       }
     }
-  },
-  "my_hr": {
-    "path": "/myhr.php?status=1"
   }
 }
