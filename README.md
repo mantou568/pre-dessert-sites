@@ -32,6 +32,16 @@ pre-dessert-sites/
 - Bug 修复
 - 文档完善
 
+### 规范性说明
+
+- 命名统一使用 `snake_case`（小写字母、数字、下划线），不要使用驼峰命名或连字符。
+- 站点配置文件需满足三者一致：
+   - `site_config/sites/{id}.json` 文件名（不含扩展名）
+   - JSON 顶层字段 `id`
+   - `site_favicon/{id}.png` 图标名（不含扩展名）
+- 历史兼容站点（如 `bt_` 前缀）可保留前缀，但仍需满足“文件名 = id = 图标名”。
+- `site_config/commons/NexusPHP.json` 为公共框架配置，属于特例，不按站点命名规则修改。
+
 请参考 [Issue 模板](https://github.com/mantou568/pre-dessert-sites/issues/new/choose) 提交规范化的问题报告。
 
 ## 📜 许可证
