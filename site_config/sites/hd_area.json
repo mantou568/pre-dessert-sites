@@ -1,0 +1,202 @@
+{
+  "id": "hd_area",
+  "name": "好大",
+  "domain": "https://hdarea.club",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 300,
+        "cat": "Movies/UHD",
+        "desc": "Movies UHD-4K"
+      },
+      {
+        "id": 401,
+        "cat": "Movies/BluRay",
+        "desc": "Movies Blu-ray"
+      },
+      {
+        "id": 415,
+        "cat": "Movies/HD",
+        "desc": "Movies REMUX"
+      },
+      {
+        "id": 416,
+        "cat": "Movies/3D",
+        "desc": "Movies 3D"
+      },
+      {
+        "id": 410,
+        "cat": "Movies/HD",
+        "desc": "Movies 1080p"
+      },
+      {
+        "id": 411,
+        "cat": "Movies/HD",
+        "desc": "Movies 720p"
+      },
+      {
+        "id": 414,
+        "cat": "Movies/DVD",
+        "desc": "Movies DVD"
+      },
+      {
+        "id": 412,
+        "cat": "Movies/WEB-DL",
+        "desc": "Movies WEB-DL"
+      },
+      {
+        "id": 413,
+        "cat": "Movies/HD",
+        "desc": "Movies HDTV"
+      },
+      {
+        "id": 417,
+        "cat": "Movies/Other",
+        "desc": "Movies iPad"
+      }
+    ],
+    "tv": [
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations"
+      },
+      {
+        "id": 402,
+        "cat": "TV",
+        "desc": "TV Series"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "TV Shows"
+      }
+    ]
+  },
+  "requests": {
+    "search": {
+      "fields": {
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span,a,img,font,b,br",
+          "contents": -1,
+          "filters": [
+            {
+              "name": "replace",
+              "args": ["()", ""]
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/mybonus.php",
+      "disabled_extends": {
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "any": [
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "当前状态：正在做种\\s*<b>(\\d+)</b>\\s*个有效资源",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "//div[contains(., '当前状态：正在做种') and contains(., '个有效资源')]//b[last()]",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            },
+            {
+              "selector": "//div[contains(., '基础数量分')]//b[contains(following-sibling::text()[1], '个有效资源')]",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            }
+          ]
+        },
+        "size": {
+          "any": [
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "当前状态：做种总积\\s*<b>([\\d.]+\\s*GB)</b>",
+                    1
+                  ]
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            },
+            {
+              "selector": "//div[contains(., '当前状态：做种总积')]//b[1]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            },
+            {
+              "selector": "//div[contains(., '体积与稀缺分')]//b[contains(following-sibling::text()[1], 'GB')]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sign_in": {
+      "path": "/sign_in.php",
+      "method": "POST",
+      "form_data": {
+        "action": [
+          "sign_in"
+        ]
+      }
+    }
+  }
+}

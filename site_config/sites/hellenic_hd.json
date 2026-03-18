@@ -1,7 +1,7 @@
 {
-  "id": "generation-free",
-  "name": "GFF",
-  "domain": "https://generation-free.org",
+  "id": "hellenic_hd",
+  "name": "HELLENIC-HD",
+  "domain": "https://hellenic-hd.cc",
   "encoding": "UTF-8",
   "public": false,
   "schema": "NexusPHP",
@@ -17,24 +17,13 @@
   },
   "category": {
     "movie": [
-      { "id": 1, "cat": "Movies", "desc": "Films" }
+      { "id": 1, "cat": "Movies", "desc": "Movies" }
     ],
     "tv": [
-      { "id": 2, "cat": "TV", "desc": "Séries" }
-    ],
-    "other": [
-      { "id": 3, "cat": "Other", "desc": "Ebook" },
-      { "id": 4, "cat": "Other", "desc": "Jeux" },
-      { "id": 5, "cat": "Other", "desc": "Logiciel" },
-      { "id": 6, "cat": "Other", "desc": "Musique" }
+      { "id": 2, "cat": "TV", "desc": "TV Show" }
     ]
   },
   "requests": {
-    "favicon": {
-      "parser": "None",
-      "method": "GET",
-      "path": "/favicon.ico"
-    },
     "user_basic_info": {
       "parser": "XPath",
       "method": "GET",
@@ -93,12 +82,16 @@
           "selector": "//time[contains(@class, 'profile__registration')]/@title",
           "filters": [
             { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2})", 1] },
-            { "name": "timestamp", "args": ["2006-01-02"] }
+            { "name": "timestamp", "args": ["2006-01-02"] },
+            { "name": "timezone", "args": ["+6"] }
           ]
         },
         "last_accessed": {
           "selector": "//dt[contains(text(),'上次登录时间')]/following-sibling::dd[1]/time/@datetime",
-          "filters": [{ "name": "timestamp" }]
+          "filters": [
+            { "name": "timestamp" },
+            { "name": "timezone", "args": ["+6"] }
+          ]
         }
       }
     },
@@ -173,8 +166,8 @@
       }
     },
     "search": {
-      "path": "torrents?perPage=100&categoryIds[0]=1&categoryIds[1]=2&categoryIds[2]=3&categoryIds[3]=4&categoryIds[4]=5&categoryIds[5]=6",
-      "params": {
+      "path": "torrents?perPage=100&categoryIds[0]=1&categoryIds[1]=2",
+      "params": { 
         "name": ["{keyword}"]
       },
       "list": {
@@ -204,7 +197,8 @@
           "attribute": "datetime",
           "filters": [
             { "name": "strip" },
-            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] },
+            { "name": "timezone", "args": ["+6"] }
           ]
         },
         "size": {

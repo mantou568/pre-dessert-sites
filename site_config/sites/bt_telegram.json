@@ -1,5 +1,5 @@
 {
-  "id": "telegram",
+  "id": "bt_telegram",
   "name": "Telegram",
   "domain": "https://t.me",
   "public": true,
