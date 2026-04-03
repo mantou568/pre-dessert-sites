@@ -51,7 +51,8 @@
         "page": ["0"],
         "page_size": ["100"],
         "sort": ["created_at DESC"],
-        "query": ["{keywords}"]
+        "query": ["{keywords}"],
+        "category": ["{category}"]
       },
       "list": {
         "selector": "data.torrents"
