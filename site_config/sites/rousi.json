@@ -3,7 +3,7 @@
   "name": "Rousi",
   "domain": "https://rousi.pro",
   "encoding": "UTF-8",
-  "schema": "rousi",
+  "schema": "NexusPHP",
   "reuse_schema": "NexusPHP",
   "required": {
     "cookie": false,
@@ -13,6 +13,32 @@
     "has_free": true
   },
   "public": false,
+  "category": {
+    "movie": [
+      {
+        "id": "movie",
+        "cat": "Movies",
+        "desc": "电影"
+      }
+    ],
+    "tv": [
+      {
+        "id": "tv",
+        "cat": "TV",
+        "desc": "电视剧"
+      },
+      {
+        "id": "animation",
+        "cat": "TV",
+        "desc": "动画"
+      },
+      {
+        "id": "variety",
+        "cat": "Variety",
+        "desc": "综艺"
+      }
+    ]
+  },
   "requests": {
     "get_subtitle_url": {
       "disabled": true
