@@ -102,7 +102,14 @@
         "date_added": {
           "selector": "created_at",
           "filters": [
-            { "name": "timestamp" ,"args": ["2026-04-03T14:12:34.699207+08:00"]}
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02T15:04:05.999999-07:00",
+                "2006-01-02T15:04:05-07:00",
+                "2006-01-02T15:04:05.999Z"
+              ]
+            }
           ]
         },
         "downloadvolumefactor": {
