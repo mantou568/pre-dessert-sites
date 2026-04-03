@@ -100,7 +100,12 @@
           "selector": "leechers"
         },
         "date_added": {
-          "selector": "created_at"
+          "selector": "created_at",
+          "filters": [
+            {
+              "name": "datetime_parse"
+            }
+          ]
         },
         "downloadvolumefactor": {
           "selector": "promotion.down_multiplier"
