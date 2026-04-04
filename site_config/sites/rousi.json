@@ -346,6 +346,31 @@
           "selector": "data.passkey"
         }
       }
+    },
+    "sign_in": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/points/attendance",
+      "params": {
+        "mode": ["fixed"]
+      },
+      "fields": {
+        "signed_in": {
+          "selector": "code",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
+        "bonus_change": {
+          "selector": "data.bonus"
+        },
+        "message": {
+          "selector": "data.message"
+        }
+      }
     }
   }
 }
