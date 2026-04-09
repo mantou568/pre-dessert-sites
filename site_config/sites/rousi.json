@@ -51,7 +51,7 @@
         "page": ["0"],
         "page_size": ["100"],
         "sort": ["created_at DESC"],
-        "query": ["{keywords}"],
+        "query": ["{keyword}"],
         "category": ["{category}"]
       },
       "list": {
