@@ -133,6 +133,24 @@
       "method": "GET",
       "path": "/api/me",
       "fields": {
+        "is_login": {
+          "selector": "code",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
+        "signed_in": {
+          "selector": "code",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
         "id": {
           "selector": "data.stats.username"
         },
