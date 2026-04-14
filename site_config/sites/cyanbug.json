@@ -147,6 +147,64 @@
     ]
   },
   "requests": {
+    "search": {
+      "fields": {
+        "imdb_id": {
+          "any": [
+            {
+              "selector": "a[href*='imdb.com/title/tt']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "(tt\\d+)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "span[data-imdbid]",
+              "attribute": "data-imdbid",
+              "filters": [
+                {
+                  "name": "pad_zero",
+                  "args": 7
+                }
+              ]
+            },
+            {
+              "selector": "label[data-imdbid]",
+              "attribute": "data-imdbid",
+              "filters": [
+                {
+                  "name": "pad_zero",
+                  "args": 7
+                }
+              ]
+            },
+            {
+              "selector": "a[href*='search_area=4']",
+              "attribute": "href",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "search=(\\d+)",
+                    1
+                  ]
+                },
+                {
+                  "name": "pad_zero",
+                  "args": 7
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
     "seeding_statistics": {
       "parser": "CssSelector",
       "disabled_extends": {
