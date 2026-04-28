@@ -70,6 +70,100 @@
     },
     "user_basic_info": {
       "fields": {
+        "uploaded": {
+          "any": [
+            {
+              "selector": "//*[contains(@class,'site-userbar__compact-metric--uploaded')]/span/text()[normalize-space()]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "[^总]上[传傳]量?[:：_<>/a-zA-Z-=''\\s#;]+([\\d,.\\s]+(?i)[KMGTPI]*B)",
+                    1
+                  ]
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            }
+          ]
+        },
+        "downloaded": {
+          "any": [
+            {
+              "selector": "//*[contains(@class,'site-userbar__compact-metric--downloaded')]/span/text()[normalize-space()]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "[^总子影力]下[载載]量?[:：_<>/a-zA-Z-=''\\s#;]+([\\d,.\\s]+(?i)[KMGTPI]*B)",
+                    1
+                  ]
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            }
+          ]
+        },
+        "ratio": {
+          "any": [
+            {
+              "selector": "//*[contains(@class,'site-userbar__compact-metric--ratio')]/span/text()[normalize-space()]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "replace",
+                  "args": [
+                    ",",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "分享率[:：_<>/a-zA-Z-=\\\"'\\s#;]+([\\d,.\\s]+)",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         "bonus": {
           "any": [
             {
