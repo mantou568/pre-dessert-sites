@@ -1,7 +1,8 @@
 {
     "id": "playletpt",
     "name": "PlayLet",
-    "domain": "https://playletpt.xyz",
+    "domain": "https://playlet.cc",
+    "additional_domain": ["https://playletpt.xyz"],
     "public": false,
     "schema": "NexusPHP",
     "required": {
