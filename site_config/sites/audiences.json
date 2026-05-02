@@ -47,11 +47,11 @@
     "search": {
       "fields": {
         "description": {
-          "selector": "td.embedded > span[style]"
+          "selector": ".torrent-subtitle-line .torrent-subtitle-text"
         },
         "labels": {
-          "array": true,
-          "selector": "td.embedded > span.tags"
+          "selector": ".torrent-subtitle-line .torrent-subtitle-tags > .tags",
+          "array": true
         },
         "hr_days": {
           "selector": "img.hitandrun",
@@ -225,13 +225,6 @@
               "name": "byte_size"
             }
           ]
-        },
-        "description": {
-          "selector": ".torrent-subtitle-line .torrent-subtitle-text"
-        },
-        "labels": {
-          "selector": ".torrent-subtitle-line .torrent-subtitle-tags > .tags",
-          "array": true
         }
       }
     }
