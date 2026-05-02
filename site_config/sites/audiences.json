@@ -105,6 +105,13 @@
               "name": "byte_size"
             }
           ]
+        },
+        "description": {
+          "selector": ".torrent-subtitle-line .torrent-subtitle-text"
+        },
+        "labels": {
+          "selector": ".torrent-subtitle-line .torrent-subtitle-tags > .tags",
+          "array": true
         }
       }
     }
