@@ -47,11 +47,11 @@
     "search": {
       "fields": {
         "description": {
-          "selector": "td.embedded > span[style]"
+          "selector": ".torrent-subtitle-line .torrent-subtitle-text"
         },
         "labels": {
-          "array": true,
-          "selector": "td.embedded > span.tags"
+          "selector": ".torrent-subtitle-line .torrent-subtitle-tags > .tags",
+          "array": true
         },
         "hr_days": {
           "selector": "img.hitandrun",
@@ -70,15 +70,135 @@
     },
     "user_basic_info": {
       "fields": {
-        "bonus": {
-          "selector": "//a[contains(@href,'mybonus') or contains(@href,'bonus.php')]/following-sibling::text()",
-          "trim_chars": true,
-          "filters": [
+        "uploaded": {
+          "any": [
             {
-              "name": "replace",
-              "args": [
-                "] :",
-                ""
+              "selector": "//*[contains(@class,'site-userbar__compact-metric--uploaded')]/span/text()[normalize-space()]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "[^总]上[传傳]量?[:：_<>/a-zA-Z-=''\\s#;]+([\\d,.\\s]+(?i)[KMGTPI]*B)",
+                    1
+                  ]
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            }
+          ]
+        },
+        "downloaded": {
+          "any": [
+            {
+              "selector": "//*[contains(@class,'site-userbar__compact-metric--downloaded')]/span/text()[normalize-space()]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "[^总子影力]下[载載]量?[:：_<>/a-zA-Z-=''\\s#;]+([\\d,.\\s]+(?i)[KMGTPI]*B)",
+                    1
+                  ]
+                },
+                {
+                  "name": "byte_size"
+                }
+              ]
+            }
+          ]
+        },
+        "ratio": {
+          "any": [
+            {
+              "selector": "//*[contains(@class,'site-userbar__compact-metric--ratio')]/span/text()[normalize-space()]",
+              "filters": [
+                {
+                  "name": "strip"
+                },
+                {
+                  "name": "replace",
+                  "args": [
+                    ",",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "分享率[:：_<>/a-zA-Z-=\\\"'\\s#;]+([\\d,.\\s]+)",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "bonus": {
+          "any": [
+            {
+              "selector": "//*[@id='info_block']//a[contains(@class,'site-userbar__compact-metric--bonus') and contains(@href,'mybonus')]/span/text()"
+            },
+            {
+              "selector": "//*[@id='info_block']//a[contains(@href,'mybonus') or contains(@href,'bonus.php')]",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "([\\d,.]+)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "//*[@id='info_block']//a[contains(@href,'mybonus') or contains(@href,'bonus.php')]/following-sibling::text()",
+              "trim_chars": true,
+              "filters": [
+                {
+                  "name": "replace",
+                  "args": [
+                    "] :",
+                    ""
+                  ]
+                },
+                {
+                  "name": "re_search",
+                  "args": [
+                    "([\\d,.]+)",
+                    1
+                  ]
+                }
               ]
             }
           ]
