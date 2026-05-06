@@ -167,10 +167,7 @@
         "bonus": {
           "any": [
             {
-              "selector": "//*[@id='info_block']//a[contains(@class,'site-userbar__compact-metric--bonus') and contains(@href,'mybonus')]/span/text()"
-            },
-            {
-              "selector": "//*[@id='info_block']//a[contains(@href,'mybonus') or contains(@href,'bonus.php')]",
+              "selector": "//*[@id='info_block']//a[contains(@class,'site-userbar__compact-metric--bonus') and contains(@href,'mybonus')]/span/text()",
               "filters": [
                 {
                   "name": "re_search",
@@ -182,16 +179,8 @@
               ]
             },
             {
-              "selector": "//*[@id='info_block']//a[contains(@href,'mybonus') or contains(@href,'bonus.php')]/following-sibling::text()",
-              "trim_chars": true,
+              "selector": "//*[@id='info_block']//a[contains(@href,'mybonus') or contains(@href,'bonus.php')]",
               "filters": [
-                {
-                  "name": "replace",
-                  "args": [
-                    "] :",
-                    ""
-                  ]
-                },
                 {
                   "name": "re_search",
                   "args": [
