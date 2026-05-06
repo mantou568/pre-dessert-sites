@@ -1,0 +1,7 @@
+{
+   "github.copilot.chat.commitMessageGeneration.instructions": [
+  {
+    "text": "📝 生成中文提交信息，格式：<type> <emoji>: <subject>（≤150 字）\n\n✨ 类型与对应 emoji：\n- feat ✨：新功能\n- add ➕：新增文件或内容\n- fix 🐛：最终修复；进行中或部分修复用 “to:” 标明\n- docs 📚：文档变更\n- merge 🔀：分支合并\n- deps 📦：依赖变更\n- build 🏗️：构建系统变更\n- perf ⚡：性能优化\n- refactor 🔁：仅重构，无行为变更\n- chore 🔧：仅工具或配置变更\n\n✅ 生成的提交摘要必须：\n1. 使用中文\n2. 包含对应 emoji\n3. 采用祈使语气\n\n示例：✨ feat: 添加用户登录功能"
+  }
+]
+}
