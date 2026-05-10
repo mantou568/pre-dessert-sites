@@ -123,6 +123,55 @@
           "selection": "html",
           "filters": [
             {
+              "name": "replace",
+              "args": [
+                "无限",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "无穷",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "∞",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "Infinity",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "infinity",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "Inf",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "inf",
+                ""
+              ]
+            },
+            {
               "name": "re_search",
               "args": [
                 "分享率[:：_<>/a-zA-Z-=\\\"'\\s#;]+([\\d,.\\s]+)",
