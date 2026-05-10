@@ -1,9 +1,9 @@
 {
   "id": "qingwapt",
   "name": "青蛙",
-  "domain": "https://qingwapt.com",
+  "domain": "https://www.qingwapt.com",
   "additional_domain": [
-    "https://www.qingwapt.com",
+    "https://qingwapt.com",
     "https://new.qingwa.pro"
   ],
   "public": false,
