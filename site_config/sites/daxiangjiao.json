@@ -1,0 +1,498 @@
+{
+  "id": "daxiangjiao",
+  "name": "大香蕉",
+  "domain": "https://pt.daxiangjiao.org",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": true,
+    "has_cover": false
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 401,
+        "cat": "Movies",
+        "desc": "Movies/电影"
+      },
+      {
+        "id": 406,
+        "cat": "Movies",
+        "desc": "Music Videos/音乐视频"
+      },
+      {
+        "id": 407,
+        "cat": "Movies/Sports",
+        "desc": "Sports/体育"
+      }
+    ],
+    "tv": [
+      {
+        "id": 402,
+        "cat": "TV",
+        "desc": "TV Series/连续剧"
+      },
+      {
+        "id": 403,
+        "cat": "TV",
+        "desc": "TV Shows/综艺节目"
+      },
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "Documentaries/纪录片"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "Animations/动画"
+      },
+      {
+        "id": 408,
+        "cat": "TV/Other",
+        "desc": "HQ Audio/高音质音乐"
+      },
+      {
+        "id": 409,
+        "cat": "TV/Other",
+        "desc": "Misc/其他"
+      }
+    ]
+  },
+  "requests": {
+    "search": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/torrents.php",
+      "params": {
+        "search": [
+          "{keyword}"
+        ]
+      },
+      "fields": {
+        "labels": {
+          "selector": "td.embedded > span[title]",
+          "array": true
+        },
+        "description": {
+          "selector": "td.embedded",
+          "remove": "span,a,img,font,b,br",
+          "contents": -1
+        }
+      }
+    },
+    "sign_in": {
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/attendance.php",
+      "success_status_codes": [
+        200,
+        403,
+        500
+      ],
+      "fields": {
+        "signed_in": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": [
+                "(已签|已签到|签到已得|签到排名|簽到已得|attendance.*success)",
+                0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "user_basic_info": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "fields": {
+        "is_login": {
+          "any": [
+            {
+              "selector": "//a[contains(@href, 'logout')]/text()"
+            },
+            {
+              "selector": "//a[contains(@href, 'usercp')]/text()"
+            }
+          ],
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "signed_in": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(已签|已签到|签到已得|签到排名|簽到已得)"
+            }
+          ]
+        },
+        "id": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "userdetails\\.php\\?id=(\\d+)",
+                1
+              ]
+            }
+          ]
+        },
+        "name": {
+          "any": [
+            {
+              "selector": "//a[contains(@href, 'userdetails')]//b//text()"
+            },
+            {
+              "selector": "//a[contains(@href, 'userdetails')]//text()"
+            }
+          ]
+        },
+        "uploaded": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "[^总]上[传傳]量?[:：_<>/a-zA-Z-=''\\s#;]+([\\d,.\\s]+(?i)[KMGTPI]*B)",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "[^总子影力]下[载載]量?[:：_<>/a-zA-Z-=''\\s#;]+([\\d,.\\s]+(?i)[KMGTPI]*B)",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "ratio": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "无限",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "∞",
+                ""
+              ]
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "分享率[:：_<>/a-zA-Z-=\\\"'\\s#;]+([\\d,.\\s]+)",
+                1
+              ]
+            }
+          ]
+        },
+        "bonus": {
+          "any": [
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "mybonus\\.php[^>]*>[^<]*</a>[^:]*:\\s*([\\d,.]+)",
+                    1
+                  ]
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "color_bonus[^>]*>[^<]*</font>\\s*[^:]*:\\s*([\\d,.]+)",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "seeding": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "title=\"当前做种\"[^>]*>[\\s/]*([\\d,]+)",
+                1
+              ]
+            }
+          ]
+        },
+        "leeching": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "title=\"当前下载\"[^>]*>[\\s/]*([\\d,]+)",
+                1
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/userdetails.php?id={userId}",
+      "fields": {
+        "name": {
+          "any": [
+            {
+              "selector": "//b[contains(@class, 'rainbow')]/text()"
+            },
+            {
+              "selector": "//h1//b[@class='rainbow']/text()"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "level": {
+          "any": [
+            {
+              "selector": "//tr/td[contains(text(), '等级')]/following-sibling::td[1]/img[1]/@title"
+            },
+            {
+              "selector": "//tr/td[contains(text(), '等级')]/following-sibling::td[1]/img[1]/@alt"
+            },
+            {
+              "selector": "//tr/td[contains(text(), '等級')]/following-sibling::td[1]/img[1]/@title"
+            }
+          ],
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "uploaded": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "<strong>上传量</strong>\\s*:\\s*([\\d,.]+\\s*[KMGTPI]*B)",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "<strong>下载量</strong>\\s*:\\s*([\\d,.]+\\s*[KMGTPI]*B)",
+                1
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "ratio": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "无限",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "∞",
+                ""
+              ]
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "分享率[:：_<>/a-zA-Z-=\\\"'\\s#;]+([\\d,.\\s]+)",
+                1
+              ]
+            }
+          ]
+        },
+        "bonus": {
+          "any": [
+            {
+              "selector": "//tr/td[contains(text(), '魔力值')]/following-sibling::td/text()[1]",
+              "filters": [
+                {
+                  "name": "strip"
+                }
+              ]
+            },
+            {
+              "selector": "*",
+              "selection": "html",
+              "filters": [
+                {
+                  "name": "re_search",
+                  "args": [
+                    "color_bonus[^>]*>[^<]*</font>\\s*[^:]*:\\s*([\\d,.]+)",
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "seeding": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "当前做种[:：<>/a-zA-Z-=''\\s#;]+([\\d,]+)",
+                1
+              ]
+            }
+          ]
+        },
+        "leeching": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "当前下载[:：<>/a-zA-Z-=''\\s#;]+([\\d,]+)",
+                1
+              ]
+            }
+          ]
+        },
+        "last_accessed": {
+          "trim_chars": true,
+          "any": [
+            {
+              "selector": "//tr/td[contains(text(), \"最近动向\")]/following-sibling::td[1]//@title"
+            },
+            {
+              "selector": "//tr/td[contains(text(), \"最近动向\")]/following-sibling::td[1]"
+            }
+          ],
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})",
+                1
+              ]
+            },
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
+      "headers": {
+        "Referer": "{domain}/userdetails.php?id={userId}"
+      },
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "list": {
+        "selector": "//tr[position()>1]",
+        "next_page": {
+          "selector": "//a[contains(.//text(), '下一页')]/@href"
+        }
+      },
+      "fields": {
+        "size": {
+          "selector": "/td[4]",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    }
+  },
+  "my_hr": {
+    "path": "/myhr.php?status=1"
+  }
+}
