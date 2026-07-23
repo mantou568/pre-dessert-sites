@@ -2,11 +2,12 @@
   "id": "sunny",
   "name": "Sunny",
   "domain": "https://sunnypt.top",
+  "api": "https://api.sunnypt.top",
   "public": false,
   "schema": "NexusPHP",
   "required": {
     "cookie": true,
-    "sign_in": true
+    "sign_in": false
   },
   "meta": {
     "has_free": true,
@@ -46,67 +47,264 @@
     ]
   },
   "requests": {
-    "search": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "user_basic_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/user/details/info",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
       "fields": {
-        "labels": {
-          "selector": "td.embedded > span[title]",
-          "array": true
+        "is_login": {
+          "selector": "code",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
+        "signed_in": {
+          "filters": [
+            {
+              "name": "constant",
+              "args": "true"
+            }
+          ]
+        },
+        "id": {
+          "selector": "data.id"
+        },
+        "name": {
+          "selector": "data.username"
+        },
+        "uploaded": {
+          "selector": "data.uploaded",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "downloaded": {
+          "selector": "data.downloaded",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "ratio": {
+          "selector": "data.ratio"
+        },
+        "bonus": {
+          "selector": "data.seed_bonus"
+        },
+        "seeding_count": {
+          "selector": "data.upload_num"
+        }
+      }
+    },
+    "user_details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/user/details/info",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "fields": {
+        "level_id": {
+          "selector": "data.class"
+        },
+        "level": {
+          "selector": "data.class",
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "0": "User",
+                "1": "Power User",
+                "2": "Elite User",
+                "3": "Crazy User",
+                "4": "Veteran User",
+                "5": "Insane User",
+                "6": "Extreme User",
+                "7": "Ultimate User",
+                "8": "Nexus Master"
+              }
+            }
+          ]
+        },
+        "join_at": {
+          "selector": "data.added"
+        },
+        "last_accessed": {
+          "selector": "data.last_access"
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/user/seed-bonus",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "fields": {
+        "count": {
+          "selector": "data.seeding_count"
+        },
+        "size": {
+          "selector": "data.seeding_size"
+        }
+      }
+    },
+    "my_hr": {
+      "disabled": true
+    },
+    "sign_in": {
+      "disabled": true
+    },
+    "search": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/v1/torrent/list",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "keyword": "{keyword}",
+        "limit": 50,
+        "offset": 0
+      },
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "list": {
+        "selector": "data.list"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "category": {
+          "selector": "category"
+        },
+        "title": {
+          "selector": "name"
         },
         "description": {
-          "selector": "td.embedded",
-          "remove": "span,a,img,font,b,br",
-          "contents": -1
+          "selector": "sub_name"
         },
-        "hr_days": {
+        "cover": {
+          "selector": "cover"
+        },
+        "details": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/torrent/"
+            }
+          ]
+        },
+        "download": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/api/v1/torrent/download?id="
+            }
+          ]
+        },
+        "size": {
+          "selector": "size"
+        },
+        "grabs": {
+          "selector": "times_completed"
+        },
+        "seeders": {
+          "selector": "seeders"
+        },
+        "leechers": {
+          "selector": "leechers"
+        },
+        "date_added": {
+          "selector": "added"
+        },
+        "downloadvolumefactor": {
+          "selector": "promotion_type",
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "2": "0",
+                "3": "0.5",
+                "4": "0.3",
+                "5": "0",
+                "6": "0",
+                "7": "0.5"
+              }
+            }
+          ]
+        },
+        "uploadvolumefactor": {
           "filters": [
             {
               "name": "constant",
               "args": "1"
             }
           ]
+        },
+        "labels": {
+          "selector": "tags",
+          "array": true
         }
       }
     },
-    "seeding_statistics": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
-      "headers": {
-        "Referer": "{domain}/userdetails.php?id={userId}"
-      },
-      "disabled_extends": {
-        "headers": true,
-        "list": true
-      },
-      "fields": {
-        "count": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": ["(\\d+)", 1]
-            }
-          ]
-        },
-        "size": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": ["总大小：(.*)", 1]
-            },
-            {
-              "name": "strip"
-            },
-            {
-              "name": "byte_size"
-            }
-          ]
-        }
-      }
+    "details": {
+      "disabled": true
+    },
+    "get_subtitle_url": {
+      "disabled": true
     }
-  },
-  "my_hr": {
-    "path": "/myhr.php?status=1"
   }
 }
