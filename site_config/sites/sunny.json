@@ -7,7 +7,7 @@
   "schema": "NexusPHP",
   "required": {
     "cookie": true,
-    "sign_in": false
+    "sign_in": true
   },
   "meta": {
     "has_free": true,
@@ -192,7 +192,37 @@
       "disabled": true
     },
     "sign_in": {
-      "disabled": true
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/v1/attendance/check-in",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {},
+      "success_status_codes": [
+        200
+      ],
+      "fields": {
+        "signed_in": {
+          "selector": "code",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "true"
+            }
+          ]
+        },
+        "message": {
+          "selector": "msg"
+        },
+        "code": {
+          "selector": "code"
+        }
+      }
     },
     "search": {
       "parser": "JsonPath",
