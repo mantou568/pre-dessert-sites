@@ -77,14 +77,6 @@
             }
           ]
         },
-        "signed_in": {
-          "filters": [
-            {
-              "name": "constant",
-              "args": "true"
-            }
-          ]
-        },
         "id": {
           "selector": "data.id"
         },
@@ -167,7 +159,7 @@
     "seeding_statistics": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/v1/user/seed-bonus",
+      "path": "/api/v1/user/details/seeding?id={userId}&offset=0&limit=100",
       "use_api": true,
       "required_headers": [
         "Authorization"
@@ -181,10 +173,16 @@
       },
       "fields": {
         "count": {
-          "selector": "data.seeding_count"
+          "selector": "data.total"
         },
         "size": {
-          "selector": "data.seeding_size"
+          "selector": "data.list[*].size",
+          "array": true,
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
         }
       }
     },
@@ -208,11 +206,11 @@
       ],
       "fields": {
         "signed_in": {
-          "selector": "code",
+          "selector": "content",
           "filters": [
             {
-              "name": "constant",
-              "args": "true"
+              "name": "regex",
+              "args": "(签到成功|今日已签到|已签到)"
             }
           ]
         },
