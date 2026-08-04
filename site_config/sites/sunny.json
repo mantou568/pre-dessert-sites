@@ -159,7 +159,7 @@
     "seeding_statistics": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/v1/user/details/seeding?id={userId}&offset=0&limit=100",
+      "path": "/api/v1/user/details/seeding?id={userId}&offset=0&limit=10000",
       "use_api": true,
       "required_headers": [
         "Authorization"
@@ -167,17 +167,15 @@
       "disabled_extends": {
         "path": true,
         "headers": true,
-        "list": true,
         "fields": true,
         "field": true
       },
+      "list": {
+        "selector": "data.list"
+      },
       "fields": {
-        "count": {
-          "selector": "data.total"
-        },
         "size": {
-          "selector": "data.list[*].size",
-          "array": true,
+          "selector": "size",
           "filters": [
             {
               "name": "byte_size"
