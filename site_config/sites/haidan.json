@@ -175,7 +175,29 @@
       "path": "/",
       "fields": {
         "is_login": {
-          "selector": "//a[contains(@href, \"userdetails.php?id=\") and contains(., \"xiaojunxiang\")]",
+          "any": [
+            {
+              "selector": "//a[contains(@href, 'logout')]/text()"
+            },
+            {
+              "selector": "//a[contains(@data-url, 'logout')]/text()"
+            },
+            {
+              "selector": "//a[contains(@href, 'mybonus')]/text()"
+            },
+            {
+              "selector": "//a[contains(@onclick, 'logout')]/text()"
+            },
+            {
+              "selector": "//a[contains(@href, 'usercp')]/text()"
+            },
+            {
+              "selector": "//form[contains(@action, 'logout')]/text()"
+            },
+            {
+              "selector": "//div[@class='user-info-side']/text()"
+            }
+          ],
           "filters": [
             {
               "name": "not_blank"
