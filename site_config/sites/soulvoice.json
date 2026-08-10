@@ -3,7 +3,8 @@
   "name": "聆音",
   "domain": "https://pt.soulvoice.club",
   "public": false,
-  "schema": "NexusPHP",
+  "schema": "attendance_captcha",
+  "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -50,6 +51,31 @@
     ]
   },
   "requests": {
+    "sign_in_page": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/attendance.php",
+      "disabled_extends": {
+        "params": true
+      }
+    },
+    "image": {
+      "parser": "None",
+      "disabled_extends": {
+        "params": true
+      }
+    },
+    "sign_in_action": {
+      "parser": "None",
+      "method": "POST",
+      "path": "/attendance.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    },
     "search": {
       "fields": {
         "labels": {
