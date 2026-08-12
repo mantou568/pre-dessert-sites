@@ -372,6 +372,10 @@
       "parser": "JsonPath",
       "method": "POST",
       "path": "/api/points/attendance",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
       "body": {
         "mode": "fixed"
       },
@@ -384,8 +388,8 @@
           "selector": "message",
           "filters": [
             {
-              "name": "constant",
-              "args": "true"
+              "name": "regex",
+              "args": "(签到成功|今日已签到|已签到)"
             }
           ]
         },
