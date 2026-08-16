@@ -1,498 +1,494 @@
 {
-  "id": "rousi",
-  "name": "Rousi",
-  "domain": "https://rousi.pro",
-  "encoding": "UTF-8",
-  "schema": "rousi",
-  "reuse_schema": "NexusPHP",
-  "required": {
-    "cookie": false,
-    "sign_in": true
+ "id": "rousi",
+ "name": "Rousi",
+ "domain": "https://rousi.pro",
+ "encoding": "UTF-8",
+ "schema": "rousi",
+ "reuse_schema": "NexusPHP",
+ "required": {
+  "cookie": false,
+  "sign_in": true
+ },
+ "meta": {
+  "has_free": true
+ },
+ "public": false,
+ "category": {
+  "query": "category",
+  "movie": [
+   {
+    "id": "movie",
+    "cat": "Movies",
+    "desc": "电影"
+   }
+  ],
+  "tv": [
+   {
+    "id": "tv",
+    "cat": "TV",
+    "desc": "电视剧"
+   },
+   {
+    "id": "animation",
+    "cat": "TV",
+    "desc": "动画"
+   },
+   {
+    "id": "variety",
+    "cat": "Variety",
+    "desc": "综艺"
+   }
+  ]
+ },
+ "requests": {
+  "get_subtitle_url": {
+   "disabled": true
   },
-  "meta": {
-    "has_free": true
-  },
-  "public": false,
-  "category": {
-    "query": "category",
-    "movie": [
-      {
-        "id": "movie",
-        "cat": "Movies",
-        "desc": "电影"
-      }
+  "search": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/torrent/search",
+   "params": {
+    "page": [
+     "{page}"
     ],
-    "tv": [
-      {
-        "id": "tv",
-        "cat": "TV",
-        "desc": "电视剧"
-      },
-      {
-        "id": "animation",
-        "cat": "TV",
-        "desc": "动画"
-      },
-      {
-        "id": "variety",
-        "cat": "Variety",
-        "desc": "综艺"
-      }
+    "page_size": [
+     "100"
+    ],
+    "sort": [
+     "created_at DESC"
+    ],
+    "query": [
+     "{keyword}"
     ]
-  },
-  "requests": {
-    "get_subtitle_url": {
-      "disabled": true
+   },
+   "list": {
+    "selector": "data.torrents"
+   },
+   "fields": {
+    "id": {
+     "selector": "uuid"
     },
-    "search": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/torrent/search",
-      "params": {
-        "page": [
-          "{page}"
-        ],
-        "page_size": [
-          "100"
-        ],
-        "sort": [
-          "created_at DESC"
-        ],
-        "query": [
-          "{keyword}"
-        ]
-      },
-      "list": {
-        "selector": "data.torrents"
-      },
-      "fields": {
-        "id": {
-          "selector": "uuid"
-        },
-        "category": {
-          "selector": "type"
-        },
-        "title": {
-          "selector": "title"
-        },
-        "details": {
-          "selector": "uuid",
-          "filters": [
-            {
-              "name": "append_left",
-              "args": "/torrent/"
-            }
-          ]
-        },
-        "download": {
-          "selector": "uuid",
-          "filters": [
-            {
-              "name": "append_left",
-              "args": "/api/torrent/"
-            },
-            {
-              "name": "append_right",
-              "args": "/download/{passkey}"
-            }
-          ]
-        },
-        "size": {
-          "selector": "size"
-        },
-        "grabs": {
-          "selector": "downloads"
-        },
-        "seeders": {
-          "selector": "seeders"
-        },
-        "leechers": {
-          "selector": "leechers"
-        },
-        "date_added": {
-          "selector": "created_at",
-          "filters": [
-            {
-              "name": "timestamp",
-              "args": [
-                "2006-01-02T15:04:05.999999-07:00",
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999Z"
-              ]
-            }
-          ]
-        },
-        "downloadvolumefactor": {
-          "selector": "promotion.down_multiplier"
-        },
-        "uploadvolumefactor": {
-          "selector": "promotion.up_multiplier"
-        },
-        "description": {
-          "selector": "subtitle"
-        },
-        "imdb_id": {
-          "selector": "attributes.imdb_id"
-        }
-      }
+    "category": {
+     "selector": "type"
     },
-    "user_basic_info": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/me",
-      "fields": {
-        "is_login": {
-          "selector": "code",
-          "filters": [
-            {
-              "name": "eq",
-              "args": "0"
-            }
-          ]
-        },
-        "id": {
-          "selector": "data.stats.username"
-        },
-        "name": {
-          "selector": "data.stats.username"
-        },
-        "uploaded": {
-          "selector": "data.stats.uploaded",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        },
-        "downloaded": {
-          "selector": "data.stats.downloaded",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        },
-        "bonus": {
-          "selector": "data.stats.karma"
-        },
-        "seeding_count": {
-          "selector": "data.seeding_leeching_data.seeding_count"
-        },
-        "leeching_count": {
-          "selector": "data.seeding_leeching_data.leeching_count"
-        },
-        "signed_in": {
-          "selector": "code",
-          "filters": [
-            {
-              "name": "constant",
-              "args": "true"
-            }
-          ]
-        }
-      }
-    },
-    "user_details": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/user/{userId}",
-      "disabled_extends": {
-        "headers": true,
-        "list": true
-      },
-      "fields": {
-        "id": {
-          "selector": "data.username"
-        },
-        "name": {
-          "selector": "data.username"
-        },
-        "level": {
-          "selector": "data.level"
-        },
-        "level_id": {
-          "selector": "data.level"
-        },
-        "join_at": {
-          "selector": "data.created_at",
-          "filters": [
-            {
-              "name": "timestamp",
-              "args": [
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999999-07:00"
-              ]
-            }
-          ]
-        },
-        "join_date": {
-          "selector": "data.created_at",
-          "filters": [
-            {
-              "name": "timestamp",
-              "args": [
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999999-07:00"
-              ]
-            }
-          ]
-        },
-        "last_accessed": {
-          "selector": "data.last_active_at",
-          "filters": [
-            {
-              "name": "timestamp",
-              "args": [
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999999-07:00"
-              ]
-            }
-          ]
-        },
-        "last_seen": {
-          "selector": "data.last_active_at",
-          "filters": [
-            {
-              "name": "timestamp",
-              "args": [
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999999-07:00"
-              ]
-            }
-          ]
-        },
-        "uploaded_total": {
-          "selector": "data.uploaded"
-        },
-        "downloaded_total": {
-          "selector": "data.downloaded"
-        },
-        "ratio": {
-          "selector": "data.ratio"
-        },
-        "bonus": {
-          "selector": "data.karma"
-        },
-        "seeding_count": {
-          "selector": "data.seeding_count"
-        },
-        "seeding_size": {
-          "selector": "data.seeding_detail.volume",
-          "filters": [
-            {
-              "name": "append_right",
-              "args": " TiB"
-            },
-            {
-              "name": "byte_size"
-            }
-          ]
-        }
-      }
-    },
-    "seeding_size": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/me",
-      "disabled_extends": {
-        "headers": true,
-        "list": true
-      },
-      "fields": {
-        "size": {
-          "selector": "data.seeding_leeching_data.seeding_size",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        }
-      }
-    },
-    "seeding_count": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/me",
-      "disabled_extends": {
-        "headers": true,
-        "list": true
-      },
-      "fields": {
-        "count": {
-          "selector": "data.seeding_leeching_data.seeding_count"
-        }
-      }
+    "title": {
+     "selector": "title"
     },
     "details": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/torrent/{id}",
-      "success_status_codes": [
-        200,
-        404
-      ],
-      "fields": {
-        "absent": {
-          "selector": "code",
-          "filters": [
-            {
-              "name": "eq",
-              "args": "404"
-            }
-          ]
-        },
-        "free": {
-          "selector": "data.promotion.down_multiplier",
-          "filters": [
-            {
-              "name": "eq",
-              "args": "0"
-            }
-          ]
-        },
-        "peer_count": {
-          "selector": "data.leechers"
-        }
+     "selector": "uuid",
+     "filters": [
+      {
+       "name": "append_left",
+       "args": "/torrent/"
       }
+     ]
     },
-    "get_security_info": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/me",
-      "tags": [
-        "user_profile"
-      ],
-      "fields": {
-        "passkey": {
-          "selector": "data.passkey"
-        }
+    "download": {
+     "selector": "uuid",
+     "filters": [
+      {
+       "name": "append_left",
+       "args": "/api/torrent/"
+      },
+      {
+       "name": "append_right",
+       "args": "/download/{passkey}"
       }
+     ]
     },
-    "sign_in": {
-      "parser": "JsonPath",
-      "method": "POST",
-      "path": "/api/points/attendance",
-      "body": {
-        "mode": "fixed"
-      },
-      "success_status_codes": [
-        200,
-        400
-      ],
-      "fields": {
-        "signed_in": {
-          "selector": "message",
-          "filters": [
-            {
-              "name": "constant",
-              "args": "true"
-            }
-          ]
-        },
-        "message": {
-          "selector": "message"
-        },
-        "code": {
-          "selector": "code"
-        }
-      }
+    "size": {
+     "selector": "size"
     },
-    "notice": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/announcements/latest",
-      "params": {
-        "limit": [
-          "3"
-        ]
-      },
-      "list": {
-        "selector": "data"
-      },
-      "fields": {
-        "id": {
-          "selector": "id"
-        },
-        "title": {
-          "selector": "title"
-        },
-        "content": {
-          "selector": "content"
-        },
-        "date": {
-          "selector": "created_at"
-        },
-        "sender": {
-          "selector": "author.username"
-        },
-        "link": {
-          "selector": "id",
-          "filters": [
-            {
-              "name": "append_left",
-              "args": "/announcements/"
-            }
-          ]
-        }
-      }
+    "grabs": {
+     "selector": "downloads"
     },
-    "messages": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/messages",
-      "params": {
-        "page": [
-          "{page}"
-        ],
-        "page_size": [
-          "20"
-        ]
-      },
-      "list": {
-        "selector": "data.messages"
-      },
-      "fields": {
-        "id": {
-          "selector": "id"
-        },
-        "title": {
-          "selector": "title"
-        },
-        "content": {
-          "selector": "content"
-        },
-        "sender": {
-          "selector": "sender.username"
-        },
-        "date": {
-          "selector": "created_at"
-        },
-        "link": {
-          "selector": "id",
-          "filters": [
-            {
-              "name": "append_left",
-              "args": "/messages/"
-            }
-          ]
-        }
-      }
+    "seeders": {
+     "selector": "seeders"
     },
-    "seeding_statistics": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/me",
-      "fields": {
-        "seeding_count": {
-          "selector": "data.seeding_leeching_data.seeding_count"
-        },
-        "seeding_size": {
-          "selector": "data.seeding_leeching_data.seeding_size"
-        },
-        "leeching_count": {
-          "selector": "data.seeding_leeching_data.leeching_count"
-        }
+    "leechers": {
+     "selector": "leechers"
+    },
+    "date_added": {
+     "selector": "created_at",
+     "filters": [
+      {
+       "name": "timestamp",
+       "args": [
+        "2006-01-02T15:04:05.999999-07:00",
+        "2006-01-02T15:04:05-07:00",
+        "2006-01-02T15:04:05.999Z"
+       ]
       }
+     ]
+    },
+    "downloadvolumefactor": {
+     "selector": "promotion.down_multiplier"
+    },
+    "uploadvolumefactor": {
+     "selector": "promotion.up_multiplier"
+    },
+    "description": {
+     "selector": "subtitle"
+    },
+    "imdb_id": {
+     "selector": "attributes.imdb_id"
     }
+   }
+  },
+  "user_basic_info": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/me",
+   "fields": {
+    "is_login": {
+     "selector": "code",
+     "filters": [
+      {
+       "name": "eq",
+       "args": "0"
+      }
+     ]
+    },
+    "id": {
+     "selector": "data.stats.username"
+    },
+    "name": {
+     "selector": "data.stats.username"
+    },
+    "uploaded": {
+     "selector": "data.stats.uploaded",
+     "filters": [
+      {
+       "name": "byte_size"
+      }
+     ]
+    },
+    "downloaded": {
+     "selector": "data.stats.downloaded",
+     "filters": [
+      {
+       "name": "byte_size"
+      }
+     ]
+    },
+    "bonus": {
+     "selector": "data.stats.karma"
+    },
+    "seeding_count": {
+     "selector": "data.seeding_leeching_data.seeding_count"
+    },
+    "leeching_count": {
+     "selector": "data.seeding_leeching_data.leeching_count"
+    }
+   }
+  },
+  "user_details": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/user/{userId}",
+   "disabled_extends": {
+    "headers": true,
+    "list": true
+   },
+   "fields": {
+    "id": {
+     "selector": "data.username"
+    },
+    "name": {
+     "selector": "data.username"
+    },
+    "level": {
+     "selector": "data.level"
+    },
+    "level_id": {
+     "selector": "data.level"
+    },
+    "join_at": {
+     "selector": "data.created_at",
+     "filters": [
+      {
+       "name": "timestamp",
+       "args": [
+        "2006-01-02T15:04:05-07:00",
+        "2006-01-02T15:04:05.999999-07:00"
+       ]
+      }
+     ]
+    },
+    "join_date": {
+     "selector": "data.created_at",
+     "filters": [
+      {
+       "name": "timestamp",
+       "args": [
+        "2006-01-02T15:04:05-07:00",
+        "2006-01-02T15:04:05.999999-07:00"
+       ]
+      }
+     ]
+    },
+    "last_accessed": {
+     "selector": "data.last_active_at",
+     "filters": [
+      {
+       "name": "timestamp",
+       "args": [
+        "2006-01-02T15:04:05-07:00",
+        "2006-01-02T15:04:05.999999-07:00"
+       ]
+      }
+     ]
+    },
+    "last_seen": {
+     "selector": "data.last_active_at",
+     "filters": [
+      {
+       "name": "timestamp",
+       "args": [
+        "2006-01-02T15:04:05-07:00",
+        "2006-01-02T15:04:05.999999-07:00"
+       ]
+      }
+     ]
+    },
+    "uploaded_total": {
+     "selector": "data.uploaded"
+    },
+    "downloaded_total": {
+     "selector": "data.downloaded"
+    },
+    "ratio": {
+     "selector": "data.ratio"
+    },
+    "bonus": {
+     "selector": "data.karma"
+    },
+    "seeding_count": {
+     "selector": "data.seeding_count"
+    },
+    "seeding_size": {
+     "selector": "data.seeding_detail.volume",
+     "filters": [
+      {
+       "name": "append_right",
+       "args": " TiB"
+      },
+      {
+       "name": "byte_size"
+      }
+     ]
+    }
+   }
+  },
+  "seeding_size": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/me",
+   "disabled_extends": {
+    "headers": true,
+    "list": true
+   },
+   "fields": {
+    "size": {
+     "selector": "data.seeding_leeching_data.seeding_size",
+     "filters": [
+      {
+       "name": "byte_size"
+      }
+     ]
+    }
+   }
+  },
+  "seeding_count": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/me",
+   "disabled_extends": {
+    "headers": true,
+    "list": true
+   },
+   "fields": {
+    "count": {
+     "selector": "data.seeding_leeching_data.seeding_count"
+    }
+   }
+  },
+  "details": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/torrent/{id}",
+   "success_status_codes": [
+    200,
+    404
+   ],
+   "fields": {
+    "absent": {
+     "selector": "code",
+     "filters": [
+      {
+       "name": "eq",
+       "args": "404"
+      }
+     ]
+    },
+    "free": {
+     "selector": "data.promotion.down_multiplier",
+     "filters": [
+      {
+       "name": "eq",
+       "args": "0"
+      }
+     ]
+    },
+    "peer_count": {
+     "selector": "data.leechers"
+    }
+   }
+  },
+  "get_security_info": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/me",
+   "tags": [
+    "user_profile"
+   ],
+   "fields": {
+    "passkey": {
+     "selector": "data.passkey"
+    }
+   }
+  },
+  "sign_in": {
+   "parser": "JsonPath",
+   "method": "POST",
+   "path": "/api/points/attendance",
+   "use_api": true,
+   "required_headers": [
+    "Authorization"
+   ],
+   "body": {
+    "mode": "fixed"
+   },
+   "success_status_codes": [
+    200,
+    400
+   ],
+   "fields": {
+    "signed_in": {
+     "selector": "message",
+     "filters": [
+      {
+       "name": "regex",
+       "args": "(签到成功|今日已签到|已签到)"
+      }
+     ]
+    },
+    "message": {
+     "selector": "message"
+    },
+    "code": {
+     "selector": "code"
+    }
+   }
+  },
+  "notice": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/announcements/latest",
+   "params": {
+    "limit": [
+     "3"
+    ]
+   },
+   "list": {
+    "selector": "data"
+   },
+   "fields": {
+    "id": {
+     "selector": "id"
+    },
+    "title": {
+     "selector": "title"
+    },
+    "content": {
+     "selector": "content"
+    },
+    "date": {
+     "selector": "created_at"
+    },
+    "sender": {
+     "selector": "author.username"
+    },
+    "link": {
+     "selector": "id",
+     "filters": [
+      {
+       "name": "append_left",
+       "args": "/announcements/"
+      }
+     ]
+    }
+   }
+  },
+  "messages": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/messages",
+   "params": {
+    "page": [
+     "{page}"
+    ],
+    "page_size": [
+     "20"
+    ]
+   },
+   "list": {
+    "selector": "data.messages"
+   },
+   "fields": {
+    "id": {
+     "selector": "id"
+    },
+    "title": {
+     "selector": "title"
+    },
+    "content": {
+     "selector": "content"
+    },
+    "sender": {
+     "selector": "sender.username"
+    },
+    "date": {
+     "selector": "created_at"
+    },
+    "link": {
+     "selector": "id",
+     "filters": [
+      {
+       "name": "append_left",
+       "args": "/messages/"
+      }
+     ]
+    }
+   }
+  },
+  "seeding_statistics": {
+   "parser": "JsonPath",
+   "method": "GET",
+   "path": "/api/me",
+   "fields": {
+    "seeding_count": {
+     "selector": "data.seeding_leeching_data.seeding_count"
+    },
+    "seeding_size": {
+     "selector": "data.seeding_leeching_data.seeding_size"
+    },
+    "leeching_count": {
+     "selector": "data.seeding_leeching_data.leeching_count"
+    }
+   }
   }
+ },
+ "api": "https://rousi.pro"
 }
