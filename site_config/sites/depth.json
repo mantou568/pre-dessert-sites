@@ -247,6 +247,34 @@
           "selector": "//*[contains(concat(' ',normalize-space(@class),' '),' color_ratio ')][1]/following-sibling::*[1]/text() | //*[contains(concat(' ',normalize-space(@class),' '),' color_ratio ')][1]/following-sibling::text()[1]",
           "filters": [
             {
+              "name": "replace",
+              "args": [
+                "无限",
+                "0"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "∞",
+                "0"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "Inf",
+                "0"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            },
+            {
               "name": "strip"
             }
           ]
