@@ -327,6 +327,24 @@
               ]
             }
           ]
+        },
+        "is_login": {
+          "selector": "//a[contains(@href,'logout.php')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "signed_in": {
+          "selector": "//body",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(签到成功|已签到|今日已签到|已经签到|点击签到|attendance.php)"
+            }
+          ]
         }
       }
     },
@@ -418,6 +436,30 @@
             },
             {
               "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
+    "sign_in": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/attendance.php",
+      "success_status_codes": [
+        200,
+        302
+      ],
+      "headers": {
+        "Referer": "{domain}/"
+      },
+      "fields": {
+        "signed_in": {
+          "selector": "//body",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(签到成功|已签到|今日已签到|已经签到|重复签到|请不要重复签到|已连续签到|本次签到获得|今日签到排名)"
             }
           ]
         }
