@@ -342,7 +342,7 @@
           "filters": [
             {
               "name": "regex",
-              "args": "(签到成功|已签到|今日已签到|已经签到|点击签到|attendance.php)"
+              "args": "(签到成功|今日已签到|已经签到|重复签到|请不要重复签到|已连续签到|本次签到获得|今日签到排名)"
             }
           ]
         }
@@ -443,14 +443,15 @@
     },
     "sign_in": {
       "parser": "XPath",
-      "method": "GET",
+      "method": "POST",
       "path": "/attendance.php",
       "success_status_codes": [
         200,
         302
       ],
       "headers": {
-        "Referer": "{domain}/"
+        "Referer": "{domain}/attendance.php",
+        "Origin": "{domain}"
       },
       "fields": {
         "signed_in": {
@@ -459,11 +460,12 @@
           "filters": [
             {
               "name": "regex",
-              "args": "(签到成功|已签到|今日已签到|已经签到|重复签到|请不要重复签到|已连续签到|本次签到获得|今日签到排名)"
+              "args": "(签到成功|今日已签到|已经签到|重复签到|请不要重复签到|已连续签到|本次签到获得|今日签到排名)"
             }
           ]
         }
-      }
+      },
+      "form_data": {}
     }
   },
   "my_hr": {
