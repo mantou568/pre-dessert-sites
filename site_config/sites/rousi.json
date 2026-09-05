@@ -6,7 +6,7 @@
   "schema": "rousi",
   "reuse_schema": "NexusPHP",
   "required": {
-    "cookie": false,
+    "cookie": true,
     "sign_in": true
   },
   "meta": {
@@ -30,7 +30,7 @@
       },
       {
         "id": "animation",
-        "cat": "TV",
+        "cat": "Animation",
         "desc": "动画"
       },
       {
@@ -47,61 +47,58 @@
     "search": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/torrent/search",
+      "path": "/api/v1/torrents",
       "params": {
-        "page": [
-          "{page}"
-        ],
-        "page_size": [
-          "100"
-        ],
-        "sort": [
-          "created_at DESC"
-        ],
         "query": [
-          "{keyword}"
+          "{keyword} "
+        ],
+        "limit": [
+          "50"
+        ],
+        "offset": [
+          "0"
         ]
       },
       "list": {
-        "selector": "data.torrents"
+        "selector": "items"
       },
       "fields": {
         "id": {
-          "selector": "uuid"
+          "selector": "id"
         },
         "category": {
-          "selector": "type"
+          "selector": "category.id"
         },
         "title": {
-          "selector": "title"
+          "selector": "name"
         },
         "details": {
-          "selector": "uuid",
+          "selector": "id",
           "filters": [
             {
               "name": "append_left",
-              "args": "/torrent/"
+              "args": "/torrents/"
             }
           ]
         },
         "download": {
-          "selector": "uuid",
+          "selector": "id",
           "filters": [
             {
               "name": "append_left",
-              "args": "/api/torrent/"
+              "args": "/api/v1/torrents/"
             },
             {
               "name": "append_right",
-              "args": "/download/{passkey}"
+              "args": "/download"
             }
           ]
         },
         "size": {
-          "selector": "size"
+          "selector": "size_bytes"
         },
         "grabs": {
-          "selector": "downloads"
+          "selector": "completed"
         },
         "seeders": {
           "selector": "seeders"
@@ -110,181 +107,192 @@
           "selector": "leechers"
         },
         "date_added": {
-          "selector": "created_at",
+          "selector": "uploaded_at",
           "filters": [
             {
               "name": "timestamp",
               "args": [
+                "2006-01-02T15:04:05.999999Z07:00",
+                "2006-01-02T15:04:05Z07:00",
                 "2006-01-02T15:04:05.999999-07:00",
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999Z"
+                "2006-01-02T15:04:05-07:00"
               ]
             }
           ]
         },
         "downloadvolumefactor": {
-          "selector": "promotion.down_multiplier"
+          "selector": "promotion",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
         },
         "uploadvolumefactor": {
-          "selector": "promotion.up_multiplier"
+          "selector": "promotion",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1"
+            }
+          ]
         },
         "description": {
           "selector": "subtitle"
         },
-        "imdb_id": {
-          "selector": "attributes.imdb_id"
+        "cover": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://rousi.pro/api/v1/torrents/"
+            },
+            {
+              "name": "append_right",
+              "args": "/cover"
+            }
+          ]
+        },
+        "poster": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://rousi.pro/api/v1/torrents/"
+            },
+            {
+              "name": "append_right",
+              "args": "/cover"
+            }
+          ]
         }
       }
     },
     "user_basic_info": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/me",
+      "path": "/api/v1/me/traffic",
       "fields": {
         "is_login": {
-          "selector": "code",
-          "filters": [
-            {
-              "name": "eq",
-              "args": "0"
-            }
-          ]
-        },
-        "id": {
-          "selector": "data.stats.username"
-        },
-        "name": {
-          "selector": "data.stats.username"
-        },
-        "uploaded": {
-          "selector": "data.stats.uploaded",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        },
-        "downloaded": {
-          "selector": "data.stats.downloaded",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        },
-        "bonus": {
-          "selector": "data.stats.karma"
-        },
-        "seeding_count": {
-          "selector": "data.seeding_leeching_data.seeding_count"
-        },
-        "leeching_count": {
-          "selector": "data.seeding_leeching_data.leeching_count"
-        },
-        "signed_in": {
-          "selector": "code",
+          "selector": "totals.projection_updated_at",
           "filters": [
             {
               "name": "constant",
               "args": "true"
             }
           ]
+        },
+        "id": {
+          "selector": "totals.projection_updated_at",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "xiaojunxiang"
+            }
+          ]
+        },
+        "name": {
+          "selector": "totals.projection_updated_at",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "xiaojunxiang"
+            }
+          ]
+        },
+        "uploaded": {
+          "selector": "totals.credited_uploaded_bytes"
+        },
+        "downloaded": {
+          "selector": "totals.charged_downloaded_bytes"
+        },
+        "signed_in": {
+          "selector": "totals.projection_updated_at",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "true"
+            }
+          ]
+        },
+        "bonus": {
+          "selector": "magic_balance"
         }
       }
     },
     "user_details": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/user/{userId}",
+      "path": "/api/v1/me/economy",
       "disabled_extends": {
         "headers": true,
         "list": true
       },
       "fields": {
         "id": {
-          "selector": "data.username"
-        },
-        "name": {
-          "selector": "data.username"
-        },
-        "level": {
-          "selector": "data.level"
-        },
-        "level_id": {
-          "selector": "data.level"
-        },
-        "join_at": {
-          "selector": "data.created_at",
+          "selector": "magic_updated_at",
           "filters": [
             {
-              "name": "timestamp",
-              "args": [
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999999-07:00"
-              ]
+              "name": "constant",
+              "args": "xiaojunxiang"
+            }
+          ]
+        },
+        "name": {
+          "selector": "magic_updated_at",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "xiaojunxiang"
+            }
+          ]
+        },
+        "join_at": {
+          "selector": "magic_updated_at",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "1735481616"
             }
           ]
         },
         "join_date": {
-          "selector": "data.created_at",
+          "selector": "magic_updated_at",
           "filters": [
             {
-              "name": "timestamp",
-              "args": [
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999999-07:00"
-              ]
+              "name": "constant",
+              "args": "1735481616"
             }
           ]
         },
+        "level": {
+          "selector": "progress.level"
+        },
+        "level_id": {
+          "selector": "progress.level"
+        },
         "last_accessed": {
-          "selector": "data.last_active_at",
+          "selector": "totals.last_settled_at",
           "filters": [
             {
               "name": "timestamp",
               "args": [
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999999-07:00"
+                "2006-01-02T15:04:05.999999Z07:00",
+                "2006-01-02T15:04:05Z07:00"
               ]
             }
           ]
         },
         "last_seen": {
-          "selector": "data.last_active_at",
+          "selector": "totals.last_settled_at",
           "filters": [
             {
               "name": "timestamp",
               "args": [
-                "2006-01-02T15:04:05-07:00",
-                "2006-01-02T15:04:05.999999-07:00"
+                "2006-01-02T15:04:05.999999Z07:00",
+                "2006-01-02T15:04:05Z07:00"
               ]
-            }
-          ]
-        },
-        "uploaded_total": {
-          "selector": "data.uploaded"
-        },
-        "downloaded_total": {
-          "selector": "data.downloaded"
-        },
-        "ratio": {
-          "selector": "data.ratio"
-        },
-        "bonus": {
-          "selector": "data.karma"
-        },
-        "seeding_count": {
-          "selector": "data.seeding_count"
-        },
-        "seeding_size": {
-          "selector": "data.seeding_detail.volume",
-          "filters": [
-            {
-              "name": "append_right",
-              "args": " TiB"
-            },
-            {
-              "name": "byte_size"
             }
           ]
         }
@@ -293,65 +301,82 @@
     "seeding_size": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/me",
+      "path": "/api/v1/me/traffic",
       "disabled_extends": {
         "headers": true,
         "list": true
       },
       "fields": {
         "size": {
-          "selector": "data.seeding_leeching_data.seeding_size",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
+          "selector": "torrent_activity[0].total_size_bytes"
         }
       }
     },
     "seeding_count": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/me",
+      "path": "/api/v1/me/traffic",
       "disabled_extends": {
         "headers": true,
         "list": true
       },
-      "fields": {
-        "count": {
-          "selector": "data.seeding_leeching_data.seeding_count"
-        }
-      }
+      "fields": {}
     },
     "details": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/torrent/{id}",
+      "path": "/api/v1/torrents/{id}",
       "success_status_codes": [
         200,
         404
       ],
       "fields": {
         "absent": {
-          "selector": "code",
+          "selector": "id",
           "filters": [
             {
-              "name": "eq",
-              "args": "404"
+              "name": "constant",
+              "args": "false"
             }
           ]
         },
         "free": {
-          "selector": "data.promotion.down_multiplier",
+          "selector": "promotion",
           "filters": [
             {
               "name": "eq",
-              "args": "0"
+              "args": "free"
             }
           ]
         },
         "peer_count": {
-          "selector": "data.leechers"
+          "selector": "seeders"
+        },
+        "cover": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://rousi.pro/api/v1/torrents/"
+            },
+            {
+              "name": "append_right",
+              "args": "/cover"
+            }
+          ]
+        },
+        "poster": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://rousi.pro/api/v1/torrents/"
+            },
+            {
+              "name": "append_right",
+              "args": "/cover"
+            }
+          ]
         }
       }
     },
@@ -366,22 +391,21 @@
         "passkey": {
           "selector": "data.passkey"
         }
-      }
+      },
+      "disabled": true
     },
     "sign_in": {
       "parser": "JsonPath",
       "method": "POST",
-      "path": "/api/points/attendance",
-      "body": {
-        "mode": "fixed"
-      },
+      "path": "/api/v1/me/attendance",
       "success_status_codes": [
         200,
-        400
+        400,
+        409
       ],
       "fields": {
         "signed_in": {
-          "selector": "message",
+          "selector": "claimed_today",
           "filters": [
             {
               "name": "constant",
@@ -390,24 +414,33 @@
           ]
         },
         "message": {
-          "selector": "message"
+          "selector": "today"
         },
         "code": {
-          "selector": "code"
+          "selector": "today",
+          "filters": [
+            {
+              "name": "constant",
+              "args": "0"
+            }
+          ]
         }
       }
     },
     "notice": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/announcements/latest",
+      "path": "/api/v1/announcements",
       "params": {
         "limit": [
           "3"
+        ],
+        "offset": [
+          "0"
         ]
       },
       "list": {
-        "selector": "data"
+        "selector": "items"
       },
       "fields": {
         "id": {
@@ -417,13 +450,13 @@
           "selector": "title"
         },
         "content": {
-          "selector": "content"
+          "selector": "body"
         },
         "date": {
-          "selector": "created_at"
+          "selector": "published_at"
         },
         "sender": {
-          "selector": "author.username"
+          "selector": "author_display_name"
         },
         "link": {
           "selector": "id",
@@ -439,17 +472,17 @@
     "messages": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/messages",
+      "path": "/api/v1/me/notifications",
       "params": {
-        "page": [
-          "{page}"
-        ],
-        "page_size": [
+        "limit": [
           "20"
+        ],
+        "offset": [
+          "0"
         ]
       },
       "list": {
-        "selector": "data.messages"
+        "selector": "items"
       },
       "fields": {
         "id": {
@@ -459,20 +492,29 @@
           "selector": "title"
         },
         "content": {
-          "selector": "content"
+          "selector": "body"
         },
         "sender": {
           "selector": "sender.username"
         },
         "date": {
-          "selector": "created_at"
+          "selector": "created_at",
+          "filters": [
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02T15:04:05.999999Z07:00",
+                "2006-01-02T15:04:05Z07:00"
+              ]
+            }
+          ]
         },
         "link": {
           "selector": "id",
           "filters": [
             {
               "name": "append_left",
-              "args": "/messages/"
+              "args": "/notifications/"
             }
           ]
         }
@@ -481,16 +523,29 @@
     "seeding_statistics": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/me",
+      "path": "/api/v1/me/traffic",
       "fields": {
-        "seeding_count": {
-          "selector": "data.seeding_leeching_data.seeding_count"
-        },
         "seeding_size": {
-          "selector": "data.seeding_leeching_data.seeding_size"
+          "selector": "torrent_activity[0].total_size_bytes"
+        }
+      }
+    },
+    "site_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/site",
+      "fields": {
+        "name": {
+          "selector": "name"
         },
-        "leeching_count": {
-          "selector": "data.seeding_leeching_data.leeching_count"
+        "description": {
+          "selector": "description"
+        },
+        "online_users": {
+          "selector": "online_users"
+        },
+        "registration_mode": {
+          "selector": "registration_mode"
         }
       }
     }
