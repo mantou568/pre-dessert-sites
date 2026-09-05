@@ -247,6 +247,34 @@
           "selector": "//*[contains(concat(' ',normalize-space(@class),' '),' color_ratio ')][1]/following-sibling::*[1]/text() | //*[contains(concat(' ',normalize-space(@class),' '),' color_ratio ')][1]/following-sibling::text()[1]",
           "filters": [
             {
+              "name": "replace",
+              "args": [
+                "无限",
+                "0"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "∞",
+                "0"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                "Inf",
+                "0"
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            },
+            {
               "name": "strip"
             }
           ]
@@ -297,6 +325,24 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        "is_login": {
+          "selector": "//a[contains(@href,'logout.php')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "signed_in": {
+          "selector": "//body",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(签到成功|今日已签到|已经签到|重复签到|请不要重复签到|已连续签到|本次签到获得|今日签到排名)"
             }
           ]
         }
@@ -394,6 +440,32 @@
           ]
         }
       }
+    },
+    "sign_in": {
+      "parser": "XPath",
+      "method": "POST",
+      "path": "/attendance.php",
+      "success_status_codes": [
+        200,
+        302
+      ],
+      "headers": {
+        "Referer": "{domain}/attendance.php",
+        "Origin": "{domain}"
+      },
+      "fields": {
+        "signed_in": {
+          "selector": "//body",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(签到成功|今日已签到|已经签到|重复签到|请不要重复签到|已连续签到|本次签到获得|今日签到排名)"
+            }
+          ]
+        }
+      },
+      "form_data": {}
     }
   },
   "my_hr": {
