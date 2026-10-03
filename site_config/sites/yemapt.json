@@ -193,6 +193,14 @@
         },
         "bonus": {
           "selector": "data.bonus"
+        },
+        "is_login": {
+          "selector": "data.id",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
         }
       }
     },

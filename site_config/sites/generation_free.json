@@ -17,16 +17,40 @@
   },
   "category": {
     "movie": [
-      { "id": 1, "cat": "Movies", "desc": "Films" }
+      {
+        "id": 1,
+        "cat": "Movies",
+        "desc": "Films"
+      }
     ],
     "tv": [
-      { "id": 2, "cat": "TV", "desc": "Séries" }
+      {
+        "id": 2,
+        "cat": "TV",
+        "desc": "Séries"
+      }
     ],
     "other": [
-      { "id": 3, "cat": "Other", "desc": "Ebook" },
-      { "id": 4, "cat": "Other", "desc": "Jeux" },
-      { "id": 5, "cat": "Other", "desc": "Logiciel" },
-      { "id": 6, "cat": "Other", "desc": "Musique" }
+      {
+        "id": 3,
+        "cat": "Other",
+        "desc": "Ebook"
+      },
+      {
+        "id": 4,
+        "cat": "Other",
+        "desc": "Jeux"
+      },
+      {
+        "id": 5,
+        "cat": "Other",
+        "desc": "Logiciel"
+      },
+      {
+        "id": 6,
+        "cat": "Other",
+        "desc": "Musique"
+      }
     ]
   },
   "requests": {
@@ -42,41 +66,111 @@
       "fields": {
         "is_login": {
           "selector": "//a[contains(@class,'top-nav__username--highresolution')]",
-          "filters": [{ "name": "not_blank" }]
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
         },
         "id": {
           "selector": "//a[contains(@class,'top-nav__username--highresolution')]/@href",
-          "filters": [{ "name": "re_search", "args": ["/users/([^/]+)", 1] }]
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "/users/([^/]+)",
+                1
+              ]
+            }
+          ]
         },
         "name": {
           "selector": "//a[contains(@class,'top-nav__username--highresolution')]/span/text()",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
         },
         "uploaded": {
           "selector": "//li[contains(@class, 'ratio-bar__uploaded')]/a/text()",
           "filters": [
-            { "name": "replace", "args": ["\u00a0", " "] },
-            { "name": "byte_size" }
+            {
+              "name": "replace",
+              "args": [
+                " ",
+                " "
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
           ]
         },
         "downloaded": {
           "selector": "//li[contains(@class, 'ratio-bar__downloaded')]/a/text()",
           "filters": [
-            { "name": "replace", "args": ["\u00a0", " "] },
-            { "name": "byte_size" }
+            {
+              "name": "replace",
+              "args": [
+                " ",
+                " "
+              ]
+            },
+            {
+              "name": "byte_size"
+            }
           ]
         },
         "ratio": {
           "selector": "//li[contains(@class, 'ratio-bar__ratio')]/a/text()",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
         },
         "bonus": {
           "selector": "//li[contains(@class,'ratio-bar__points')]/a//text()",
           "filters": [
-            { "name": "replace", "args": ["\u202f", ""] },
-            { "name": "replace", "args": [" ", ""] },
-            { "name": "replace", "args": [",", ""] },
-            { "name": "strip" }
+            {
+              "name": "strip"
+            },
+            {
+              "name": "replace",
+              "args": [
+                " ",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                " ",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                " ",
+                ""
+              ]
+            },
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            },
+            {
+              "name": "re_search",
+              "args": [
+                "([\\d.]+)",
+                1
+              ]
+            }
           ]
         }
       }
@@ -92,13 +186,28 @@
         "join_at": {
           "selector": "//time[contains(@class, 'profile__registration')]/@title",
           "filters": [
-            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2})", 1] },
-            { "name": "timestamp", "args": ["2006-01-02"] }
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}-\\d{2}-\\d{2})",
+                1
+              ]
+            },
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02"
+              ]
+            }
           ]
         },
         "last_accessed": {
           "selector": "//dt[contains(text(),'上次登录时间')]/following-sibling::dd[1]/time/@datetime",
-          "filters": [{ "name": "timestamp" }]
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
         }
       }
     },
@@ -106,21 +215,41 @@
       "parser": "XPath",
       "method": "GET",
       "path": "/users/{userId}",
-      "disabled_extends": { "list": true },
+      "disabled_extends": {
+        "list": true
+      },
       "fields": {
         "count": {
           "selector": "//dt[contains(.,'总做种数量')]/following-sibling::dd[1]/text()",
           "filters": [
-            { "name": "replace", "args": [",", ""] },
-            { "name": "strip" }
+            {
+              "name": "replace",
+              "args": [
+                ",",
+                ""
+              ]
+            },
+            {
+              "name": "strip"
+            }
           ]
         },
         "size": {
           "selector": "//dt[contains(.,'做种体积')]/following-sibling::dd[1]/text()",
           "filters": [
-            { "name": "replace", "args": ["\u00a0", " "] },
-            { "name": "strip" },
-            { "name": "byte_size" }
+            {
+              "name": "replace",
+              "args": [
+                " ",
+                " "
+              ]
+            },
+            {
+              "name": "strip"
+            },
+            {
+              "name": "byte_size"
+            }
           ]
         }
       }
@@ -129,25 +258,56 @@
       "parser": "XPath",
       "method": "GET",
       "path": "/users/{userId}/conversations",
-      "list": { "selector": "//table[contains(@class, 'data-table')]/tbody/tr" },
+      "list": {
+        "selector": "//table[contains(@class, 'data-table')]/tbody/tr"
+      },
       "fields": {
-        "title": { "selector": "./td[2]/a", "filters": [{ "name": "strip" }] },
-        "link": { "selector": "./td[2]/a/@href" },
+        "title": {
+          "selector": "./td[2]/a",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "link": {
+          "selector": "./td[2]/a/@href"
+        },
         "id": {
           "selector": "./td[2]/a/@href",
-          "filters": [{ "name": "re_search", "args": ["/conversations/(\\d+)", 1] }]
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "/conversations/(\\d+)",
+                1
+              ]
+            }
+          ]
         },
         "sender": {
           "selector": "./td[1]//span[contains(@class, 'user-tag')]/a",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
         },
         "date": {
           "selector": "./td[3]/time/@title",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
         },
         "unread": {
           "selector": "./td[5]/i[not(contains(@class, 'text-green'))]",
-          "filters": [{ "name": "not_blank" }]
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
         }
       }
     },
@@ -168,14 +328,20 @@
       "fields": {
         "content": {
           "selector": "//div[contains(@class,'message-body')]//div[contains(@class,'col-sm-12')]",
-          "filters": [{ "name": "strip" }]
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
         }
       }
     },
     "search": {
       "path": "torrents?perPage=100&categoryIds[0]=1&categoryIds[1]=2&categoryIds[2]=3&categoryIds[3]=4&categoryIds[4]=5&categoryIds[5]=6",
       "params": {
-        "name": ["{keyword}"]
+        "name": [
+          "{keyword}"
+        ]
       },
       "list": {
         "selector": "table.data-table > tbody > tr[data-torrent-id]"
@@ -185,7 +351,13 @@
           "selector": "a.torrent-search--list__name",
           "attribute": "href",
           "filters": [
-            { "name": "re_search", "args": ["/torrents/(\\d+)", 1] }
+            {
+              "name": "re_search",
+              "args": [
+                "/torrents/(\\d+)",
+                1
+              ]
+            }
           ]
         },
         "title": {
@@ -203,14 +375,23 @@
           "selector": "td.torrent-search--list__age time",
           "attribute": "datetime",
           "filters": [
-            { "name": "strip" },
-            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+            {
+              "name": "strip"
+            },
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05"
+              ]
+            }
           ]
         },
         "size": {
           "selector": "td.torrent-search--list__size > span",
           "filters": [
-            { "name": "byte_size" }
+            {
+              "name": "byte_size"
+            }
           ]
         },
         "seeders": {
