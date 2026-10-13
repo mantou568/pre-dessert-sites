@@ -1,0 +1,264 @@
+{
+  "id": "kele",
+  "name": "可乐",
+  "domain": "https://www.colapt.com",
+  "encoding": "UTF-8",
+  "public": false,
+  "schema": "rousi",
+  "required": {
+    "cookie": true,
+    "sign_in": false
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": false,
+    "has_hr": false
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 1,
+        "cat": "Movies",
+        "desc": "电影"
+      }
+    ],
+    "tv": [
+      {
+        "id": 2,
+        "cat": "TV",
+        "desc": "剧集"
+      }
+    ]
+  },
+  "requests": {
+    "user_basic_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/me",
+      "fields": {
+        "is_login": {
+          "selector": "username",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        },
+        "id": {
+          "selector": "id"
+        },
+        "name": {
+          "selector": "username"
+        }
+      }
+    },
+    "user_details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/users/{userId}/profile",
+      "fields": {
+        "level": {
+          "selector": "level"
+        },
+        "join_at": {
+          "selector": "joined_at",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "last_accessed": {
+          "selector": "last_login_at",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
+    "seeding_size": {
+      "disabled": true
+    },
+    "seeding_count": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/me/stats",
+      "fields": {
+        "count": {
+          "selector": "seeding"
+        }
+      }
+    },
+    "sign_in": {
+      "disabled": true
+    },
+    "search": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/media",
+      "params": {
+        "page": [
+          "1"
+        ],
+        "q": [
+          "{keyword}"
+        ]
+      },
+      "disabled_extends": {
+        "params": true,
+        "fields": true,
+        "field": true
+      },
+      "list": {
+        "selector": "items"
+      },
+      "flat_map_fields": {
+        "selector": "versions",
+        "fields": {
+          "id": {
+            "selector": "id"
+          },
+          "title": {
+            "selector": "release_name"
+          },
+          "size": {
+            "selector": "size_bytes"
+          },
+          "seeders": {
+            "selector": "seeders"
+          },
+          "leechers": {
+            "selector": "leechers"
+          },
+          "grabs": {
+            "selector": "completions"
+          },
+          "date_added": {
+            "selector": "published_at",
+            "filters": [
+              {
+                "name": "timestamp"
+              }
+            ]
+          },
+          "details": {
+            "selector": "id",
+            "filters": [
+              {
+                "name": "append_left",
+                "args": "/torrents/"
+              }
+            ]
+          },
+          "download": {
+            "selector": "id",
+            "filters": [
+              {
+                "name": "append_left",
+                "args": "/torrents/"
+              },
+              {
+                "name": "append_right",
+                "args": "/download"
+              }
+            ]
+          },
+          "description": {
+            "selector": "subtitle"
+          }
+        }
+      },
+      "fields": {
+        "category": {
+          "selector": "media.category"
+        },
+        "description": {
+          "selector": "media.title"
+        },
+        "cover": {
+          "selector": "media.poster_url"
+        },
+        "title": {
+          "selector": "media.title"
+        },
+        "details": {
+          "selector": "media.id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/media/"
+            }
+          ]
+        }
+      },
+      "use_api": true
+    },
+    "notice": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/announcements",
+      "list": {
+        "selector": "items"
+      },
+      "fields": {
+        "title": {
+          "selector": "title"
+        },
+        "content": {
+          "selector": "body"
+        },
+        "date": {
+          "selector": "published_at",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/me/conversations",
+      "list": {
+        "selector": "items"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "title": {
+          "selector": "subject"
+        },
+        "content": {
+          "selector": "last_message.body"
+        },
+        "date": {
+          "selector": "last_message.created_at",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      },
+      "disabled_extends": {
+        "params": true
+      },
+      "params": {
+        "page": [
+          "1"
+        ]
+      }
+    }
+  },
+  "first_page_offset": 1,
+  "search_box": {
+    "fields": []
+  },
+  "reuse_schema": null,
+  "api": "https://www.colapt.com"
+}
