@@ -47,10 +47,14 @@
   "search": {
    "parser": "JsonPath",
    "method": "GET",
-   "path": "/api/torrent/search",
+   "use_api": true,
+   "required_headers": [
+    "Authorization"
+   ],
+   "path": "/api/v1/torrents",
    "params": {
     "page": [
-     "{page}"
+     "1"
     ],
     "page_size": [
      "100"
@@ -58,7 +62,7 @@
     "sort": [
      "created_at DESC"
     ],
-    "query": [
+    "keyword": [
      "{keyword}"
     ]
    },
@@ -70,7 +74,7 @@
      "selector": "uuid"
     },
     "category": {
-     "selector": "type"
+     "selector": "category"
     },
     "title": {
      "selector": "title"
@@ -80,7 +84,7 @@
      "filters": [
       {
        "name": "append_left",
-       "args": "/torrent/"
+       "args": "/torrents/"
       }
      ]
     },
@@ -89,11 +93,11 @@
      "filters": [
       {
        "name": "append_left",
-       "args": "/api/torrent/"
+       "args": "/api/v1/torrents/"
       },
       {
        "name": "append_right",
-       "args": "/download/{passkey}"
+       "args": "/download"
       }
      ]
     },
@@ -139,7 +143,11 @@
   "user_basic_info": {
    "parser": "JsonPath",
    "method": "GET",
-   "path": "/api/me",
+   "use_api": true,
+   "required_headers": [
+    "Authorization"
+   ],
+   "path": "/api/v1/profile",
    "fields": {
     "is_login": {
      "selector": "code",
@@ -151,13 +159,13 @@
      ]
     },
     "id": {
-     "selector": "data.stats.username"
+     "selector": "data.username"
     },
     "name": {
-     "selector": "data.stats.username"
+     "selector": "data.username"
     },
     "uploaded": {
-     "selector": "data.stats.uploaded",
+     "selector": "data.uploaded",
      "filters": [
       {
        "name": "byte_size"
@@ -165,7 +173,7 @@
      ]
     },
     "downloaded": {
-     "selector": "data.stats.downloaded",
+     "selector": "data.downloaded",
      "filters": [
       {
        "name": "byte_size"
@@ -173,7 +181,7 @@
      ]
     },
     "bonus": {
-     "selector": "data.stats.karma"
+     "selector": "data.karma"
     },
     "seeding_count": {
      "selector": "data.seeding_leeching_data.seeding_count"
@@ -184,107 +192,16 @@
    }
   },
   "user_details": {
-   "parser": "JsonPath",
-   "method": "GET",
-   "path": "/api/user/{userId}",
-   "disabled_extends": {
-    "headers": true,
-    "list": true
-   },
-   "fields": {
-    "id": {
-     "selector": "data.username"
-    },
-    "name": {
-     "selector": "data.username"
-    },
-    "level": {
-     "selector": "data.level"
-    },
-    "level_id": {
-     "selector": "data.level"
-    },
-    "join_at": {
-     "selector": "data.created_at",
-     "filters": [
-      {
-       "name": "timestamp",
-       "args": [
-        "2006-01-02T15:04:05-07:00",
-        "2006-01-02T15:04:05.999999-07:00"
-       ]
-      }
-     ]
-    },
-    "join_date": {
-     "selector": "data.created_at",
-     "filters": [
-      {
-       "name": "timestamp",
-       "args": [
-        "2006-01-02T15:04:05-07:00",
-        "2006-01-02T15:04:05.999999-07:00"
-       ]
-      }
-     ]
-    },
-    "last_accessed": {
-     "selector": "data.last_active_at",
-     "filters": [
-      {
-       "name": "timestamp",
-       "args": [
-        "2006-01-02T15:04:05-07:00",
-        "2006-01-02T15:04:05.999999-07:00"
-       ]
-      }
-     ]
-    },
-    "last_seen": {
-     "selector": "data.last_active_at",
-     "filters": [
-      {
-       "name": "timestamp",
-       "args": [
-        "2006-01-02T15:04:05-07:00",
-        "2006-01-02T15:04:05.999999-07:00"
-       ]
-      }
-     ]
-    },
-    "uploaded_total": {
-     "selector": "data.uploaded"
-    },
-    "downloaded_total": {
-     "selector": "data.downloaded"
-    },
-    "ratio": {
-     "selector": "data.ratio"
-    },
-    "bonus": {
-     "selector": "data.karma"
-    },
-    "seeding_count": {
-     "selector": "data.seeding_count"
-    },
-    "seeding_size": {
-     "selector": "data.seeding_detail.volume",
-     "filters": [
-      {
-       "name": "append_right",
-       "args": " TiB"
-      },
-      {
-       "name": "byte_size"
-      }
-     ]
-    }
-   }
+   "disabled": true
   },
   "seeding_size": {
    "parser": "JsonPath",
    "method": "GET",
-   "path": "/api/me",
+   "use_api": true,
+   "required_headers": [
+    "Authorization"
+   ],
+   "path": "/api/v1/profile",
    "disabled_extends": {
     "headers": true,
     "list": true
@@ -303,7 +220,11 @@
   "seeding_count": {
    "parser": "JsonPath",
    "method": "GET",
-   "path": "/api/me",
+   "use_api": true,
+   "required_headers": [
+    "Authorization"
+   ],
+   "path": "/api/v1/profile",
    "disabled_extends": {
     "headers": true,
     "list": true
@@ -317,7 +238,11 @@
   "details": {
    "parser": "JsonPath",
    "method": "GET",
-   "path": "/api/torrent/{id}",
+   "use_api": true,
+   "required_headers": [
+    "Authorization"
+   ],
+   "path": "/api/v1/torrents/{id}",
    "success_status_codes": [
     200,
     404
@@ -347,26 +272,16 @@
    }
   },
   "get_security_info": {
-   "parser": "JsonPath",
-   "method": "GET",
-   "path": "/api/me",
-   "tags": [
-    "user_profile"
-   ],
-   "fields": {
-    "passkey": {
-     "selector": "data.passkey"
-    }
-   }
+   "disabled": true
   },
   "sign_in": {
    "parser": "JsonPath",
    "method": "POST",
-   "path": "/api/points/attendance",
    "use_api": true,
    "required_headers": [
     "Authorization"
    ],
+   "path": "/api/points/attendance",
    "body": {
     "mode": "fixed"
    },
@@ -393,90 +308,19 @@
    }
   },
   "notice": {
-   "parser": "JsonPath",
-   "method": "GET",
-   "path": "/api/announcements/latest",
-   "params": {
-    "limit": [
-     "3"
-    ]
-   },
-   "list": {
-    "selector": "data"
-   },
-   "fields": {
-    "id": {
-     "selector": "id"
-    },
-    "title": {
-     "selector": "title"
-    },
-    "content": {
-     "selector": "content"
-    },
-    "date": {
-     "selector": "created_at"
-    },
-    "sender": {
-     "selector": "author.username"
-    },
-    "link": {
-     "selector": "id",
-     "filters": [
-      {
-       "name": "append_left",
-       "args": "/announcements/"
-      }
-     ]
-    }
-   }
+   "disabled": true
   },
   "messages": {
-   "parser": "JsonPath",
-   "method": "GET",
-   "path": "/api/messages",
-   "params": {
-    "page": [
-     "{page}"
-    ],
-    "page_size": [
-     "20"
-    ]
-   },
-   "list": {
-    "selector": "data.messages"
-   },
-   "fields": {
-    "id": {
-     "selector": "id"
-    },
-    "title": {
-     "selector": "title"
-    },
-    "content": {
-     "selector": "content"
-    },
-    "sender": {
-     "selector": "sender.username"
-    },
-    "date": {
-     "selector": "created_at"
-    },
-    "link": {
-     "selector": "id",
-     "filters": [
-      {
-       "name": "append_left",
-       "args": "/messages/"
-      }
-     ]
-    }
-   }
+   "disabled": true
   },
   "seeding_statistics": {
    "parser": "JsonPath",
    "method": "GET",
-   "path": "/api/me",
+   "use_api": true,
+   "required_headers": [
+    "Authorization"
+   ],
+   "path": "/api/v1/profile",
    "fields": {
     "seeding_count": {
      "selector": "data.seeding_leeching_data.seeding_count"

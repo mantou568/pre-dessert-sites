@@ -2,7 +2,9 @@
   "id": "pterclub",
   "name": "猫站",
   "domain": "https://pterclub.net",
-  "additional_domain": ["https://pterclub.com"],
+  "additional_domain": [
+    "https://pterclub.com"
+  ],
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -489,13 +491,16 @@
       "path": "/attendance-ajax.php",
       "fields": {
         "signed_in": {
-          "selector": "status",
+          "selector": "message",
           "filters": [
             {
-              "name": "eq",
-              "args": "0"
+              "name": "regex",
+              "args": "(签到成功|今日已签到|已经签到|已签到)"
             }
           ]
+        },
+        "message": {
+          "selector": "message"
         }
       }
     }

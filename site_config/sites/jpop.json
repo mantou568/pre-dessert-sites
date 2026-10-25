@@ -117,21 +117,9 @@
       "fields": {
         "is_login": {
           "selector": "//a[contains(@href,'logout.php')]",
-          "attribute": "href",
           "filters": [
             {
-              "name": "re_search",
-              "args": [
-                "logout",
-                0
-              ]
-            },
-            {
-              "name": "replace",
-              "args": [
-                "logout",
-                "true"
-              ]
+              "name": "not_blank"
             }
           ]
         },
