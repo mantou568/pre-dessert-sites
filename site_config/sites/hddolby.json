@@ -1,7 +1,7 @@
 {
   "id": "hddolby",
   "name": "高清杜比",
-  "domain": "https://www.hddolby.com",
+  "domain": "https://www.uhddolby.com",
   "public": false,
   "schema": "NexusPHP",
   "required": {
