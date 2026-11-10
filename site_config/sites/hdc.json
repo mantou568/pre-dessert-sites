@@ -1,0 +1,317 @@
+{
+  "id": "hdwing",
+  "name": "瓷",
+  "domain": "https://hdwing.org",
+  "public": false,
+  "schema": "NexusPHP",
+  "required": {
+    "cookie": true,
+    "sign_in": true
+  },
+  "meta": {
+    "has_free": true,
+    "has_2x_free": true,
+    "has_hr": false,
+    "has_cover": true
+  },
+  "category": {
+    "movie": [
+      {
+        "id": 20,
+        "cat": "Movies",
+        "desc": "原盘(Full BD)"
+      },
+      {
+        "id": 17,
+        "cat": "Movies",
+        "desc": "电影Movie(1080p)"
+      },
+      {
+        "id": 16,
+        "cat": "Movies",
+        "desc": "电影Movie(1080i)"
+      },
+      {
+        "id": 9,
+        "cat": "Movies",
+        "desc": "电影Movie(720p)"
+      },
+      {
+        "id": 27,
+        "cat": "Movies",
+        "desc": "iPad视频(iPad Video)"
+      },
+      {
+        "id": 410,
+        "cat": "Movies",
+        "desc": "4K UltraHD"
+      }
+    ],
+    "tv": [
+      {
+        "id": 13,
+        "cat": "TV",
+        "desc": "欧美剧(EU/US TV series)"
+      },
+      {
+        "id": 25,
+        "cat": "TV",
+        "desc": "中港台剧集(Chinese TV series)"
+      },
+      {
+        "id": 26,
+        "cat": "TV",
+        "desc": "韩剧(Kor Drama)"
+      },
+      {
+        "id": 24,
+        "cat": "TV",
+        "desc": "日剧(Jpn Drama)"
+      },
+      {
+        "id": 21,
+        "cat": "TV",
+        "desc": "欧美剧集包(EU/US TV series pack)"
+      },
+      {
+        "id": 22,
+        "cat": "TV",
+        "desc": "中港台剧集包(Chinese TV series pack)"
+      },
+      {
+        "id": 23,
+        "cat": "TV",
+        "desc": "日韩剧集包(JPN/KOR drama pack)"
+      },
+      {
+        "id": 5,
+        "cat": "TV/Documentary",
+        "desc": "纪录片(Documentary)"
+      },
+      {
+        "id": 15,
+        "cat": "TV/Sports",
+        "desc": "体育节目(Sports)"
+      },
+      {
+        "id": 14,
+        "cat": "TV/Anime",
+        "desc": "动画片(Animation)"
+      },
+      {
+        "id": 401,
+        "cat": "TV",
+        "desc": "综艺(TV Shows)"
+      },
+      {
+        "id": 411,
+        "cat": "TV",
+        "desc": "旅游(Travel)"
+      },
+      {
+        "id": 412,
+        "cat": "TV",
+        "desc": "饮食(Food)"
+      },
+      {
+        "id": 404,
+        "cat": "Books",
+        "desc": "书籍(Book)"
+      },
+      {
+        "id": 409,
+        "cat": "Other",
+        "desc": "其他(Other)"
+      }
+    ],
+    "music": [
+      {
+        "id": 402,
+        "cat": "Music",
+        "desc": "演唱会(Vocal Concert)"
+      },
+      {
+        "id": 406,
+        "cat": "Music",
+        "desc": "MV(Music Video)"
+      },
+      {
+        "id": 408,
+        "cat": "Music",
+        "desc": "音乐(Music)"
+      },
+      {
+        "id": 19,
+        "cat": "Music",
+        "desc": "补充音轨(Audio Track)"
+      },
+      {
+        "id": 405,
+        "cat": "Music",
+        "desc": "戏剧(Drama)"
+      }
+    ]
+  },
+  "requests": {
+    "search": {
+      "list": {
+        "selector": "table.torrent_list tr:has(td.t_name)"
+      },
+      "fields": {
+        "description": {
+          "selector": "td.t_name h4"
+        },
+        "download": {
+          "selector": "a[href*=\"download.php?hash=\"]",
+          "attribute": "href"
+        },
+        "size": {
+          "selector": "td.t_size",
+          "filters": [
+            {
+              "name": "byte_size"
+            }
+          ]
+        },
+        "seeders": {
+          "selector": "td.t_torrents"
+        },
+        "leechers": {
+          "selector": "td.t_leech"
+        },
+        "grabs": {
+          "selector": "td.t_completed"
+        },
+        "date_added": {
+          "selector": "td.t_time span",
+          "attribute": "title",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "labels": {
+          "selector": "td.t_name span[title]",
+          "array": true
+        },
+        "cover": {
+          "any": [
+            {
+              "selector": "td.t_name img[data-src]",
+              "attribute": "data-src"
+            },
+            {
+              "selector": "td.t_name img[data-original]",
+              "attribute": "data-original"
+            },
+            {
+              "selector": "img[data-src*=\"imdb/images/\"],img[data-src*=\"poster\"]",
+              "attribute": "data-src"
+            },
+            {
+              "selector": "img[src*=\"imdb/images/\"],img[src*=\"poster\"],.poster img,.poster_box img",
+              "attribute": "src"
+            }
+          ]
+        }
+      },
+      "parser": "CssSelector",
+      "method": "GET",
+      "path": "/torrents.php",
+      "params": {
+        "search": [
+          "{keyword}"
+        ],
+        "ms_compat": [
+          "20261108-cover-rule"
+        ]
+      }
+    },
+    "seeding_statistics": {
+      "disabled": true,
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/ajax_getusertorrentlist.php",
+      "disabled_extends": {
+        "list": true,
+        "fields": true,
+        "params": true,
+        "headers": true
+      },
+      "form_data": {
+        "userid": [
+          "{userId}"
+        ],
+        "type": [
+          "seeding"
+        ]
+      },
+      "fields": {}
+    },
+    "sign_in": {
+      "disabled": true,
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/plugin_sign-in.php?cmd=signin",
+      "disabled_extends": {
+        "fields": true,
+        "params": true,
+        "success_status_codes": true
+      },
+      "fields": {
+        "signed_in": {
+          "selector": "state",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "success"
+            }
+          ]
+        }
+      }
+    },
+    "messages": {
+      "list": {
+        "selector": "//tr[td/a[contains(@href,\"action=viewmessage\")]]"
+      },
+      "fields": {
+        "date": {
+          "selector": "td[4]/span/@title"
+        }
+      }
+    },
+    "message_detail": {
+      "fields": {
+        "date": {
+          "selector": "//h1/following-sibling::table//tr[2]/td[2]/span/@title"
+        },
+        "content": {
+          "selector": "//td[@class=\"message_body\"]"
+        }
+      }
+    },
+    "notice": {
+      "fields": {
+        "title": {
+          "selector": "//div[@class=\"announce\"]/h4[1]"
+        },
+        "content": {
+          "selector": "//div[@class=\"announce\"]"
+        },
+        "date": {
+          "selector": "//div[@class=\"announce\"]/h4[1]",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "(\\d{4}\\.\\d{2}\\.\\d{2})",
+                1
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
