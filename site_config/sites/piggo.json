@@ -2,11 +2,13 @@
   "id": "piggo",
   "name": "猪猪",
   "domain": "https://piggo.me",
+  "api": "https://piggo.me",
   "public": false,
   "schema": "NexusPHP",
+  "reuse_schema": "NexusPHP",
   "required": {
-    "cookie": true,
-    "sign_in": true
+    "cookie": false,
+    "sign_in": false
   },
   "meta": {
     "has_free": true,
@@ -56,112 +58,228 @@
     ]
   },
   "requests": {
-    "search": {
-      "path": "/search.php",
-      "params": {
-        "search": [
-          "{keyword}"
-        ],
-        "search_area": [
-          "0"
-        ]
-      },
+    "get_subtitle_url": {
+      "disabled": true
+    },
+    "user_basic_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
       "fields": {
-        "hr_days": {
-          "selector": "img.kaohe",
+        "is_login": {
+          "selector": "success",
           "filters": [
             {
-              "name": "constant",
-              "args": "1"
+              "name": "eq",
+              "args": "true"
             }
           ]
         },
-        "date_added": {
-          "selector": "td.rowfollow:nth-child(4)",
-          "remove": "br",
+        "id": {
+          "selector": "data.id"
+        },
+        "name": {
+          "selector": "data.username"
+        },
+        "uploaded": {
+          "selector": "data.uploaded"
+        },
+        "downloaded": {
+          "selector": "data.downloaded"
+        },
+        "ratio": {
+          "selector": "data.share_ratio"
+        },
+        "bonus": {
+          "selector": "data.seedbonus"
+        },
+        "seeding_count": {
+          "selector": "data.seeding_count"
+        },
+        "signed_in": {
+          "selector": "data.signed_in_today",
           "filters": [
             {
-              "name": "timestamp"
+              "name": "eq",
+              "args": "true"
             }
           ]
-        },
-        "description": {
-          "selector": "td.embedded",
-          "remove": "span,a,img,font,b,br",
-          "contents": -1
-        },
-        "labels": {
-          "selector": "td.embedded > span[title]",
-          "array": true
         }
       }
     },
     "user_details": {
-      "parser": "XPath",
+      "parser": "JsonPath",
       "method": "GET",
-      "path": "/userdetails.php",
-      "params": {
-        "id": ["{userId}"]
-      },
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
       "fields": {
+        "level": {
+          "selector": "data.class_name"
+        },
         "join_at": {
-          "selector": "//td[contains(text(), '加入日期') or contains(text(), '注册日期')]/following-sibling::td[1]",
+          "selector": "data.added",
           "filters": [
-            { "name": "strip" },
-            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
-            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05"
+              ]
+            }
           ]
         },
         "last_accessed": {
-          "selector": "//td[contains(text(), '最近访问') or contains(text(), '最近动向') or contains(text(), '上次访问') or contains(text(), '最近動向')]/following-sibling::td[1]",
+          "selector": "data.last_access",
           "filters": [
-            { "name": "strip" },
-            { "name": "re_search", "args": ["(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})", 1] },
-            { "name": "timestamp", "args": ["2006-01-02 15:04:05"] }
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05"
+              ]
+            }
           ]
+        },
+        "seeding_count": {
+          "selector": "data.seeding_count"
         }
       }
     },
     "seeding_statistics": {
-      "parser": "XPath",
+      "parser": "JsonPath",
       "method": "GET",
-      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
-      "headers": {
-        "Referer": "{domain}/userdetails.php?id={userId}"
-      },
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
       "disabled_extends": {
         "headers": true,
         "list": true
       },
       "fields": {
         "count": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": ["(\\d+)", 1]
-            }
-          ]
+          "selector": "data.seeding_count"
         },
         "size": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": ["总大小：(.*)", 1]
-            },
-            {
-              "name": "strip"
-            },
-            {
-              "name": "byte_size"
-            }
-          ]
+          "selector": "data.seeding_size"
+        },
+        "seeding_count": {
+          "selector": "data.seeding_count"
+        },
+        "seeding_size": {
+          "selector": "data.seeding_size"
+        }
+      }
+    },
+    "seeding_size": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "size": {
+          "selector": "data.seeding_size"
+        }
+      }
+    },
+    "seeding_count": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "data.seeding_count"
+        }
+      }
+    },
+    "search": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/torrents",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "params": {
+        "keyword": [
+          "{keyword}"
+        ],
+        "per_page": [
+          "100"
+        ]
+      },
+      "list": {
+        "selector": "data.items"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "category": {
+          "selector": "category_id"
+        },
+        "title": {
+          "selector": "name"
+        },
+        "description": {
+          "selector": "small_descr"
+        },
+        "details": {
+          "selector": "detail_url"
+        },
+        "download": {
+          "selector": "download_url"
+        },
+        "size": {
+          "selector": "size"
+        },
+        "grabs": {
+          "selector": "times_completed"
+        },
+        "seeders": {
+          "selector": "seeders"
+        },
+        "leechers": {
+          "selector": "leechers"
+        },
+        "date_added": {
+          "selector": "added_ts"
+        },
+        "downloadvolumefactor": {
+          "selector": "download_volume_factor"
+        },
+        "uploadvolumefactor": {
+          "selector": "upload_volume_factor"
+        },
+        "labels": {
+          "array": true,
+          "selector": "tags"
+        },
+        "cover": {
+          "selector": "poster_url"
         }
       }
     }
-  },
-  "my_hr": {
-    "path": "/myhr.php?status=1"
   }
 }
