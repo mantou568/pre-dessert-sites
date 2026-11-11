@@ -2,15 +2,18 @@
   "id": "hd_area",
   "name": "好大",
   "domain": "https://hdarea.club",
+  "api": "https://hdarea.club",
   "public": false,
   "schema": "NexusPHP",
+  "reuse_schema": "NexusPHP",
   "required": {
-    "cookie": true,
+    "cookie": false,
     "sign_in": true
   },
   "meta": {
     "has_free": true,
-    "has_2x_free": true
+    "has_2x_free": true,
+    "has_cover": true
   },
   "category": {
     "movie": [
@@ -86,400 +89,342 @@
         "cat": "TV",
         "desc": "TV Shows"
       }
+    ],
+    "music": [
+      {
+        "id": 406,
+        "cat": "Audio/Video",
+        "desc": "Music Videos"
+      },
+      {
+        "id": 408,
+        "cat": "Audio",
+        "desc": "HQ Audio"
+      }
+    ],
+    "other": [
+      {
+        "id": 407,
+        "cat": "Other",
+        "desc": "Sports"
+      },
+      {
+        "id": 409,
+        "cat": "Other",
+        "desc": "Misc"
+      }
     ]
   },
   "requests": {
+    "get_subtitle_url": {
+      "disabled": true
+    },
     "search": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/torrents",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "params": {
+        "keyword": [
+          "{keyword}"
+        ],
+        "per_page": [
+          "100"
+        ]
+      },
+      "list": {
+        "selector": "data.items"
+      },
       "fields": {
         "id": {
-          "selector": "a[href*='details.php?id=']",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "\\d+",
-                0
-              ]
-            }
-          ]
+          "selector": "id"
         },
         "category": {
-          "selector": "a[href*='?cat=']",
-          "attribute": "href",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": [
-                "cat=(.*)",
-                1
-              ]
-            }
-          ]
-        },
-        "cover": {
-          "selector": "td:nth-child(2) img.torrent-poster-thumb",
-          "attribute": "data-src"
+          "selector": "category_id"
         },
         "title": {
-          "any": [
-            {
-              "selector": "td:nth-child(3) a[title][href*='details.php?id=']",
-              "attribute": "title"
-            },
-            {
-              "selector": "td:nth-child(3) a[href*='details.php?id=']"
-            }
-          ]
-        },
-        "details": {
-          "selector": "td:nth-child(3) a[href*='details.php?id=']",
-          "attribute": "href"
-        },
-        "download": {
-          "selector": "td:nth-child(3) a[href*='download.php?id=']",
-          "attribute": "href"
-        },
-        "size": {
-          "selector": "td:nth-child(6):not(.embedded)",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        },
-        "grabs": {
-          "selector": "td:nth-child(9):not(.embedded)"
-        },
-        "seeders": {
-          "selector": "td:nth-child(7):not(.embedded)"
-        },
-        "leechers": {
-          "selector": "td:nth-child(8):not(.embedded)"
-        },
-        "downloadvolumefactor": {
-          "any": [
-            {
-              "selector": "img.pro_free,img.pro_free2up",
-              "attribute": "class",
-              "filters": [
-                {
-                  "name": "not_blank",
-                  "args": [
-                    0,
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "selector": "img.pro_50pctdown,img.pro_50pctdown2up",
-              "attribute": "class",
-              "filters": [
-                {
-                  "name": "not_blank",
-                  "args": [
-                    0.5,
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "selector": "img.pro_30pctdown",
-              "attribute": "class",
-              "filters": [
-                {
-                  "name": "not_blank",
-                  "args": [
-                    0.3,
-                    1
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        "uploadvolumefactor": {
-          "any": [
-            {
-              "selector": "img.pro_50pctdown2up,img.pro_free2up,img.pro_2up",
-              "attribute": "class",
-              "filters": [
-                {
-                  "name": "not_blank",
-                  "args": [
-                    2,
-                    1
-                  ]
-                }
-              ]
-            }
-          ]
+          "selector": "name"
         },
         "description": {
-          "selector": "td:nth-child(3) td.embedded",
-          "remove": "span,a,img,font,b,br",
-          "contents": -1,
-          "filters": [
-            {
-              "name": "replace",
-              "args": [
-                "()",
-                ""
-              ]
-            }
-          ]
+          "selector": "small_descr"
         },
-        "labels": {
-          "selector": "td:nth-child(2) > span[title='']",
-          "array": true
+        "details": {
+          "selector": "detail_url"
         },
-        "imdb_id": {
-          "any": [
-            {
-              "selector": "a[href*='imdb.com/title/tt']",
-              "attribute": "href",
-              "filters": [
-                {
-                  "name": "re_search",
-                  "args": [
-                    "(tt\\d+)",
-                    1
-                  ]
-                }
-              ]
-            },
-            {
-              "selector": "span[data-imdbid]",
-              "attribute": "data-imdbid",
-              "filters": [
-                {
-                  "name": "pad_zero",
-                  "args": 7
-                },
-                {
-                  "name": "append_left",
-                  "args": "tt"
-                }
-              ]
-            },
-            {
-              "selector": "label[data-imdbid]",
-              "attribute": "data-imdbid",
-              "filters": [
-                {
-                  "name": "pad_zero",
-                  "args": 7
-                },
-                {
-                  "name": "append_left",
-                  "args": "tt"
-                }
-              ]
-            },
-            {
-              "selector": "a[href*='search_area=4']",
-              "attribute": "href",
-              "filters": [
-                {
-                  "name": "re_search",
-                  "args": [
-                    "search=(\\d+)",
-                    1
-                  ]
-                },
-                {
-                  "name": "pad_zero",
-                  "args": 7
-                },
-                {
-                  "name": "append_left",
-                  "args": "tt"
-                }
-              ]
-            }
-          ]
+        "download": {
+          "selector": "download_url"
         },
-        "douban_id": {
-          "any": [
-            {
-              "selector": "a[href*='movie.douban.com/subject/']",
-              "attribute": "href",
-              "filters": [
-                {
-                  "name": "re_search",
-                  "args": [
-                    "(\\d+)",
-                    0
-                  ]
-                }
-              ]
-            },
-            {
-              "selector": "span[data-doubanid]",
-              "attribute": "data-doubanid"
-            },
-            {
-              "selector": "label[data-doubanid]",
-              "attribute": "data-doubanid"
-            },
-            {
-              "selector": "a[href*='search_area=5']",
-              "attribute": "href",
-              "filters": [
-                {
-                  "name": "re_search",
-                  "args": [
-                    "search=(\\d+)",
-                    1
-                  ]
-                }
-              ]
-            }
-          ]
+        "size": {
+          "selector": "size"
         },
-        "date_elapsed": {
-          "selector": "td:nth-child(5):not(.embedded) > span"
+        "grabs": {
+          "selector": "times_completed"
+        },
+        "seeders": {
+          "selector": "seeders"
+        },
+        "leechers": {
+          "selector": "leechers"
         },
         "date_added": {
-          "selector": "td:nth-child(5):not(.embedded) > span",
-          "attribute": "title",
+          "selector": "added_ts"
+        },
+        "downloadvolumefactor": {
+          "selector": "download_volume_factor"
+        },
+        "uploadvolumefactor": {
+          "selector": "upload_volume_factor"
+        },
+        "labels": {
+          "array": true,
+          "selector": "tags"
+        },
+        "cover": {
+          "selector": "poster_url"
+        },
+        "imdb_id": {
+          "selector": "imdb_id"
+        },
+        "douban_id": {
+          "selector": "douban_id"
+        }
+      }
+    },
+    "user_basic_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
+      "fields": {
+        "is_login": {
+          "selector": "success",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "true"
+            }
+          ]
+        },
+        "id": {
+          "selector": "data.id"
+        },
+        "name": {
+          "selector": "data.username"
+        },
+        "uploaded": {
+          "selector": "data.uploaded"
+        },
+        "downloaded": {
+          "selector": "data.downloaded"
+        },
+        "ratio": {
+          "selector": "data.share_ratio"
+        },
+        "bonus": {
+          "selector": "data.seedbonus"
+        },
+        "seeding_count": {
+          "selector": "data.seeding_count"
+        },
+        "signed_in": {
+          "selector": "data.signed_in_today",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "true"
+            }
+          ]
+        }
+      }
+    },
+    "user_details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
+      "fields": {
+        "level": {
+          "selector": "data.class_name"
+        },
+        "join_at": {
+          "selector": "data.added",
           "filters": [
             {
               "name": "timestamp",
               "args": [
                 "2006-01-02 15:04:05"
               ]
-            },
-            {
-              "name": "timezone",
-              "args": [
-                "-8"
-              ]
             }
           ]
-        }
-      }
-    },
-    "seeding_statistics": {
-      "parser": "XPath",
-      "method": "GET",
-      "path": "/mybonus.php",
-      "disabled_extends": {
-        "list": true
-      },
-      "fields": {
-        "count": {
-          "any": [
+        },
+        "last_accessed": {
+          "selector": "data.last_access",
+          "filters": [
             {
-              "selector": "*",
-              "selection": "html",
-              "filters": [
-                {
-                  "name": "re_search",
-                  "args": [
-                    "当前状态：正在做种\\s*<b>(\\d+)</b>\\s*个有效资源",
-                    1
-                  ]
-                }
-              ]
-            },
-            {
-              "selector": "//div[contains(., '当前状态：正在做种') and contains(., '个有效资源')]//b[last()]",
-              "filters": [
-                {
-                  "name": "strip"
-                }
-              ]
-            },
-            {
-              "selector": "//div[contains(., '基础数量分')]//b[contains(following-sibling::text()[1], '个有效资源')]",
-              "filters": [
-                {
-                  "name": "strip"
-                }
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05"
               ]
             }
           ]
         },
+        "seeding_count": {
+          "selector": "data.seeding_count"
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "data.seeding_count"
+        },
         "size": {
-          "any": [
-            {
-              "selector": "*",
-              "selection": "html",
-              "filters": [
-                {
-                  "name": "re_search",
-                  "args": [
-                    "当前状态：做种总积\\s*<b>([\\d.]+\\s*GB)</b>",
-                    1
-                  ]
-                },
-                {
-                  "name": "byte_size"
-                }
-              ]
-            },
-            {
-              "selector": "//div[contains(., '当前状态：做种总积')]//b[1]",
-              "filters": [
-                {
-                  "name": "strip"
-                },
-                {
-                  "name": "byte_size"
-                }
-              ]
-            },
-            {
-              "selector": "//div[contains(., '体积与稀缺分')]//b[contains(following-sibling::text()[1], 'GB')]",
-              "filters": [
-                {
-                  "name": "strip"
-                },
-                {
-                  "name": "byte_size"
-                }
-              ]
-            }
-          ]
+          "selector": "data.seeding_size"
+        },
+        "seeding_count": {
+          "selector": "data.seeding_count"
+        },
+        "seeding_size": {
+          "selector": "data.seeding_size"
+        }
+      }
+    },
+    "seeding_size": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "size": {
+          "selector": "data.seeding_size"
+        }
+      }
+    },
+    "seeding_count": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/profile",
+      "disabled_extends": {
+        "headers": true,
+        "list": true
+      },
+      "fields": {
+        "count": {
+          "selector": "data.seeding_count"
         }
       }
     },
     "sign_in": {
-      "path": "/sign_in.php",
+      "parser": "JsonPath",
       "method": "POST",
-      "form_data": {
-        "action": [
-          "sign_in"
-        ]
-      },
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/signin",
+      "success_status_codes": [
+        200
+      ],
       "fields": {
         "signed_in": {
-          "selector": "*",
-          "selection": "html",
+          "selector": "message",
           "filters": [
             {
               "name": "regex",
-              "args": "(已连续签到\\d+天|此次签到您获得了\\d+魔力值奖励|请不要重复签到|签到成功|签到已得|簽到已得|今日已签到)"
+              "args": "(成功|已签到|今日已签到)"
             }
           ]
+        },
+        "message": {
+          "selector": "message"
         }
-      },
-      "parser": "XPath"
+      }
     },
-    "user_basic_info": {
+    "messages": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/user/messages",
+      "list": {
+        "selector": "data.items"
+      },
       "fields": {
-        "signed_in": {
-          "selector": "*",
-          "selection": "html",
+        "id": {
+          "selector": "id"
+        },
+        "title": {
+          "selector": "subject"
+        },
+        "date": {
+          "selector": "added",
           "filters": [
             {
-              "name": "regex",
-              "args": "__MSGO_HDAREA_NEVER_TRUST_HOMEPAGE_SIGNED_IN__"
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05"
+              ]
             }
           ]
+        },
+        "content": {
+          "selector": "body"
+        }
+      }
+    },
+    "notice": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "path": "/api/v1/site/news",
+      "list": {
+        "selector": "data"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "title": {
+          "selector": "title"
+        },
+        "content": {
+          "selector": "body"
         }
       }
     }
