@@ -5,6 +5,7 @@
   "additional_domain": [],
   "public": false,
   "schema": "NexusPHP",
+  "reuse_schema": "NexusPHP",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -12,116 +13,542 @@
   "meta": {
     "has_free": true,
     "has_2x_free": true,
+    "has_hr": true,
     "has_cover": true
   },
   "category": {
     "movie": [
       {
-        "id": 401,
+        "id": 1,
         "cat": "Movies",
-        "desc": "Movies/电影"
+        "desc": "电影"
       },
       {
-        "id": 406,
-        "cat": "Movies",
-        "desc": "Music Videos/音乐视频"
-      },
-      {
-        "id": 407,
+        "id": 11,
         "cat": "Movies/Sports",
-        "desc": "Sports/体育"
+        "desc": "体育"
       }
     ],
     "tv": [
       {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
+        "id": 2,
+        "cat": "TV",
+        "desc": "电视剧"
       },
       {
-        "id": 405,
+        "id": 3,
+        "cat": "TV",
+        "desc": "短剧"
+      },
+      {
+        "id": 7,
         "cat": "TV/Anime",
-        "desc": "Animations/动漫"
+        "desc": "动漫"
       },
       {
-        "id": 402,
-        "cat": "TV",
-        "desc": "TV Series/连续剧"
+        "id": 8,
+        "cat": "TV/Documentary",
+        "desc": "纪录片"
       },
       {
-        "id": 403,
+        "id": 12,
         "cat": "TV",
-        "desc": "TV Shows/综艺"
+        "desc": "综艺"
+      }
+    ],
+    "music": [
+      {
+        "id": 4,
+        "cat": "Audio",
+        "desc": "音乐"
       },
       {
-        "id": 412,
-        "cat": "TV",
-        "desc": "Short Play/短剧"
+        "id": 10,
+        "cat": "Audio/Audiobook",
+        "desc": "有声书"
+      }
+    ],
+    "other": [
+      {
+        "id": 5,
+        "cat": "PC/Games",
+        "desc": "游戏"
+      },
+      {
+        "id": 6,
+        "cat": "PC/0day",
+        "desc": "软件"
+      },
+      {
+        "id": 9,
+        "cat": "Books/EBook",
+        "desc": "电子书"
+      },
+      {
+        "id": 13,
+        "cat": "Other",
+        "desc": "教育资源"
       }
     ]
   },
   "requests": {
-    "search": {
+    "favicon": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/favicon.ico"
+    },
+    "get_subtitle_url": {
+      "disabled": true
+    },
+    "user_basic_info": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/me/overview",
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
       "fields": {
-        "labels": {
-          "selector": "td.embedded > span[title]",
-          "array": true
-        },
-        "description": {
-          "selector": "td.embedded",
-          "remove": "span,a,img,font,b,br",
-          "contents": -1
-        },
-        "hr_days": {
+        "is_login": {
+          "selector": "code",
           "filters": [
             {
-              "name": "constant",
-              "args": "1"
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
+        "id": {
+          "selector": "data.id"
+        },
+        "name": {
+          "selector": "data.username"
+        },
+        "uploaded": {
+          "selector": "data.uploaded"
+        },
+        "downloaded": {
+          "selector": "data.downloaded"
+        },
+        "ratio": {
+          "selector": "data.ratio"
+        },
+        "bonus": {
+          "selector": "data.spark_balance"
+        },
+        "seeding_count": {
+          "selector": "data.seeding"
+        },
+        "leeching_count": {
+          "selector": "data.leeching"
+        }
+      }
+    },
+    "user_details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/me/overview",
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "fields": {
+        "level": {
+          "selector": "data.class_name"
+        },
+        "join_at": {
+          "selector": "data.created_at",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "last_accessed": {
+          "selector": "data.last_login",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "^(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})",
+                1
+              ]
+            },
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02 15:04:05"
+              ]
+            },
+            {
+              "name": "timezone",
+              "args": [
+                "+0"
+              ]
+            }
+          ]
+        },
+        "seeding_count": {
+          "selector": "data.seeding"
+        }
+      }
+    },
+    "seeding_statistics": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/me/torrentlist?kind=seeding&page=1&per=100",
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "list": {
+        "selector": "data.rows"
+      },
+      "fields": {
+        "size": {
+          "selector": "size"
+        }
+      }
+    },
+    "sign_in": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/v1/attendance/checkin",
+      "required_headers": [
+        "X-CSRF-Token"
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {},
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "success_status_codes": [
+        200,
+        400
+      ],
+      "fields": {
+        "signed_in": {
+          "any": [
+            {
+              "selector": "code",
+              "filters": [
+                {
+                  "name": "eq",
+                  "args": "0"
+                }
+              ]
+            },
+            {
+              "selector": "message",
+              "filters": [
+                {
+                  "name": "regex",
+                  "args": "(已签到|已经签到|签到成功)"
+                }
+              ]
+            }
+          ]
+        },
+        "message": {
+          "selector": "message"
+        }
+      }
+    },
+    "search": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/torrents",
+      "params": {
+        "search": [
+          "{keyword}"
+        ],
+        "page": [
+          "1"
+        ],
+        "limit": [
+          "100"
+        ]
+      },
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "list": {
+        "selector": "data.items"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "category": {
+          "selector": "category_id"
+        },
+        "title": {
+          "selector": "name"
+        },
+        "description": {
+          "selector": "small_descr"
+        },
+        "cover": {
+          "selector": "poster"
+        },
+        "details": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/torrent/"
+            }
+          ]
+        },
+        "download": {
+          "selector": "id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/api/v1/torrents/"
+            },
+            {
+              "name": "append_right",
+              "args": "/download"
+            }
+          ]
+        },
+        "size": {
+          "selector": "size"
+        },
+        "grabs": {
+          "selector": "times_completed"
+        },
+        "seeders": {
+          "selector": "seeders"
+        },
+        "leechers": {
+          "selector": "leechers"
+        },
+        "date_added": {
+          "selector": "created_at",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        },
+        "downloadvolumefactor": {
+          "selector": "promotion",
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "free": "0",
+                "x2free": "0",
+                "half": "0.5",
+                "x2half": "0.5",
+                "p30": "0.3",
+                "x2": "1",
+                "": "1"
+              }
+            }
+          ]
+        },
+        "uploadvolumefactor": {
+          "selector": "promotion",
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "x2": "2",
+                "x2free": "2",
+                "x2half": "2",
+                "free": "1",
+                "half": "1",
+                "p30": "1",
+                "": "1"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "selector": "tags",
+          "array": true
+        },
+        "imdb_id": {
+          "selector": "imdb_id"
+        },
+        "hr_days": {
+          "selector": "hr_policy.days"
+        }
+      }
+    },
+    "details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/torrents/{id}",
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "success_status_codes": [
+        200,
+        404
+      ],
+      "fields": {
+        "absent": {
+          "selector": "code",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "4101"
+            }
+          ]
+        },
+        "free": {
+          "selector": "data.promotion",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "^(free|x2free)$"
+            }
+          ]
+        },
+        "2x_free": {
+          "selector": "data.promotion",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "x2free"
+            }
+          ]
+        },
+        "hr_days": {
+          "selector": "data.hr_policy.days"
+        },
+        "peer_count": {
+          "selector": "data.seeders"
+        },
+        "enclosure": {
+          "selector": "data.id",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "/api/v1/torrents/"
+            },
+            {
+              "name": "append_right",
+              "args": "/download"
             }
           ]
         }
       }
     },
-    "seeding_statistics": {
-      "parser": "XPath",
+    "messages": {
+      "parser": "JsonPath",
       "method": "GET",
-      "path": "/getusertorrentlistajax.php?userid={userId}&type=seeding",
-      "headers": {
-        "Referer": "{domain}/userdetails.php?id={userId}"
-      },
+      "path": "/api/v1/messages/inbox?limit=50&offset=0",
       "disabled_extends": {
+        "path": true,
         "headers": true,
-        "list": true
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "list": {
+        "selector": "data"
       },
       "fields": {
-        "count": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
-          "filters": [
-            {
-              "name": "re_search",
-              "args": ["(\\d+)", 1]
-            }
-          ]
+        "id": {
+          "selector": "id"
         },
-        "size": {
-          "selector": "//div[contains(., '条记录') and contains(., '总大小')]",
+        "title": {
+          "selector": "subject"
+        },
+        "content": {
+          "selector": "body"
+        },
+        "date": {
+          "selector": "created_at",
           "filters": [
             {
-              "name": "re_search",
-              "args": ["总大小：(.*)", 1]
-            },
-            {
-              "name": "strip"
-            },
-            {
-              "name": "byte_size"
+              "name": "timestamp"
             }
           ]
         }
       }
+    },
+    "notice": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/home",
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "list": {
+        "selector": "data.news"
+      },
+      "fields": {
+        "id": {
+          "selector": "id"
+        },
+        "title": {
+          "selector": "title"
+        },
+        "content": {
+          "selector": "body"
+        }
+      }
+    },
+    "my_hr": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/me/hr",
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "list": {
+        "selector": "data.rows"
+      },
+      "fields": {
+        "id": {
+          "selector": "torrent_id"
+        },
+        "name": {
+          "selector": "name"
+        }
+      }
     }
-  },
-  "my_hr": {
-    "path": "/myhr.php?status=1"
   }
 }
