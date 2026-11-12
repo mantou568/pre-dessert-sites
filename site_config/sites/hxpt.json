@@ -277,9 +277,6 @@
         "search": [
           "{keyword}"
         ],
-        "page": [
-          "1"
-        ],
         "limit": [
           "100"
         ]
