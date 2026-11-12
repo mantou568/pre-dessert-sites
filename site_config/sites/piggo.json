@@ -150,6 +150,9 @@
         },
         "bonus": {
           "selector": "data.user.stats.bonus"
+        },
+        "ratio": {
+          "selector": "data.user.stats.ratio"
         }
       }
     },
@@ -230,7 +233,7 @@
       },
       "body": {
         "q": "{keyword}",
-        "page": 1,
+        "page": "{page}",
         "per_page": 50
       },
       "success_status_codes": [
@@ -292,10 +295,51 @@
               ]
             }
           ]
+        },
+        "labels": {
+          "selector": "tag_ids",
+          "array": true,
+          "filters": [
+            {
+              "name": "case",
+              "args": {
+                "21": "未审",
+                "17": "零魔",
+                "15": "独占",
+                "18": "自购",
+                "9": "合集",
+                "11": "完结",
+                "3": "国语",
+                "4": "中字",
+                "5": "HDR 10",
+                "1": "官方",
+                "2": "禁转",
+                "6": "3D",
+                "7": "Dolby Vision",
+                "8": "特效",
+                "10": "Dolby Atmos",
+                "12": "追更",
+                "13": "怀旧计划",
+                "14": "应求",
+                "16": "分集",
+                "19": "中英双语",
+                "20": "备胎",
+                "22": "丐帮"
+              }
+            }
+          ]
+        },
+        "doubanid": {
+          "selector": "media.douban"
         }
       },
       "list": {
         "selector": "data.items"
+      },
+      "params": {
+        "page": [
+          "{page}"
+        ]
       }
     },
     "details": {
@@ -332,5 +376,6 @@
         }
       }
     }
-  }
+  },
+  "first_page_offset": 1
 }
