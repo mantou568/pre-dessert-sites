@@ -282,7 +282,7 @@
         "cover": {
           "selector": "cover"
         },
-        "imdbid": {
+        "imdb_id": {
           "selector": "media.imdb"
         },
         "date_added": {
@@ -329,7 +329,7 @@
             }
           ]
         },
-        "doubanid": {
+        "douban_id": {
           "selector": "media.douban"
         }
       },
@@ -356,6 +356,50 @@
       },
       "body": {},
       "success_status_codes": [
+        200,
+        404
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "required_headers": true,
+        "params": true,
+        "form_data": true,
+        "body": true,
+        "success_status_codes": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "fields": {
+        "absent": {
+          "selector": "code",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "404"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "data.seeders"
+        }
+      }
+    },
+    "download_link": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "use_api": true,
+      "path": "/v1/api/torrents/{id}/download-link",
+      "required_headers": [
+        "Authorization"
+      ],
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "body": {},
+      "success_status_codes": [
         200
       ],
       "disabled_extends": {
@@ -371,8 +415,8 @@
         "field": true
       },
       "fields": {
-        "peer_count": {
-          "selector": "data.seeders"
+        "url": {
+          "selector": "data.url"
         }
       }
     }
