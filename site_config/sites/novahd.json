@@ -61,6 +61,9 @@
     ]
   },
   "requests": {
+    "user_basic_info": {
+      "path": "/usercp.php"
+    },
     "search": {
       "fields": {
         "labels": {
