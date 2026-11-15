@@ -53,7 +53,17 @@
   },
   "requests": {
     "user_basic_info": {
+      "path": "/attendance.php",
       "fields": {
+        "signed_in": {
+          "selector": "//div[@class='register-rank']/p",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "今日签到排名[:：]\\s*[0-9]+\\s*/"
+            }
+          ]
+        },
         "is_login": {
           "selector": "//img[contains(@alt, '退出登录')]//@alt",
           "filters": [

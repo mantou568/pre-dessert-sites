@@ -55,6 +55,32 @@
     ]
   },
   "requests": {
+      "user_basic_info": {
+        "path": "/attendance.php",
+        "fields": {
+          "signed_in": {
+            "selector": "//h2[normalize-space(.)='签到成功' or contains(., '已签到')]",
+            "filters": [
+              {
+                "name": "not_blank"
+              }
+            ]
+          }
+        }
+      },
+      "sign_in": {
+        "parser": "XPath",
+        "fields": {
+          "signed_in": {
+            "selector": "//h2[normalize-space(.)='签到成功' or contains(., '已签到')]",
+            "filters": [
+              {
+                "name": "not_blank"
+              }
+            ]
+          }
+        }
+      },
     "search": {
       "fields": {
         "hr_days": {
