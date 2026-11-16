@@ -3,7 +3,7 @@
   "name": "克鲁",
   "domain": "https://our.kelu.one",
   "public": false,
-  "schema": "NexusPHP",
+  "schema": "attendance_captcha",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -83,7 +83,10 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["(\\d+)", 1]
+              "args": [
+                "(\\d+)",
+                1
+              ]
             }
           ]
         },
@@ -92,7 +95,10 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["总大小：(.*)", 1]
+              "args": [
+                "总大小：(.*)",
+                1
+              ]
             },
             {
               "name": "strip"
@@ -103,6 +109,32 @@
           ]
         }
       }
+    },
+    "sign_in_page": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/attendance.php",
+      "disabled_extends": {
+        "params": true
+      }
+    },
+    "image": {
+      "parser": "None",
+      "disabled_extends": {
+        "params": true
+      }
+    },
+    "sign_in_action": {
+      "parser": "None",
+      "method": "POST",
+      "path": "/attendance.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
     }
-  }
+  },
+  "reuse_schema": "NexusPHP"
 }

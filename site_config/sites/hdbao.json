@@ -83,7 +83,10 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["(\\d+)", 1]
+              "args": [
+                "(\\d+)",
+                1
+              ]
             }
           ]
         },
@@ -92,13 +95,47 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["总大小：(.*)", 1]
+              "args": [
+                "总大小：(.*)",
+                1
+              ]
             },
             {
               "name": "strip"
             },
             {
               "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "sign_in": {
+      "parser": "XPath",
+      "fields": {
+        "signed_in": {
+          "selector": "//h2[normalize-space(.)='签到成功' or contains(., '已签到')]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
+        }
+      },
+      "method": "POST",
+      "path": "/attendance.php",
+      "disabled_extends": {
+        "params": true
+      }
+    },
+    "user_basic_info": {
+      "path": "/attendance.php",
+      "fields": {
+        "signed_in": {
+          "selector": "//h2[normalize-space(.)='签到成功' or contains(., '已签到')]",
+          "filters": [
+            {
+              "name": "not_blank"
             }
           ]
         }

@@ -112,16 +112,15 @@
     "user_basic_info": {
       "fields": {
         "signed_in": {
-          "selector": "*",
-          "selection": "html",
+          "selector": "//p[contains(.,'今日签到成功')] | //*[text()[contains(.,'今天已签到')]] | //a[contains(.,'签到详情')]",
           "filters": [
             {
-              "name": "regex",
-              "args": "(签到详情)"
+              "name": "not_blank"
             }
           ]
         }
-      }
+      },
+      "path": ""
     },
     "user_details": {
       "fields": {
@@ -253,16 +252,15 @@
       "path": "/attendance.php?type=sign&uid={userId}",
       "fields": {
         "signed_in": {
-          "selector": "*",
-          "selection": "html",
+          "selector": "//p[contains(.,'今日签到成功')] | //*[text()[contains(.,'今天已签到')]] | //a[contains(.,'签到详情')]",
           "filters": [
             {
-              "name": "regex",
-              "args": "(签到详情)"
+              "name": "not_blank"
             }
           ]
         }
-      }
+      },
+      "parser": "XPath"
     }
   }
 }

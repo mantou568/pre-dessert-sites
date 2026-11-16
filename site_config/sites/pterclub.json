@@ -491,11 +491,11 @@
       "path": "/attendance-ajax.php",
       "fields": {
         "signed_in": {
-          "selector": "message",
+          "selector": "status",
           "filters": [
             {
               "name": "regex",
-              "args": "(签到成功|今日已签到|已经签到|已签到)"
+              "args": "^1$"
             }
           ]
         },
