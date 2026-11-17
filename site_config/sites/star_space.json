@@ -322,6 +322,63 @@
           ]
         }
       }
+    },
+    "notice": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/p_index/news.php",
+      "list": {
+        "selector": "//table[contains(@class,'table_detail')]"
+      },
+      "fields": {
+        "id": {
+          "selector": ".//tr[@id='tr_top']/th",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\[(\\d{4}-\\d{2}-\\d{2})\\]",
+                1
+              ]
+            }
+          ]
+        },
+        "title": {
+          "selector": ".//tr[@id='tr_top']/th",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "^\\[([^\\]]+)\\]\\s*(.+)$",
+                2
+              ]
+            },
+            {
+              "name": "strip"
+            }
+          ]
+        },
+        "date": {
+          "selector": ".//tr[@id='tr_top']/th",
+          "filters": [
+            {
+              "name": "re_search",
+              "args": [
+                "\\[(\\d{4}-\\d{2}-\\d{2})\\]",
+                1
+              ]
+            }
+          ]
+        },
+        "content": {
+          "selector": ".//tr[@id='tr_item']/td",
+          "filters": [
+            {
+              "name": "strip"
+            }
+          ]
+        }
+      }
     }
   }
 }
