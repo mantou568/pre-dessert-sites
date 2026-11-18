@@ -49,6 +49,24 @@
   "requests": {
     "search": {
       "fields": {
+        "size": {
+          "selector": "td:nth-child(6):not(.embedded)",
+          "filters": [{"name": "byte_size"}]
+        },
+        "seeders": {
+          "selector": "td:nth-child(7):not(.embedded)"
+        },
+        "leechers": {
+          "selector": "td:nth-child(8):not(.embedded)"
+        },
+        "grabs": {
+          "selector": "td:nth-child(9):not(.embedded)"
+        },
+        "date_added": {
+          "selector": "td:nth-child(5):not(.embedded) > span",
+          "attribute": "title",
+          "filters": [{"name": "timestamp"}]
+        },
         "labels": {
           "selector": "td.embedded > span[title]",
           "array": true
