@@ -288,13 +288,64 @@
       "disabled": true
     },
     "messages": {
-      "disabled": true
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/notifications?limit=50&offset=0",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "params": true
+      },
+      "list": {
+        "selector": "data.list"
+      },
+      "fields": {
+        "id": {
+          "selector": "message_key"
+        },
+        "title": {
+          "selector": "title"
+        },
+        "content": {
+          "selector": "body"
+        },
+        "date": {
+          "selector": "sent_at",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
     },
     "message_detail": {
       "disabled": true
     },
     "notice": {
-      "disabled": true
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/notifications?limit=20&offset=0",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "params": true
+      },
+      "fields": {
+        "content": {
+          "selector": "data.list.#(type==\"admin.broadcast\").body"
+        }
+      }
     },
     "details": {
       "disabled": true
