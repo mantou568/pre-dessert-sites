@@ -382,6 +382,24 @@
           ]
         }
       }
+    },
+    "token_refresh": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/auth/session",
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "params": true,
+        "fields": true,
+        "field": true
+      },
+      "fields": {
+        "content": {
+          "selector": "data.accessToken"
+        }
+      }
     }
   }
 }
