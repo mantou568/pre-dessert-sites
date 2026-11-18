@@ -785,7 +785,10 @@
         "content": {
           "selector": "//a[@class='faqlink']/@href"
         }
-      }
+      },
+      "tags": [
+        "rss"
+      ]
     },
     "sign_in": {
       "parser": "CssSelector",
