@@ -2,7 +2,9 @@
   "id": "zmpt",
   "name": "织梦",
   "domain": "https://zmpt.cc",
-  "additional_domain": ["https://zmpt.club"],
+  "additional_domain": [
+    "https://zmpt.club"
+  ],
   "public": false,
   "schema": "NexusPHP",
   "required": {
@@ -89,7 +91,10 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["(\\d+)", 1]
+              "args": [
+                "(\\d+)",
+                1
+              ]
             }
           ]
         },
@@ -98,7 +103,10 @@
           "filters": [
             {
               "name": "re_search",
-              "args": ["总大小：(.*)", 1]
+              "args": [
+                "总大小：(.*)",
+                1
+              ]
             },
             {
               "name": "strip"
@@ -107,6 +115,47 @@
               "name": "byte_size"
             }
           ]
+        }
+      }
+    },
+    "get_rss": {
+      "parser": "XPath",
+      "method": "POST",
+      "path": "/getrss.php",
+      "form_data": {
+        "inclbookmarked": [
+          "0"
+        ],
+        "paid": [
+          "0"
+        ],
+        "itemcategory": [
+          "1"
+        ],
+        "itemsmalldescr": [
+          "1"
+        ],
+        "itemsize": [
+          "1"
+        ],
+        "showrows": [
+          "10"
+        ],
+        "search_mode": [
+          "0"
+        ],
+        "exp": [
+          "30"
+        ]
+      },
+      "disabled_extends": {
+        "path": true,
+        "form_data": true,
+        "params": true
+      },
+      "fields": {
+        "content": {
+          "selector": "//a[@class='faqlink']/@href"
         }
       }
     }
