@@ -352,6 +352,36 @@
     },
     "get_subtitle_url": {
       "disabled": true
+    },
+    "get_rss": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/v1/user-rcp/rss-token",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {},
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "params": true
+      },
+      "fields": {
+        "content": {
+          "selector": "data.rss_token",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://api.sunnypt.top/rss?token="
+            }
+          ]
+        }
+      }
     }
   }
 }
