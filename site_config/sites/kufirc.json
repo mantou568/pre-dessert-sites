@@ -20,6 +20,31 @@
     "tv": []
   },
   "requests": {
+    "get_rss": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/",
+      "disabled_extends": {
+        "params": true,
+        "form_data": true,
+        "body": true,
+        "fields": true
+      },
+      "fields": {
+        "content": {
+          "selector": "(//link[contains(@href,'feeds.php?feed=torrents_all&')]/@href)[1]",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://kufirc.com"
+            }
+          ]
+        }
+      },
+      "tags": [
+        "rss"
+      ]
+    },
     "favicon": {
       "parser": "None",
       "method": "GET",

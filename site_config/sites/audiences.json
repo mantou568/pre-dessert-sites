@@ -44,6 +44,17 @@
     ]
   },
   "requests": {
+    "get_rss": {
+      "parser": "XPath",
+      "fields": {
+        "content": {
+          "selector": "(//input[contains(@value,'/torrentrss.php?')]/@value)[1]"
+        }
+      },
+      "disabled_extends": {
+        "fields": true
+      }
+    },
     "search": {
       "fields": {
         "description": {

@@ -45,6 +45,17 @@
     ]
   },
   "requests": {
+    "get_rss": {
+      "parser": "XPath",
+      "fields": {
+        "content": {
+          "selector": "(//input[contains(@value,'/trss?')]/@value)[1]"
+        }
+      },
+      "disabled_extends": {
+        "fields": true
+      }
+    },
     "search": {
       "parser": "CssSelector",
       "method": "GET",

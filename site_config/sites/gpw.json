@@ -37,6 +37,31 @@
     ]
   },
   "requests": {
+    "get_rss": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/user.php?action=notify",
+      "disabled_extends": {
+        "params": true,
+        "form_data": true,
+        "body": true,
+        "fields": true
+      },
+      "fields": {
+        "content": {
+          "selector": "(//link[contains(@href,'feeds.php?feed=torrents_all&')]/@href)[1]",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://greatposterwall.com/"
+            }
+          ]
+        }
+      },
+      "tags": [
+        "rss"
+      ]
+    },
     "search": {
       "parser": "CssSelector",
       "method": "GET",

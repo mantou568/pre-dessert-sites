@@ -46,6 +46,13 @@
     ]
   },
   "requests": {
+    "get_rss": {
+      "form_data": {
+        "showrows": [
+          "20"
+        ]
+      }
+    },
     "search": {
       "fields": {
         "labels": {

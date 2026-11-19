@@ -21,6 +21,31 @@
     "other": []
   },
   "requests": {
+    "get_rss": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/profile.php?action=config",
+      "disabled_extends": {
+        "params": true,
+        "form_data": true,
+        "body": true,
+        "fields": true
+      },
+      "fields": {
+        "content": {
+          "selector": "(//link[@rel='alternate'][contains(@href,'rss.php')]/@href)[1]",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://ncore.pro"
+            }
+          ]
+        }
+      },
+      "tags": [
+        "rss"
+      ]
+    },
     "favicon": {
       "parser": "None",
       "method": "GET",
