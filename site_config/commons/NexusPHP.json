@@ -776,13 +776,19 @@
         ],
         "search_mode": [
           "0"
+        ],
+        "exp": [
+          "30"
         ]
       },
       "fields": {
         "content": {
-          "selector": "//a[@class='faqlink']/@href"
+          "selector": "//a[@class='faqlink'][contains(@href,'torrentrss') or contains(@href,'rss.php') or contains(@href,'passkey=') or contains(@href,'authkey=') or contains(@href,'token=')]/@href"
         }
-      }
+      },
+      "tags": [
+        "rss"
+      ]
     },
     "sign_in": {
       "parser": "CssSelector",

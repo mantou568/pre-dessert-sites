@@ -5,44 +5,45 @@
   "api": "https://api.sunnypt.top",
   "public": false,
   "schema": "NexusPHP",
+  "first_page_offset": 1,
   "required": {
-    "cookie": true,
-    "sign_in": true
+    "cookie": false,
+    "sign_in": false
   },
   "meta": {
     "has_free": true,
     "has_2x_free": true,
     "has_hr": false,
-    "has_cover": true
+    "has_cover": false
   },
   "category": {
     "movie": [
       {
         "id": 401,
         "cat": "Movies",
-        "desc": "Movies/电影"
+        "desc": "电影"
       }
     ],
     "tv": [
       {
-        "id": 404,
-        "cat": "TV/Documentary",
-        "desc": "Documentaries/纪录片"
-      },
-      {
-        "id": 405,
-        "cat": "TV/Anime",
-        "desc": "Animations/动漫"
-      },
-      {
         "id": 402,
         "cat": "TV",
-        "desc": "TV Series/连续剧"
+        "desc": "连续剧"
       },
       {
         "id": 403,
         "cat": "TV",
-        "desc": "TV Shows/综艺"
+        "desc": "综艺"
+      },
+      {
+        "id": 405,
+        "cat": "TV/Anime",
+        "desc": "动漫"
+      },
+      {
+        "id": 404,
+        "cat": "TV/Documentary",
+        "desc": "纪录片"
       }
     ]
   },
@@ -55,14 +56,15 @@
     "user_basic_info": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/v1/user/details/info",
+      "path": "/api/v1/mp/profile",
       "use_api": true,
       "required_headers": [
-        "Authorization"
+        "X-API-Key"
       ],
       "disabled_extends": {
         "path": true,
         "headers": true,
+        "params": true,
         "list": true,
         "fields": true,
         "field": true
@@ -84,43 +86,31 @@
           "selector": "data.username"
         },
         "uploaded": {
-          "selector": "data.uploaded",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
+          "selector": "data.uploaded"
         },
         "downloaded": {
-          "selector": "data.downloaded",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
+          "selector": "data.downloaded"
         },
         "ratio": {
           "selector": "data.ratio"
         },
         "bonus": {
-          "selector": "data.seed_bonus"
-        },
-        "seeding_count": {
-          "selector": "data.upload_num"
+          "selector": "data.bonus"
         }
       }
     },
     "user_details": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/v1/user/details/info",
+      "path": "/api/v1/mp/profile",
       "use_api": true,
       "required_headers": [
-        "Authorization"
+        "X-API-Key"
       ],
       "disabled_extends": {
         "path": true,
         "headers": true,
+        "params": true,
         "list": true,
         "fields": true,
         "field": true
@@ -130,112 +120,29 @@
           "selector": "data.class"
         },
         "level": {
-          "selector": "data.class",
-          "filters": [
-            {
-              "name": "case",
-              "args": {
-                "0": "User",
-                "1": "Power User",
-                "2": "Elite User",
-                "3": "Crazy User",
-                "4": "Veteran User",
-                "5": "Insane User",
-                "6": "Extreme User",
-                "7": "Ultimate User",
-                "8": "Nexus Master"
-              }
-            }
-          ]
+          "selector": "data.level"
         },
         "join_at": {
-          "selector": "data.added"
-        },
-        "last_accessed": {
-          "selector": "data.last_access"
+          "selector": "data.registered_at",
+          "filters": [
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02T15:04:05Z07:00"
+              ]
+            }
+          ]
         }
       }
     },
     "seeding_statistics": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/v1/user/details/seeding?id={userId}&offset=0&limit=10000",
+      "path": "/api/v1/mp/profile",
       "use_api": true,
       "required_headers": [
-        "Authorization"
+        "X-API-Key"
       ],
-      "disabled_extends": {
-        "path": true,
-        "headers": true,
-        "fields": true,
-        "field": true
-      },
-      "list": {
-        "selector": "data.list"
-      },
-      "fields": {
-        "size": {
-          "selector": "size",
-          "filters": [
-            {
-              "name": "byte_size"
-            }
-          ]
-        }
-      }
-    },
-    "my_hr": {
-      "disabled": true
-    },
-    "sign_in": {
-      "parser": "JsonPath",
-      "method": "POST",
-      "path": "/api/v1/attendance/check-in",
-      "use_api": true,
-      "required_headers": [
-        "Authorization"
-      ],
-      "headers": {
-        "Content-Type": "application/json"
-      },
-      "body": {},
-      "success_status_codes": [
-        200
-      ],
-      "fields": {
-        "signed_in": {
-          "selector": "content",
-          "filters": [
-            {
-              "name": "regex",
-              "args": "(签到成功|今日已签到|已签到)"
-            }
-          ]
-        },
-        "message": {
-          "selector": "msg"
-        },
-        "code": {
-          "selector": "code"
-        }
-      }
-    },
-    "search": {
-      "parser": "JsonPath",
-      "method": "POST",
-      "path": "/api/v1/torrent/list",
-      "use_api": true,
-      "required_headers": [
-        "Authorization"
-      ],
-      "headers": {
-        "Content-Type": "application/json"
-      },
-      "body": {
-        "keyword": "{keyword}",
-        "limit": 50,
-        "offset": 0
-      },
       "disabled_extends": {
         "path": true,
         "headers": true,
@@ -244,48 +151,72 @@
         "fields": true,
         "field": true
       },
+      "fields": {
+        "count": {
+          "selector": "data.seeding_count"
+        },
+        "size": {
+          "selector": "data.seeding_size"
+        }
+      }
+    },
+    "search": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/mp/torrents",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "params": {
+        "page": [
+          "{page}"
+        ],
+        "page_size": [
+          "50"
+        ],
+        "keyword": [
+          "{keyword}"
+        ],
+        "sort": [
+          "created_at"
+        ],
+        "order": [
+          "desc"
+        ]
+      },
       "list": {
-        "selector": "data.list"
+        "selector": "data.items"
       },
       "fields": {
         "id": {
           "selector": "id"
         },
         "category": {
-          "selector": "category"
+          "selector": "category.id"
         },
         "title": {
-          "selector": "name"
+          "selector": "title"
         },
         "description": {
-          "selector": "sub_name"
-        },
-        "cover": {
-          "selector": "cover"
+          "selector": "subtitle"
         },
         "details": {
-          "selector": "id",
-          "filters": [
-            {
-              "name": "append_left",
-              "args": "/torrent/"
-            }
-          ]
-        },
-        "download": {
-          "selector": "id",
-          "filters": [
-            {
-              "name": "append_left",
-              "args": "/api/v1/torrent/download?id="
-            }
-          ]
+          "selector": "details_url"
         },
         "size": {
           "selector": "size"
         },
         "grabs": {
-          "selector": "times_completed"
+          "selector": "completed"
         },
         "seeders": {
           "selector": "seeders"
@@ -293,36 +224,126 @@
         "leechers": {
           "selector": "leechers"
         },
+        "imdbid": {
+          "selector": "imdb_id"
+        },
         "date_added": {
-          "selector": "added"
+          "selector": "created_at",
+          "filters": [
+            {
+              "name": "timestamp",
+              "args": [
+                "2006-01-02T15:04:05Z07:00"
+              ]
+            }
+          ]
         },
         "downloadvolumefactor": {
-          "selector": "promotion_type",
-          "filters": [
-            {
-              "name": "case",
-              "args": {
-                "2": "0",
-                "3": "0.5",
-                "4": "0.3",
-                "5": "0",
-                "6": "0",
-                "7": "0.5"
-              }
-            }
-          ]
+          "selector": "promotion.down_multiplier"
         },
         "uploadvolumefactor": {
-          "filters": [
-            {
-              "name": "constant",
-              "args": "1"
-            }
-          ]
+          "selector": "promotion.up_multiplier"
         },
         "labels": {
           "selector": "tags",
           "array": true
+        }
+      }
+    },
+    "download_link": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/v1/mp/torrents/{id}/download-token",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "fields": {
+        "url": {
+          "selector": "data.download_url",
+          "filters": [
+            {
+              "name": "replace",
+              "args": [
+                "https://sunnypt.top/api/v1/mp/download/",
+                "https://api.sunnypt.top/api/v1/mp/download/"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sign_in": {
+      "disabled": true
+    },
+    "my_hr": {
+      "disabled": true
+    },
+    "messages": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/notifications?limit=50&offset=0",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "params": true
+      },
+      "list": {
+        "selector": "data.list"
+      },
+      "fields": {
+        "id": {
+          "selector": "message_key"
+        },
+        "title": {
+          "selector": "title"
+        },
+        "content": {
+          "selector": "body"
+        },
+        "date": {
+          "selector": "sent_at",
+          "filters": [
+            {
+              "name": "timestamp"
+            }
+          ]
+        }
+      }
+    },
+    "message_detail": {
+      "disabled": true
+    },
+    "notice": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/notifications?limit=20&offset=0",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "params": true
+      },
+      "fields": {
+        "content": {
+          "selector": "data.list.#(type==\"admin.broadcast\").body"
         }
       }
     },
@@ -331,6 +352,54 @@
     },
     "get_subtitle_url": {
       "disabled": true
+    },
+    "get_rss": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/v1/user-rcp/rss-token",
+      "use_api": true,
+      "required_headers": [
+        "Authorization"
+      ],
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {},
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "params": true
+      },
+      "fields": {
+        "content": {
+          "selector": "data.rss_token",
+          "filters": [
+            {
+              "name": "append_left",
+              "args": "https://api.sunnypt.top/rss?token="
+            }
+          ]
+        }
+      }
+    },
+    "token_refresh": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/auth/session",
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "list": true,
+        "params": true,
+        "fields": true,
+        "field": true
+      },
+      "fields": {
+        "content": {
+          "selector": "data.accessToken"
+        }
+      }
     }
   }
 }

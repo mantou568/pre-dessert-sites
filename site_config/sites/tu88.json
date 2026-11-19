@@ -2,9 +2,11 @@
   "id": "tu88",
   "name": "tu88",
   "domain": "https://pt.tu88.men",
-  "additional_domain": ["http://pt.tu88.men"],
+  "additional_domain": [
+    "http://pt.tu88.men"
+  ],
   "public": false,
-  "schema": "NexusPHP",
+  "schema": "attendance_captcha",
   "required": {
     "cookie": true,
     "sign_in": true
@@ -58,15 +60,15 @@
   },
   "requests": {
     "message_detail": {
-        "fields": {
-          "content": {
-            "selector": "//*[@id='outer']/font/b/table[2]/tbody/tr[3]/td"
-          }
+      "fields": {
+        "content": {
+          "selector": "//*[@id='outer']/font/b/table[2]/tbody/tr[3]/td"
         }
-      },
+      }
+    },
     "search": {
       "fields": {
-        "hr_days":{
+        "hr_days": {
           "filters": [
             {
               "name": "constant",
@@ -75,9 +77,35 @@
           ]
         }
       }
+    },
+    "sign_in_page": {
+      "parser": "None",
+      "method": "GET",
+      "path": "/attendance.php",
+      "disabled_extends": {
+        "params": true
+      }
+    },
+    "image": {
+      "parser": "None",
+      "disabled_extends": {
+        "params": true
+      }
+    },
+    "sign_in_action": {
+      "parser": "None",
+      "method": "POST",
+      "path": "/attendance.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
     }
   },
   "my_hr": {
     "path": "/myhr.php?status=1"
-  }
+  },
+  "reuse_schema": "NexusPHP"
 }

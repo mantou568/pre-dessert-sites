@@ -76,8 +76,17 @@
               ]
             }
           ]
+        },
+        "signed_in": {
+          "selector": "//h2[normalize-space(.)='签到成功'] | //*[text()[contains(.,'您今天已经签到过了') or contains(.,'签到已得')]]",
+          "filters": [
+            {
+              "name": "not_blank"
+            }
+          ]
         }
-      }
+      },
+      "path": ""
     },
     "search": {
       "fields": {
@@ -131,6 +140,19 @@
           "filters": [
             {
               "name": "byte_size"
+            }
+          ]
+        }
+      }
+    },
+    "sign_in": {
+      "parser": "XPath",
+      "fields": {
+        "signed_in": {
+          "selector": "//h2[normalize-space(.)='签到成功'] | //*[text()[contains(.,'您今天已经签到过了') or contains(.,'签到已得')]]",
+          "filters": [
+            {
+              "name": "not_blank"
             }
           ]
         }
