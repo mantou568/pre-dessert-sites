@@ -36,28 +36,42 @@ jobs:
             echo "prerelease=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Get current date and time
+        id: datetime
+        run: echo "datetime=$(date -u -d '+8 hours' +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+
       - name: Create release assets
         run: |
           # Create tar.gz archive with proper directory structure
           mkdir -p release_temp
           cp -r site_config release_temp/
           cp -r site_favicon release_temp/
-          tar -czf site_config.tar.gz -C release_temp site_config/ site_favicon/
+
+          # Generate manifest.json（版本自描述，订阅方据此识别包版本）
+          VERSION="${{ steps.branch_info.outputs.version_prefix }}_${{ steps.datetime.outputs.datetime }}"
+          SITE_COUNT=$(ls site_config/sites/*.json 2>/dev/null | wc -l)
+          cat > release_temp/manifest.json <<EOF
+          {
+            "version": "${VERSION}",
+            "channel": "${{ steps.branch_info.outputs.version_prefix }}",
+            "buildTime": "$(date -u -d '+8 hours' +'%Y-%m-%dT%H:%M:%S+08:00')",
+            "gitSha": "${{ github.sha }}",
+            "siteCount": ${SITE_COUNT}
+          }
+          EOF
+
+          tar -czf site_config.tar.gz -C release_temp site_config/ site_favicon/ manifest.json
           rm -rf release_temp
-          
+
           # Calculate checksum
           sha256sum site_config.tar.gz > site_config.tar.gz.sha256
-          
+
           # Display file size
           echo "=== Archive Info ==="
           ls -lh site_config.tar.gz
           echo ""
           echo "=== Checksum ==="
           cat site_config.tar.gz.sha256
-
-      - name: Get current date and time
-        id: datetime
-        run: echo "datetime=$(date -u -d '+8 hours' +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
 
       - name: Delete old release
         env:
@@ -73,7 +87,7 @@ jobs:
           fi
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.branch_info.outputs.version_prefix }}_${{ steps.datetime.outputs.datetime }}
           name: ${{ steps.branch_info.outputs.version_prefix }}_${{ steps.datetime.outputs.datetime }}
@@ -86,6 +100,7 @@ jobs:
             **包含内容**: 
             - site_config/（站点配置文件）
             - site_favicon/（站点图标）
+            - manifest.json（版本信息）
             
             **自动更新**: 相关程序会自动订阅和下载最新配置包，无需手动操作。
 
