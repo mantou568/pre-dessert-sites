@@ -343,16 +343,7 @@
       },
       "fields": {
         "content": {
-          "selector": "data.list.#(type==\"admin.broadcast\").body",
-          "filters": [
-            {
-              "name": "time_format",
-              "args": [
-                "时间：(\\d{10,13})",
-                "2006-01-02 15:04:05"
-              ]
-            }
-          ]
+          "selector": "data.list.#(type==\"admin.broadcast\").body"
         }
       }
     },
