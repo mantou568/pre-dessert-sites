@@ -6,7 +6,7 @@
   "public": false,
   "schema": "rousi",
   "required": {
-    "cookie": true,
+    "cookie": false,
     "sign_in": false
   },
   "meta": {
@@ -17,16 +17,37 @@
   "category": {
     "movie": [
       {
-        "id": 1,
+        "id": "movie",
         "cat": "Movies",
         "desc": "电影"
       }
     ],
     "tv": [
       {
-        "id": 2,
+        "id": "tv",
         "cat": "TV",
         "desc": "剧集"
+      }
+    ],
+    "anime": [
+      {
+        "id": "anime",
+        "cat": "Anime",
+        "desc": "动漫"
+      }
+    ],
+    "documentary": [
+      {
+        "id": "documentary",
+        "cat": "Documentaries",
+        "desc": "纪录片"
+      }
+    ],
+    "variety": [
+      {
+        "id": "variety",
+        "cat": "Variety",
+        "desc": "综艺"
       }
     ]
   },
@@ -34,10 +55,22 @@
     "user_basic_info": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/v1/me",
+      "path": "/api/v1/me/stats",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
       "fields": {
         "is_login": {
-          "selector": "username",
+          "selector": "user.username",
           "filters": [
             {
               "name": "not_blank"
@@ -45,20 +78,44 @@
           ]
         },
         "id": {
-          "selector": "id"
+          "selector": "user.id"
         },
         "name": {
-          "selector": "username"
+          "selector": "user.username"
+        },
+        "uploaded": {
+          "selector": "raw_uploaded_bytes"
+        },
+        "downloaded": {
+          "selector": "raw_downloaded_bytes"
+        },
+        "ratio": {
+          "selector": "ratio"
+        },
+        "bonus": {
+          "selector": "points_balance"
         }
       }
     },
     "user_details": {
       "parser": "JsonPath",
       "method": "GET",
-      "path": "/api/v1/users/{userId}/profile",
+      "path": "/api/v1/me/stats",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
       "fields": {
         "level": {
-          "selector": "level"
+          "selector": "class_name"
         },
         "join_at": {
           "selector": "joined_at",
@@ -67,37 +124,120 @@
               "name": "timestamp"
             }
           ]
-        },
-        "last_accessed": {
-          "selector": "last_login_at",
-          "filters": [
-            {
-              "name": "timestamp"
-            }
-          ]
         }
       }
     },
-    "seeding_size": {
-      "disabled": true
-    },
-    "seeding_count": {
+    "seeding_statistics": {
       "parser": "JsonPath",
       "method": "GET",
       "path": "/api/v1/me/stats",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
       "fields": {
         "count": {
           "selector": "seeding"
+        },
+        "size": {
+          "selector": "seeding_bytes"
         }
       }
     },
     "sign_in": {
       "disabled": true
     },
+    "download_link": {
+      "parser": "JsonPath",
+      "method": "POST",
+      "path": "/api/v1/torrents/{id}/download-links",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "fields": {
+        "url": {
+          "selector": "download_url"
+        }
+      }
+    },
+    "details": {
+      "parser": "JsonPath",
+      "method": "GET",
+      "path": "/api/v1/torrents/{id}",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
+      "disabled_extends": {
+        "path": true,
+        "headers": true,
+        "params": true,
+        "list": true,
+        "fields": true,
+        "field": true
+      },
+      "success_status_codes": [
+        200,
+        404
+      ],
+      "fields": {
+        "absent": {
+          "selector": "error.code",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "not_found"
+            }
+          ]
+        },
+        "free": {
+          "selector": "promotion.download.num",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "0"
+            }
+          ]
+        },
+        "2x_free": {
+          "selector": "promotion.upload.num",
+          "filters": [
+            {
+              "name": "eq",
+              "args": "2"
+            }
+          ]
+        },
+        "peer_count": {
+          "selector": "seeders"
+        }
+      }
+    },
     "search": {
       "parser": "JsonPath",
       "method": "GET",
       "path": "/api/v1/media",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
       "params": {
         "page": [
           "1"
@@ -152,18 +292,11 @@
               }
             ]
           },
-          "download": {
-            "selector": "id",
-            "filters": [
-              {
-                "name": "append_left",
-                "args": "/torrents/"
-              },
-              {
-                "name": "append_right",
-                "args": "/download"
-              }
-            ]
+          "downloadvolumefactor": {
+            "selector": "promotion.download.num"
+          },
+          "uploadvolumefactor": {
+            "selector": "promotion.upload.num"
           },
           "description": {
             "selector": "subtitle"
@@ -183,6 +316,12 @@
         "title": {
           "selector": "media.title"
         },
+        "douban_id": {
+          "selector": "media.douban_id"
+        },
+        "imdb_id": {
+          "selector": "media.imdb_id"
+        },
         "details": {
           "selector": "media.id",
           "filters": [
@@ -192,37 +331,19 @@
             }
           ]
         }
-      },
-      "use_api": true
+      }
     },
     "notice": {
-      "parser": "JsonPath",
-      "method": "GET",
-      "path": "/api/v1/announcements",
-      "list": {
-        "selector": "items"
-      },
-      "fields": {
-        "title": {
-          "selector": "title"
-        },
-        "content": {
-          "selector": "body"
-        },
-        "date": {
-          "selector": "published_at",
-          "filters": [
-            {
-              "name": "timestamp"
-            }
-          ]
-        }
-      }
+      "disabled": true
     },
     "messages": {
       "parser": "JsonPath",
       "method": "GET",
       "path": "/api/v1/me/conversations",
+      "use_api": true,
+      "required_headers": [
+        "X-API-Key"
+      ],
       "list": {
         "selector": "items"
       },
@@ -231,13 +352,13 @@
           "selector": "id"
         },
         "title": {
-          "selector": "subject"
+          "selector": "title"
         },
         "content": {
-          "selector": "last_message.body"
+          "selector": "last_message.excerpt"
         },
         "date": {
-          "selector": "last_message.created_at",
+          "selector": "last_message_at",
           "filters": [
             {
               "name": "timestamp"
