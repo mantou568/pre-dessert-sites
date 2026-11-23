@@ -124,6 +124,26 @@
               "name": "timestamp"
             }
           ]
+        },
+        "last_accessed": {
+          "any": [
+            {
+              "selector": "projection_updated_at",
+              "filters": [
+                {
+                  "name": "timestamp"
+                }
+              ]
+            },
+            {
+              "selector": "totals_updated_at",
+              "filters": [
+                {
+                  "name": "timestamp"
+                }
+              ]
+            }
+          ]
         }
       }
     },
