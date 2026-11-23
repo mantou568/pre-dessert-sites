@@ -84,10 +84,10 @@
           "selector": "user.username"
         },
         "uploaded": {
-          "selector": "raw_uploaded_bytes"
+          "selector": "billed_uploaded_bytes"
         },
         "downloaded": {
-          "selector": "raw_downloaded_bytes"
+          "selector": "billed_downloaded_bytes"
         },
         "ratio": {
           "selector": "ratio"
