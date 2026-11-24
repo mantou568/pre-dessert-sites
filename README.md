@@ -71,6 +71,40 @@ pre-dessert-sites/
 - **免责声明**：配置库属用户自行订阅的第三方来源，程序不内置、不审核配置内容；库维护者应在仓库 README 附带免责声明（可参考本仓库下文 ⚖️ 章节）
 - **许可证**：请自行选择并声明仓库许可证
 
+### 站点 `login_assist` 字段（浏览器登录辅助，可选）
+
+站点 JSON 顶层的可选块，供浏览器扩展（Media Saber Tools 等）在站点登录页自动识别/填充验证码与两步验证码。**不配置该块的站点完全不受影响**（消费方走内置默认规则）。
+
+```jsonc
+"login_assist": {
+  "login_paths": ["/login.php", "/takeotp.php"],        // 登录/两步验证步骤页路径子串（用于注入判定）
+  "captcha": {                                           // 图片验证码（图片与输入框必须成对配置，只配一侧无效）
+    "image_selectors": ["img[alt='CAPTCHA']", "img[src*='image.php']"],
+    "input_selectors": ["input[name='txt_code']"]
+  },
+  "two_factor": {                                        // 两步验证
+    "input_selectors": ["input[name='otp']"],            // 常规单输入框（先尝试）
+    "segmented": {                                       // 分离式输入（可选，单框未命中时走此路径）
+      "container_selector": ".input-wrap",
+      "digit_selector": ".input-content .input-item",    // 分位显示元素（逐位填充）
+      "hidden_input_selector": ".input-wrap input.visible"
+    }
+  }
+}
+```
+
+**继承规则**：站点配置了 `login_assist` 时，`captcha` / `two_factor` **子块整体覆盖** `commons/NexusPHP.json` 的对应默认（不与默认做数组合并）；未配置的子块继承 commons 默认；站点与 commons 均未配置时由消费方内置规则兜底。
+
+**贡献约束**：
+
+1. 选择器必须是标准 CSS selector（`querySelector` 语义），每子项建议 ≤4 条，首条放最精确的
+2. `captcha` 图片与输入框选择器**必须成对配置**，只配一侧会在加载期被丢弃（CI 会警告）
+3. `login_paths` 填写页面 URL 的路径子串（含两步验证步骤页，如 `/takeotp.php`）；不要写 `takelogin.php` 等 POST 落地页
+4. **本配置仅含页面结构选择器，严禁包含任何用户数据**（密钥、Cookie、账号等）
+5. 提交前本地自检：`npm install && npm run lint:selectors`（CI 发版前会强制拦截语法错误）
+
+**版本兼容矩阵**：消费 `login_assist` 需 Media Saber 后端 ≥ 2026-11 包含 `/site/loginAssist` 端点的版本 + Media Saber Tools 扩展 ≥ 同期版本；旧版本组合自动降级为内置默认规则（行为等同未配置）。
+
 ## ⚡ 反馈与交流
 
 - **提交问题**：在 [Issues](https://github.com/mantou568/pre-dessert-sites/issues) 中报告问题或申请新站点

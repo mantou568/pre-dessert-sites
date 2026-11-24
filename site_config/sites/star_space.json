@@ -12,6 +12,13 @@
   "meta": {
     "has_free": true
   },
+  "login_assist": {
+    "login_paths": ["/p_login/login.php"],
+    "captcha": {
+      "image_selectors": ["img[alt='CAPTCHA']", "img[src*='login_image.php']"],
+      "input_selectors": ["input[name='txt_code']"]
+    }
+  },
   "category": {
     "single": true,
     "query": "cat",
