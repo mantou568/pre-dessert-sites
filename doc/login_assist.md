@@ -1,5 +1,7 @@
 # 站点 login_assist 登录辅助适配指南
 
+> 站点适配基础（parser / 选择器 / 过滤器 / JSON 结构）见 [site_adaptation.md](site_adaptation.md)。
+
 `login_assist` 是站点 JSON 顶层的**可选块**，供浏览器扩展类消费方在站点登录页自动识别/填充验证码与两步验证码。**不配置该块的站点完全不受影响**（消费方走内置默认规则）。
 
 ## 字段说明
