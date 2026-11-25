@@ -9,6 +9,16 @@
       ]
     }
   ],
+  "login_assist": {
+    "login_paths": ["/login.php"],
+    "captcha": {
+      "image_selectors": ["img[alt='CAPTCHA']", "img[alt='captcha']", ".captcha-img", "#captcha-img"],
+      "input_selectors": ["#imagestring", "input[name='imagestring']", ".captcha-input", "input[placeholder*='验证码']", "input[name*='code']", "input[name*='Code']"]
+    },
+    "two_factor": {
+      "input_selectors": ["input[name='otp']", "input[name='totp']", "input[name='2fa']"]
+    }
+  },
   "requests": {
     "favicon": {
       "parser": "None",

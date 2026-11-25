@@ -1,0 +1,12 @@
+{
+  "name": "pre-dessert-sites",
+  "private": true,
+  "description": "站点配置库工程脚本（仅供 CI/维护者使用，配置消费方无需安装）",
+  "type": "module",
+  "scripts": {
+    "lint:selectors": "node scripts/lint_selectors.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.0"
+  }
+}

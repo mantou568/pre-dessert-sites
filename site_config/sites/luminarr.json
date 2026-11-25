@@ -32,6 +32,25 @@
     ]
   },
   "requests": {
+    "get_rss": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/rss",
+      "disabled_extends": {
+        "params": true,
+        "form_data": true,
+        "body": true,
+        "fields": true
+      },
+      "fields": {
+        "content": {
+          "selector": "(//a[contains(@href,'/rss/') and contains(substring-after(@href,'/rss/'),'.')]/@href)[1]"
+        }
+      },
+      "tags": [
+        "rss"
+      ]
+    },
     "favicon": {
       "parser": "None",
       "method": "GET",

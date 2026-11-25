@@ -8,11 +8,31 @@ on:
     paths:
       - 'site_config/**'
       - 'site_favicon/**'
+      - 'scripts/**'
+      - 'package.json'
       - '.github/workflows/release.yml'
   workflow_dispatch:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: npm install --no-audit --no-fund
+
+      - name: Lint login_assist selectors
+        run: npm run lint:selectors
+
   release:
+    needs: [lint]
     runs-on: ubuntu-latest
     permissions:
       contents: write

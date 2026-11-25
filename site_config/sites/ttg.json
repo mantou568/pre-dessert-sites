@@ -116,6 +116,30 @@
     ]
   },
   "requests": {
+    "get_rss": {
+      "parser": "XPath",
+      "method": "GET",
+      "path": "/rsstools.php",
+      "disabled_extends": {
+        "params": true,
+        "form_data": true,
+        "body": true,
+        "fields": true
+      },
+      "fields": {
+        "content": {
+          "selector": "//textarea[@id='trss']/text()"
+        }
+      },
+      "tags": [
+        "rss"
+      ],
+      "params": {
+        "c200": [
+          "1"
+        ]
+      }
+    },
     "search": {
       "parser": "CssSelector",
       "method": "GET",
