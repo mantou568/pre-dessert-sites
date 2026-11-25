@@ -11,6 +11,8 @@ pre-dessert-sites/
 │   └── sites/                    # 单个站点配置
 ├── site_favicon/                 # 站点图标（128×128 PNG 格式）
 │   └── *.png                     # 各站点的 favicon 图标
+├── doc/                          # 适配文档（站点适配指南 / 登录辅助字段说明）
+├── scripts/                      # CI/维护者脚本（选择器 lint）
 ├── tools/                        # 辅助工具脚本
 ```
 
