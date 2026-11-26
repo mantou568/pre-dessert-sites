@@ -103,10 +103,7 @@
           "filters": [
             {
               "name": "regex",
-              "args": [
-                "(已签|已签到|签到已得|签到排名|簽到已得|attendance.*success)",
-                0
-              ]
+              "args": "(已签|已签到|签到成功|签到已得|签到排名|簽到已得|attendance.*success)"
             }
           ]
         }

@@ -113,6 +113,26 @@
           ]
         }
       }
+    },
+    "sign_in": {
+      "parser": "CssSelector",
+      "method": "POST",
+      "path": "/attendance.php",
+      "disabled_extends": {
+        "params": true
+      },
+      "fields": {
+        "signed_in": {
+          "selector": "*",
+          "selection": "html",
+          "filters": [
+            {
+              "name": "regex",
+              "args": "(签到成功|已签|已签到|签到已得|签到排名|簽到已得|已经签到过了)"
+            }
+          ]
+        }
+      }
     }
   },
   "my_hr": {
