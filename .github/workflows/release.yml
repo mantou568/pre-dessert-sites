@@ -9,6 +9,7 @@ on:
       - 'site_config/**'
       - 'site_favicon/**'
       - 'scripts/**'
+      - '.agents/skills/ms-site-adapt/**'
       - 'package.json'
       - '.github/workflows/release.yml'
   workflow_dispatch:
@@ -30,6 +31,9 @@ jobs:
 
       - name: Lint login_assist selectors
         run: npm run lint:selectors
+
+      - name: Lint site configs
+        run: npm run lint:configs
 
   release:
     needs: [lint]

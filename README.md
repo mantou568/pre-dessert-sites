@@ -11,8 +11,9 @@ pre-dessert-sites/
 │   └── sites/                    # 单个站点配置
 ├── site_favicon/                 # 站点图标（128×128 PNG 格式）
 │   └── *.png                     # 各站点的 favicon 图标
-├── doc/                          # 适配文档（站点适配指南 / 登录辅助字段说明）
-├── scripts/                      # CI/维护者脚本（选择器 lint）
+├── doc/                          # 适配文档（站点适配指南 / 登录辅助字段说明 / AI 技能安装）
+├── scripts/                      # CI/维护者脚本（login_assist 选择器 lint）
+├── .agents/skills/ms-site-adapt/ # AI 智能体站点适配技能（SKILL.md + 配置 lint 脚本）
 ├── tools/                        # 辅助工具脚本
 ```
 
@@ -77,6 +78,10 @@ pre-dessert-sites/
 
 站点 JSON 顶层的可选块，供浏览器扩展类消费方在站点登录页自动识别/填充验证码与两步验证码。**不配置该块的站点完全不受影响**（消费方走内置默认规则）。字段说明、继承规则与贡献约束见 **[doc/login_assist.md](doc/login_assist.md)**。
 
+### 🤖 AI 智能体适配技能（ms-site-adapt）
+
+仓库内置 Agent Skill：在支持 SKILL.md 规范的 AI 编码智能体（Claude Code / ZCode / 爱马仕等）中克隆本仓库即可自动发现，引导智能体完成「踩点 → 编写站点 JSON → 校验 → 测试 → 提交」的完整站点适配。技能字段说明已对照 MS 后端源码核对；其附带的配置校验脚本已接入 CI（`npm run lint:configs`，拦截未知过滤器/schema 等 panic 类错误）。安装与使用见 **[doc/agent_skill.md](doc/agent_skill.md)**。
+
 ## ⚡ 反馈与交流
 
 - **提交问题**：在 [Issues](https://github.com/mantou568/pre-dessert-sites/issues) 中报告问题或申请新站点
@@ -90,6 +95,7 @@ pre-dessert-sites/
 - 站点图标和素材
 - Bug 修复
 - 文档完善
+- 借助 AI 智能体技能辅助适配（见 [doc/agent_skill.md](doc/agent_skill.md)）
 
 ### 规范性说明
 
@@ -100,6 +106,7 @@ pre-dessert-sites/
    - `site_favicon/{id}.png` 图标名（不含扩展名）
 - 历史兼容站点（如 `bt_` 前缀）可保留前缀，但仍需满足“文件名 = id = 图标名”。
 - `site_config/commons/NexusPHP.json` 为公共框架配置，属于特例，不按站点命名规则修改。
+- 提交前本地自检：`npm install && npm run lint:selectors && npm run lint:configs`（CI 发版前会强制拦截错误）。
 
 请参考 [Issue 模板](https://github.com/mantou568/pre-dessert-sites/issues/new/choose) 提交规范化的问题报告。
 
