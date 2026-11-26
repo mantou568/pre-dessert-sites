@@ -214,7 +214,7 @@
       }
     },
     "rss": {
-      "parser": "XML",
+      "parser": "Xml",
       "method": "GET",
       "path": "/rss/torrents/all",
       "fields": {
