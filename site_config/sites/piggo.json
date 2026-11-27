@@ -346,11 +346,6 @@
       },
       "list": {
         "selector": "data.items"
-      },
-      "params": {
-        "page": [
-          "{page}"
-        ]
       }
     },
     "details": {
